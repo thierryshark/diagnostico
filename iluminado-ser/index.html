@@ -210,7 +210,7 @@ footer.rod a:hover{color:var(--ouro2)}
 .palco{position:relative;display:grid;place-items:center;overflow:hidden}
 .palco canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
 .palco .chao{position:absolute;left:50%;bottom:-38%;width:150%;aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(circle,rgba(224,120,47,.38) 0%,rgba(224,120,47,.08) 35%,rgba(0,0,0,0) 60%);transition:opacity 1.6s ease}
-.cena{position:relative;width:min(520px,92vw);aspect-ratio:1;z-index:1}
+.cena{position:relative;width:min(520px,92vw,54vh);aspect-ratio:1;z-index:1}
 .bigorna{position:absolute;left:50%;bottom:6%;width:78%;transform:translateX(-50%)}
 .peca{position:absolute;left:50%;top:44%;width:34%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:#111 center/cover no-repeat;border:2px solid rgba(220,217,210,.35);transition:filter 2.2s ease,box-shadow 2.2s ease;filter:none}
 .peca.quente{filter:sepia(1) saturate(6) hue-rotate(-18deg) brightness(1.15) contrast(1.1);box-shadow:0 0 50px 12px rgba(224,120,47,.55),0 0 120px 30px rgba(224,120,47,.25)}
@@ -266,7 +266,7 @@ footer.rod a:hover{color:var(--ouro2)}
         <a class="btn cheio" href="#monte">Forjar meu kit</a>
         <a class="btn" href="#simbolos">Conhecer os símbolos</a>
       </div>
-      <div class="selos"><span>Prata 925 certificada</span><span>Feita à mão em Florianópolis</span><span>Caixa e certificado</span></div>
+      <div class="selos"><span>Prata 925 certificada</span><span>Criada em Florianópolis</span><span>Caixa e certificado</span></div>
     </div>
   </div>
 </header>
@@ -299,11 +299,11 @@ footer.rod a:hover{color:var(--ouro2)}
   <div class="wrap">
     <div class="cab"><span class="lbl">Processo criativo</span><h2>Do desenho à prata</h2><p>Cada símbolo passa por cinco etapas antes de chegar às suas mãos. Nenhuma delas é apressada.</p></div>
     <div class="processo">
-      <div class="etapa reveal"><span class="n">I</span><h3>DESENHO</h3><p>O símbolo é estudado na tradição e redesenhado à mão, traço por traço.</p></div>
-      <div class="etapa reveal"><span class="n">II</span><h3>ESCULTURA</h3><p>O desenho vira volume em modelagem tridimensional, com relevo e proporção definidos.</p></div>
-      <div class="etapa reveal"><span class="n">III</span><h3>FUNDIÇÃO</h3><p>A peça ganha corpo em prata 925, a liga de joalheria que dura gerações.</p></div>
-      <div class="etapa reveal"><span class="n">IV</span><h3>ACABAMENTO</h3><p>Lixa, polimento e oxidação nos detalhes para o relevo aparecer.</p></div>
-      <div class="etapa reveal"><span class="n">V</span><h3>SELO</h3><p>Conferência final, certificado com a história do símbolo e a caixa da casa.</p></div>
+      <div class="etapa"><span class="n">I</span><h3>DESENHO</h3><p>O símbolo é estudado na tradição e redesenhado à mão, traço por traço.</p></div>
+      <div class="etapa"><span class="n">II</span><h3>ESCULTURA</h3><p>O desenho vira volume em modelagem tridimensional, com relevo e proporção definidos.</p></div>
+      <div class="etapa"><span class="n">III</span><h3>FUNDIÇÃO</h3><p>A peça ganha corpo em prata 925, a liga de joalheria que dura gerações.</p></div>
+      <div class="etapa"><span class="n">IV</span><h3>ACABAMENTO</h3><p>Lixa, polimento e oxidação nos detalhes para o relevo aparecer.</p></div>
+      <div class="etapa"><span class="n">V</span><h3>SELO</h3><p>Conferência final, certificado com a história do símbolo e a caixa da casa.</p></div>
     </div>
     <div class="proc-img">
       <div data-img="1MXG60RLCuJ7Vs4XVja2k4zTxO0A__8S8" data-fit="contain"></div>
@@ -355,9 +355,9 @@ footer.rod a:hover{color:var(--ouro2)}
   <div class="wrap">
     <div class="cab"><span class="lbl">Feita para ser herdada</span><h2>Uma joia que muda de mãos e continua sua</h2></div>
     <div class="heranca">
-      <div class="reveal"><h3>CERTIFICADO</h3><p>Cada peça leva certificado com a história do símbolo, a liga de prata e, se você quiser, a data da bênção.</p></div>
-      <div class="reveal"><h3>CUIDADO</h3><p>Guarde longe da umidade, limpe com flanela macia e evite perfume direto na peça. A prata escurece com o tempo e volta ao brilho com polimento.</p></div>
-      <div class="reveal"><h3>PASSE ADIANTE</h3><p>Quando a peça mudar de mãos, conte para nós. Gravamos a data da passagem no verso, sem custo.</p></div>
+      <div><h3>CERTIFICADO</h3><p>Cada peça leva certificado com a história do símbolo, a liga de prata e, se você quiser, a data da bênção.</p></div>
+      <div><h3>CUIDADO</h3><p>Guarde longe da umidade, limpe com flanela macia e evite perfume direto na peça. A prata escurece com o tempo e volta ao brilho com polimento.</p></div>
+      <div><h3>PASSE ADIANTE</h3><p>Quando a peça mudar de mãos, conte para nós. Gravamos a data da passagem no verso, sem custo.</p></div>
     </div>
   </div>
 </section>
@@ -368,12 +368,12 @@ footer.rod a:hover{color:var(--ouro2)}
     <details><summary>As peças são de prata de verdade?</summary><p>Sim. Todas as peças são feitas em prata 925, a liga usada em joalheria, com 92,5% de prata pura.</p></details>
     <details><summary>Qual é o prazo?</summary><p>Peças com gravação seguem para a forja e saem em até 7 dias úteis. Sem gravação, em até 3 dias úteis. O prazo do frete aparece no carrinho.</p></details>
     <details><summary>Posso trocar?</summary><p>Sim, em até 7 dias após o recebimento, com a peça sem uso e na caixa original. Peças gravadas não podem ser trocadas por outro símbolo.</p></details>
-    <details><summary>É para presente. Posso enviar direto para outra pessoa?</summary><p>Pode. Escreva a mensagem no cartão ao montar o kit e coloque o endereço de quem vai receber. O valor não aparece na caixa.</p></details>
+    <details><summary>É para presente. Posso enviar direto para outra pessoa?</summary><p>Pode. Escreva a mensagem no cartão ao montar o kit e coloque o endereço de quem vai receber.</p></details>
   </div>
 </section>
 
 <footer class="wrap rod">
-  <div><span class="lbl">Iluminado Ser</span><p>Símbolos de proteção. Joias autorais em prata 925, feitas em Florianópolis.</p></div>
+  <div><span class="lbl">Iluminado Ser</span><p>Símbolos de proteção. Joias autorais em prata 925, criadas em Florianópolis.</p></div>
   <div><span class="lbl">Atendimento</span><a href="https://www.instagram.com/iluminadoser/" target="_blank" rel="noopener">Instagram @iluminadoser</a><a href="#monte">Monte seu kit</a></div>
   <div><span class="lbl">Consultoria</span><a href="moodboard.html">Moodboard de presença</a></div>
 </footer>
@@ -427,8 +427,8 @@ var PINGENTES = [
   {id:"caravaca", nome:"Cruz de Caravaca", virtude:"Fé", frase:"A cruz de duas traves, sinal antigo de proteção da casa.", img:"1DgT7Wo4uP_FknnLGg906Qdd-P8MQfbEK", preco:329, fundo:"escuro"},
   {id:"quis", nome:"Quis ut Deus", virtude:"Humildade", frase:"Quem como Deus? O nome de Miguel em forma de pergunta.", img:"1XbqxlSEpcf-ha4QFRcDwFDy7jBscp86r", preco:349, fundo:"claro"},
   {id:"estrela", nome:"Estrela Guia", virtude:"Esperança", frase:"Para quem procura direção num caminho novo.", img:"1T6BI4cPgLr1up6rEAU86ykCWJGdHbiNF", preco:299, fundo:"escuro"},
-  {id:"escudo", nome:"Escudo", virtude:"Proteção", frase:"Para guardar quem você ama.", img:"1h6PwJbsHBD354OIHzTi1upbC4wJU6NcG", preco:319, fundo:"escuro"},
-  {id:"medalha", nome:"Medalha Oval", virtude:"Devoção", frase:"Para a devoção de todos os dias.", img:"1HBfnvO6d_0V79B0QvOUL8mquGap8fMi0", preco:279, fundo:"escuro"}
+  {id:"escudo", nome:"Escudo de São Miguel", virtude:"Proteção", frase:"O arcanjo sobre o escudo, para guardar quem você ama.", img:"1h6PwJbsHBD354OIHzTi1upbC4wJU6NcG", preco:319, fundo:"escuro"},
+  {id:"medalha", nome:"Flor de Lis", virtude:"Pureza", frase:"Sinal de Nossa Senhora, para a devoção de todos os dias.", img:"1HBfnvO6d_0V79B0QvOUL8mquGap8fMi0", preco:279, fundo:"escuro"}
 ];
 var CORRENTES = [
   {id:"veneziana", nome:"Veneziana", desc:"Fina e discreta, 60 cm.", preco:149, dash:"4 3", w:2},
