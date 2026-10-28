@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Iluminado Ser · Dossiê de Marca</title>
+<meta property="og:title" content="Iluminado Ser · Dossiê de Marca">
+<meta property="og:description" content="Diagnóstico, plataforma de marca, presença, loja e régua de mensagens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Dossiê em capítulos: índice fixo à esquerda no desktop, barra de progresso no celular; cada capítulo é uma "lâmina" navegável pelas setas. */
+:root{
+  --noite:#0C0C0B; --carvao:#151513; --carvao2:#1C1C19; --linha:rgba(232,224,208,.14); --linha2:rgba(232,224,208,.28);
+  --prata:#DCD9D2; --nevoa:#9C988F; --ouro:#B89A5E; --ouro2:#D9C08A; --verde:#1E2D24; --verde2:#2C4234; --papel:#EEE9DF; --tinta:#1B1915; --alerta:#D9925A;
+  --f-titulo:"Cinzel", "Trajan Pro", Georgia, serif;
+  --f-texto:"EB Garamond", Garamond, Georgia, serif;
+  --f-ui:"Jost", "Helvetica Neue", Arial, sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:var(--noite);color:var(--prata)}
+body{font-family:var(--f-texto);font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ouro2)}
+.lbl{font-family:var(--f-ui);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro)}
+h1,h2,h3,h4{font-family:var(--f-titulo);font-weight:500;letter-spacing:.06em;margin:0;text-wrap:balance}
+p{margin:0}
+
+.shell{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+@media (max-width:980px){.shell{grid-template-columns:minmax(0,1fr)}}
+
+/* Índice */
+.indice{position:sticky;top:0;height:100vh;border-right:1px solid var(--linha);padding:calc(32px + env(safe-area-inset-top,0px)) 24px 24px max(24px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:28px;overflow-y:auto}
+@media (max-width:980px){.indice{display:none}}
+.marca{display:flex;align-items:center;gap:12px;color:var(--papel);text-decoration:none}
+.marca svg{width:16px;height:36px;flex:none}
+.marca b{font-family:var(--f-titulo);font-weight:500;letter-spacing:.22em;font-size:.82rem;line-height:1.3}
+.indice ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--linha)}
+.indice li a{display:grid;grid-template-columns:28px minmax(0,1fr);gap:6px;padding:10px 0;border-bottom:1px solid var(--linha);font-family:var(--f-ui);font-size:.8rem;letter-spacing:.04em;color:var(--nevoa);text-decoration:none;transition:color .2s}
+.indice li a span{font-size:.66rem;letter-spacing:.1em;color:var(--ouro)}
+.indice li a:hover,.indice li a[aria-current="true"]{color:var(--papel)}
+.indice li a[aria-current="true"]{font-weight:500}
+.dica{font-family:var(--f-ui);font-size:.72rem;color:var(--nevoa);line-height:1.5;margin-top:auto}
+.dica kbd{font-family:var(--f-ui);border:1px solid var(--linha2);padding:1px 6px;font-size:.66rem}
+
+.mbar{display:none;position:sticky;top:0;z-index:20;background:rgba(12,12,11,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--linha);padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+@media (max-width:980px){.mbar{display:grid;gap:8px}}
+.mbar .r{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--f-ui);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
+.mbar .r b{font-family:var(--f-titulo);font-weight:500;color:var(--papel);letter-spacing:.18em}
+.trilho{height:1px;background:var(--linha)}
+.trilho i{display:block;height:1px;background:var(--ouro);width:0;transition:width .3s}
+
+/* Lâminas */
+main{min-width:0}
+.lam{min-height:100vh;border-bottom:1px solid var(--linha);padding-block:clamp(64px,10vh,110px);padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;justify-content:center;scroll-margin-top:0}
+@media (max-width:980px){.lam{min-height:auto;padding-block:64px;scroll-margin-top:58px}}
+.in{max-width:1040px;width:100%;margin:0 auto;display:grid;gap:36px}
+.cab{display:grid;gap:14px;max-width:760px}
+.cab h2{font-size:clamp(1.9rem,3.8vw,3rem);color:var(--papel);line-height:1.08}
+.cab .lede{font-size:1.15rem;color:var(--nevoa)}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+@media (max-width:820px){.cols,.cols3{grid-template-columns:minmax(0,1fr);gap:26px}}
+
+/* Capa */
+.capa{position:relative;overflow:hidden;background:var(--noite)}
+.capa .bg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.5}
+.capa .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--noite) 0%,rgba(12,12,11,.7) 45%,rgba(12,12,11,.2) 100%)}
+@media (max-width:820px){.capa .bg::after{background:linear-gradient(180deg,rgba(12,12,11,.3),var(--noite) 80%)}}
+.capa .in{position:relative}
+.capa h1{font-size:clamp(2.6rem,6.4vw,5.4rem);line-height:1;color:var(--papel)}
+.capa h1 span{display:block;font-family:var(--f-texto);font-style:italic;font-weight:400;letter-spacing:0;color:var(--ouro2);font-size:.5em;margin-top:14px}
+.capa p{max-width:52ch;font-size:1.15rem}
+.entregas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);max-width:900px}
+@media (max-width:820px){.entregas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.entregas a{background:rgba(12,12,11,.86);padding:16px;text-decoration:none;display:grid;gap:4px;transition:background .2s}
+.entregas a:hover{background:var(--carvao2)}
+.entregas b{font-family:var(--f-titulo);font-weight:500;color:var(--papel);font-size:.86rem;letter-spacing:.1em}
+.entregas span{font-family:var(--f-ui);font-size:.74rem;color:var(--nevoa)}
+.assina{font-family:var(--f-ui);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
+
+/* Fatos */
+.fatos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ouro);border-bottom:1px solid var(--linha)}
+@media (max-width:820px){.fatos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fatos div{padding:18px 16px 18px 0;display:grid;gap:4px}
+.fatos div+div{padding-left:16px;border-left:1px solid var(--linha)}
+@media (max-width:820px){.fatos div:nth-child(3){border-left:0;padding-left:0}.fatos div:nth-child(n+3){border-top:1px solid var(--linha)}}
+.fatos b{font-family:var(--f-titulo);font-weight:500;font-size:1.5rem;color:var(--papel);line-height:1.1}
+.fatos span{font-family:var(--f-ui);font-size:.76rem;color:var(--nevoa)}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.lista li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:12px}
+.lista li::before{content:"";width:7px;height:7px;border:1px solid var(--ouro);transform:rotate(45deg);margin-top:.6em}
+.lista b{font-family:var(--f-ui);font-weight:500;font-size:.88rem;letter-spacing:.04em;color:var(--papel)}
+.citacao{font-style:italic;font-size:clamp(1.3rem,2.4vw,1.75rem);line-height:1.35;color:var(--ouro2);border-left:1px solid var(--ouro);padding-left:22px}
+
+/* Tensões */
+.tensoes{display:grid;gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.ten{background:var(--noite);display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding:20px 22px}
+@media (max-width:820px){.ten{grid-template-columns:minmax(0,1fr);gap:8px}}
+.ten h3{font-size:.84rem;color:var(--papel);letter-spacing:.1em}
+.ten .q{font-size:1rem;color:var(--nevoa)}
+.ten .r{font-size:1rem}
+.ten .r::before{content:"Recomendação · ";font-family:var(--f-ui);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--alerta)}
+
+/* Plataforma */
+.pilar{border-top:1px solid var(--ouro);padding-top:18px;display:grid;gap:10px}
+.pilar h3{font-size:.9rem;color:var(--ouro2);letter-spacing:.16em}
+.pilar p{font-size:1.15rem;color:var(--papel);line-height:1.5}
+.valores{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+@media (max-width:820px){.valores{grid-template-columns:minmax(0,1fr)}}
+.valores div{background:var(--noite);padding:20px;display:grid;gap:6px}
+.valores b{font-family:var(--f-titulo);font-weight:500;font-size:1.15rem;color:var(--papel);letter-spacing:.08em}
+.valores p{font-size:1rem;color:var(--nevoa)}
+.valores i{font-family:var(--f-ui);font-style:normal;font-size:.78rem;color:var(--ouro2);line-height:1.45}
+
+/* Linha do tempo */
+.tempo{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:relative}
+.tempo::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:var(--linha2)}
+@media (max-width:820px){.tempo{grid-template-columns:minmax(0,1fr);gap:22px}.tempo::before{left:9px;right:auto;top:0;bottom:0;width:1px;height:auto}}
+.marco{position:relative;padding:34px 18px 0 0;display:grid;gap:6px;align-content:start}
+@media (max-width:820px){.marco{padding:0 0 0 36px}}
+.marco::before{content:"";position:absolute;left:0;top:3px;width:12px;height:12px;border:1px solid var(--ouro);background:var(--noite);transform:rotate(45deg)}
+.marco b{font-family:var(--f-titulo);font-weight:500;color:var(--papel);font-size:1rem;letter-spacing:.08em}
+.marco span{font-size:.98rem;color:var(--nevoa);line-height:1.45}
+
+/* Persona e ICP */
+.persona{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:start}
+@media (max-width:820px){.persona{grid-template-columns:minmax(0,1fr)}}
+.retrato{aspect-ratio:3/4;background:var(--carvao2) center/cover no-repeat;border:1px solid var(--linha);position:relative}
+.retrato span{position:absolute;left:16px;bottom:14px;font-family:var(--f-titulo);color:var(--papel);letter-spacing:.14em;font-size:1.1rem}
+.traco{display:flex;flex-wrap:wrap;gap:8px}
+.traco span{font-family:var(--f-ui);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--linha2);padding:6px 12px;color:var(--prata)}
+.eixos{display:grid;gap:12px}
+.eixo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr);gap:12px;align-items:center;font-family:var(--f-ui);font-size:.8rem;color:var(--nevoa)}
+.eixo span:last-child{text-align:right}
+.eixo .bar{position:relative;height:1px;background:var(--linha2)}
+.eixo .bar i{position:absolute;top:50%;width:11px;height:11px;border-radius:50%;background:var(--ouro);transform:translate(-50%,-50%)}
+.icp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.icp{grid-template-columns:minmax(0,1fr)}}
+.perfil{border:1px solid var(--linha);background:var(--carvao);padding:22px;display:grid;gap:12px;align-content:start}
+.perfil .n{font-family:var(--f-ui);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
+.perfil h3{font-size:1rem;color:var(--papel);letter-spacing:.08em;line-height:1.3}
+.perfil dl{margin:0;display:grid;gap:8px}
+.perfil dt{font-family:var(--f-ui);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
+.perfil dd{margin:0;font-size:.98rem;line-height:1.4}
+
+/* Tom de voz */
+.vocab{display:grid;gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.vocab div{background:var(--noite);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr);gap:18px;padding:14px 18px;font-size:1rem}
+.vocab div:first-child{font-family:var(--f-ui);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro)}
+.vocab .u{color:var(--papel)}
+.vocab .e{color:var(--nevoa);text-decoration:line-through;text-decoration-color:rgba(217,146,90,.6)}
+.vocab .p{color:var(--nevoa)}
+@media (max-width:620px){.vocab div{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.vocab .p{grid-column:1 / -1}}
+.forja-etapas{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border-top:1px solid var(--linha2)}
+@media (max-width:820px){.forja-etapas{grid-template-columns:minmax(0,1fr)}}
+.forja-etapas div{padding:18px 16px 18px 0;display:grid;gap:4px;border-bottom:1px solid var(--linha)}
+@media (min-width:821px){.forja-etapas div+div{padding-left:16px;border-left:1px solid var(--linha)}}
+.forja-etapas b{font-family:var(--f-titulo);font-weight:500;color:var(--papel);font-size:.9rem;letter-spacing:.1em}
+.forja-etapas span{font-size:.95rem;color:var(--nevoa);line-height:1.4}
+.antes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:620px){.antes{grid-template-columns:minmax(0,1fr)}}
+.antes div{border:1px solid var(--linha);padding:18px;display:grid;gap:6px}
+.antes div:last-child{border-color:var(--ouro)}
+
+/* Presença */
+.territorios{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:980px){.territorios{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.territorios{grid-template-columns:minmax(0,1fr)}}
+.ter{border:1px solid var(--linha);background:var(--carvao);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:border-color .2s}
+.ter:hover{border-color:var(--ouro)}
+.ter .im{aspect-ratio:4/3;background:var(--carvao2) center/cover no-repeat}
+.ter .im.v{background:var(--verde);display:grid;place-items:center;font-family:var(--f-titulo);color:var(--papel);letter-spacing:.14em;font-size:1.05rem;text-align:center;padding:12px}
+.ter .tx{padding:16px;display:grid;gap:6px}
+.ter .n{font-family:var(--f-ui);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
+.ter b{font-family:var(--f-titulo);font-weight:500;color:var(--papel);font-size:.95rem;letter-spacing:.08em}
+.ter span{font-size:.95rem;color:var(--nevoa);line-height:1.4}
+
+/* Loja */
+.loja{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:56px;align-items:center}
+@media (max-width:820px){.loja{grid-template-columns:minmax(0,1fr);justify-items:center}}
+.celular{width:360px;max-width:100%;aspect-ratio:9/19;border-radius:42px;border:10px solid #232321;background:#000;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6);position:relative}
+.celular iframe{position:absolute;top:0;left:0;width:390px;height:calc(390px * 19 / 9);border:0;transform-origin:0 0}
+.celular .carregar{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:var(--noite) center/cover no-repeat}
+.celular .carregar::before{content:"";position:absolute;inset:0;background:rgba(12,12,11,.6)}
+.celular .carregar button{position:relative}
+.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-ui);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:14px 22px;border:1px solid var(--ouro);color:var(--ouro2);text-decoration:none;transition:background .2s}
+.btn:hover{background:rgba(184,154,94,.12)}
+.btn.cheio{background:var(--ouro);color:var(--tinta)}
+.btn:focus-visible{outline:2px solid var(--ouro2);outline-offset:3px}
+.acoes{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Régua */
+.regua{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;align-items:start}
+@media (max-width:820px){.regua{grid-template-columns:minmax(0,1fr)}}
+.momentos{display:flex;flex-direction:column;border-top:1px solid var(--linha)}
+@media (max-width:820px){.momentos{flex-direction:row;overflow-x:auto;border-top:0;border-bottom:1px solid var(--linha)}}
+.momentos button{all:unset;cursor:pointer;display:grid;grid-template-columns:26px minmax(0,1fr);gap:6px;padding:12px 0;border-bottom:1px solid var(--linha);font-family:var(--f-ui);font-size:.86rem;color:var(--nevoa);white-space:nowrap}
+@media (max-width:820px){.momentos button{border-bottom:2px solid transparent;padding:12px 14px 12px 0;margin-right:10px}}
+.momentos button span{font-size:.7rem;color:var(--ouro)}
+.momentos button[aria-selected="true"]{color:var(--papel);font-weight:500}
+@media (max-width:820px){.momentos button[aria-selected="true"]{border-color:var(--ouro)}}
+.momentos button:focus-visible{outline:1px solid var(--ouro2);outline-offset:3px}
+.msg-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-ui);font-size:.74rem;color:var(--nevoa);margin-bottom:16px}
+.msg-meta b{color:var(--prata);font-weight:500}
+.canais{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:20px;align-items:start}
+@media (max-width:1100px){.canais{grid-template-columns:minmax(0,1fr)}}
+.wpp{background:#0f1612;border:1px solid var(--linha);padding:18px;display:grid;gap:10px}
+.bolha{background:var(--verde2);color:var(--papel);padding:14px 16px 10px;border-radius:2px 14px 14px 14px;font-family:var(--f-ui);font-size:.9rem;line-height:1.5;white-space:pre-wrap;max-width:100%;overflow-wrap:anywhere}
+.bolha small{display:block;text-align:right;font-size:.66rem;color:var(--nevoa);margin-top:4px}
+.mail{background:var(--papel);color:var(--tinta);border:1px solid var(--linha)}
+.mail .h{padding:14px 18px;border-bottom:1px solid rgba(27,25,21,.12);display:grid;gap:3px;font-family:var(--f-ui);font-size:.8rem}
+.mail .h b{font-size:.95rem}
+.mail .h span{color:#6b665c}
+.mail .c{padding:20px 18px;font-size:1.02rem;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.cab-canal{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.copiar{all:unset;cursor:pointer;font-family:var(--f-ui);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro2);border-bottom:1px solid var(--linha2)}
+.copiar:focus-visible{outline:1px solid var(--ouro2);outline-offset:3px}
+.nota{font-size:.98rem;color:var(--nevoa);font-style:italic;margin-top:14px}
+
+/* Plano */
+.plano{list-style:none;margin:0;padding:0;counter-reset:p;display:grid;gap:0;border-top:1px solid var(--linha2)}
+.plano li{counter-increment:p;display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid var(--linha)}
+@media (max-width:620px){.plano li{grid-template-columns:minmax(0,1fr);gap:4px}}
+.plano b{font-family:var(--f-ui);font-weight:500;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro2)}
+.decidir{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:620px){.decidir{grid-template-columns:minmax(0,1fr)}}
+.decidir label{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;border:1px solid var(--linha);padding:14px;cursor:pointer;font-size:1rem}
+.decidir input{appearance:none;width:18px;height:18px;border:1px solid var(--ouro);margin:3px 0 0;display:grid;place-items:center;cursor:pointer}
+.decidir input:checked{background:var(--ouro)}
+.decidir input:checked::after{content:"✓";color:var(--tinta);font-size:12px;font-family:var(--f-ui)}
+.decidir input:checked + span{color:var(--nevoa);text-decoration:line-through}
+.decidir input:focus-visible{outline:2px solid var(--ouro2);outline-offset:2px}
+
+.fim{text-align:center}
+.fim .in{justify-items:center}
+.fim h2{font-size:clamp(2rem,4.4vw,3.4rem);color:var(--papel)}
+.fim p{font-style:italic;color:var(--ouro2);font-size:1.3rem;max-width:40ch}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="indice" aria-label="Capítulos">
+    <a class="marca" href="#capa"><svg viewBox="0 0 18 40" fill="none" aria-hidden="true"><path d="M9 1 L11 6 L11 29 L7 29 L7 6 Z" stroke="#D9C08A" stroke-width="1"/><path d="M2 29 Q9 32 16 29" stroke="#D9C08A" stroke-width="1.2"/><path d="M9 31 L9 38" stroke="#D9C08A" stroke-width="1.6"/></svg><b>ILUMINADO SER<br><span class="lbl" style="letter-spacing:.2em">Dossiê de marca</span></b></a>
+    <ol id="toc"></ol>
+    <p class="dica">Use <kbd>←</kbd> <kbd>→</kbd> ou <kbd>↑</kbd> <kbd>↓</kbd> para passar os capítulos durante a apresentação.</p>
+  </aside>
+
+  <main>
+    <div class="mbar" aria-hidden="true"><div class="r"><b>ILUMINADO SER</b><span id="mCap">Capa</span></div><div class="trilho"><i id="mFill"></i></div></div>
+
+    <!-- Capa -->
+    <section class="lam capa" id="capa" data-nome="Capa">
+      <div class="bg" id="capaBg"></div>
+      <div class="in">
+        <span class="lbl">Dossiê de marca · Outubro de 2026</span>
+        <h1>Iluminado Ser<span>símbolos de proteção, do diagnóstico à forja</span></h1>
+        <p>Tudo o que construímos a partir do diagnóstico respondido por Luiz Antonio: quem a marca é, para quem fala, onde aparece, como vende e como conversa com cada cliente.</p>
+        <nav class="entregas" aria-label="Entregas">
+          <a href="#plataforma"><b>PLATAFORMA</b><span>Propósito, missão, visão, valores</span></a>
+          <a href="#presenca"><b>PRESENÇA</b><span>Sete territórios de exposição</span></a>
+          <a href="#loja"><b>LOJA</b><span>Protótipo com a forja</span></a>
+          <a href="#regua"><b>RÉGUA</b><span>WhatsApp e e-mail</span></a>
+        </nav>
+        <span class="assina">Consultoria Thierry · Marca, conteúdo e automação</span>
+      </div>
+    </section>
+
+    <!-- 01 Diagnóstico -->
+    <section class="lam" id="diagnostico" data-nome="O ponto de partida">
+      <div class="in">
+        <div class="cab"><span class="lbl">01 · O ponto de partida</span><h2>Uma marca com alma clara e estrutura por construir</h2><p class="lede">Retrato da Iluminado Ser hoje, nas palavras do próprio Luiz.</p></div>
+        <div class="fatos">
+          <div><b>1 a 2 anos</b><span>de marca, operada só pelo fundador</span></div>
+          <div><b>R$ 250 a 500</b><span>faixa de preço das peças</span></div>
+          <div><b>São Miguel</b><span>peça mais vendida e mais querida</span></div>
+          <div><b>Recompra</b><span>clientes voltam com frequência</span></div>
+        </div>
+        <div class="cols">
+          <ul class="lista">
+            <li><div><b>Vende hoje</b><br>Instagram e WhatsApp, com envio por transportadora.</div></li>
+            <li><div><b>Por que compram</b><br>Proteção e acolhimento. Elogiam a apresentação da peça ao receber.</div></li>
+            <li><div><b>O que mais incomoda</b><br>Falta de posicionamento.</div></li>
+            <li><div><b>O que seria sucesso</b><br>Gerar valor, criar autoridade e virar referência no nicho.</div></li>
+          </ul>
+          <p class="citacao">"Criar uma marca que atravessa gerações e cria uma herança de proteção familiar."<br><span class="lbl" style="font-style:normal">Luiz Antonio, sobre o sonho para 5 anos</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Tensões -->
+    <section class="lam" id="tensoes" data-nome="Pontos de decisão">
+      <div class="in">
+        <div class="cab"><span class="lbl">02 · Pontos de decisão</span><h2>O que precisa ser alinhado antes de construir</h2><p class="lede">Respostas do diagnóstico que puxam para lados diferentes, com a nossa recomendação.</p></div>
+        <div class="tensoes">
+          <div class="ten"><h3>METAS DE 6 MESES</h3><p class="q">R$ 20 mil, 100 pedidos por mês e 50 mil seguidores.</p><p class="r">100 pedidos para R$ 20 mil dá ticket de R$ 200, abaixo da faixa atual. Proposta: faturamento como meta principal, cerca de 60 pedidos por mês e 5 mil seguidores qualificados.</p></div>
+          <div class="ten"><h3>EXCLUSIVA OU ACESSÍVEL</h3><p class="q">Marcou "acessível", mas admira Tiffany e Rolls-Royce.</p><p class="r">Preço acessível para joia autoral, experiência de alta joalheria. A marca nunca disputa por desconto.</p></div>
+          <div class="ten"><h3>FÉ DECLARADA</h3><p class="q">Fé totalmente declarada, mas "falar só das joias por hora".</p><p class="r">A fé aparece pelos santos, pelos símbolos e pelas virtudes de cada peça, sem pregação nem conteúdo doutrinário.</p></div>
+          <div class="ten"><h3>BÊNÇÃO DA PEÇA</h3><p class="q">Proposta inicial de "autorização energética".</p><p class="r">"Energia" soa esotérico para o público católico. O termo certo é bênção, usado só se as peças forem de fato abençoadas por um sacerdote.</p></div>
+          <div class="ten"><h3>LOGOTIPO</h3><p class="q">S entrelaçado com a espada.</p><p class="r">Em tamanho pequeno se lê como cifrão. Testar a espada sozinha como ícone de perfil ou abrir mais o S.</p></div>
+          <div class="ten"><h3>EXTERIOR EM 12 MESES</h3><p class="q">Meta de atuar fora do Brasil.</p><p class="r">Primeiro loja, régua e prova social. Exterior como meta de 18 a 24 meses.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Plataforma -->
+    <section class="lam" id="plataforma" data-nome="Plataforma de marca">
+      <div class="in">
+        <div class="cab"><span class="lbl">03 · Plataforma de marca</span><h2>Dar forma àquilo que protege e permanece</h2></div>
+        <div class="cols3">
+          <div class="pilar"><h3>PROPÓSITO</h3><p>Transformar fé e virtude em símbolos que acompanham uma vida e passam de uma geração para a outra.</p></div>
+          <div class="pilar"><h3>MISSÃO</h3><p>Criar joias autorais em prata 925 com os símbolos da tradição católica, feitas e entregues com rigor de ofício, para que cada pessoa carregue a lembrança diária da sua fé.</p></div>
+          <div class="pilar"><h3>VISÃO · 5 ANOS</h3><p>Ser a referência brasileira em joalheria devocional autoral, presente em famílias que passam suas peças adiante, no Brasil e fora dele.</p></div>
+        </div>
+        <div class="valores">
+          <div><b>Fé</b><p>A marca nasce da devoção e não a usa como enfeite.</p><i>Cada peça com santo, oração ou virtude explicados com precisão.</i></div>
+          <div><b>Verdade</b><p>Dizer exatamente o que a peça é.</p><i>Prata 925, peso e medidas na página. Nenhuma promessa de efeito milagroso.</i></div>
+          <div><b>Honra</b><p>Cumprir a palavra dada ao cliente.</p><i>Prazo realista, resposta em até 24 horas, troca sem burocracia.</i></div>
+          <div><b>Ofício</b><p>Respeito pelo trabalho de quem forja.</p><i>Mostrar o processo e nunca vender por pressa.</i></div>
+          <div><b>Acolhimento</b><p>Tratar o cliente como alguém da família.</p><i>Agradecimento escrito pelo Luiz, linguagem calma, nenhuma crítica.</i></div>
+          <div><b>Herança</b><p>A joia é feita para durar e ser passada adiante.</p><i>Certificado, cuidado com a prata e o movimento #PasseAdiante.</i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Para quem -->
+    <section class="lam" id="paraquem" data-nome="Para quem e por quê">
+      <div class="in">
+        <div class="cab"><span class="lbl">04 · Para quem e por quê</span><h2>Entre o artigo religioso em série e a joalheria que não fala de fé</h2><p class="lede">Católicos praticantes de 28 a 55 anos, que querem carregar a própria fé de forma visível e elegante, para si ou para presentear.</p></div>
+        <div class="cols3">
+          <div class="pilar"><h3>PARA QUEM COMPRA PARA SI</h3><p style="font-size:1.05rem">Uma forma digna de levar a fé no dia a dia, que combina com a roupa de trabalho e com a missa de domingo.</p></div>
+          <div class="pilar"><h3>PARA QUEM PRESENTEIA</h3><p style="font-size:1.05rem">Um presente com significado, pronto para entregar, que já traz a história do santo ou da virtude.</p></div>
+          <div class="pilar"><h3>PARA A FAMÍLIA</h3><p style="font-size:1.05rem">Um objeto feito para durar e ser herdado, com certificado e cuidado de conservação.</p></div>
+        </div>
+        <div class="tempo">
+          <div class="marco"><b>90 DIAS</b><span>Loja no ar, régua ativa, 3 coleções nomeadas, 30 avaliações</span></div>
+          <div class="marco"><b>6 MESES</b><span>60 pedidos e R$ 20 mil por mês, 5 mil seguidores, primeiro encontro</span></div>
+          <div class="marco"><b>12 MESES</b><span>Calendário devocional, parcerias com paróquias, recompra acima de 25%</span></div>
+          <div class="marco"><b>18 A 24 MESES</b><span>Primeiras vendas a comunidades católicas brasileiras no exterior</span></div>
+          <div class="marco"><b>5 ANOS</b><span>Referência nacional, peças passadas adiante nas famílias</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Persona -->
+    <section class="lam" id="persona" data-nome="A marca como pessoa">
+      <div class="in">
+        <div class="cab"><span class="lbl">05 · A marca como pessoa</span><h2>Antonio, 33 anos</h2></div>
+        <div class="persona">
+          <div class="retrato" data-img="1jlo45QtYNfhco0fVqF7IY_XPKP-uWa1d"><span>ANTONIO</span></div>
+          <div style="display:grid;gap:22px">
+            <p style="font-size:1.12rem">Advogado que trabalha quase todo de casa, numa casa de campo com varanda virada para o horizonte. Começa o dia agradecendo e orando, toma café com a família e vai à missa com a esposa aos domingos. Ouve música clássica e gospel, lê história com fundo religioso e medieval.</p>
+            <p style="font-size:1.12rem">Fala com calma, sem gírias, e prefere exaltar as virtudes de quem está perto a criticar alguém. Quem conversa com ele sai acolhido e seguro, como diante de um amigo de confiança.</p>
+            <div class="traco"><span>Firme</span><span>Alegre</span><span>Confiável</span><span>Inspirador</span><span>Protetor</span></div>
+            <div><span class="lbl">Arquétipo · Cuidador com traço de Governante</span></div>
+            <div class="eixos" aria-label="Eixos de personalidade marcados no diagnóstico">
+              <div class="eixo"><span>Sagrada</span><div class="bar"><i style="left:50%"></i></div><span>Cotidiana</span></div>
+              <div class="eixo"><span>Clássica</span><div class="bar"><i style="left:75%"></i></div><span>Contemporânea</span></div>
+              <div class="eixo"><span>Discreta</span><div class="bar"><i style="left:50%"></i></div><span>Expressiva</span></div>
+              <div class="eixo"><span>Séria</span><div class="bar"><i style="left:75%"></i></div><span>Leve</span></div>
+              <div class="eixo"><span>Fé declarada</span><div class="bar"><i style="left:0%"></i></div><span>Fé sutil</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ICP -->
+    <section class="lam" id="icp" data-nome="Cliente ideal">
+      <div class="in">
+        <div class="cab"><span class="lbl">06 · Cliente ideal</span><h2>Três perfis, em ordem de prioridade</h2><p class="lede">O dado mais valioso do diagnóstico é a recompra frequente. Proteger esse comportamento vem antes de qualquer investimento em aquisição.</p></div>
+        <div class="icp">
+          <div class="perfil"><span class="n">Perfil 1</span><h3>O DEVOTO QUE COMPRA PARA SI</h3><dl><dt>Quem</dt><dd>Homem de 28 a 50 anos, católico praticante, ligado a movimentos como o Terço dos Homens</dd><dt>Procura</dt><dd>Proteção diária numa peça masculina, discreta e forte</dd><dt>Peça de entrada</dt><dd>São Miguel, Cruz de Caravaca, Escudo</dd></dl></div>
+          <div class="perfil"><span class="n">Perfil 2</span><h3>QUEM PRESENTEIA</h3><dl><dt>Quem</dt><dd>Mulher de 30 a 60 anos que compra para marido, filho, afilhado ou pai</dd><dt>Procura</dt><dd>Presente com significado, pronto para entregar</dd><dt>Peça de entrada</dt><dd>São Jorge, Flor de Lis, Quis ut Deus</dd></dl></div>
+          <div class="perfil"><span class="n">Perfil 3</span><h3>INFLUÊNCIA E COMUNIDADE</h3><dl><dt>Quem</dt><dd>Criadores de conteúdo católico, líderes de grupos e casais de movimentos</dd><dt>Procura</dt><dd>Peças que representem a missão deles</dd><dt>Peça de entrada</dt><dd>Coleção ou peça exclusiva assinada</dd></dl></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 Tom -->
+    <section class="lam" id="tom" data-nome="Tom de voz">
+      <div class="in">
+        <div class="cab"><span class="lbl">07 · Tom de voz</span><h2>A forja como linguagem</h2><p class="lede">Une o ofício artesanal à espada de São Miguel, presente no próprio símbolo da marca.</p></div>
+        <div class="vocab">
+          <div><span>Usar</span><span>Evitar</span><span class="p">Por quê</span></div>
+          <div><span class="u">forjar, moldar, temperar, selar</span><span class="e">fabricar, produzir em série</span><span class="p">Reforça ofício e autoria</span></div>
+          <div><span class="u">carregar, guardar, acompanhar</span><span class="e">usar, ostentar</span><span class="p">A peça é companhia, não acessório</span></div>
+          <div><span class="u">virtude, proteção, herança</span><span class="e">sorte, energia, amuleto</span><span class="p">Dentro da tradição católica</span></div>
+          <div><span class="u">presente com significado</span><span class="e">promoção imperdível</span><span class="p">Luiz rejeita desvalorizar a peça</span></div>
+        </div>
+        <div class="forja-etapas">
+          <div><b>ENCOMENDA RECEBIDA</b><span>O pedido chegou à oficina</span></div>
+          <div><b>NA FORJA</b><span>Separação, conferência e polimento</span></div>
+          <div><b>TÊMPERA E SELO</b><span>Acabamento, certificado e caixa</span></div>
+          <div><b>A CAMINHO</b><span>Envio com rastreio</span></div>
+          <div><b>ENTREGUE</b><span>Chegou a quem vai carregá-la</span></div>
+        </div>
+        <div class="antes">
+          <div><span class="lbl" style="color:var(--nevoa)">Antes</span><p>"Pingente São Miguel, prata 925, aproveite!"</p></div>
+          <div><span class="lbl">Depois</span><p style="color:var(--papel)">"São Miguel Arcanjo, forjado em prata 925. Para quem pede proteção no caminho e coragem nas escolhas."</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 Presença -->
+    <section class="lam" id="presenca" data-nome="Presença">
+      <div class="in">
+        <div class="cab"><span class="lbl">08 · Presença</span><h2>Onde a marca pode ser vista, tocada e lembrada</h2><p class="lede">Sete territórios, cada um com ideias nomeadas e um primeiro passo possível com a estrutura de hoje.</p></div>
+        <div class="territorios" id="territorios"></div>
+        <div class="acoes"><a class="btn" href="moodboard.html" target="_blank" rel="noopener">Abrir o moodboard completo</a></div>
+      </div>
+    </section>
+
+    <!-- 09 Loja -->
+    <section class="lam" id="loja" data-nome="A loja">
+      <div class="in">
+        <div class="loja">
+          <div style="display:grid;gap:22px">
+            <div class="cab"><span class="lbl">09 · A loja</span><h2>Uma oficina on-line, não uma vitrine</h2><p class="lede">Capa, manifesto, símbolos, processo criativo, a bênção da peça e o montador de kit. No fim, o cliente acompanha a peça sendo forjada.</p></div>
+            <ul class="lista">
+              <li><div><b>Monte seu kit</b><br>Pingente, corrente e caixa, com gravação, bênção e cartão.</div></li>
+              <li><div><b>A forja</b><br>O metal aquece, recebe três golpes, esfria na têmpera e ganha o selo.</div></li>
+              <li><div><b>Na Nuvemshop</b><br>O kit vira produto com variações ou página com código próprio.</div></li>
+            </ul>
+            <div class="acoes"><a class="btn cheio" href="./" target="_blank" rel="noopener">Abrir a loja em tela cheia</a></div>
+          </div>
+          <div class="celular" id="celular">
+            <div class="carregar" id="carregar"><button class="btn cheio" type="button" id="ligar">Navegar aqui dentro</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 Régua -->
+    <section class="lam" id="regua" data-nome="Régua de mensagens">
+      <div class="in">
+        <div class="cab"><span class="lbl">10 · Régua de mensagens</span><h2>Sete momentos, dois canais, uma voz</h2><p class="lede">Os campos entre colchetes são preenchidos pelo Cashing ou pela Nuvemshop. O agradecimento da primeira compra continua nas mãos do Luiz.</p></div>
+        <div class="regua">
+          <div class="momentos" role="tablist" aria-label="Momentos da régua" id="momentos"></div>
+          <div id="msgPainel" role="tabpanel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 Plano -->
+    <section class="lam" id="plano" data-nome="Próximos passos">
+      <div class="in">
+        <div class="cab"><span class="lbl">11 · Próximos passos</span><h2>Os primeiros 90 dias</h2><p class="lede">Primeiro a casa, depois a vitrine, e só então os encontros.</p></div>
+        <ol class="plano">
+          <li><b>Semana 1</b><span>Validar os pontos de decisão, nomes das peças, preços e a bênção.</span></li>
+          <li><b>Semanas 2 a 4</b><span>Montar a loja na Nuvemshop a partir do protótipo e ativar a régua no Cashing.</span></li>
+          <li><b>Semanas 3 a 6</b><span>Publicar 12 posts na grade de quatro pilares antes de qualquer anúncio.</span></li>
+          <li><b>Semanas 5 a 8</b><span>Abrir o grupo de clientes no WhatsApp e reunir as três primeiras histórias do #PasseAdiante.</span></li>
+          <li><b>Semanas 8 a 12</b><span>Primeira Noite da Forja com clientes recorrentes e contato com cinco paróquias.</span></li>
+        </ol>
+        <div><span class="lbl">Para decidir juntos</span></div>
+        <div class="decidir">
+          <label><input type="checkbox" id="d1"><span>Nomes definitivos das peças</span></label>
+          <label><input type="checkbox" id="d2"><span>Preços de pingentes, correntes e caixas</span></label>
+          <label><input type="checkbox" id="d3"><span>Se a bênção será oferecida, por quem e com que frequência</span></label>
+          <label><input type="checkbox" id="d4"><span>Ajuste do logotipo para não ler como cifrão</span></label>
+          <label><input type="checkbox" id="d5"><span>Metas revisadas de 6 meses</span></label>
+          <label><input type="checkbox" id="d6"><span>Domínio iluminadoser.com.br e e-mail da marca</span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="lam fim" id="fim" data-nome="Encerramento">
+      <div class="in">
+        <span class="lbl">Iluminado Ser</span>
+        <h2>Símbolos de proteção</h2>
+        <p>Joias que representam virtudes e atravessam gerações.</p>
+        <span class="assina">Consultoria Thierry · Florianópolis, 2026</span>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+"use strict";
+var T = function(id, w){ return "https://drive.google.com/thumbnail?id=" + id + "&sz=w" + (w||900); };
+var $ = function(s){ return document.querySelector(s); };
+var reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+$("#capaBg").style.backgroundImage = "url(" + T("17zDGqFFQ3PhUv8gqkt1Y35SzFJw9d-V2",1800) + ")";
+$("#capaBg").style.backgroundPosition = "70% center";
+document.querySelectorAll("[data-img]").forEach(function(el){ el.style.backgroundImage = "url(" + T(el.dataset.img) + ")"; });
+$("#carregar").style.backgroundImage = "url(" + T("1CymbQtjA698uwj10lPz7CRJPoScfkFNo",600) + ")";
+
+/* Territórios */
+var TER = [
+  ["01","Eventos em parceria","Festas de padroeiro, retiros de casais e o presente do padrinho.","1jlo45QtYNfhco0fVqF7IY_XPKP-uWa1d","parceria"],
+  ["02","Eventos próprios","Noite da Forja: 20 convidados, polimento ao vivo e bênção das peças.","","proprios","NOITE DA FORJA"],
+  ["03","Movimentos","#PasseAdiante: histórias de peças que mudaram de mãos.","1I51ZQqJqyg7xDfIs1H-bMRLwSDZijzl-","movimentos"],
+  ["04","Encontros","O Caminho: subida ao Morro da Cruz ao amanhecer, sem venda no local.","1a_FhHb63u2G5sOobi7fAyPilCe1L5kiU","encontros"],
+  ["05","Site","A loja como oficina, com o montador de kit e a forja.","17zDGqFFQ3PhUv8gqkt1Y35SzFJw9d-V2","site"],
+  ["06","Feiras","Estande escuro com bancada de acabamento. ExpoCatólica no segundo ano.","1IA0_pFlwcBMEgUH8qMdr3wayCpSBhyxT","feiras"],
+  ["07","Instagram","Quatro pilares: símbolo, ofício, quem carrega e calendário.","1CymbQtjA698uwj10lPz7CRJPoScfkFNo","instagram"],
+  ["","Calendário","23/04 São Jorge · 03/05 Santa Cruz · 29/09 Arcanjos · 02/10 Anjos da Guarda","","instagram","DATAS DA FÉ"]
+];
+$("#territorios").innerHTML = TER.map(function(t){
+  var im = t[3] ? '<div class="im" style="background-image:url('+T(t[3],600)+')"></div>' : '<div class="im v">'+t[5]+'</div>';
+  return '<a class="ter" href="moodboard.html#'+t[4]+'" target="_blank" rel="noopener">'+im+'<div class="tx">'+(t[0]?'<span class="n">'+t[0]+'</span>':'<span class="n">Apoio</span>')+'<b>'+t[1].toUpperCase()+'</b><span>'+t[2]+'</span></div></a>';
+}).join("");
+
+/* Loja dentro do celular */
+function encaixar(){ var c = $("#celular"), f = c.querySelector("iframe"); if (!f) return; var s = c.clientWidth / 390; f.style.transform = "scale(" + s + ")"; f.style.height = (c.clientHeight / s) + "px"; }
+$("#ligar").addEventListener("click", function(){
+  var f = document.createElement("iframe"); f.src = "./"; f.title = "Protótipo da loja Iluminado Ser";
+  $("#celular").appendChild(f); $("#carregar").remove(); encaixar();
+});
+addEventListener("resize", encaixar);
+
+/* Régua */
+var M = [
+ {n:"Boas-vindas", g:"Cadastro no site ou newsletter", c:"BOAS-VINDAS", w:"Olá, [NOME]. Aqui é o Luiz, da Iluminado Ser.\n\nObrigado por chegar até nós. Criamos joias em prata 925 com símbolos de proteção: São Miguel, São Jorge, a Cruz de Caravaca e outros sinais que acompanham a fé de quem os carrega.\n\nPara a sua primeira encomenda, a gravação no verso fica por nossa conta. Use o código [CUPOM_BOAS_VINDAS] ao montar o seu kit:\n[LINK_MONTE_SEU_KIT]\n\nSe quiser ajuda para escolher o símbolo, é só responder por aqui.", s:"Bem-vindo à Iluminado Ser", p:"Símbolos de proteção, forjados em prata 925.", e:"Olá, [NOME].\n\nTodo ser humano carrega uma história, feita de escolhas, perdas e conquistas. A Iluminado Ser nasceu para dar forma ao que protege e permanece nessa história.\n\nCriamos joias autorais em prata 925 com os símbolos da tradição católica. Cada peça passa por cinco etapas antes de chegar até você: desenho, escultura, fundição, acabamento e selo.\n\nSão Miguel Arcanjo · coragem\nSão Jorge · fortaleza\nCruz de Caravaca · fé\nQuis ut Deus · humildade\n\nPara a sua primeira encomenda, a gravação no verso é um presente nosso. Use o código [CUPOM_BOAS_VINDAS] ao montar o seu kit.\n\n[BOTÃO: Montar meu kit]\n\nAcompanhe a oficina no Instagram: @iluminadoser\n\nCom gratidão,\nLuiz Antonio\nIluminado Ser"},
+ {n:"Primeira compra", g:"Primeiro pedido criado", c:"PRIMEIRA COMPRA", nota:"O WhatsApp sai do celular do Luiz, a partir do modelo. Pode virar um áudio curto com o mesmo conteúdo.", w:"[NOME], aqui é o Luiz.\n\nVi agora a sua encomenda do [PRODUTO] e quis agradecer pessoalmente. Cada peça que sai daqui leva um pedaço da nossa fé, e fico feliz que esta vá acompanhar a sua jornada.\n\nVou cuidar dela do início ao fim. Qualquer dúvida, fale direto comigo por aqui.", s:"Sua encomenda chegou à oficina", p:"Pedido [NUMERO_PEDIDO] recebido. Obrigado pela confiança.", e:"Olá, [NOME].\n\nSua encomenda [NUMERO_PEDIDO] chegou à nossa oficina.\n\n[RESUMO_DO_PEDIDO]\n\nAssim que o pagamento for confirmado, a sua peça segue para a forja. Você vai receber uma mensagem em cada etapa: na forja, na têmpera e selo, a caminho e entregue.\n\nObrigado por escolher carregar um símbolo da Iluminado Ser.\n\nLuiz Antonio\nIluminado Ser"},
+ {n:"Pagamento confirmado", g:"Status pago", c:"PAGAMENTO CONFIRMADO", w:"[NOME], o pagamento do pedido [NUMERO_PEDIDO] foi confirmado.\n\nA partir de agora a sua peça entra na fila da forja. Prazo para sair da oficina: até [PRAZO_PRODUCAO] dias úteis.\n\n(se houver bênção) Antes do selo, ela será levada à bênção, como você pediu.\n\nAvisamos aqui a cada etapa.", s:"Pagamento confirmado. Sua peça vai para a forja", p:"Pedido [NUMERO_PEDIDO] · saída em até [PRAZO_PRODUCAO] dias úteis.", e:"Olá, [NOME].\n\nRecebemos a confirmação do pagamento do pedido [NUMERO_PEDIDO].\n\nSua peça entra agora na fila da forja e sai da oficina em até [PRAZO_PRODUCAO] dias úteis.\n\nO caminho dela daqui até você:\n1. Na forja · separação, conferência e polimento\n2. Têmpera e selo · acabamento final, certificado e caixa\n3. A caminho · envio com código de rastreio\n4. Entregue\n\n(se houver bênção) Antes do selo, a peça será abençoada, e a data constará no certificado.\n\nLuiz Antonio\nIluminado Ser"},
+ {n:"Na forja", g:"Pedido em preparação", c:"NA FORJA", nota:"Sempre que possível, enviar junto uma foto da bancada ou da peça em acabamento.", w:"[NOME], sua peça está na forja.\n\nO [PRODUTO] está passando pelo polimento e pela oxidação dos detalhes, para que o relevo apareça com clareza.\n\nNa próxima etapa ela recebe o selo, o certificado e a caixa.", s:"Sua peça está na forja", p:"O [PRODUTO] está recebendo o acabamento final.", e:"Olá, [NOME].\n\nSua peça chegou à bancada.\n\nNesta etapa o [PRODUTO] passa por lixa, polimento e oxidação nos detalhes. É o trabalho mais lento da oficina, e é ele que faz o relevo do símbolo aparecer.\n\nEnquanto isso, um pouco sobre o símbolo que você escolheu:\n[TEXTO_DO_SIMBOLO]\n\n(se houver bênção) Ao fim do acabamento, a peça segue para a bênção e depois para o selo.\n\nLuiz Antonio\nIluminado Ser"},
+ {n:"Pedido enviado", g:"Código de rastreio inserido", c:"PEDIDO ENVIADO", w:"[NOME], sua peça saiu da oficina.\n\nForjada, selada e a caminho de você.\nTransportadora: [TRANSPORTADORA]\nRastreio: [CODIGO_RASTREIO]\n[LINK_RASTREIO]\n\nPrevisão de entrega: [DATA_PREVISTA].", s:"Sua peça está a caminho", p:"Rastreio [CODIGO_RASTREIO] · previsão [DATA_PREVISTA].", e:"Olá, [NOME].\n\nSua peça saiu da oficina hoje, forjada, selada e com o certificado dentro da caixa.\n\nTransportadora: [TRANSPORTADORA]\nCódigo de rastreio: [CODIGO_RASTREIO]\nPrevisão de entrega: [DATA_PREVISTA]\n\n[BOTÃO: Acompanhar a entrega]\n\nSe for um presente e a entrega for em outro endereço, avise quem vai receber que chegará uma caixa da Iluminado Ser.\n\nLuiz Antonio\nIluminado Ser"},
+ {n:"Você recebeu?", g:"2 dias após a entrega", c:"RECEBEU", w:"[NOME], a sua peça chegou bem?\n\nQueremos saber como foi abrir a caixa. Se puder, mande uma foto dela no peito ou nas mãos de quem recebeu. Com a sua permissão, ela pode aparecer no nosso perfil.\n\nUm cuidado: guarde a peça longe da umidade e limpe com flanela macia. Se a prata escurecer com o tempo, é natural, e o brilho volta com polimento.", s:"Sua peça chegou bem?", p:"Como cuidar da prata para ela atravessar gerações.", e:"Olá, [NOME].\n\nSua peça foi entregue há dois dias, e queremos saber se chegou como esperávamos.\n\nPara ela durar e um dia ser passada adiante:\n· guarde na caixa ou no estojo, longe da umidade\n· limpe com flanela macia, sem produtos abrasivos\n· evite perfume e cremes diretamente na peça\n· se a prata escurecer, o brilho volta com polimento\n\nSe algo não estiver como deveria, responda este e-mail e eu mesmo resolvo.\n\nLuiz Antonio\nIluminado Ser"},
+ {n:"Avaliação", g:"7 dias após a entrega", c:"AVALIACAO", w:"[NOME], já faz uma semana que o [PRODUTO] está com você.\n\nSe ele já faz parte dos seus dias, conte para outras pessoas como foi. A sua avaliação leva menos de um minuto:\n[LINK_AVALIACAO]\n\nE se a peça foi um presente, adoraríamos saber para quem e por quê. Algumas dessas histórias viram parte do nosso #PasseAdiante.", s:"Como o [PRODUTO] tem acompanhado você?", p:"Sua avaliação ajuda outras pessoas a escolher o seu símbolo.", e:"Olá, [NOME].\n\nUma semana depois, o [PRODUTO] já deve ter encontrado o seu lugar.\n\nPedimos um minuto do seu tempo para contar como foi a experiência, da encomenda até a caixa aberta. A sua avaliação ajuda quem ainda está escolhendo o próprio símbolo.\n\n[BOTÃO: Avaliar minha peça]\n\nSe a peça foi um presente, responda este e-mail com a história: para quem, em que momento, por que este símbolo. As histórias que recebemos, com autorização, fazem parte do #PasseAdiante.\n\nCom gratidão,\nLuiz Antonio\nIluminado Ser"}
+];
+var ativo = 0;
+function esc(s){ return s.replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
+function renderMsg(){
+  $("#momentos").innerHTML = M.map(function(m,i){ return '<button type="button" role="tab" id="tab'+i+'" aria-selected="'+(i===ativo)+'" tabindex="'+(i===ativo?0:-1)+'" data-m="'+i+'"><span>'+(i+1)+'</span>'+m.n+'</button>'; }).join("");
+  var m = M[ativo];
+  $("#msgPainel").setAttribute("aria-labelledby","tab"+ativo);
+  $("#msgPainel").innerHTML =
+    '<div class="msg-meta"><span>Gatilho <b>'+m.g+'</b></span><span>Cashing <b>WHATSAPP / EMAIL - CLAUDE - '+m.c+'</b></span></div>'
+    + '<div class="canais">'
+    + '<div><div class="cab-canal"><span class="lbl">WhatsApp</span><button class="copiar" type="button" data-cp="w">Copiar texto</button></div><div class="wpp"><div class="bolha">'+esc(m.w)+'<small>09:41</small></div></div></div>'
+    + '<div><div class="cab-canal"><span class="lbl">E-mail</span><button class="copiar" type="button" data-cp="e">Copiar texto</button></div><div class="mail"><div class="h"><b>'+esc(m.s)+'</b><span>'+esc(m.p)+'</span></div><div class="c">'+esc(m.e)+'</div></div></div>'
+    + '</div>' + (m.nota ? '<p class="nota">'+m.nota+'</p>' : '');
+}
+document.addEventListener("click", function(e){
+  var b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.m != null){ ativo = +b.dataset.m; renderMsg(); $("#tab"+ativo).focus(); return; }
+  if (b.dataset.cp){
+    var m = M[ativo], txt = b.dataset.cp==="w" ? m.w : ("Assunto: " + m.s + "\nPré-cabeçalho: " + m.p + "\n\n" + m.e);
+    var ok = function(){ b.textContent = "Copiado"; setTimeout(function(){ b.textContent = "Copiar texto"; }, 1600); };
+    try { navigator.clipboard.writeText(txt).then(ok, function(){ b.textContent = "Selecione e copie"; }); } catch(err){ b.textContent = "Selecione e copie"; }
+  }
+});
+$("#momentos").addEventListener("keydown", function(e){
+  if (e.key==="ArrowDown"||e.key==="ArrowRight"){ e.preventDefault(); e.stopPropagation(); ativo=(ativo+1)%M.length; renderMsg(); $("#tab"+ativo).focus(); }
+  if (e.key==="ArrowUp"||e.key==="ArrowLeft"){ e.preventDefault(); e.stopPropagation(); ativo=(ativo+M.length-1)%M.length; renderMsg(); $("#tab"+ativo).focus(); }
+});
+renderMsg();
+
+/* Índice e navegação por capítulos */
+var L = Array.prototype.slice.call(document.querySelectorAll(".lam"));
+$("#toc").innerHTML = L.map(function(s,i){ return '<li><a href="#'+s.id+'" data-i="'+i+'"><span>'+(i===0?"":String(i).padStart(2,"0"))+'</span>'+s.dataset.nome+'</a></li>'; }).join("");
+var atual = 0;
+function marcar(i){
+  atual = i;
+  document.querySelectorAll("#toc a").forEach(function(a,j){ a.setAttribute("aria-current", j===i ? "true" : "false"); });
+  $("#mCap").textContent = L[i].dataset.nome;
+  $("#mFill").style.width = Math.round(i/(L.length-1)*100) + "%";
+}
+if ("IntersectionObserver" in window){
+  var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting) marcar(L.indexOf(en.target)); }); }, {rootMargin:"-45% 0px -50% 0px"});
+  L.forEach(function(s){ io.observe(s); });
+}
+function ir(i){ i = Math.max(0, Math.min(L.length-1, i)); L[i].scrollIntoView({behavior: reduz ? "auto" : "smooth"}); }
+document.addEventListener("keydown", function(e){
+  var t = e.target; if (t && (t.closest("input,textarea,[role=tablist]") )) return;
+  if (["ArrowDown","ArrowRight","PageDown"].indexOf(e.key) >= 0){ e.preventDefault(); ir(atual+1); }
+  if (["ArrowUp","ArrowLeft","PageUp"].indexOf(e.key) >= 0){ e.preventDefault(); ir(atual-1); }
+});
+marcar(0);
+
+/* Checklist lembrado neste navegador */
+try { var K="dossie-iluminado-decidir"; var st = JSON.parse(localStorage.getItem(K)||"{}");
+  document.querySelectorAll(".decidir input").forEach(function(c){ c.checked = !!st[c.id]; c.addEventListener("change", function(){ st[c.id]=c.checked; try{ localStorage.setItem(K, JSON.stringify(st)); }catch(e){} }); });
+} catch(e){}
+})();
+</script>
+</body>
+</html>
