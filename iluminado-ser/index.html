@@ -602,11 +602,6 @@ document.addEventListener("keydown", function(e){ if (e.key==="Escape" && !$("#f
 addEventListener("resize", function(){ if (!$("#forja").hidden) resize(); });
 
 /* Revelar ao rolar */
-if (!reduz && "IntersectionObserver" in window){
-  document.documentElement.classList.add("js");
-  var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.remove("out"); io.unobserve(en.target);} }); }, {rootMargin:"0px 0px -8% 0px"});
-  document.querySelectorAll(".reveal").forEach(function(el){ if (el.getBoundingClientRect().top > innerHeight){ el.classList.add("out"); io.observe(el); } });
-}
 render();
 })();
 </script>
