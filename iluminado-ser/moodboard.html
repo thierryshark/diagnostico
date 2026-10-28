@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Iluminado Ser · Moodboard de Presença</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Moodboard editorial em uma coluna larga: cada canal de presença é um "capítulo" com composição visual + ideias nomeadas + primeiro passo. */
+:root{
+  --noite:#0C0C0B; --carvao:#151513; --carvao2:#1C1C19; --linha:rgba(232,224,208,.14);
+  --prata:#DCD9D2; --nevoa:#9C988F; --ouro:#B89A5E; --ouro2:#D9C08A; --verde:#1E2D24; --verde2:#2C4234; --papel:#EEE9DF; --tinta:#1B1915;
+  --f-titulo:"Cinzel", "Trajan Pro", Georgia, serif;
+  --f-texto:"EB Garamond", Garamond, Georgia, serif;
+  --f-ui:"Jost", "Helvetica Neue", Arial, sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--noite);color:var(--prata)}
+body{font-family:var(--f-texto);font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+img{max-width:100%;display:block}
+.lbl{font-family:var(--f-ui);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro)}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:500;letter-spacing:.06em;margin:0;text-wrap:balance}
+em{font-style:italic}
+
+/* Capa */
+.capa{position:relative;min-height:min(92vh,860px);display:grid;align-items:end;overflow:hidden;border-bottom:1px solid var(--linha)}
+.capa .bg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.55}
+.capa .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,11,.2) 0%,rgba(12,12,11,.6) 55%,var(--noite) 100%)}
+.capa .wrap{position:relative;padding-block:80px 64px;display:grid;gap:22px}
+.capa h1{font-size:clamp(2.4rem,6.4vw,5.2rem);line-height:1.02;color:var(--papel)}
+.capa h1 span{display:block;font-family:var(--f-texto);font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:var(--ouro2);font-size:.62em;margin-top:10px}
+.capa p{max-width:58ch;margin:0;color:var(--nevoa);font-size:1.08rem}
+.indice{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:10px}
+.indice a{font-family:var(--f-ui);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--prata);text-decoration:none;border-bottom:1px solid var(--linha);padding-bottom:4px}
+.indice a:hover{color:var(--ouro2);border-color:var(--ouro)}
+
+/* Fundamentos: paleta, tipo, referências */
+.fund{padding-block:72px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;border-bottom:1px solid var(--linha)}
+@media (max-width:900px){.fund{grid-template-columns:minmax(0,1fr)}}
+.fund h3{font-size:.9rem;margin-bottom:18px;color:var(--papel)}
+.swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.sw{aspect-ratio:3/4;border:1px solid var(--linha);display:flex;align-items:flex-end;padding:8px;font-family:var(--f-ui);font-size:.62rem;letter-spacing:.06em}
+.type-sample .a{font-family:var(--f-titulo);font-size:2rem;color:var(--papel);letter-spacing:.1em}
+.type-sample .b{font-family:var(--f-texto);font-style:italic;font-size:1.5rem;color:var(--ouro2);line-height:1.2;margin:8px 0}
+.type-sample .c{font-family:var(--f-ui);font-size:.82rem;color:var(--nevoa);letter-spacing:.04em}
+.refs{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.refs li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding-bottom:12px;border-bottom:1px solid var(--linha)}
+.refs b{font-family:var(--f-ui);font-weight:500;font-size:.82rem;letter-spacing:.06em;color:var(--papel)}
+.refs span{font-size:.98rem;color:var(--nevoa);line-height:1.45}
+
+/* Capítulos */
+.cap{padding-block:96px;border-bottom:1px solid var(--linha);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:start}
+.cap.inv{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+.cap.inv .txt{order:2}
+@media (max-width:900px){.cap,.cap.inv{grid-template-columns:minmax(0,1fr);gap:36px;padding-block:64px}.cap.inv .txt{order:0}}
+.txt{display:flex;flex-direction:column;gap:18px;min-width:0}
+.txt h2{font-size:clamp(1.7rem,3.4vw,2.5rem);color:var(--papel);line-height:1.1}
+.txt .tese{font-style:italic;font-size:1.25rem;color:var(--ouro2);line-height:1.4;margin:0}
+.ideias{list-style:none;padding:0;margin:6px 0 0;display:flex;flex-direction:column;gap:16px}
+.ideias li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:12px}
+.ideias li::before{content:"";width:7px;height:7px;border:1px solid var(--ouro);transform:rotate(45deg);margin-top:.6em}
+.ideias b{display:block;font-family:var(--f-ui);font-weight:500;font-size:.9rem;letter-spacing:.04em;color:var(--papel)}
+.ideias span{font-size:1rem;color:var(--nevoa)}
+.passo{margin-top:8px;padding:16px 18px;border:1px solid var(--linha);background:var(--carvao);display:grid;gap:4px}
+.passo p{margin:0;font-size:1rem}
+.vis{min-width:0}
+
+/* Composições visuais */
+.foto{background:var(--carvao2) center/cover no-repeat;border:1px solid var(--linha)}
+.convite{background:var(--papel);color:var(--tinta);padding:40px 34px;max-width:420px;margin-left:auto;box-shadow:0 30px 60px rgba(0,0,0,.5);transform:rotate(-2deg);text-align:center;display:grid;gap:14px;position:relative}
+.convite .lbl{color:#8A6F3A}
+.convite h4{font-family:var(--f-titulo);font-weight:500;font-size:1.5rem;letter-spacing:.08em;margin:0}
+.convite p{margin:0;font-size:1rem;line-height:1.45}
+.convite hr{border:0;height:1px;background:linear-gradient(90deg,transparent,#B89A5E,transparent);margin:6px 0}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:end}
+.poster{aspect-ratio:3/4;background:var(--verde);border:1px solid var(--linha);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:28px}
+.poster::before{content:"";position:absolute;left:50%;bottom:-30%;width:120%;aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(circle,rgba(217,120,48,.55),rgba(217,120,48,0) 60%)}
+.poster h4{position:relative;font-family:var(--f-titulo);font-weight:500;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:.1em;color:var(--papel);margin:0;line-height:1.05}
+.poster p{position:relative;margin:0;font-style:italic;color:var(--ouro2)}
+.poster .meta{position:relative;font-family:var(--f-ui);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--prata)}
+.statement{font-family:var(--f-texto);font-style:italic;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.08;color:var(--papel)}
+.statement b{font-style:normal;font-family:var(--f-titulo);font-weight:500;color:var(--ouro2);letter-spacing:.06em}
+.phone{width:min(280px,70%);aspect-ratio:9/19;border-radius:34px;border:8px solid #222;background:var(--noite);overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.6);position:relative}
+.phone .scr{position:absolute;inset:0;background:center/cover no-repeat}
+.phone .scr::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,11,.1),rgba(12,12,11,.85) 75%)}
+.phone .t{position:absolute;left:18px;right:18px;bottom:28px;z-index:1;display:grid;gap:8px}
+.phone .t b{font-family:var(--f-titulo);font-weight:500;color:var(--papel);font-size:1.1rem;letter-spacing:.08em;line-height:1.15}
+.phone .t i{font-size:.85rem;color:var(--nevoa)}
+.phone .t span{justify-self:start;font-family:var(--f-ui);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--ouro);color:var(--ouro2);padding:7px 12px}
+.phones{display:flex;gap:18px;justify-content:center;align-items:flex-end}
+.phones .phone:nth-child(2){width:min(240px,58%);transform:translateY(-30px)}
+.ig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;max-width:520px;margin-left:auto}
+.ig div{aspect-ratio:4/5;background:var(--carvao2) center/cover no-repeat;position:relative}
+.ig .tx{background:var(--papel);color:var(--tinta);display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-style:italic;font-size:.82rem;line-height:1.3}
+.ig .tx.v{background:var(--verde);color:var(--ouro2)}
+.ig .tag{position:absolute;left:6px;top:6px;font-family:var(--f-ui);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(12,12,11,.75);color:var(--ouro2);padding:3px 6px}
+.ig .tx .tag{background:transparent;color:inherit;opacity:.7}
+.pilares{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:6px}
+.pilares div{border:1px solid var(--linha);padding:12px 14px}
+.pilares b{font-family:var(--f-ui);font-weight:500;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ouro2);display:block}
+.pilares span{font-size:.95rem;color:var(--nevoa)}
+.stand{width:100%;height:auto;display:block;border:1px solid var(--linha);background:var(--carvao)}
+.cal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);margin-top:6px}
+@media (max-width:560px){.cal{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cal div{background:var(--noite);padding:12px;display:grid;gap:2px}
+.cal b{font-family:var(--f-titulo);font-weight:500;color:var(--papel);font-size:1rem;letter-spacing:.06em}
+.cal span{font-size:.88rem;color:var(--nevoa);line-height:1.3}
+
+footer{padding-block:56px 72px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--f-ui);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
+footer a{color:var(--ouro2)}
+.reveal{opacity:1;transform:none;transition:opacity .9s ease,transform .9s ease}
+.js .reveal.out{opacity:.001;transform:translateY(18px)}
+@media (prefers-reduced-motion:reduce){.reveal{transition:none}.js .reveal.out{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="bg" id="capaBg"></div>
+  <div class="wrap">
+    <span class="lbl">Moodboard de presença · Outubro 2026</span>
+    <h1>Iluminado Ser<span>onde a marca pode ser vista, tocada e lembrada</span></h1>
+    <p>Sete territórios de exposição para a marca crescer além da venda: eventos, movimentos, encontros, loja, feiras e Instagram. Cada um traz a tese, ideias nomeadas e o primeiro passo possível com a estrutura de hoje.</p>
+    <nav class="indice" aria-label="Capítulos">
+      <a href="#parceria">Eventos em parceria</a><a href="#proprios">Eventos próprios</a><a href="#movimentos">Movimentos</a><a href="#encontros">Encontros</a><a href="#site">Site</a><a href="#feiras">Feiras</a><a href="#instagram">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="fund" aria-label="Fundamentos visuais">
+    <div>
+      <h3>Paleta</h3>
+      <div class="swatches">
+        <div class="sw" style="background:#0C0C0B">Noite</div>
+        <div class="sw" style="background:#1E2D24">Verde</div>
+        <div class="sw" style="background:#B89A5E;color:#1B1915">Ouro</div>
+        <div class="sw" style="background:#DCD9D2;color:#1B1915">Prata</div>
+        <div class="sw" style="background:#EEE9DF;color:#1B1915">Papel</div>
+      </div>
+      <p style="font-size:.95rem;color:var(--nevoa);margin:14px 0 0">Preto e prata para as peças, ouro só no símbolo e nos detalhes, verde profundo como a cor dos encontros e da natureza que a persona habita.</p>
+    </div>
+    <div class="type-sample">
+      <h3>Tipografia</h3>
+      <div class="a">ILUMINADO SER</div>
+      <div class="b">Símbolos que permanecem presentes em sua evolução.</div>
+      <div class="c">Capitulares romanas para a marca, serifa itálica para a voz, sans leve para informação.</div>
+    </div>
+    <div>
+      <h3>Referências do Luiz</h3>
+      <ul class="refs">
+        <li><b>Tiffany & Co.</b><span>Posicionamento: uma cor, uma caixa e um ritual de presente reconhecíveis à distância.</span></li>
+        <li><b>Old Siller</b><span>Processo de criação mostrado como parte do produto.</span></li>
+        <li><b>Guilherme Garcia</b><span>Peças apresentadas com espaço, luz baixa e fundo escuro.</span></li>
+        <li><b>Rolls-Royce</b><span>Autoridade construída por história, artesãos nomeados e encomenda sob medida.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 1. Eventos em parceria -->
+  <section class="cap reveal" id="parceria">
+    <div class="txt">
+      <span class="lbl">01 · Eventos em parceria</span>
+      <h2>Estar onde a fé já se reúne</h2>
+      <p class="tese">A marca entra como presença discreta em momentos que já têm significado, oferecendo a peça como lembrança da ocasião.</p>
+      <ul class="ideias">
+        <li><div><b>Festas de padroeiro</b><span>Festa de São Miguel (29/09) e de São Jorge (23/04) nas paróquias de Florianópolis, com mesa da marca e peça do santo do dia.</span></div></li>
+        <li><div><b>Retiros e movimentos de casais</b><span>EJC, ECC e Cursilho: uma peça de lembrança encomendada para os coordenadores, com gravação do nome do encontro.</span></div></li>
+        <li><div><b>Batizados, crismas e padrinhos</b><span>Parceria com cerimonialistas e casas de festa para o "presente do padrinho", entregue na caixa da marca.</span></div></li>
+      </ul>
+      <div class="passo"><span class="lbl">Primeiro passo</span><p>Mapear 5 paróquias e 2 movimentos em Florianópolis e oferecer uma peça exclusiva para a próxima festa de padroeiro.</p></div>
+    </div>
+    <div class="vis">
+      <div class="duo">
+        <div class="foto" style="aspect-ratio:3/4" data-img="1jlo45QtYNfhco0fVqF7IY_XPKP-uWa1d"></div>
+        <div class="convite">
+          <span class="lbl">Paróquia São Miguel Arcanjo</span>
+          <h4>FESTA DO PADROEIRO</h4>
+          <hr>
+          <p><em>Com a presença da Iluminado Ser.</em><br>Peça comemorativa do Arcanjo, forjada em prata 925 para esta celebração.</p>
+          <span class="lbl">29 de setembro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Eventos próprios -->
+  <section class="cap inv reveal" id="proprios">
+    <div class="txt">
+      <span class="lbl">02 · Eventos próprios</span>
+      <h2>Noite da Forja</h2>
+      <p class="tese">Um encontro pequeno, com lista, em que o cliente vê o acabamento das peças, ouve a história de cada símbolo e recebe a sua.</p>
+      <ul class="ideias">
+        <li><div><b>Noite da Forja</b><span>20 convidados, demonstração de polimento, leitura do manifesto e bênção das peças por um sacerdote convidado.</span></div></li>
+        <li><div><b>Lançamento de coleção</b><span>Cada nova coleção nasce num encontro antes de ir para o site. Quem esteve compra primeiro.</span></div></li>
+        <li><div><b>Café depois da missa</b><span>Mesa posta num café parceiro no domingo de manhã, com as peças para tocar e experimentar.</span></div></li>
+      </ul>
+      <div class="passo"><span class="lbl">Primeiro passo</span><p>Fazer a primeira Noite da Forja só com os clientes que já compraram duas vezes. Eles são os primeiros embaixadores.</p></div>
+    </div>
+    <div class="vis">
+      <div class="duo">
+        <div class="poster">
+          <span class="meta">Encontro · 20 lugares</span>
+          <div><h4>NOITE<br>DA FORJA</h4><p>onde os símbolos ganham forma</p></div>
+          <span class="meta">Florianópolis · sob convite</span>
+        </div>
+        <div class="foto" style="aspect-ratio:3/4" data-img="1iNwGpnfT04v4S6rAC3Qkc3fNrPhFtuUO"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Movimentos -->
+  <section class="cap reveal" id="movimentos">
+    <div class="txt">
+      <span class="lbl">03 · Movimentos</span>
+      <h2>Passe adiante</h2>
+      <p class="tese">Um movimento dá ao cliente um papel, além de um produto. O da Iluminado Ser nasce da frase "atravessam gerações".</p>
+      <ul class="ideias">
+        <li><div><b>#PasseAdiante</b><span>Histórias reais de peças dadas de pai para filho, de madrinha para afilhada. A marca reconta e grava a data da passagem no verso.</span></div></li>
+        <li><div><b>Homens de fé</b><span>Aproximação com o Terço dos Homens e grupos masculinos de oração, que conversam diretamente com a persona Antonio.</span></div></li>
+        <li><div><b>Uma virtude por mês</b><span>Coragem, fidelidade, prudência: cada mês uma virtude ligada a um símbolo, com conteúdo e uma ação concreta para a comunidade.</span></div></li>
+      </ul>
+      <div class="passo"><span class="lbl">Primeiro passo</span><p>Pedir aos clientes atuais a história de quem eles presentearam. Três histórias já sustentam o primeiro mês do movimento.</p></div>
+    </div>
+    <div class="vis">
+      <p class="statement">O que você carrega,<br>um dia <b>alguém herda.</b></p>
+      <div class="foto" style="aspect-ratio:16/10;margin-top:28px" data-img="1I51ZQqJqyg7xDfIs1H-bMRLwSDZijzl-"></div>
+    </div>
+  </section>
+
+  <!-- 4. Encontros -->
+  <section class="cap inv reveal" id="encontros">
+    <div class="txt">
+      <span class="lbl">04 · Encontros de comunidade</span>
+      <h2>O Caminho</h2>
+      <p class="tese">O primeiro post da marca já mostra um homem num caminho de luz. Os encontros transformam essa imagem em experiência.</p>
+      <ul class="ideias">
+        <li><div><b>Subida ao Morro da Cruz</b><span>Caminhada ao amanhecer em Florianópolis, com oração no topo e café da manhã. Sem venda no local; a peça aparece só como lembrança para quem quiser.</span></div></li>
+        <li><div><b>Roda de virtudes</b><span>Conversa mensal com um convidado (padre, empresário católico, pai de família) sobre uma virtude. Formato que pode virar podcast.</span></div></li>
+        <li><div><b>Grupo dos que carregam</b><span>Comunidade no WhatsApp só para clientes, com a oração do santo da semana e acesso antecipado a coleções.</span></div></li>
+      </ul>
+      <div class="passo"><span class="lbl">Primeiro passo</span><p>Abrir o grupo de clientes no WhatsApp com quem já comprou e marcar a primeira caminhada para um sábado de manhã.</p></div>
+    </div>
+    <div class="vis">
+      <div class="duo" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+        <div class="foto" style="aspect-ratio:3/4" data-img="1a_FhHb63u2G5sOobi7fAyPilCe1L5kiU"></div>
+        <div class="foto" style="aspect-ratio:3/5" data-img="1WNtn47gW5K3kg0BfEHeT7IPB7de0YUnQ" data-pos="70% center"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Site -->
+  <section class="cap reveal" id="site">
+    <div class="txt">
+      <span class="lbl">05 · Site</span>
+      <h2>A forja on-line</h2>
+      <p class="tese">A loja deixa de ser vitrine e vira oficina: o cliente escolhe pingente, corrente e caixa e acompanha a peça sendo forjada.</p>
+      <ul class="ideias">
+        <li><div><b>Home curta</b><span>Capa, manifesto, processo criativo, a bênção da peça e o montador de kit. Nada além do necessário.</span></div></li>
+        <li><div><b>Página de cada símbolo</b><span>História do santo ou da virtude, oração curta, medidas e peso. A peça vende pelo significado.</span></div></li>
+        <li><div><b>Pedido em linguagem de forja</b><span>Encomenda recebida, na forja, têmpera e selo, a caminho, entregue. O mesmo vocabulário no site, no WhatsApp e no e-mail.</span></div></li>
+      </ul>
+      <div class="passo"><span class="lbl">Ver protótipo</span><p><a href="./" style="color:var(--ouro2)">Abrir o protótipo da loja com o montador de kit</a></p></div>
+    </div>
+    <div class="vis">
+      <div class="phones">
+        <div class="phone"><div class="scr" data-img="17zDGqFFQ3PhUv8gqkt1Y35SzFJw9d-V2"></div><div class="t"><b>SÍMBOLOS DE PROTEÇÃO</b><i>Joias autorais em prata 925</i><span>Forjar meu kit</span></div></div>
+        <div class="phone"><div class="scr" data-img="1CymbQtjA698uwj10lPz7CRJPoScfkFNo"></div><div class="t"><b>SÃO MIGUEL ARCANJO</b><i>Para quem pede coragem no caminho</i><span>Escolher</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Feiras -->
+  <section class="cap inv reveal" id="feiras">
+    <div class="txt">
+      <span class="lbl">06 · Feiras</span>
+      <h2>Um estande que parece oficina</h2>
+      <p class="tese">Na feira o cliente precisa tocar a prata. O estande escuro, com uma bancada de acabamento visível, separa a marca dos estandes de artigo religioso em série.</p>
+      <ul class="ideias">
+        <li><div><b>ExpoCatólica</b><span>Feira anual em São Paulo voltada ao público e ao mercado católico. Meta para o segundo ano, depois de validar o estande em Santa Catarina.</span></div></li>
+        <li><div><b>Feiras de design autoral em Florianópolis</b><span>Público que valoriza peça feita à mão e conversa com a estética da marca.</span></div></li>
+        <li><div><b>Quermesses e festas juninas paroquiais</b><span>Mesa simples, peças de entrada e cadastro para a régua de WhatsApp.</span></div></li>
+      </ul>
+      <div class="passo"><span class="lbl">Primeiro passo</span><p>Montar um kit de feira dobrável: pano preto, expositor de bustos, placa com o símbolo e QR code para o WhatsApp.</p></div>
+    </div>
+    <div class="vis">
+      <svg class="stand" viewBox="0 0 600 420" role="img" aria-label="Esboço do estande: painel escuro com o símbolo dourado, vitrine iluminada e bancada de acabamento">
+        <rect x="0" y="0" width="600" height="420" fill="#151513"/>
+        <rect x="60" y="40" width="480" height="250" fill="#0C0C0B" stroke="rgba(232,224,208,.18)"/>
+        <g transform="translate(300 120)" fill="none" stroke="#B89A5E" stroke-width="3">
+          <path d="M0 -50 L0 58"/><path d="M-6 -44 L0 -58 L6 -44"/><path d="M-22 40 Q0 48 22 40"/><path d="M0 58 L0 74"/>
+          <path d="M16 -30 C-6 -46 -26 -26 -10 -12 C6 2 26 12 10 28 C-4 40 -20 32 -22 24"/>
+        </g>
+        <text x="300" y="232" text-anchor="middle" fill="#D9C08A" font-family="Cinzel, Georgia, serif" font-size="20" letter-spacing="6">ILUMINADO SER</text>
+        <text x="300" y="258" text-anchor="middle" fill="#9C988F" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15">Símbolos de proteção</text>
+        <rect x="90" y="300" width="250" height="70" fill="#1C1C19" stroke="rgba(232,224,208,.2)"/>
+        <rect x="96" y="306" width="238" height="40" fill="none" stroke="rgba(217,192,138,.45)"/>
+        <g fill="#DCD9D2"><circle cx="130" cy="326" r="6"/><circle cx="175" cy="326" r="6"/><circle cx="220" cy="326" r="6"/><circle cx="265" cy="326" r="6"/><circle cx="305" cy="326" r="6"/></g>
+        <text x="215" y="392" text-anchor="middle" fill="#9C988F" font-family="Jost, Arial, sans-serif" font-size="11" letter-spacing="3">VITRINE ILUMINADA</text>
+        <rect x="370" y="300" width="140" height="70" fill="#1E2D24" stroke="rgba(232,224,208,.2)"/>
+        <path d="M400 330 h40 l10 -10 h20 v20 h-70z" fill="#2C4234"/>
+        <circle cx="490" cy="318" r="12" fill="none" stroke="#B89A5E"/>
+        <text x="440" y="392" text-anchor="middle" fill="#9C988F" font-family="Jost, Arial, sans-serif" font-size="11" letter-spacing="3">BANCADA DE ACABAMENTO</text>
+        <rect x="540" y="160" width="28" height="28" fill="none" stroke="#DCD9D2"/><text x="554" y="206" text-anchor="middle" fill="#9C988F" font-family="Jost, Arial, sans-serif" font-size="9" letter-spacing="2">QR</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 7. Instagram -->
+  <section class="cap reveal" id="instagram">
+    <div class="txt">
+      <span class="lbl">07 · Instagram</span>
+      <h2>Quatro pilares, uma grade</h2>
+      <p class="tese">Hoje o perfil tem 1 publicação. A grade abaixo alterna peça, palavra e pessoa para que qualquer recorte de 9 posts conte quem a marca é.</p>
+      <div class="pilares">
+        <div><b>Símbolo</b><span>O significado do santo ou da virtude de cada peça.</span></div>
+        <div><b>Ofício</b><span>Processo: desenho, modelagem, fundição, polimento.</span></div>
+        <div><b>Quem carrega</b><span>Clientes e histórias de #PasseAdiante.</span></div>
+        <div><b>Calendário</b><span>Datas dos santos, anjos e encontros da marca.</span></div>
+      </div>
+      <div class="cal">
+        <div><b>23/04</b><span>São Jorge</span></div>
+        <div><b>03/05</b><span>Santa Cruz (Caravaca)</span></div>
+        <div><b>29/09</b><span>Arcanjos Miguel, Gabriel e Rafael</span></div>
+        <div><b>02/10</b><span>Anjos da Guarda</span></div>
+      </div>
+      <div class="passo"><span class="lbl">Primeiro passo</span><p>Publicar 12 posts antes de qualquer anúncio, seguindo a grade, para que quem chegar pelo anúncio encontre uma marca completa.</p></div>
+    </div>
+    <div class="vis">
+      <div class="ig">
+        <div data-img="1CymbQtjA698uwj10lPz7CRJPoScfkFNo"><span class="tag">Símbolo</span></div>
+        <div class="tx"><span class="tag" style="position:absolute">Palavra</span>Há caminhos que nos desafiam. Há escolhas que nos transformam.</div>
+        <div data-img="1_MptKCOxEihgUB6bKWj0EpViKgYfVzss"><span class="tag">Quem carrega</span></div>
+        <div data-img="1IA0_pFlwcBMEgUH8qMdr3wayCpSBhyxT"><span class="tag">Coleção</span></div>
+        <div data-img="1DgT7Wo4uP_FknnLGg906Qdd-P8MQfbEK"><span class="tag">Símbolo</span></div>
+        <div class="tx v"><span class="tag" style="position:absolute">Calendário</span>29 de setembro<br>Dia dos Arcanjos</div>
+        <div class="tx"><span class="tag" style="position:absolute">Ofício</span>Do desenho à prata: 4 etapas de cada peça.</div>
+        <div data-img="1IIBt0KcZ_Y-22sH5Wh35spMKfQ2Tvl5M"><span class="tag">Quem carrega</span></div>
+        <div data-img="1HleFskhxzPUHgfkiPHj5k41FEb2aN0zU"><span class="tag">Símbolo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Iluminado Ser · @iluminadoser · Florianópolis</span>
+    <span>Moodboard preparado por Thierry · <a href="./">Ver protótipo da loja</a></span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var T = function(id, w){ return "https://drive.google.com/thumbnail?id=" + id + "&sz=w" + (w||1000); };
+  document.getElementById("capaBg").style.backgroundImage = "url(" + T("17zDGqFFQ3PhUv8gqkt1Y35SzFJw9d-V2",1800) + ")";
+  document.querySelectorAll("[data-img]").forEach(function(el){
+    el.style.backgroundImage = "url(" + T(el.dataset.img, 900) + ")";
+    el.style.backgroundSize = "cover";
+    el.style.backgroundPosition = el.dataset.pos || "center";
+  });
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window){
+    document.documentElement.classList.add("js");
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.remove("out"); io.unobserve(e.target);} }); }, {rootMargin:"0px 0px -10% 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){ var r = el.getBoundingClientRect(); if (r.top > innerHeight) { el.classList.add("out"); io.observe(el); } });
+  }
+})();
+</script>
+</body>
+</html>

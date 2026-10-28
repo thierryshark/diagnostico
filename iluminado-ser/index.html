@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Iluminado Ser · Símbolos de Proteção</title>
+<meta property="og:title" content="Iluminado Ser · Símbolos de Proteção">
+<meta property="og:description" content="Joias autorais em prata 925 que representam virtudes e atravessam gerações.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Loja-oficina: home curta em blocos de altura natural, montador de kit em 4 passos com resumo fixo, forja em sobreposição de tela cheia. */
+:root{
+  --noite:#0C0C0B; --carvao:#151513; --carvao2:#1C1C19; --linha:rgba(232,224,208,.14); --linha2:rgba(232,224,208,.28);
+  --prata:#DCD9D2; --nevoa:#9C988F; --ouro:#B89A5E; --ouro2:#D9C08A; --verde:#1E2D24; --papel:#EEE9DF; --tinta:#1B1915; --brasa:#E0782F;
+  --f-titulo:"Cinzel", "Trajan Pro", Georgia, serif;
+  --f-texto:"EB Garamond", Garamond, Georgia, serif;
+  --f-ui:"Jost", "Helvetica Neue", Arial, sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:var(--noite);color:var(--prata)}
+body{font-family:var(--f-texto);font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0px)}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.lbl{font-family:var(--f-ui);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro)}
+h1,h2,h3,h4{font-family:var(--f-titulo);font-weight:500;letter-spacing:.06em;margin:0;text-wrap:balance}
+button{font:inherit}
+.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-ui);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;padding:16px 26px;border:1px solid var(--ouro);color:var(--ouro2);transition:background .2s,color .2s}
+.btn:hover{background:rgba(184,154,94,.12)}
+.btn.cheio{background:var(--ouro);color:var(--tinta)}
+.btn.cheio:hover{background:var(--ouro2)}
+.btn:focus-visible{outline:2px solid var(--ouro2);outline-offset:3px}
+.btn[disabled]{opacity:.4;pointer-events:none}
+
+/* Faixa de protótipo + navegação */
+.proto{background:var(--verde);color:var(--ouro2);text-align:center;font-family:var(--f-ui);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;padding:8px 16px}
+nav.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(12,12,11,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--noite);z-index:30}
+nav.topo .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.marca{display:flex;align-items:center;gap:12px;color:var(--papel);text-decoration:none}
+.marca svg{width:18px;height:38px}
+.marca b{font-family:var(--f-titulo);font-weight:500;letter-spacing:.24em;font-size:.9rem}
+.links{display:flex;gap:26px}
+.links a{font-family:var(--f-ui);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--nevoa);text-decoration:none}
+.links a:hover{color:var(--ouro2)}
+@media (max-width:820px){.links{display:none}}
+.sacola{all:unset;cursor:pointer;font-family:var(--f-ui);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--papel);display:flex;gap:8px;align-items:center}
+.sacola i{font-style:normal;min-width:20px;height:20px;border-radius:50%;background:var(--ouro);color:var(--tinta);display:inline-grid;place-items:center;font-size:.66rem;letter-spacing:0}
+
+/* Capa */
+.capa{position:relative;overflow:hidden;border-bottom:1px solid var(--linha)}
+.capa .bg{position:absolute;inset:0;background:#0C0C0B center/cover no-repeat}
+.capa .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,12,11,.92) 0%,rgba(12,12,11,.55) 50%,rgba(12,12,11,.2) 100%)}
+@media (max-width:820px){.capa .bg::after{background:linear-gradient(180deg,rgba(12,12,11,.25) 0%,rgba(12,12,11,.7) 55%,var(--noite) 100%)}}
+.capa .wrap{position:relative;padding-block:clamp(90px,16vh,170px) clamp(70px,12vh,130px);display:grid;gap:24px;max-width:1180px}
+.capa .in{max-width:560px;display:grid;gap:22px}
+@media (max-width:820px){.capa .wrap{padding-top:320px}}
+.capa h1{font-size:clamp(2.4rem,5.6vw,4.4rem);line-height:1.04;color:var(--papel)}
+.capa p{margin:0;font-size:1.15rem;color:var(--prata);max-width:44ch}
+.capa .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.selos{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:14px;font-family:var(--f-ui);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--nevoa)}
+.selos span::before{content:"◆";color:var(--ouro);margin-right:8px;font-size:.6rem}
+
+/* Seções gerais */
+section.blk{padding-block:110px;border-bottom:1px solid var(--linha)}
+@media (max-width:820px){section.blk{padding-block:72px}}
+.cab{display:grid;gap:14px;max-width:640px;margin-bottom:54px}
+.cab h2{font-size:clamp(1.8rem,3.6vw,2.7rem);color:var(--papel);line-height:1.1}
+.cab p{margin:0;color:var(--nevoa);font-size:1.08rem}
+
+/* Manifesto */
+.manifesto{background:var(--papel);color:var(--tinta)}
+.manifesto .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:64px;align-items:start}
+@media (max-width:820px){.manifesto .wrap{grid-template-columns:minmax(0,1fr);gap:28px}}
+.manifesto .lbl{color:#8A6F3A}
+.manifesto h2{color:var(--tinta);font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.12;margin-top:14px}
+.mtx{display:grid;gap:26px;font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.5}
+.mtx p{margin:0}
+.mtx p.dest{font-style:italic;color:#6E5528}
+.mtx .ass{font-family:var(--f-titulo);letter-spacing:.2em;font-size:1rem;border-top:1px solid rgba(27,25,21,.2);padding-top:22px}
+.mtx .ass span{display:block;font-family:var(--f-texto);letter-spacing:0;font-style:italic;font-size:1.1rem;margin-top:6px;color:#6E5528}
+
+/* Símbolos (coleção) */
+.simbolos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+@media (max-width:980px){.simbolos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sb{all:unset;cursor:pointer;background:var(--noite);display:flex;flex-direction:column;position:relative}
+.sb:focus-visible{outline:2px solid var(--ouro2);outline-offset:-2px}
+.sb .im{aspect-ratio:4/5;background:#111 center/cover no-repeat;transition:transform .6s ease}
+.sb .im-w{overflow:hidden}
+.sb:hover .im{transform:scale(1.04)}
+.sb .tx{padding:18px 18px 22px;display:grid;gap:4px}
+.sb h3{font-size:.95rem;color:var(--papel);letter-spacing:.1em}
+.sb .v{font-family:var(--f-ui);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro)}
+.sb .p{font-family:var(--f-ui);font-size:.86rem;color:var(--nevoa);font-variant-numeric:tabular-nums}
+.sb.cta{background:var(--verde);justify-content:center;align-items:flex-start;padding:28px;gap:14px}
+.sb.cta h3{font-size:1.3rem;line-height:1.2}
+.sb.cta p{margin:0;font-style:italic;color:var(--ouro2)}
+
+/* Processo */
+.processo{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border-top:1px solid var(--linha2)}
+@media (max-width:980px){.processo{grid-template-columns:minmax(0,1fr)}}
+.etapa{padding:26px 22px 28px 0;display:grid;gap:10px;border-bottom:1px solid var(--linha)}
+@media (min-width:981px){.etapa+.etapa{padding-left:22px;border-left:1px solid var(--linha)}}
+.etapa .n{font-family:var(--f-titulo);font-size:1.8rem;color:var(--ouro);line-height:1}
+.etapa h3{font-size:.9rem;color:var(--papel);letter-spacing:.12em}
+.etapa p{margin:0;font-size:1rem;color:var(--nevoa);line-height:1.5}
+.proc-img{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:40px}
+.proc-img div{aspect-ratio:1;background:#111 center/cover no-repeat;border:1px solid var(--linha)}
+.proc-img div:nth-child(1){background-color:#f2f2f0}
+@media (max-width:620px){.proc-img{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.proc-img div:nth-child(3){display:none}}
+
+/* Bênção */
+.bencao{background:var(--verde);position:relative;overflow:hidden}
+.bencao::before{content:"";position:absolute;right:-10%;top:-30%;width:60%;aspect-ratio:1;background:radial-gradient(circle,rgba(217,192,138,.18),rgba(217,192,138,0) 65%)}
+.bencao .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:64px;align-items:center}
+@media (max-width:820px){.bencao .wrap{grid-template-columns:minmax(0,1fr);gap:36px}}
+.bencao h2{font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--papel);line-height:1.12;margin:14px 0 20px}
+.bencao p{margin:0 0 16px;font-size:1.1rem}
+.rito{list-style:none;margin:0;padding:0;border-top:1px solid var(--linha2)}
+.rito li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--linha)}
+.rito b{font-family:var(--f-titulo);color:var(--ouro2);font-weight:500;font-size:1.1rem}
+.rito span{font-size:1.02rem}
+.rito strong{display:block;font-family:var(--f-ui);font-weight:500;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--papel);margin-bottom:2px}
+
+/* Montador */
+.monte .grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:start}
+@media (max-width:980px){.monte .grid{grid-template-columns:minmax(0,1fr)}}
+.passos{display:flex;gap:0;border-bottom:1px solid var(--linha);margin-bottom:30px;overflow-x:auto}
+.passos button{all:unset;cursor:pointer;padding:14px 18px 14px 0;margin-right:18px;font-family:var(--f-ui);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--nevoa);border-bottom:2px solid transparent;white-space:nowrap}
+.passos button[aria-current="step"]{color:var(--papel);border-color:var(--ouro)}
+.passos button.ok::after{content:" ✓";color:var(--ouro)}
+.passos button:focus-visible{outline:1px solid var(--ouro2);outline-offset:4px}
+.opcoes{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.op{all:unset;cursor:pointer;border:1px solid var(--linha);background:var(--carvao);display:flex;flex-direction:column;transition:border-color .2s}
+.op:hover{border-color:var(--linha2)}
+.op:focus-visible{outline:2px solid var(--ouro2);outline-offset:2px}
+.op[aria-pressed="true"]{border-color:var(--ouro);box-shadow:inset 0 0 0 1px var(--ouro)}
+.op .im{aspect-ratio:1;background:#111 center/cover no-repeat}
+.op .ic{aspect-ratio:1;display:grid;place-items:center;background:var(--carvao2)}
+.op .ic svg{width:70%;height:auto}
+.op .tx{padding:14px;display:grid;gap:3px}
+.op b{font-family:var(--f-titulo);font-weight:500;font-size:.88rem;letter-spacing:.08em;color:var(--papel)}
+.op span{font-size:.92rem;color:var(--nevoa);line-height:1.35}
+.op .pr{font-family:var(--f-ui);font-size:.8rem;color:var(--ouro2);font-variant-numeric:tabular-nums;margin-top:4px}
+.extras{display:grid;gap:12px}
+.ex{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;border:1px solid var(--linha);background:var(--carvao);padding:16px}
+.ex input[type=checkbox]{appearance:none;width:20px;height:20px;border:1px solid var(--ouro);margin:3px 0 0;display:grid;place-items:center;cursor:pointer}
+.ex input[type=checkbox]:checked{background:var(--ouro)}
+.ex input[type=checkbox]:checked::after{content:"✓";color:var(--tinta);font-size:13px;font-family:var(--f-ui)}
+.ex input[type=checkbox]:focus-visible{outline:2px solid var(--ouro2);outline-offset:2px}
+.ex label b{display:block;font-family:var(--f-ui);font-weight:500;font-size:.86rem;letter-spacing:.06em;color:var(--papel)}
+.ex label span{font-size:.96rem;color:var(--nevoa)}
+.ex .pr{font-family:var(--f-ui);font-size:.82rem;color:var(--ouro2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ex input[type=text],.ex textarea{width:100%;margin-top:10px;background:transparent;border:0;border-bottom:1px solid var(--linha2);color:var(--papel);font:inherit;font-size:1rem;padding:6px 0}
+.ex textarea{resize:vertical;min-height:60px}
+.ex input[type=text]:focus,.ex textarea:focus{outline:none;border-color:var(--ouro)}
+.nav-passo{display:flex;justify-content:space-between;gap:12px;margin-top:26px}
+
+.resumo{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);border:1px solid var(--linha2);background:var(--carvao);padding:24px;display:grid;gap:16px}
+.resumo h3{font-size:.86rem;color:var(--papel);letter-spacing:.16em}
+.prev{aspect-ratio:1;background:var(--noite);border:1px solid var(--linha);position:relative;display:grid;place-items:center;overflow:hidden}
+.prev .med{width:46%;aspect-ratio:1;border-radius:50%;background:#111 center/cover no-repeat;border:1px solid var(--linha2);position:relative;z-index:1}
+.prev svg{position:absolute;inset:0;width:100%;height:100%}
+.linhas{display:grid;gap:8px;font-family:var(--f-ui);font-size:.84rem}
+.linhas div{display:flex;justify-content:space-between;gap:12px;color:var(--nevoa)}
+.linhas div b{font-weight:400;color:var(--prata);font-variant-numeric:tabular-nums}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--linha2);padding-top:14px}
+.total span{font-family:var(--f-ui);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--nevoa)}
+.total b{font-family:var(--f-titulo);font-weight:500;font-size:1.5rem;color:var(--papel);font-variant-numeric:tabular-nums}
+.parcela{font-family:var(--f-ui);font-size:.76rem;color:var(--nevoa);margin-top:-8px;text-align:right}
+@media (max-width:980px){.resumo{position:static}}
+
+/* Herança + FAQ */
+.heranca{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+@media (max-width:820px){.heranca{grid-template-columns:minmax(0,1fr);gap:26px}}
+.heranca div{display:grid;gap:8px;border-top:1px solid var(--ouro);padding-top:18px}
+.heranca h3{font-size:.92rem;color:var(--papel);letter-spacing:.12em}
+.heranca p{margin:0;color:var(--nevoa);font-size:1.02rem}
+details{border-bottom:1px solid var(--linha);padding:18px 0}
+details summary{cursor:pointer;list-style:none;font-family:var(--f-ui);font-size:.92rem;letter-spacing:.04em;color:var(--papel);display:flex;justify-content:space-between;gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";color:var(--ouro);font-size:1.2rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0;color:var(--nevoa);max-width:70ch}
+.faq{max-width:820px}
+
+footer.rod{padding-block:64px 80px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+@media (max-width:820px){footer.rod{grid-template-columns:minmax(0,1fr);gap:26px}}
+footer.rod p{margin:8px 0 0;color:var(--nevoa);font-size:1rem}
+footer.rod a{color:var(--prata);text-decoration:none;font-family:var(--f-ui);font-size:.86rem;display:block;margin-top:8px}
+footer.rod a:hover{color:var(--ouro2)}
+
+/* Barra móvel */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(21,21,19,.96);border-top:1px solid var(--linha2);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:none;align-items:center;justify-content:space-between;gap:12px}
+.barra b{font-family:var(--f-titulo);font-weight:500;color:var(--papel);font-variant-numeric:tabular-nums}
+.barra span{display:block;font-family:var(--f-ui);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
+.barra .btn{padding:13px 18px}
+@media (max-width:980px){.barra.on{display:flex}}
+
+/* Forja */
+.forja{position:fixed;inset:0;z-index:50;background:#070706;display:grid;grid-template-rows:auto 1fr auto;padding:calc(18px + env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px))}
+.forja[hidden]{display:none!important}
+.forja .top{display:flex;justify-content:space-between;align-items:center;gap:12px;position:relative;z-index:3}
+.forja .fechar{all:unset;cursor:pointer;font-family:var(--f-ui);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--nevoa)}
+.forja .fechar:focus-visible{outline:1px solid var(--ouro2);outline-offset:4px}
+.palco{position:relative;display:grid;place-items:center;overflow:hidden}
+.palco canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.palco .chao{position:absolute;left:50%;bottom:-38%;width:150%;aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(circle,rgba(224,120,47,.38) 0%,rgba(224,120,47,.08) 35%,rgba(0,0,0,0) 60%);transition:opacity 1.6s ease}
+.cena{position:relative;width:min(520px,92vw);aspect-ratio:1;z-index:1}
+.bigorna{position:absolute;left:50%;bottom:6%;width:78%;transform:translateX(-50%)}
+.peca{position:absolute;left:50%;top:44%;width:34%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:#111 center/cover no-repeat;border:2px solid rgba(220,217,210,.35);transition:filter 2.2s ease,box-shadow 2.2s ease;filter:none}
+.peca.quente{filter:sepia(1) saturate(6) hue-rotate(-18deg) brightness(1.15) contrast(1.1);box-shadow:0 0 50px 12px rgba(224,120,47,.55),0 0 120px 30px rgba(224,120,47,.25)}
+.peca.golpe{animation:golpe .18s ease}
+@keyframes golpe{0%{transform:translate(-50%,-50%) scale(1)}40%{transform:translate(-50%,-47%) scale(1.04,.94)}100%{transform:translate(-50%,-50%) scale(1)}}
+.corrente{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.corrente.on{opacity:1}
+.martelo{position:absolute;right:4%;top:2%;width:44%;transform-origin:88% 82%;transform:rotate(-28deg);transition:transform .16s cubic-bezier(.6,0,.9,.4)}
+.martelo.desce{transform:rotate(12deg);transition:transform .12s cubic-bezier(.7,0,1,.5)}
+.martelo.some{opacity:0;transition:opacity .8s ease}
+.selo{position:absolute;left:50%;top:44%;width:16%;aspect-ratio:1;transform:translate(-50%,-50%) scale(2.4);border-radius:50%;background:radial-gradient(circle at 35% 30%,#E2C990,#B89A5E 55%,#8A6F3A);display:grid;place-items:center;opacity:0;transition:opacity .4s ease,transform .5s cubic-bezier(.3,1.6,.5,1)}
+.selo svg{width:46%;height:auto}
+.selo.on{opacity:1;transform:translate(130%,40%) scale(1)}
+.legenda{position:relative;z-index:3;text-align:center;display:grid;gap:8px;min-height:120px;align-content:start}
+.legenda .fase{font-family:var(--f-ui);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brasa)}
+.legenda h3{font-size:clamp(1.3rem,3.4vw,2rem);color:var(--papel);letter-spacing:.12em}
+.legenda p{margin:0 auto;max-width:46ch;color:var(--nevoa);font-style:italic}
+.fases{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.fases i{width:28px;height:2px;background:var(--linha2)}
+.fases i.on{background:var(--brasa)}
+.pronto{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px}
+.pronto[hidden]{display:none!important}
+.aviso{font-family:var(--f-ui);font-size:.8rem;color:var(--ouro2);min-height:1.2em}
+
+.reveal{transition:opacity .9s ease,transform .9s ease}
+.js .reveal.out{opacity:.001;transform:translateY(16px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{transition:none}.js .reveal.out{opacity:1;transform:none}.sb .im{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="proto">Protótipo · preços, prazos e nomes de peças ilustrativos</div>
+
+<nav class="topo" aria-label="Principal">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Iluminado Ser, início">
+      <svg viewBox="0 0 18 40" fill="none" aria-hidden="true"><path d="M9 1 L11 6 L11 29 L7 29 L7 6 Z" stroke="#D9C08A" stroke-width="1"/><path d="M2 29 Q9 32 16 29" stroke="#D9C08A" stroke-width="1.2"/><path d="M9 31 L9 38" stroke="#D9C08A" stroke-width="1.6"/><circle cx="9" cy="39" r="1" fill="#D9C08A"/></svg>
+      <b>ILUMINADO SER</b>
+    </a>
+    <div class="links"><a href="#manifesto">Manifesto</a><a href="#simbolos">Símbolos</a><a href="#processo">Processo</a><a href="#bencao">A bênção</a><a href="#monte">Monte seu kit</a></div>
+    <button class="sacola" type="button" id="sacolaBtn">Sacola <i id="sacolaN">0</i></button>
+  </div>
+</nav>
+
+<header class="capa" id="inicio">
+  <div class="bg" id="capaBg"></div>
+  <div class="wrap">
+    <div class="in">
+      <span class="lbl">Joias autorais em prata 925</span>
+      <h1>Símbolos de proteção</h1>
+      <p>Joias que representam virtudes e atravessam gerações. Escolha o seu símbolo e acompanhe a peça sendo forjada para você.</p>
+      <div class="acoes">
+        <a class="btn cheio" href="#monte">Forjar meu kit</a>
+        <a class="btn" href="#simbolos">Conhecer os símbolos</a>
+      </div>
+      <div class="selos"><span>Prata 925 certificada</span><span>Feita à mão em Florianópolis</span><span>Caixa e certificado</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="blk manifesto" id="manifesto">
+  <div class="wrap">
+    <div>
+      <span class="lbl">Manifesto</span>
+      <h2>Iluminado Ser nasceu para dar forma a um significado</h2>
+    </div>
+    <div class="mtx">
+      <p class="reveal">Todo ser humano carrega uma história, feita de escolhas, perdas e conquistas, e da coragem de recomeçar, sempre que a vida pede um novo passo.</p>
+      <p class="reveal">É nesse caminho que os seres se transformam. Não de uma só vez, mas a cada experiência, cada aprendizado, cada decisão.</p>
+      <p class="reveal dest">Desde os primórdios, os símbolos nos lembram daquilo que tem valor, daquilo que nos protege, daquilo que permanece.</p>
+      <p class="reveal">Criamos joias que unem proteção, essência e propósito. Símbolos que permanecem presentes em sua evolução.</p>
+      <p class="reveal">Porque iluminar o ser é permitir que cada escolha revele quem você nasceu para ser.</p>
+      <div class="ass reveal">ILUMINADO SER<span>Símbolos de proteção. Joias que representam virtudes e atravessam gerações.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="simbolos">
+  <div class="wrap">
+    <div class="cab"><span class="lbl">Os símbolos</span><h2>Cada peça carrega uma virtude</h2><p>Escolha pelo significado. A história de cada santo e de cada sinal acompanha a peça no certificado.</p></div>
+    <div class="simbolos" id="simbolosGrid"></div>
+  </div>
+</section>
+
+<section class="blk" id="processo">
+  <div class="wrap">
+    <div class="cab"><span class="lbl">Processo criativo</span><h2>Do desenho à prata</h2><p>Cada símbolo passa por cinco etapas antes de chegar às suas mãos. Nenhuma delas é apressada.</p></div>
+    <div class="processo">
+      <div class="etapa reveal"><span class="n">I</span><h3>DESENHO</h3><p>O símbolo é estudado na tradição e redesenhado à mão, traço por traço.</p></div>
+      <div class="etapa reveal"><span class="n">II</span><h3>ESCULTURA</h3><p>O desenho vira volume em modelagem tridimensional, com relevo e proporção definidos.</p></div>
+      <div class="etapa reveal"><span class="n">III</span><h3>FUNDIÇÃO</h3><p>A peça ganha corpo em prata 925, a liga de joalheria que dura gerações.</p></div>
+      <div class="etapa reveal"><span class="n">IV</span><h3>ACABAMENTO</h3><p>Lixa, polimento e oxidação nos detalhes para o relevo aparecer.</p></div>
+      <div class="etapa reveal"><span class="n">V</span><h3>SELO</h3><p>Conferência final, certificado com a história do símbolo e a caixa da casa.</p></div>
+    </div>
+    <div class="proc-img">
+      <div data-img="1MXG60RLCuJ7Vs4XVja2k4zTxO0A__8S8" data-fit="contain"></div>
+      <div data-img="1DgT7Wo4uP_FknnLGg906Qdd-P8MQfbEK"></div>
+      <div data-img="12B61eNVOlDhyiXbHyFnuKXsTzs-XIg14"></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk bencao" id="bencao">
+  <div class="wrap">
+    <div>
+      <span class="lbl">A bênção da peça</span>
+      <h2>Antes de seguir até você, a peça é abençoada</h2>
+      <p>Uma joia de fé não sai da oficina como um objeto qualquer. Quando você escolhe, a sua peça é levada à bênção antes de ser selada e enviada, para que chegue pronta para acompanhar a sua jornada ou a de quem você ama.</p>
+      <p style="color:var(--ouro2);font-style:italic">A bênção é um gesto de fé. Ela não substitui a sua oração; ela a acompanha.</p>
+    </div>
+    <ol class="rito">
+      <li><b>I</b><span><strong>Você escolhe</strong>Marque a bênção ao montar o seu kit. Não há custo.</span></li>
+      <li><b>II</b><span><strong>A peça é abençoada</strong>Depois do acabamento e antes do selo, junto às demais encomendas da semana.</span></li>
+      <li><b>III</b><span><strong>Você recebe o registro</strong>O certificado indica a data da bênção e a oração do santo da peça.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="blk monte" id="monte">
+  <div class="wrap">
+    <div class="cab"><span class="lbl">Monte seu kit</span><h2>Leve o seu símbolo à forja</h2><p>Escolha o pingente, a corrente e a caixa. No fim, acompanhe a peça sendo forjada.</p></div>
+    <div class="grid">
+      <div>
+        <div class="passos" role="tablist" aria-label="Passos do kit" id="passos"></div>
+        <div id="painel"></div>
+        <div class="nav-passo"><button class="btn" type="button" id="voltar">Voltar</button><button class="btn cheio" type="button" id="avancar">Próximo</button></div>
+      </div>
+      <aside class="resumo" aria-label="Resumo do kit">
+        <h3>SEU KIT</h3>
+        <div class="prev" id="prev"></div>
+        <div class="linhas" id="linhas"></div>
+        <div class="total"><span>Total</span><b id="total">R$ 0,00</b></div>
+        <div class="parcela" id="parcela"></div>
+        <button class="btn cheio" type="button" id="forjar" disabled>Forjar meu kit</button>
+        <div class="aviso" id="aviso" role="status"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="heranca">
+  <div class="wrap">
+    <div class="cab"><span class="lbl">Feita para ser herdada</span><h2>Uma joia que muda de mãos e continua sua</h2></div>
+    <div class="heranca">
+      <div class="reveal"><h3>CERTIFICADO</h3><p>Cada peça leva certificado com a história do símbolo, a liga de prata e, se você quiser, a data da bênção.</p></div>
+      <div class="reveal"><h3>CUIDADO</h3><p>Guarde longe da umidade, limpe com flanela macia e evite perfume direto na peça. A prata escurece com o tempo e volta ao brilho com polimento.</p></div>
+      <div class="reveal"><h3>PASSE ADIANTE</h3><p>Quando a peça mudar de mãos, conte para nós. Gravamos a data da passagem no verso, sem custo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="duvidas">
+  <div class="wrap faq">
+    <div class="cab"><span class="lbl">Dúvidas</span><h2>Antes de encomendar</h2></div>
+    <details><summary>As peças são de prata de verdade?</summary><p>Sim. Todas as peças são feitas em prata 925, a liga usada em joalheria, com 92,5% de prata pura.</p></details>
+    <details><summary>Qual é o prazo?</summary><p>Peças com gravação seguem para a forja e saem em até 7 dias úteis. Sem gravação, em até 3 dias úteis. O prazo do frete aparece no carrinho.</p></details>
+    <details><summary>Posso trocar?</summary><p>Sim, em até 7 dias após o recebimento, com a peça sem uso e na caixa original. Peças gravadas não podem ser trocadas por outro símbolo.</p></details>
+    <details><summary>É para presente. Posso enviar direto para outra pessoa?</summary><p>Pode. Escreva a mensagem no cartão ao montar o kit e coloque o endereço de quem vai receber. O valor não aparece na caixa.</p></details>
+  </div>
+</section>
+
+<footer class="wrap rod">
+  <div><span class="lbl">Iluminado Ser</span><p>Símbolos de proteção. Joias autorais em prata 925, feitas em Florianópolis.</p></div>
+  <div><span class="lbl">Atendimento</span><a href="https://www.instagram.com/iluminadoser/" target="_blank" rel="noopener">Instagram @iluminadoser</a><a href="#monte">Monte seu kit</a></div>
+  <div><span class="lbl">Consultoria</span><a href="moodboard.html">Moodboard de presença</a></div>
+</footer>
+
+<div class="barra" id="barra"><div><span>Seu kit</span><b id="barraTotal">R$ 0,00</b></div><button class="btn cheio" type="button" id="barraBtn">Forjar</button></div>
+
+<!-- Forja -->
+<div class="forja" id="forja" hidden role="dialog" aria-modal="true" aria-labelledby="fTitulo">
+  <div class="top"><span class="lbl">A forja · Iluminado Ser</span><button class="fechar" type="button" id="fFechar">Fechar</button></div>
+  <div class="palco">
+    <div class="chao" id="chao"></div>
+    <div class="cena">
+      <svg class="bigorna" viewBox="0 0 400 150" aria-hidden="true">
+        <defs><linearGradient id="gb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a36"/><stop offset="1" stop-color="#121211"/></linearGradient></defs>
+        <path d="M20 10 H330 Q380 12 392 28 Q360 36 330 38 L300 40 Q280 44 270 62 L262 96 H300 L310 130 H90 L100 96 H138 L130 62 Q120 44 100 40 H40 Q20 30 20 10Z" fill="url(#gb)" stroke="rgba(232,224,208,.18)"/>
+        <path d="M24 12 H330" stroke="rgba(224,120,47,.5)" stroke-width="2"/>
+      </svg>
+      <svg class="corrente" id="fCorrente" viewBox="0 0 520 520" aria-hidden="true"><path id="fCorPath" d="M120 40 Q260 330 400 40" fill="none" stroke="#DCD9D2" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round"/></svg>
+      <div class="peca" id="fPeca"></div>
+      <div class="selo" id="fSelo"><svg viewBox="0 0 18 40" fill="none"><path d="M9 1 L11 6 L11 29 L7 29 L7 6 Z" stroke="#1B1915" stroke-width="1.6"/><path d="M2 29 Q9 32 16 29" stroke="#1B1915" stroke-width="1.8"/><path d="M9 31 L9 38" stroke="#1B1915" stroke-width="2"/></svg></div>
+      <svg class="martelo" id="fMartelo" viewBox="0 0 220 220" aria-hidden="true">
+        <rect x="96" y="70" width="14" height="140" rx="4" transform="rotate(-45 103 140)" fill="#5a4630"/>
+        <rect x="20" y="40" width="120" height="44" rx="4" transform="rotate(-45 80 62)" fill="#2b2b28" stroke="rgba(232,224,208,.3)"/>
+      </svg>
+    </div>
+    <canvas id="fCanvas"></canvas>
+  </div>
+  <div class="legenda" aria-live="polite">
+    <span class="fase" id="fFase">I · Acendendo a forja</span>
+    <h3 id="fTitulo">A prata aquece</h3>
+    <p id="fTexto">O metal precisa de calor para aceitar a forma do símbolo.</p>
+    <div class="fases" id="fFases"><i></i><i></i><i></i><i></i></div>
+    <div class="pronto" id="fPronto" hidden>
+      <button class="btn" type="button" id="fRefazer">Ver de novo</button>
+      <button class="btn cheio" type="button" id="fSacola">Levar à sacola</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var T = function(id, w){ return "https://drive.google.com/thumbnail?id=" + id + "&sz=w" + (w||800); };
+var brl = function(v){ return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"}); };
+var $ = function(s){ return document.querySelector(s); };
+var reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+var PINGENTES = [
+  {id:"miguel", nome:"São Miguel Arcanjo", virtude:"Coragem", frase:"Para quem pede proteção no caminho e coragem nas escolhas.", img:"1CymbQtjA698uwj10lPz7CRJPoScfkFNo", preco:389, fundo:"claro"},
+  {id:"jorge", nome:"São Jorge", virtude:"Fortaleza", frase:"Para quem enfrenta as batalhas do dia sem perder a fé.", img:"1HleFskhxzPUHgfkiPHj5k41FEb2aN0zU", preco:389, fundo:"claro"},
+  {id:"caravaca", nome:"Cruz de Caravaca", virtude:"Fé", frase:"A cruz de duas traves, sinal antigo de proteção da casa.", img:"1DgT7Wo4uP_FknnLGg906Qdd-P8MQfbEK", preco:329, fundo:"escuro"},
+  {id:"quis", nome:"Quis ut Deus", virtude:"Humildade", frase:"Quem como Deus? O nome de Miguel em forma de pergunta.", img:"1XbqxlSEpcf-ha4QFRcDwFDy7jBscp86r", preco:349, fundo:"claro"},
+  {id:"estrela", nome:"Estrela Guia", virtude:"Esperança", frase:"Para quem procura direção num caminho novo.", img:"1T6BI4cPgLr1up6rEAU86ykCWJGdHbiNF", preco:299, fundo:"escuro"},
+  {id:"escudo", nome:"Escudo", virtude:"Proteção", frase:"Para guardar quem você ama.", img:"1h6PwJbsHBD354OIHzTi1upbC4wJU6NcG", preco:319, fundo:"escuro"},
+  {id:"medalha", nome:"Medalha Oval", virtude:"Devoção", frase:"Para a devoção de todos os dias.", img:"1HBfnvO6d_0V79B0QvOUL8mquGap8fMi0", preco:279, fundo:"escuro"}
+];
+var CORRENTES = [
+  {id:"veneziana", nome:"Veneziana", desc:"Fina e discreta, 60 cm.", preco:149, dash:"4 3", w:2},
+  {id:"cartier", nome:"Cartier", desc:"Clássica, elos alternados, 60 cm.", preco:169, dash:"9 4 3 4", w:2.6},
+  {id:"grumet", nome:"Grumet", desc:"Marcante, elos achatados, 70 cm.", preco:189, dash:"7 3", w:3.6}
+];
+var CAIXAS = [
+  {id:"selo", nome:"Caixa Selo", desc:"Preta, com o símbolo em dourado. Inclusa.", preco:0},
+  {id:"madeira", nome:"Estojo de Madeira", desc:"Para guardar e passar adiante, com certificado gravado.", preco:69},
+  {id:"linho", nome:"Relicário de Linho", desc:"Bolsa verde de linho para levar na viagem.", preco:39}
+];
+var PASSOS = ["Pingente","Corrente","Caixa","Detalhes"];
+var st = { p:null, c:null, x:"selo", grav:false, iniciais:"", bencao:true, cartao:false, msg:"", passo:0, sacola:0 };
+
+/* Capa e imagens */
+$("#capaBg").style.backgroundImage = "url(" + T("17zDGqFFQ3PhUv8gqkt1Y35SzFJw9d-V2",1800) + ")";
+$("#capaBg").style.backgroundPosition = "70% center";
+document.querySelectorAll("[data-img]").forEach(function(el){
+  el.style.backgroundImage = "url(" + T(el.dataset.img, 900) + ")";
+  if (el.dataset.fit === "contain") { el.style.backgroundSize = "contain"; el.style.backgroundRepeat = "no-repeat"; el.style.backgroundPosition = "center"; }
+});
+
+/* Símbolos */
+var g = $("#simbolosGrid");
+g.innerHTML = PINGENTES.map(function(p){
+  return '<button type="button" class="sb" data-esc="'+p.id+'"><div class="im-w"><div class="im" style="background-image:url('+T(p.img,700)+');'+(p.fundo==="claro"?"background-color:#f2f2f0;background-size:contain;background-repeat:no-repeat":"")+'"></div></div><div class="tx"><span class="v">'+p.virtude+'</span><h3>'+p.nome.toUpperCase()+'</h3><span class="p">a partir de '+brl(p.preco)+'</span></div></button>';
+}).join("") + '<a class="sb cta" href="#monte"><span class="lbl">Monte seu kit</span><h3>PINGENTE, CORRENTE E CAIXA</h3><p>Leve o seu símbolo à forja.</p></a>';
+g.addEventListener("click", function(e){ var b = e.target.closest("[data-esc]"); if (!b) return; st.p = b.dataset.esc; st.passo = 1; render(); $("#monte").scrollIntoView({behavior: reduz ? "auto" : "smooth"}); });
+
+/* Ícones de corrente e caixa */
+function icCorrente(c){ return '<svg viewBox="0 0 120 120"><path d="M20 20 Q60 110 100 20" fill="none" stroke="#DCD9D2" stroke-width="'+c.w+'" stroke-dasharray="'+c.dash+'" stroke-linecap="round"/></svg>'; }
+function icCaixa(x){
+  if (x.id==="madeira") return '<svg viewBox="0 0 120 120"><rect x="18" y="40" width="84" height="50" fill="#5a4630"/><rect x="18" y="32" width="84" height="14" fill="#6e5638"/><path d="M18 46 H102" stroke="#3a2c1c"/><circle cx="60" cy="66" r="6" fill="none" stroke="#D9C08A"/></svg>';
+  if (x.id==="linho") return '<svg viewBox="0 0 120 120"><path d="M34 40 Q60 30 86 40 L92 96 H28 Z" fill="#2C4234"/><path d="M40 42 Q60 54 80 42" fill="none" stroke="#D9C08A"/></svg>';
+  return '<svg viewBox="0 0 120 120"><rect x="24" y="34" width="72" height="56" fill="#0C0C0B" stroke="rgba(232,224,208,.3)"/><path d="M60 46 V78 M56 50 L60 44 L64 50 M52 74 Q60 77 68 74" fill="none" stroke="#B89A5E" stroke-width="1.6"/></svg>';
+}
+
+/* Montador */
+function render(){
+  $("#passos").innerHTML = PASSOS.map(function(n,i){
+    var ok = (i===0&&st.p)||(i===1&&st.c)||(i===2&&st.x)||(i===3&&st.p&&st.c);
+    return '<button type="button" role="tab" data-ps="'+i+'" '+(i===st.passo?'aria-current="step" aria-selected="true"':'aria-selected="false"')+' class="'+(ok&&i!==st.passo?"ok":"")+'">'+(i+1)+'. '+n+'</button>';
+  }).join("");
+  var h = "";
+  if (st.passo===0) h = '<div class="opcoes">' + PINGENTES.map(function(p){ return '<button type="button" class="op" data-p="'+p.id+'" aria-pressed="'+(st.p===p.id)+'"><div class="im" style="background-image:url('+T(p.img,500)+');'+(p.fundo==="claro"?"background-color:#f2f2f0;background-size:contain;background-repeat:no-repeat":"")+'"></div><div class="tx"><b>'+p.nome.toUpperCase()+'</b><span>'+p.frase+'</span><span class="pr">'+brl(p.preco)+'</span></div></button>'; }).join("") + '</div>';
+  if (st.passo===1) h = '<div class="opcoes">' + CORRENTES.map(function(c){ return '<button type="button" class="op" data-c="'+c.id+'" aria-pressed="'+(st.c===c.id)+'"><div class="ic">'+icCorrente(c)+'</div><div class="tx"><b>'+c.nome.toUpperCase()+'</b><span>'+c.desc+'</span><span class="pr">'+brl(c.preco)+'</span></div></button>'; }).join("") + '</div>';
+  if (st.passo===2) h = '<div class="opcoes">' + CAIXAS.map(function(x){ return '<button type="button" class="op" data-x="'+x.id+'" aria-pressed="'+(st.x===x.id)+'"><div class="ic">'+icCaixa(x)+'</div><div class="tx"><b>'+x.nome.toUpperCase()+'</b><span>'+x.desc+'</span><span class="pr">'+(x.preco?brl(x.preco):"Inclusa")+'</span></div></button>'; }).join("") + '</div>';
+  if (st.passo===3) h = '<div class="extras">'
+    + '<div class="ex"><input type="checkbox" id="exB" '+(st.bencao?"checked":"")+'><label for="exB"><b>Peça abençoada</b><span>A peça é levada à bênção antes do selo. A data vai no certificado.</span></label><span class="pr">Sem custo</span></div>'
+    + '<div class="ex"><input type="checkbox" id="exG" '+(st.grav?"checked":"")+'><label for="exG"><b>Gravação no verso</b><span>Até 3 letras, como iniciais ou uma data curta.</span>'+(st.grav?'<input type="text" id="exGi" maxlength="3" value="'+st.iniciais.replace(/"/g,"")+'" placeholder="Ex.: LAP" aria-label="Iniciais da gravação">':'')+'</label><span class="pr">'+brl(39)+'</span></div>'
+    + '<div class="ex"><input type="checkbox" id="exC" '+(st.cartao?"checked":"")+'><label for="exC"><b>Cartão com mensagem</b><span>Escrito à mão pela nossa equipe, para presente.</span>'+(st.cartao?'<textarea id="exCm" maxlength="240" placeholder="Sua mensagem" aria-label="Mensagem do cartão"></textarea>':'')+'</label><span class="pr">Sem custo</span></div>'
+    + '</div>';
+  $("#painel").innerHTML = h;
+  var cm = $("#exCm"); if (cm) cm.value = st.msg;
+  $("#voltar").style.visibility = st.passo===0 ? "hidden" : "visible";
+  $("#avancar").hidden = st.passo===3;
+  resumo();
+}
+function sel(){ return { p:PINGENTES.find(function(x){return x.id===st.p;}), c:CORRENTES.find(function(x){return x.id===st.c;}), x:CAIXAS.find(function(x){return x.id===st.x;}) }; }
+function soma(){ var s = sel(); return (s.p?s.p.preco:0)+(s.c?s.c.preco:0)+(s.x?s.x.preco:0)+(st.grav?39:0); }
+function resumo(){
+  var s = sel();
+  var prev = $("#prev");
+  prev.innerHTML = (s.c ? '<svg viewBox="0 0 300 300" aria-hidden="true"><path d="M60 0 Q150 210 240 0" fill="none" stroke="#DCD9D2" stroke-width="'+s.c.w+'" stroke-dasharray="'+s.c.dash+'" stroke-linecap="round"/></svg>' : '')
+    + (s.p ? '<div class="med" style="background-image:url('+T(s.p.img,500)+');'+(s.p.fundo==="claro"?"background-color:#f2f2f0;":"")+'"></div>' : '<span class="lbl" style="color:var(--nevoa)">Escolha um símbolo</span>');
+  var L = [];
+  L.push(['Pingente', s.p ? s.p.nome + " · " + brl(s.p.preco) : "a escolher"]);
+  L.push(['Corrente', s.c ? s.c.nome + " · " + brl(s.c.preco) : "a escolher"]);
+  L.push(['Caixa', s.x ? s.x.nome + (s.x.preco ? " · " + brl(s.x.preco) : " · inclusa") : "a escolher"]);
+  if (st.grav) L.push(['Gravação', (st.iniciais||"a definir") + " · " + brl(39)]);
+  if (st.bencao) L.push(['Bênção', 'sim']);
+  $("#linhas").innerHTML = L.map(function(l){ return '<div><span>'+l[0]+'</span><b>'+l[1]+'</b></div>'; }).join("");
+  var t = soma();
+  $("#total").textContent = brl(t);
+  $("#barraTotal").textContent = brl(t);
+  $("#parcela").textContent = t ? "ou 3x de " + brl(t/3) + " sem juros" : "";
+  var pronto = !!(s.p && s.c);
+  $("#forjar").disabled = !pronto;
+  $("#aviso").textContent = pronto ? "" : (s.p ? "Falta escolher a corrente." : "Comece pelo símbolo.");
+  $("#barra").classList.toggle("on", !!s.p);
+}
+document.addEventListener("click", function(e){
+  var b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.ps!=null){ st.passo=+b.dataset.ps; render(); return; }
+  if (b.dataset.p){ st.p=b.dataset.p; render(); return; }
+  if (b.dataset.c){ st.c=b.dataset.c; render(); return; }
+  if (b.dataset.x){ st.x=b.dataset.x; render(); return; }
+});
+document.addEventListener("change", function(e){
+  var t = e.target;
+  if (t.id==="exB"){ st.bencao=t.checked; resumo(); }
+  if (t.id==="exG"){ st.grav=t.checked; render(); var i=$("#exGi"); if(i) i.focus(); }
+  if (t.id==="exC"){ st.cartao=t.checked; render(); var m=$("#exCm"); if(m) m.focus(); }
+});
+document.addEventListener("input", function(e){
+  if (e.target.id==="exGi"){ st.iniciais=e.target.value.toUpperCase(); e.target.value=st.iniciais; resumo(); }
+  if (e.target.id==="exCm"){ st.msg=e.target.value; }
+});
+$("#voltar").addEventListener("click", function(){ st.passo=Math.max(0,st.passo-1); render(); });
+$("#avancar").addEventListener("click", function(){
+  if (st.passo===0 && !st.p){ $("#aviso").textContent="Escolha um símbolo para seguir."; return; }
+  if (st.passo===1 && !st.c){ $("#aviso").textContent="Escolha uma corrente para seguir."; return; }
+  st.passo=Math.min(3,st.passo+1); render();
+});
+
+/* Forja */
+var cv = $("#fCanvas"), cx = cv.getContext("2d"), parts = [], raf = 0, emberOn = false, steamOn = false, timers = [];
+function resize(){ var r = cv.getBoundingClientRect(); var d = Math.min(devicePixelRatio||1,2); cv.width = r.width*d; cv.height = r.height*d; cx.setTransform(d,0,0,d,0,0); }
+function centro(){ var p = $("#fPeca").getBoundingClientRect(), c = cv.getBoundingClientRect(); return { x:p.left-c.left+p.width/2, y:p.top-c.top+p.height/2, r:p.width/2 }; }
+function faiscas(n){ var o = centro(); for (var i=0;i<n;i++){ var a = -Math.PI*Math.random(), v = 3+Math.random()*7; parts.push({t:"f",x:o.x,y:o.y-o.r*0.4,vx:Math.cos(a)*v*(Math.random()<.5?-1:1),vy:Math.sin(a)*v-2,l:1,d:.012+Math.random()*.02}); } }
+function loop(){
+  var w = cv.clientWidth, h = cv.clientHeight; cx.clearRect(0,0,w,h);
+  var o = centro();
+  if (emberOn && Math.random()<.5) parts.push({t:"e",x:o.x+(Math.random()-.5)*o.r*3,y:h,vx:(Math.random()-.5)*.6,vy:-1-Math.random()*1.6,l:1,d:.004+Math.random()*.006});
+  if (steamOn && Math.random()<.7) parts.push({t:"s",x:o.x+(Math.random()-.5)*o.r*1.6,y:o.y,vx:(Math.random()-.5)*.5,vy:-.8-Math.random(),l:1,d:.008,r:8+Math.random()*14});
+  parts = parts.filter(function(p){ return p.l>0; });
+  parts.forEach(function(p){
+    p.x+=p.vx; p.y+=p.vy; p.l-=p.d;
+    if (p.t==="f"){ p.vy+=.25; cx.strokeStyle="rgba(255,"+(150+Math.floor(80*p.l))+",60,"+p.l+")"; cx.lineWidth=1.6; cx.beginPath(); cx.moveTo(p.x,p.y); cx.lineTo(p.x-p.vx*1.8,p.y-p.vy*1.8); cx.stroke(); }
+    else if (p.t==="e"){ cx.fillStyle="rgba(240,130,50,"+(p.l*.8)+")"; cx.beginPath(); cx.arc(p.x,p.y,1.4,0,6.3); cx.fill(); }
+    else { p.r+=.35; cx.fillStyle="rgba(220,217,210,"+(p.l*.12)+")"; cx.beginPath(); cx.arc(p.x,p.y,p.r,0,6.3); cx.fill(); }
+  });
+  raf = requestAnimationFrame(loop);
+}
+var FASES = [
+  ["I · Acendendo a forja","A prata aquece","O metal precisa de calor para aceitar a forma do símbolo."],
+  ["II · Moldando","O símbolo ganha forma","Golpe a golpe, o relevo de {p} aparece na prata."],
+  ["III · Têmpera","A peça esfria e firma","A água fixa a forma. Agora ela não muda mais."],
+  ["IV · Selo","Seu kit está forjado","{p} com corrente {c}, guardado na {x}.{b}"]
+];
+function fase(i){
+  var s = sel(), f = FASES[i];
+  var txt = f[2].replace("{p}", s.p.nome).replace("{c}", s.c.nome).replace("{x}", s.x.nome).replace("{b}", st.bencao ? " Segue para a bênção antes do envio." : "");
+  $("#fFase").textContent = f[0]; $("#fTitulo").textContent = f[1]; $("#fTexto").textContent = txt;
+  document.querySelectorAll("#fFases i").forEach(function(el,j){ el.classList.toggle("on", j<=i); });
+}
+function later(fn,ms){ timers.push(setTimeout(fn,ms)); }
+function abrirForja(){
+  var s = sel(); if (!s.p || !s.c) return;
+  timers.forEach(clearTimeout); timers = []; parts = [];
+  var f = $("#forja"); f.hidden = false; document.body.style.overflow = "hidden";
+  var peca = $("#fPeca");
+  peca.style.backgroundImage = "url(" + T(s.p.img,600) + ")";
+  peca.style.backgroundColor = s.p.fundo==="claro" ? "#f2f2f0" : "#111";
+  $("#fCorPath").setAttribute("stroke-dasharray", s.c.dash); $("#fCorPath").setAttribute("stroke-width", s.c.w+1);
+  $("#fCorrente").classList.remove("on"); $("#fSelo").classList.remove("on"); $("#fPronto").hidden = true;
+  var m = $("#fMartelo"); m.classList.remove("some","desce");
+  $("#fFechar").focus();
+  resize(); cancelAnimationFrame(raf); loop();
+  if (reduz){ peca.classList.remove("quente"); m.classList.add("some"); $("#fCorrente").classList.add("on"); $("#fSelo").classList.add("on"); fase(3); $("#fPronto").hidden=false; $("#chao").style.opacity=".3"; return; }
+  $("#chao").style.opacity = "1"; emberOn = true; steamOn = false;
+  peca.style.transition = "none"; peca.classList.add("quente"); void peca.offsetWidth; peca.style.transition = "";
+  fase(0);
+  later(function(){ fase(1); }, 1600);
+  [1900, 2600, 3300].forEach(function(t){
+    later(function(){ m.classList.add("desce"); }, t);
+    later(function(){ m.classList.remove("desce"); peca.classList.remove("golpe"); void peca.offsetWidth; peca.classList.add("golpe"); faiscas(34); }, t+130);
+  });
+  later(function(){ m.classList.add("some"); fase(2); emberOn=false; steamOn=true; peca.classList.remove("quente"); $("#chao").style.opacity=".3"; }, 4200);
+  later(function(){ steamOn=false; $("#fCorrente").classList.add("on"); }, 6000);
+  later(function(){ $("#fSelo").classList.add("on"); fase(3); $("#fPronto").hidden=false; $("#fSacola").focus(); }, 7000);
+}
+function fecharForja(){ timers.forEach(clearTimeout); timers=[]; cancelAnimationFrame(raf); emberOn=steamOn=false; $("#forja").hidden = true; document.body.style.overflow = ""; $("#forjar").focus(); }
+$("#forjar").addEventListener("click", abrirForja);
+$("#barraBtn").addEventListener("click", function(){ if (sel().p && sel().c) abrirForja(); else { $("#monte").scrollIntoView({behavior: reduz?"auto":"smooth"}); } });
+$("#fFechar").addEventListener("click", fecharForja);
+$("#fRefazer").addEventListener("click", abrirForja);
+$("#fSacola").addEventListener("click", function(){ st.sacola++; $("#sacolaN").textContent = st.sacola; fecharForja(); $("#aviso").textContent = "Kit na sacola. Neste protótipo o checkout ainda não está ligado."; });
+$("#sacolaBtn").addEventListener("click", function(){ $("#monte").scrollIntoView({behavior: reduz?"auto":"smooth"}); });
+document.addEventListener("keydown", function(e){ if (e.key==="Escape" && !$("#forja").hidden) fecharForja(); });
+addEventListener("resize", function(){ if (!$("#forja").hidden) resize(); });
+
+/* Revelar ao rolar */
+if (!reduz && "IntersectionObserver" in window){
+  document.documentElement.classList.add("js");
+  var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.remove("out"); io.unobserve(en.target);} }); }, {rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".reveal").forEach(function(el){ if (el.getBoundingClientRect().top > innerHeight){ el.classList.add("out"); io.observe(el); } });
+}
+render();
+})();
+</script>
+</body>
+</html>
