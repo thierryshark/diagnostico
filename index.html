@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Diagnóstico de Marca · Iluminado Ser">
+<meta property="og:description" content="Primeiro passo da consultoria. Responda no seu ritmo.">
+<title>Diagnóstico Iluminado Ser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: trilho editorial fixo à esquerda (capítulos) + coluna de leitura estreita à direita; no celular o trilho vira barra de progresso no topo. */
+:root{
+  --paper:#F7F7F5; --ink:#0F0F0E; --mute:#6A6A66; --line:#D8D8D3; --soft:#EDEDEA; --field:#FFFFFF;
+  --f-display:"Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --f-body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --s1:.75rem; --s2:.875rem; --s3:1rem; --s4:1.25rem; --s5:1.75rem; --s6:2.6rem; --s7:3.6rem;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --paper:#0D0D0C; --ink:#F1F1EE; --mute:#9B9B96; --line:#2D2D2A; --soft:#191917; --field:#141413; color-scheme:dark } }
+:root[data-theme="dark"]{ --paper:#0D0D0C; --ink:#F1F1EE; --mute:#9B9B96; --line:#2D2D2A; --soft:#191917; --field:#141413; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.shell{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:72px;padding-block:48px 96px}
+@media (max-width:860px){.shell{grid-template-columns:minmax(0,1fr);gap:28px;padding-block:20px 72px}}
+
+/* Marca */
+.brand{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none}
+.brand svg{width:38px;height:38px;flex:none}
+.brand .wm{display:flex;flex-direction:column;line-height:1.1}
+.brand .wm b{font-family:var(--f-body);font-weight:500;letter-spacing:.42em;font-size:.82rem}
+.brand .wm span{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;margin-top:6px}
+
+/* Trilho */
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 40px);align-self:start;display:flex;flex-direction:column;gap:40px}
+.chapters{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.chapters li button{all:unset;cursor:pointer;display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:baseline;width:100%;padding:11px 0;border-bottom:1px solid var(--line);color:var(--mute);font-size:.88rem;transition:color .2s}
+.chapters li button:hover{color:var(--ink)}
+.chapters li button:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+.chapters .n{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em}
+.chapters .tick{font-family:var(--f-mono);font-size:.66rem}
+.chapters li[aria-current="step"] button{color:var(--ink);font-weight:500}
+.rail-note{font-size:.8rem;color:var(--mute);line-height:1.55}
+.rail-note strong{color:var(--ink);font-weight:500}
+@media (max-width:860px){
+  .rail{position:static;gap:18px}
+  .chapters{display:none}
+  .rail-note{display:none}
+}
+.mbar{display:none}
+@media (max-width:860px){
+  .mbar{display:flex;flex-direction:column;gap:8px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--paper);z-index:5;padding-block:10px;margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));border-bottom:1px solid var(--line)}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+}
+.mbar .row{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.track{height:1px;background:var(--line);position:relative}
+.track i{position:absolute;inset:0 auto 0 0;background:var(--ink);transition:width .4s ease}
+
+/* Conteúdo */
+main{min-width:0;max-width:660px}
+.eyebrow{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:flex;gap:14px;align-items:center}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--line);max-width:80px}
+h1,h2{font-family:var(--f-display);font-weight:400;letter-spacing:-.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.6rem,6vw,4.1rem);line-height:1.02}
+h1 em,h2 em{font-style:italic}
+h2{font-size:clamp(2.1rem,4.6vw,3rem);line-height:1.05}
+.lede{font-size:1.06rem;color:var(--mute);max-width:56ch;margin:0}
+.section-head{display:flex;flex-direction:column;gap:18px;margin-bottom:var(--s6)}
+
+.intro{display:flex;flex-direction:column;gap:26px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.facts div{padding:16px 14px 16px 0;display:flex;flex-direction:column;gap:4px}
+.facts div+div{padding-left:14px;border-left:1px solid var(--line)}
+.facts b{font-family:var(--f-display);font-weight:500;font-size:1.7rem;line-height:1}
+.facts span{font-size:.78rem;color:var(--mute)}
+@media (max-width:480px){.facts{grid-template-columns:minmax(0,1fr)}.facts div+div{border-left:0;padding-left:0;border-top:1px solid var(--line)}}
+.principles{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;font-size:.95rem}
+.principles li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.principles li::before{content:"";width:7px;height:7px;border:1px solid var(--ink);transform:rotate(45deg);margin-top:.55em;margin-left:4px}
+
+/* Campos */
+.q{display:flex;flex-direction:column;gap:10px;padding-block:26px;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0;padding-top:0}
+.q label.t, .q .t{font-weight:500;font-size:1.02rem;line-height:1.4}
+.q .h{font-size:.85rem;color:var(--mute);margin-top:-4px}
+.q .req{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-left:8px;vertical-align:2px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.grid2 .q{border-top:1px solid var(--line);padding-top:26px}
+@media (max-width:560px){.grid2{grid-template-columns:minmax(0,1fr)}}
+input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+  width:100%;font:inherit;font-size:1rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:8px 0;border-radius:0;transition:border-color .2s}
+textarea{resize:vertical;min-height:96px;line-height:1.55;border:1px solid var(--line);padding:12px 14px;background:var(--field)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink)}
+input::placeholder,textarea::placeholder{color:var(--mute);opacity:.7}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{all:unset;cursor:pointer;border:1px solid var(--line);padding:7px 14px;font-size:.88rem;line-height:1.3;border-radius:999px;transition:all .15s}
+.chip:hover{border-color:var(--ink)}
+.chip:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip-other{margin-top:4px}
+
+.scale{display:flex;flex-direction:column;gap:22px}
+.sl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) minmax(0,1fr);gap:14px;align-items:center;font-size:.86rem}
+.sl span:last-child{text-align:right}
+.sl .dots{display:flex;justify-content:space-between;position:relative}
+.sl .dots::before{content:"";position:absolute;left:6px;right:6px;top:50%;height:1px;background:var(--line)}
+.sl .dots button{all:unset;cursor:pointer;width:13px;height:13px;border-radius:50%;border:1px solid var(--mute);background:var(--paper);position:relative}
+.sl .dots button:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.sl .dots button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);transform:scale(1.25)}
+@media (max-width:520px){.sl{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.sl .dots{grid-column:1 / -1;grid-row:2}.sl span:last-child{text-align:right}}
+
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+@media (max-width:640px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{all:unset;cursor:pointer;background:var(--paper);padding:16px 14px;display:flex;flex-direction:column;gap:6px;position:relative;min-height:112px}
+.card:hover{background:var(--soft)}
+.card:focus-visible{outline:1px solid var(--ink);outline-offset:-4px}
+.card b{font-family:var(--f-display);font-size:1.3rem;font-weight:500;line-height:1.1}
+.card span{font-size:.8rem;color:var(--mute);line-height:1.45}
+.card .rank{position:absolute;top:10px;right:12px;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+.card[data-rank="1"]{background:var(--ink);color:var(--paper)}
+.card[data-rank="1"] span{color:var(--paper);opacity:.75}
+.card[data-rank="2"]{box-shadow:inset 0 0 0 1px var(--ink)}
+
+.refs{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--ink)}
+.ref{display:grid;grid-template-columns:28px minmax(0,1fr) minmax(0,1.4fr);gap:12px 18px;align-items:end;padding:14px 0;border-bottom:1px solid var(--line)}
+.ref .n{font-family:var(--f-mono);font-size:.7rem;color:var(--mute);padding-bottom:10px}
+@media (max-width:560px){.ref{grid-template-columns:28px minmax(0,1fr)}.ref input:last-child{grid-column:2}}
+
+/* Navegação */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:var(--s6);padding-top:22px;border-top:1px solid var(--ink);flex-wrap:wrap}
+.btn{all:unset;cursor:pointer;font-family:var(--f-body);font-size:.9rem;font-weight:500;letter-spacing:.04em;padding:13px 26px;border:1px solid var(--ink);display:inline-flex;gap:10px;align-items:center;transition:all .15s}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{opacity:.86}
+.btn.ghost:hover{background:var(--soft)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.btn[hidden]{display:none!important}
+.saved{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+
+/* Revisão / envio */
+.review{display:flex;flex-direction:column;gap:22px}
+.sum{border:1px solid var(--line);background:var(--field)}
+.sum .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);flex-wrap:wrap}
+.sum pre{margin:0;padding:16px;max-height:380px;overflow:auto;white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:.78rem;line-height:1.6;color:var(--ink)}
+.steps-send{list-style:none;padding:0;margin:0;counter-reset:s;display:flex;flex-direction:column;gap:10px}
+.steps-send li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:.95rem}
+.steps-send li::before{content:counter(s, decimal-leading-zero);font-family:var(--f-mono);font-size:.72rem;color:var(--mute);padding-top:3px}
+.toast{font-size:.85rem;color:var(--ink)}
+.done-mark{font-family:var(--f-display);font-style:italic;font-size:1.25rem}
+
+footer.sig{margin-top:var(--s7);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+
+.view{animation:in .45s ease both}
+@keyframes in{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.view{animation:none}.track i{transition:none}}
+</style>
+
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <a class="brand" href="#" aria-label="Thierry, estratégia de marca">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" stroke="currentColor" stroke-width="1"/>
+        <path d="M10 13.5H30" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M20 13.5V31" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="20" cy="7.5" r="1.6" fill="currentColor"/>
+      </svg>
+      <div class="wm"><b>THIERRY</b><span>Marca · Conteúdo · Automação</span></div>
+    </a>
+    <ol class="chapters" id="chapters"></ol>
+    <p class="rail-note"><strong>Suas respostas ficam salvas neste aparelho</strong> enquanto você preenche. Pode fechar e voltar depois pelo mesmo link, no mesmo navegador.</p>
+    <div class="mbar" aria-hidden="true">
+      <div class="row"><span id="mLabel">Abertura</span><span id="mCount">0 / 8</span></div>
+      <div class="track"><i id="mFill" style="width:0%"></i></div>
+    </div>
+  </aside>
+
+  <main>
+    <div id="view" class="view"></div>
+    <div class="nav" id="nav">
+      <button class="btn ghost" id="prev" type="button">Voltar</button>
+      <span class="saved" id="saved"></span>
+      <button class="btn primary" id="next" type="button">Começar</button>
+    </div>
+    <footer class="sig"><span>Diagnóstico de Marca · Iluminado Ser</span><span>Método Thierry · 2026</span></footer>
+  </main>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- Conteúdo do diagnóstico ---------- */
+const ARQ = [
+  ["Inocente","Pureza, fé simples, esperança. Promete leveza e bondade."],
+  ["Sábio","Conhecimento e verdade. Explica, ensina, aprofunda."],
+  ["Explorador","Liberdade e descoberta. Caminho, jornada, autenticidade."],
+  ["Cuidador","Proteção e acolhimento. Cuida de quem ama."],
+  ["Criador","Arte e imaginação. Peças autorais, feitas com intenção."],
+  ["Governante","Ordem, tradição e excelência. Referência, autoridade."],
+  ["Amante","Beleza, afeto e intimidade. Presente que emociona."],
+  ["Mago","Transformação e significado. Torna o invisível perceptível."],
+  ["Herói","Coragem e superação. Força para atravessar dificuldades."],
+  ["Pessoa comum","Pertencimento e proximidade. Gente como a gente."],
+  ["Bobo da corte","Alegria e leveza. Humor, espontaneidade."],
+  ["Rebelde","Ruptura. Desafia o padrão e o óbvio do mercado."]
+];
+
+const S = [
+ { id:"voce", nav:"Quem responde", title:"Antes de tudo, <em>quem</em> está do outro lado.", lede:"Dados básicos para eu organizar o seu diagnóstico e voltar a falar com você.",
+   q:[
+    {k:"nome",t:"Seu nome",type:"text",req:1,half:1},
+    {k:"cargo",t:"Seu papel na marca",type:"text",ph:"Fundador(a), sócio(a), gestor(a)…",half:1},
+    {k:"whats",t:"WhatsApp",type:"tel",ph:"(00) 00000-0000",half:1},
+    {k:"email",t:"E-mail",type:"email",half:1},
+    {k:"insta",t:"@ da marca no Instagram",type:"text",ph:"@iluminadoser",half:1},
+    {k:"site",t:"Site ou loja on-line",type:"text",ph:"Se houver",half:1},
+    {k:"cidade",t:"Cidade e estado de operação",type:"text",half:1},
+    {k:"tempo",t:"Há quanto tempo a marca existe?",type:"chips",opts:["Menos de 1 ano","1 a 2 anos","3 a 5 anos","Mais de 5 anos"]},
+    {k:"equipe",t:"Quantas pessoas trabalham na marca hoje, incluindo você?",type:"chips",opts:["Só eu","2 a 3","4 a 10","Mais de 10"]}
+   ]},
+ { id:"marca", nav:"A marca hoje", title:"A Iluminado Ser, <em>contada por você</em>.", lede:"Escreva como se estivesse explicando para alguém que nunca ouviu falar da marca. Não existe resposta certa; o que importa é a sua forma de contar.",
+   q:[
+    {k:"origem",t:"Como a marca nasceu?",h:"O momento, a motivação, a história por trás do nome Iluminado Ser.",type:"area"},
+    {k:"oque",t:"O que exatamente vocês vendem?",h:"Tipos de peça, materiais, linhas, coleções. Fale livremente sobre o universo de produtos.",type:"area",req:1},
+    {k:"segmento",t:"Em qual segmento você coloca a marca?",h:"Pode marcar mais de um.",type:"multi",opts:["Joalheria em prata","Artigos religiosos","Presentes","Moda e acessórios","Bem-estar e espiritualidade","Artesanal / autoral","Luxo acessível"],other:1},
+    {k:"heroi",t:"Qual é o produto mais vendido? E o produto de que você mais se orgulha?",h:"Às vezes são diferentes, e essa diferença diz muito.",type:"area"},
+    {k:"ticket",t:"Faixa de preço das peças",type:"chips",opts:["Até R$ 100","R$ 100 a 250","R$ 250 a 500","R$ 500 a 1.000","Acima de R$ 1.000","Faixas bem variadas"]},
+    {k:"canais",t:"Onde vocês vendem hoje?",type:"multi",opts:["Instagram (direct)","WhatsApp","Site próprio","Marketplace (Shopee, Mercado Livre, Elo7)","Loja física","Feiras e eventos","Paróquias e lojas parceiras","Revendedoras"],other:1},
+    {k:"canalForte",t:"Qual desses canais traz mais vendas? Qual você gostaria que trouxesse?",type:"area",short:1},
+    {k:"proposito",t:"Por que a Iluminado Ser existe, além de vender prata?",h:"O que mudaria no mundo, ou na vida de alguém, se ela deixasse de existir?",type:"area"},
+    {k:"diferencial",t:"Por que alguém escolheria vocês e não outra loja de prata ou artigo religioso?",type:"area"},
+    {k:"frase",t:"Se a marca tivesse que caber em uma única frase, qual seria?",type:"text"}
+   ]},
+ { id:"refs", nav:"Referências", title:"As marcas que <em>você admira</em>.", lede:"Contas e marcas que você olha e pensa “é isso”. Podem ser de qualquer segmento: joias, moda, decoração, café, hotel, igreja, criador de conteúdo.",
+   q:[
+    {k:"admira",t:"Até seis referências que você admira",h:"Coloque o @ ou o nome e, ao lado, o que exatamente chama sua atenção: a foto, o texto, a embalagem, o atendimento, o jeito de falar.",type:"refs",n:6},
+    {k:"admiraSeg",t:"Dentro do seu segmento, quem faz bem feito?",h:"Concorrentes ou marcas de prata e artigos religiosos que você respeita.",type:"area",short:1},
+    {k:"concorrentes",t:"Quem são seus concorrentes diretos?",h:"Quem disputa o mesmo cliente com você hoje.",type:"area",short:1},
+    {k:"naoQuer",t:"Que marcas ou estilos você NÃO quer parecer de jeito nenhum? Por quê?",h:"Isto ajuda tanto quanto as referências positivas.",type:"area"},
+    {k:"estetica",t:"Quais palavras descrevem a estética que você quer?",h:"Marque até cinco.",type:"multi",max:5,opts:["Minimalista","Delicada","Sagrada","Luminosa","Clássica","Contemporânea","Artesanal","Luxuosa","Natural","Etérea","Barroca","Acolhedora","Sofisticada","Afetiva","Atemporal","Moderna"]},
+    {k:"cores",t:"Existem cores, texturas ou elementos visuais que já fazem parte da marca ou que você gostaria que fizessem?",type:"area",short:1}
+   ]},
+ { id:"pessoa", nav:"A marca como pessoa", title:"Se a Iluminado Ser fosse <em>uma pessoa</em>…", lede:"Este é o coração do diagnóstico. Imagine a marca entrando numa sala: quem é ela? Responda com detalhes concretos, mesmo que pareçam bobos.",
+   q:[
+    {k:"pNome",t:"Que nome ela teria?",type:"text",half:1},
+    {k:"pIdade",t:"Que idade ela tem?",type:"text",half:1},
+    {k:"pMora",t:"Onde ela mora? Como é a casa dela?",type:"area",short:1},
+    {k:"pFaz",t:"O que ela faz da vida?",h:"Profissão, ocupação, como ocupa o tempo.",type:"area",short:1},
+    {k:"pVeste",t:"Como ela se veste? Que acessórios usa?",type:"area",short:1},
+    {k:"pOuve",t:"O que ela ouve?",h:"Artistas, estilos, playlists, podcasts, louvores, rádio.",type:"area",short:1},
+    {k:"pLe",t:"O que ela lê, assiste e segue nas redes?",type:"area",short:1},
+    {k:"pVai",t:"Aonde ela vai?",h:"Lugares que frequenta, viagens que faz, onde passa o fim de semana.",type:"area",short:1},
+    {k:"pDomingo",t:"Descreva um domingo perfeito para ela, do acordar ao dormir.",type:"area"},
+    {k:"pHabitos",t:"Quais são os hábitos inegociáveis dela?",h:"Os pequenos rituais que, se ela parar de fazer, deixa de ser ela. Ex.: reza o terço toda manhã, acende uma vela, escreve à mão, toma café com a mãe aos sábados.",type:"area",req:1},
+    {k:"pValores",t:"Em que ela acredita? Quais são os três valores que guiam as escolhas dela?",type:"area",short:1},
+    {k:"pFala",t:"Como ela fala? Que palavras usa? Que palavras ela nunca usaria?",type:"area"},
+    {k:"pNunca",t:"O que ela jamais faria?",h:"Um comportamento, um tipo de post, uma promoção, uma postura.",type:"area",short:1},
+    {k:"pSentir",t:"Como as pessoas se sentem depois de conversar com ela?",type:"area",short:1},
+    {k:"pAdj",t:"Escolha os traços de personalidade dela",h:"Marque até cinco.",type:"multi",max:5,opts:["Serena","Protetora","Elegante","Generosa","Espirituosa","Discreta","Calorosa","Firme","Sensível","Inspiradora","Tradicional","Curiosa","Alegre","Profunda","Confiável","Delicada"]},
+    {k:"arq",t:"Qual destas figuras mais se parece com ela?",h:"Toque uma vez para a principal e outra para uma segunda opção. Tocar de novo desmarca.",type:"arq"},
+    {k:"tom",t:"Onde ela fica em cada um destes eixos?",h:"Marque o ponto mais próximo da sua visão.",type:"scale",pairs:[["Sagrada","Cotidiana"],["Clássica","Contemporânea"],["Discreta","Expressiva"],["Acolhedora","Inspiradora pela autoridade"],["Exclusiva","Acessível"],["Séria","Leve e bem-humorada"],["Fé declarada","Espiritualidade sutil"]]}
+   ]},
+ { id:"cliente", nav:"Cliente ideal", title:"Quem <em>compra</em>, e quem você quer que compre.", lede:"Aqui separo dois retratos: o cliente real de hoje e o cliente que a marca quer atrair. Muitas vezes eles não são a mesma pessoa.",
+   q:[
+    {k:"cHoje",t:"Descreva quem compra de você hoje",h:"Idade, gênero, região, momento de vida, profissão, renda aproximada. O que você já percebeu nas conversas e nas vendas.",type:"area",req:1},
+    {k:"cIdeal",t:"Descreva o cliente que você gostaria de atrair mais",type:"area"},
+    {k:"cPara",t:"A compra costuma ser para",type:"chips",opts:["A própria pessoa","Presente","Metade e metade","Não sei dizer"]},
+    {k:"cOcasioes",t:"Em quais ocasiões as pessoas compram?",type:"multi",opts:["Batizado","Primeira Comunhão","Crisma","Casamento","Nascimento e maternidade","Aniversário","Dia das Mães","Natal","Luto e homenagem","Proteção do dia a dia","Promessa ou graça alcançada","Datas de santos e anjos"],other:1},
+    {k:"cMotivo",t:"Qual é o motivo emocional por trás da compra?",h:"O que a pessoa sente ou quer sentir quando escolhe um anjo de prata.",type:"area"},
+    {k:"cFrases",t:"Frases que os clientes falam com frequência",h:"Copie mensagens reais, elogios, dúvidas, pedidos. Quanto mais literal, melhor.",type:"area"},
+    {k:"cObjecoes",t:"O que faz alguém desistir da compra?",h:"Preço, frete, prazo, dúvida sobre a prata, tamanho, confiança…",type:"area"},
+    {k:"cOnde",t:"Onde esse cliente passa o tempo on-line?",type:"multi",opts:["Instagram","TikTok","Facebook","Pinterest","YouTube","WhatsApp e grupos","Grupos de paróquia e comunidade","Google"],other:1},
+    {k:"cRelacao",t:"Como é a relação com a fé desse cliente?",h:"Praticante assíduo, católico de tradição familiar, espiritualizado sem religião, devoto de anjos específicos…",type:"area",short:1},
+    {k:"cRecompra",t:"Os clientes voltam a comprar?",type:"chips",opts:["Raramente","Às vezes","Com frequência","Não acompanho"]}
+   ]},
+ { id:"conteudo", nav:"Comunicação", title:"Como a marca <em>aparece</em> hoje.", lede:"Um retrato honesto do que já existe no conteúdo e na comunicação. Vale dizer o que não funciona.",
+   q:[
+    {k:"seguidores",t:"Número aproximado de seguidores no Instagram",type:"chips",opts:["Até 1 mil","1 a 5 mil","5 a 20 mil","20 a 100 mil","Mais de 100 mil"]},
+    {k:"frequencia",t:"Com que frequência a marca publica?",type:"chips",opts:["Quase nunca","1 a 2 vezes por semana","3 a 5 vezes por semana","Todo dia","Sem regularidade"]},
+    {k:"formatos",t:"Quais formatos vocês usam?",type:"multi",opts:["Fotos de produto","Reels","Stories","Carrossel","Lives","Vídeos com pessoas (UGC)","Bastidores","Conteúdo devocional","Depoimentos de clientes"]},
+    {k:"funciona",t:"Que tipo de post funciona melhor? E qual não dá resultado?",type:"area"},
+    {k:"rosto",t:"Você ou alguém da equipe aparece no conteúdo?",type:"chips",opts:["Sim, com frequência","Às vezes","Não, e prefiro não aparecer","Não, mas estou aberto(a)"]},
+    {k:"produz",t:"Quem produz o conteúdo hoje? Quanto tempo isso toma por semana?",type:"area",short:1},
+    {k:"fe",t:"Quais são os limites ao falar de fé?",h:"Temas, orações, imagens e linguagens que a marca usa com tranquilidade, e o que você considera delicado ou fora de lugar.",type:"area"},
+    {k:"datas",t:"Que datas são importantes para a marca?",h:"Ex.: festa dos Santos Arcanjos (29 de setembro), dos Anjos da Guarda (2 de outubro), Natal, Dia das Mães.",type:"area",short:1},
+    {k:"incomoda",t:"O que mais te incomoda na comunicação atual da marca?",type:"area",short:1}
+   ]},
+ { id:"operacao", nav:"Atendimento e automação", title:"Os bastidores: <em>atendimento</em> e rotina.", lede:"É aqui que as automações entram. Quero entender onde o tempo vai embora e o que se repete todos os dias.",
+   q:[
+    {k:"msgs",t:"Quantas mensagens a marca recebe por dia, somando direct e WhatsApp?",type:"chips",opts:["Menos de 10","10 a 30","30 a 100","Mais de 100","Não sei"]},
+    {k:"quemResp",t:"Quem responde e em quanto tempo, em média?",type:"area",short:1},
+    {k:"repetidas",t:"Quais perguntas chegam repetidas o tempo todo?",h:"Ex.: “é prata 925?”, “qual o valor?”, “faz gravação?”, “qual o prazo?”, “tem para pronta entrega?”",type:"area",req:1},
+    {k:"ferramentas",t:"Quais ferramentas vocês já usam?",type:"multi",opts:["WhatsApp Business","Catálogo do WhatsApp","Instagram Shopping","ManyChat ou similar","Nuvemshop","Shopify","Loja integrada / outra plataforma","ERP / Bling / Tiny","Planilhas","E-mail marketing","CRM"],other:1},
+    {k:"jornada",t:"Descreva o caminho de uma venda, do primeiro contato até a entrega",h:"Onde a pessoa chega, o que pergunta, como paga, como recebe, se há pós-venda.",type:"area"},
+    {k:"gargalo",t:"Onde vocês mais perdem venda ou tempo hoje?",type:"area"},
+    {k:"posvenda",t:"Existe algum pós-venda?",h:"Mensagem de agradecimento, pedido de avaliação, lembrete de data especial, cuidados com a prata…",type:"area",short:1},
+    {k:"automatizar",t:"Se pudesse automatizar uma única coisa amanhã, o que seria?",type:"area",short:1},
+    {k:"humano",t:"E o que nunca deve ser automatizado, porque precisa do toque humano?",type:"area",short:1}
+   ]},
+ { id:"visao", nav:"Visão e sucesso", title:"Para onde a marca <em>vai</em>.", lede:"Fechamos com o horizonte. Ser concreto aqui ajuda a medir se a consultoria funcionou.",
+   q:[
+    {k:"v12",t:"Como você imagina a Iluminado Ser daqui a 12 meses?",type:"area",req:1},
+    {k:"v5",t:"E daqui a cinco anos? Qual é o sonho grande?",type:"area",short:1},
+    {k:"meta",t:"Qual é a principal meta dos próximos seis meses?",h:"Pode ser faturamento, número de pedidos, seguidores, recompra, tempo livre. Use números se quiser.",type:"area",short:1},
+    {k:"sucesso",t:"Ao final desta consultoria, o que precisa ter mudado para você dizer que valeu a pena?",type:"area",req:1},
+    {k:"tempoSem",t:"Quanto tempo por semana você consegue dedicar à implementação?",type:"chips",opts:["Até 2 horas","2 a 5 horas","5 a 10 horas","Mais de 10 horas"]},
+    {k:"tentou",t:"O que já foi tentado e não deu certo?",h:"Agência, tráfego pago, influenciador, sorteio, mudança de identidade…",type:"area",short:1},
+    {k:"medo",t:"Qual é a sua maior preocupação ou receio em relação a mudar a comunicação da marca?",type:"area",short:1},
+    {k:"extra",t:"Tem algo que eu deveria saber e não perguntei?",type:"area"}
+   ]}
+];
+
+/* ---------- Estado ---------- */
+const KEY = "diag-iluminado-ser-v1";
+const SB_URL = "https://dzmlyrkzcdqicwfmxnxd.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6bWx5cmt6Y2RxaWN3Zm14bnhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzMDczMTgsImV4cCI6MjA5NDg4MzMxOH0.dYaK3tUcyjYhrMdHzdTjhSMxIO-ifiLf9dI1XrWKXfM";
+let A = {};
+let step = -1; /* -1 abertura, 0..7 seções, 8 envio */
+try { const raw = localStorage.getItem(KEY); if (raw) { const o = JSON.parse(raw); A = o.a || {}; step = typeof o.s === "number" ? o.s : -1; } } catch(e){}
+let saveT;
+function persist(){
+  clearTimeout(saveT);
+  saveT = setTimeout(()=>{ try{ localStorage.setItem(KEY, JSON.stringify({a:A,s:step})); $("#saved").textContent = "Rascunho salvo"; }catch(e){} }, 400);
+}
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---------- Render ---------- */
+function renderChapters(){
+  const ol = $("#chapters");
+  ol.innerHTML = S.map((s,i)=>{
+    const filled = s.q.some(q => has(A[q.k]));
+    return `<li ${i===step?'aria-current="step"':''}><button type="button" data-go="${i}"><span class="n">${String(i+1).padStart(2,"0")}</span><span>${s.nav}</span><span class="tick">${filled && i!==step ? "✓" : ""}</span></button></li>`;
+  }).join("") + `<li ${step===S.length?'aria-current="step"':''}><button type="button" data-go="${S.length}"><span class="n">→</span><span>Revisar e enviar</span><span class="tick"></span></button></li>`;
+  const pct = step < 0 ? 0 : Math.min(100, Math.round(((step) / S.length) * 100));
+  $("#mFill").style.width = pct + "%";
+  $("#mCount").textContent = (step < 0 ? 0 : Math.min(step+1, S.length)) + " / " + S.length;
+  $("#mLabel").textContent = step < 0 ? "Abertura" : step >= S.length ? "Revisar e enviar" : S[step].nav;
+}
+function has(v){ if (v == null) return false; if (Array.isArray(v)) return v.some(x => has(x)); if (typeof v === "object") return Object.values(v).some(has); return String(v).trim() !== ""; }
+
+function field(q){
+  const id = "f_" + q.k;
+  const req = q.req ? '<span class="req">essencial</span>' : "";
+  const head = `<label class="t" for="${id}">${q.t}${req}</label>${q.h?`<div class="h">${q.h}</div>`:""}`;
+  const v = A[q.k];
+  if (q.type === "text" || q.type === "tel" || q.type === "email")
+    return `<div class="q">${head}<input id="${id}" type="${q.type==="text"?"text":q.type}" data-k="${q.k}" value="${esc(v||"")}" placeholder="${esc(q.ph||"")}" autocomplete="off"></div>`;
+  if (q.type === "area")
+    return `<div class="q">${head}<textarea id="${id}" data-k="${q.k}" rows="${q.short?3:5}" placeholder="${esc(q.ph||"")}">${esc(v||"")}</textarea></div>`;
+  if (q.type === "chips" || q.type === "multi"){
+    const sel = q.type === "chips" ? [v].filter(Boolean) : (v && v.sel) || [];
+    const chips = q.opts.map(o => `<button type="button" class="chip" data-k="${q.k}" data-mode="${q.type}" data-max="${q.max||0}" data-v="${esc(o)}" aria-pressed="${sel.includes(o)}">${o}</button>`).join("");
+    const other = q.other ? `<input class="chip-other" id="${id}_o" type="text" data-k="${q.k}" data-other="1" value="${esc((v&&v.outro)||"")}" placeholder="Outro: escreva aqui">` : "";
+    return `<div class="q"><div class="t" id="${id}">${q.t}${req}</div>${q.h?`<div class="h">${q.h}</div>`:""}<div class="chips" role="group" aria-labelledby="${id}">${chips}</div>${other}</div>`;
+  }
+  if (q.type === "refs"){
+    const arr = Array.isArray(v) ? v : [];
+    const rows = Array.from({length:q.n}, (_,i)=>{ const r = arr[i]||{}; return `<div class="ref"><span class="n">${String(i+1).padStart(2,"0")}</span><input id="${id}_${i}a" type="text" data-ref="${q.k}" data-i="${i}" data-f="a" value="${esc(r.a||"")}" placeholder="@ ou nome da marca" aria-label="Referência ${i+1}"><input id="${id}_${i}b" type="text" data-ref="${q.k}" data-i="${i}" data-f="b" value="${esc(r.b||"")}" placeholder="O que você admira nela" aria-label="O que admira na referência ${i+1}"></div>`; }).join("");
+    return `<div class="q"><div class="t">${q.t}</div><div class="h">${q.h}</div><div class="refs">${rows}</div></div>`;
+  }
+  if (q.type === "arq"){
+    const pick = Array.isArray(v) ? v : [];
+    const cards = ARQ.map(([n,d]) => { const r = pick.indexOf(n)+1; return `<button type="button" class="card" data-arq="${n}" data-rank="${r||""}" aria-pressed="${r>0}"><span class="rank">${r===1?"Principal":r===2?"Secundária":""}</span><b>${n}</b><span>${d}</span></button>`; }).join("");
+    return `<div class="q"><div class="t">${q.t}</div><div class="h">${q.h}</div><div class="cards">${cards}</div></div>`;
+  }
+  if (q.type === "scale"){
+    const val = (v && typeof v === "object") ? v : {};
+    const rows = q.pairs.map(([l,r],i) => { const cur = val[i]; const dots = [1,2,3,4,5].map(n => `<button type="button" data-sc="${q.k}" data-i="${i}" data-n="${n}" aria-pressed="${cur===n}" aria-label="${l} ${n} de 5 ${r}"></button>`).join(""); return `<div class="sl"><span>${l}</span><div class="dots">${dots}</div><span>${r}</span></div>`; }).join("");
+    return `<div class="q"><div class="t">${q.t}</div><div class="h">${q.h}</div><div class="scale">${rows}</div></div>`;
+  }
+  return "";
+}
+
+function renderIntro(){
+  return `<div class="intro">
+    <div class="eyebrow">Diagnóstico de marca</div>
+    <h1>Iluminado Ser,<br><em>antes da estratégia</em>.</h1>
+    <p class="lede">Este diagnóstico é o primeiro passo da consultoria. Com ele eu construo a persona da marca, o retrato do cliente ideal e o mapa do que pode ser automatizado no atendimento e no conteúdo.</p>
+    <div class="facts">
+      <div><b>8</b><span>capítulos curtos</span></div>
+      <div><b>30 a 40</b><span>minutos, no seu ritmo</span></div>
+      <div><b>6</b><span>respostas essenciais</span></div>
+    </div>
+    <ul class="principles">
+      <li>Responda com as suas palavras, do jeito que você falaria com um amigo. Detalhes concretos valem mais do que frases bonitas.</li>
+      <li>Só seis perguntas são essenciais. As outras você pode pular; o que ficar em branco eu aprofundo na nossa conversa.</li>
+      <li>O rascunho fica salvo automaticamente neste aparelho. Ao final, um toque envia tudo para mim.</li>
+    </ul>
+  </div>`;
+}
+
+function renderSection(i){
+  const s = S[i];
+  const halfs = []; let html = "";
+  const flush = () => { if (halfs.length){ html += `<div class="grid2">${halfs.join("")}</div>`; halfs.length = 0; } };
+  s.q.forEach(q => { if (q.half) halfs.push(field(q)); else { flush(); html += field(q); } });
+  flush();
+  return `<div class="section-head"><div class="eyebrow">Capítulo ${String(i+1).padStart(2,"0")} · ${s.nav}</div><h2>${s.title}</h2><p class="lede">${s.lede}</p></div>${html}`;
+}
+
+function summaryText(){
+  const L = [];
+  L.push("DIAGNÓSTICO DE MARCA · ILUMINADO SER");
+  L.push("Respondido em " + new Date().toLocaleDateString("pt-BR"));
+  S.forEach((s,i) => {
+    L.push(""); L.push(`${String(i+1).padStart(2,"0")}. ${s.nav.toUpperCase()}`); L.push("");
+    s.q.forEach(q => {
+      const v = A[q.k]; let out = "";
+      if (q.type === "multi"){ const sel = (v&&v.sel)||[]; out = sel.join(", "); if (v&&v.outro) out += (out?"; ":"") + "Outro: " + v.outro; }
+      else if (q.type === "refs"){ out = (Array.isArray(v)?v:[]).filter(r=>r&&(r.a||r.b)).map((r,j)=>`  ${j+1}) ${r.a||"(sem nome)"}: ${r.b||""}`).join("\n"); if (out) out = "\n" + out; }
+      else if (q.type === "arq"){ const p = Array.isArray(v)?v:[]; out = p.length ? `Principal: ${p[0]}` + (p[1]?` · Secundária: ${p[1]}`:"") : ""; }
+      else if (q.type === "scale"){ const val = v||{}; out = q.pairs.map(([l,r],j)=> val[j] ? `\n  ${l} ${"○".repeat(val[j]-1)}●${"○".repeat(5-val[j])} ${r}` : "").join(""); }
+      else out = v || "";
+      const plain = q.t.replace(/<[^>]+>/g,"");
+      L.push("› " + plain); L.push(String(out).trim() ? String(out).trim().startsWith("\n") ? out : "  " + String(out).trim() : "  (em branco)"); L.push("");
+    });
+  });
+  return L.join("\n").replace(/\n{3,}/g,"\n\n");
+}
+
+function missingRequired(){
+  const m = [];
+  S.forEach((s,i) => s.q.forEach(q => { if (q.req && !has(A[q.k])) m.push([i, q.t.replace(/<[^>]+>/g,"")]); }));
+  return m;
+}
+
+function renderReview(){
+  const miss = missingRequired();
+  const missHtml = miss.length ? `<div class="q" style="border:0;padding:0"><div class="t">Ainda faltam ${miss.length} resposta${miss.length>1?"s":""} essencia${miss.length>1?"is":"l"}:</div><div class="chips">${miss.map(([i,t])=>`<button type="button" class="chip" data-go="${i}">${esc(t)}</button>`).join("")}</div></div>` : `<p class="done-mark">Tudo pronto. Obrigado pelo tempo e pela sinceridade.</p>`;
+  return `<div class="section-head"><div class="eyebrow">Revisar e enviar</div><h2>Um último <em>passo</em>.</h2><p class="lede">Abaixo estão todas as suas respostas organizadas, prontas para envio.</p></div>
+  <div class="review">
+    ${missHtml}
+    <p class="lede" style="font-size:.95rem">Confira o resumo abaixo e toque em “Enviar respostas”. Elas chegam direto para mim.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <button class="btn primary" id="send" type="button">Enviar respostas</button>
+      <button class="btn ghost" id="copy" type="button">Copiar uma cópia</button>
+      <span class="toast" id="toast" role="status"></span>
+    </div>
+    <div class="sum"><div class="bar"><span>Suas respostas</span><span id="count"></span></div><pre id="sumText"></pre></div>
+  </div>`;
+}
+
+function render(){
+  const v = $("#view");
+  v.classList.remove("view"); void v.offsetWidth; v.classList.add("view");
+  if (step < 0) v.innerHTML = renderIntro();
+  else if (step < S.length) v.innerHTML = renderSection(step);
+  else {
+    v.innerHTML = renderReview();
+    const txt = summaryText();
+    $("#sumText").textContent = txt;
+    const answered = S.reduce((n,s)=> n + s.q.filter(q=>has(A[q.k])).length, 0);
+    const total = S.reduce((n,s)=> n + s.q.length, 0);
+    $("#count").textContent = answered + " de " + total + " respondidas";
+    try{ if (localStorage.getItem(KEY+"-sent")) { $("#toast").textContent = "Você já enviou uma versão. Se alterou algo, pode enviar de novo."; } }catch(e){}
+  }
+  $("#prev").hidden = step < 0;
+  const n = $("#next");
+  n.hidden = step >= S.length;
+  n.textContent = step < 0 ? "Começar o diagnóstico" : step === S.length - 1 ? "Revisar respostas" : "Próximo capítulo";
+  renderChapters();
+}
+
+function go(i){
+  step = Math.max(-1, Math.min(S.length, i));
+  persist(); render();
+  const top = document.querySelector("main").getBoundingClientRect().top + window.scrollY - 70;
+  window.scrollTo({top: Math.max(0, top), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+}
+
+/* ---------- Eventos ---------- */
+document.addEventListener("input", e => {
+  const t = e.target;
+  if (t.dataset.ref){ const k=t.dataset.ref, i=+t.dataset.i; A[k] = Array.isArray(A[k]) ? A[k] : []; A[k][i] = A[k][i] || {}; A[k][i][t.dataset.f] = t.value; persist(); return; }
+  if (t.dataset.other){ const k=t.dataset.k; A[k] = (A[k] && typeof A[k]==="object") ? A[k] : {sel:[]}; A[k].outro = t.value; persist(); return; }
+  if (t.dataset.k){ A[t.dataset.k] = t.value; persist(); }
+});
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button, a"); if (!b) return;
+  if (b.dataset.go != null){ go(+b.dataset.go); return; }
+  if (b.classList.contains("chip") && b.dataset.k){
+    const k = b.dataset.k, val = b.dataset.v;
+    if (b.dataset.mode === "chips"){
+      A[k] = A[k] === val ? "" : val;
+      b.parentElement.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.v === A[k])));
+    } else {
+      A[k] = (A[k] && typeof A[k]==="object") ? A[k] : {sel:[]};
+      const sel = A[k].sel, max = +b.dataset.max, i = sel.indexOf(val);
+      if (i >= 0) sel.splice(i,1); else { if (max && sel.length >= max) sel.shift(); sel.push(val); }
+      b.parentElement.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(sel.includes(c.dataset.v))));
+    }
+    persist(); return;
+  }
+  if (b.dataset.arq){
+    const n = b.dataset.arq; let p = Array.isArray(A.arq) ? A.arq.slice() : [];
+    const i = p.indexOf(n);
+    if (i >= 0) p.splice(i,1); else { if (p.length >= 2) p.pop(); p.push(n); }
+    A.arq = p;
+    document.querySelectorAll(".card").forEach(c => { const r = p.indexOf(c.dataset.arq)+1; c.dataset.rank = r || ""; c.setAttribute("aria-pressed", String(r>0)); c.querySelector(".rank").textContent = r===1?"Principal":r===2?"Secundária":""; });
+    persist(); return;
+  }
+  if (b.dataset.sc){
+    const k=b.dataset.sc, i=b.dataset.i, n=+b.dataset.n;
+    A[k] = (A[k] && typeof A[k]==="object") ? A[k] : {};
+    A[k][i] = A[k][i] === n ? undefined : n;
+    b.parentElement.querySelectorAll("button").forEach(d => d.setAttribute("aria-pressed", String(+d.dataset.n === A[k][i])));
+    persist(); return;
+  }
+  if (b.id === "send"){
+    const toast = $("#toast");
+    if (b.dataset.busy) return;
+    b.dataset.busy = "1"; b.textContent = "Enviando…"; toast.textContent = "";
+    const body = JSON.stringify({ nome: A.nome || null, respostas: A, resumo: summaryText() });
+    fetch(SB_URL + "/rest/v1/diagnosticos_marca", { method:"POST", headers:{ "apikey":SB_KEY, "Authorization":"Bearer "+SB_KEY, "Content-Type":"application/json", "Prefer":"return=minimal" }, body })
+      .then(r => { if (!r.ok) throw new Error(r.status); try{ localStorage.setItem(KEY+"-sent", String(Date.now())); }catch(e){}
+        b.textContent = "Enviado ✓"; toast.textContent = "Recebi suas respostas. Obrigado! Em breve falo com você."; })
+      .catch(() => { delete b.dataset.busy; b.textContent = "Tentar enviar de novo"; toast.textContent = "Não consegui enviar agora. Verifique a internet e tente de novo, ou toque em “Copiar uma cópia” e me mande pelo WhatsApp."; });
+    return;
+  }
+  if (b.id === "copy"){
+    const txt = summaryText(); const toast = $("#toast");
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents($("#sumText")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast.textContent = "Texto selecionado. Use o comando de copiar do seu aparelho."; };
+    try { navigator.clipboard.writeText(txt).then(()=>{ toast.textContent = "Copiado. Agora é só colar e enviar."; }, fallback); } catch(err){ fallback(); }
+    return;
+  }
+});
+
+$("#next").addEventListener("click", () => go(step + 1));
+$("#prev").addEventListener("click", () => go(step - 1));
+
+render();
+})();
+</script>
+
+</body>
+</html>
