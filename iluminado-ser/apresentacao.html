@@ -183,7 +183,7 @@ main{min-width:0}
 /* Loja */
 .loja{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:56px;align-items:center}
 @media (max-width:820px){.loja{grid-template-columns:minmax(0,1fr);justify-items:center}}
-.celular{width:360px;max-width:100%;aspect-ratio:9/19;border-radius:42px;border:10px solid #232321;background:#000;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6);position:relative}
+.celular{width:min(360px,calc((100vh - 120px) * 9 / 19));min-width:240px;max-width:100%;aspect-ratio:9/19;border-radius:42px;border:10px solid #232321;background:#000;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6);position:relative}
 .celular iframe{position:absolute;top:0;left:0;width:390px;height:calc(390px * 19 / 9);border:0;transform-origin:0 0}
 .celular .carregar{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:var(--noite) center/cover no-repeat}
 .celular .carregar::before{content:"";position:absolute;inset:0;background:rgba(12,12,11,.6)}
