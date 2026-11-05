@@ -37,7 +37,7 @@ const CSS = `
 .b3-lb{position:absolute;left:0;top:0;text-align:center;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .35s}
 .b3-lb b{display:block;font-size:12px;font-weight:600;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)}
 .b3-lb i{display:block;width:5px;height:5px;margin:0 auto 4px;border-radius:50%;background:#dfae58}
-.b3-pop{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(11,10,8,.62);opacity:0;pointer-events:none;transition:opacity .25s;font-family:Poppins,sans-serif;color:#f6efe9}
+.b3-pop{position:fixed!important;inset:0;top:0;left:0;right:0;bottom:0;z-index:2147483000!important;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(11,10,8,.62);opacity:0;pointer-events:none;transition:opacity .25s;font-family:Poppins,sans-serif;color:#f6efe9}
 .b3-pop.on{opacity:1;pointer-events:auto}
 .b3-card{position:relative;display:flex;flex-direction:column;width:100%;max-width:380px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);box-sizing:border-box;border-radius:24px;background:#14120e;border:1px solid rgba(223,174,88,.35);box-shadow:0 30px 60px -30px rgba(0,0,0,.8);transform:translateY(12px);transition:transform .25s;overflow:hidden}
 .b3-pop.on .b3-card{transform:none}
@@ -59,7 +59,7 @@ const CSS = `
  .b3-v{height:210px}
 }
 `;
-function css(){ if (document.getElementById('b3-css')) return; const s = document.createElement('style'); s.id = 'b3-css'; s.textContent = CSS; document.head.appendChild(s); }
+function css(){ if (document.getElementById('b3-css-v2')) return; const s = document.createElement('style'); s.id = 'b3-css-v2'; s.textContent = CSS; document.head.appendChild(s); }
 const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 const backOut = t => { const c = 1.5; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
 
