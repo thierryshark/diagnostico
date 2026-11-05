@@ -181,7 +181,7 @@ export function mount(root, base){
       it.lb.style.transform = `translate(${(v.x * .5 + .5) * W2}px,${(-v.y * .5 + .5) * H2}px) translate(-50%,0)`;
       it.lb.style.opacity = k > 0.92 ? 1 : 0;
     });
-    const dist = 68 + 16 * Math.min(1, open * 2.2), off = camera.position.clone().sub(controls.target);
+    const dist = 70 + 30 * Math.min(1, open * 2.2), off = camera.position.clone().sub(controls.target);
     off.setLength(off.length() + (dist - off.length()) * 0.12); camera.position.copy(controls.target).add(off);
     controls.update();
     renderer.render(scene, camera);
