@@ -191,8 +191,8 @@ export function mount(root, base){
   renderer.domElement.addEventListener('pointermove', e => { setPtr(e); renderer.domElement.style.cursor = (hitProd() != null || ray.intersectObject(box, true).length) ? 'pointer' : ''; });
 
   /* ---------- pop-up com visualizador 360 ---------- */
-  let pop = document.querySelector('.b3-pop');
-  if (!pop) { pop = document.createElement('div'); pop.className = 'b3-pop'; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-modal', 'true'); pop.innerHTML = '<div class="b3-card"><button type="button" class="b3-x" aria-label="Fechar">×</button><div class="b3-sc"></div></div>'; document.body.appendChild(pop); }
+  let pop = document.getElementById('b3-pop-g');
+  if (!pop) { pop = document.createElement('div'); pop.id = 'b3-pop-g'; pop.className = 'b3-pop'; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-modal', 'true'); pop.innerHTML = '<div class="b3-card"><button type="button" class="b3-x" aria-label="Fechar">×</button><div class="b3-sc"></div></div>'; document.body.appendChild(pop); }
   const pc = pop.querySelector('.b3-sc'), px = pop.querySelector('.b3-x');
   let viewer = null;
   function showPop(i){
