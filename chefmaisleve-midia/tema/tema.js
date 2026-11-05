@@ -5,12 +5,12 @@ var A='https://cdn.jsdelivr.net/gh/thierryshark/diagnostico@3981a9bf18ab33b03951
 var css='html.cml-blk body{background-image:url('+A+'ervas.png),radial-gradient(70% 50% at 50% 0%,rgba(52,70,44,.22),rgba(0,0,0,0) 70%)!important;background-size:420px 420px,100% 1400px!important;background-repeat:repeat,no-repeat!important}'
 +'html.cml-blk .cml-mt{background-image:url('+A+'ervas.png)!important;background-size:420px 420px!important;background-repeat:repeat!important}'
 /* titulos mais finos */
-+'html.cml-blk body h1,html.cml-blk body h2,html.cml-blk body h3,html.cml-blk body .h1,html.cml-blk body .h2,html.cml-blk body .section-title,html.cml-blk body .js-product-name{font-weight:600!important;letter-spacing:-.005em}'
-+'html.cml-blk body h1 em,html.cml-blk body h2 em,html.cml-blk body h3 em,html.cml-blk body h1 i,html.cml-blk body h2 i,html.cml-blk body h3 i{font-weight:300!important}'
++'html.cml-blk:not(#cmt0) body :is(h1,h2,h3,h4,.h1,.h2,.heading-block,.section-title,.c4-sig,.js-product-name){font-weight:600!important}'
++'html.cml-blk:not(#cmt0) body :is(h1,h2,h3,h4,.heading-block,.c4-sig) :is(em,i){font-weight:300!important}'
 +'html.cml-blk #cml-bko .c1-blk{font-weight:600!important;letter-spacing:-.01em!important;position:relative}'
 /* topo: ramos, vagalumes e brilho no dourado */
 +'html.cml-blk #cml-bko .esq-emb{display:none!important}'
-+'#cml-bko .cmt-ramo{position:absolute;top:-40px;width:min(520px,40vw);aspect-ratio:1400/900;background:url('+A+'ramos.webp) center/contain no-repeat;opacity:.45;pointer-events:none;z-index:1;transform-origin:50% 0;animation:cmtSway 9s ease-in-out infinite alternate}'
++'#cml-bko .cmt-ramo{position:absolute;top:-40px;width:min(520px,40vw);aspect-ratio:1400/900;background:url('+A+'ramos.webp) center/contain no-repeat;opacity:.8;pointer-events:none;z-index:1;transform-origin:50% 0;animation:cmtSway 9s ease-in-out infinite alternate}'
 +'#cml-bko .cmt-ramo.l{left:-90px}#cml-bko .cmt-ramo.r{right:-90px;transform:scaleX(-1);animation-name:cmtSwayR}'
 +'@keyframes cmtSway{0%{transform:rotate(-2deg)}100%{transform:rotate(2deg)}}@keyframes cmtSwayR{0%{transform:scaleX(-1) rotate(-2deg)}100%{transform:scaleX(-1) rotate(2deg)}}'
 +'#cml-bko .cmt-vg{position:absolute;width:5px;height:5px;border-radius:50%;background:radial-gradient(circle,#f6ffd0,#d9e88a 45%,rgba(200,220,120,0) 75%);box-shadow:0 0 10px 3px rgba(210,230,140,.35);opacity:0;pointer-events:none;z-index:1;animation:cmtVoa 11s ease-in-out infinite,cmtPisca 4.4s ease-in-out infinite}'
