@@ -23,7 +23,7 @@ const ITEMS = [
     m: 'Chás, infusões e café.' }
 ];
 /* posicoes finais (cm) em arco na frente/acima da caixa */
-const SPOTS = [[-11.5, 15.5, 1], [0, 18, 1], [11.5, 15.5, 1], [-11.5, 6.3, 17], [0, 5.6, 19], [11.5, 3.2, 17]];
+const SPOTS = [[-10, 15.5, 1], [0, 18, 1], [10, 15.5, 1], [-9.5, 6.3, 17], [0.5, 5.6, 19], [10, 3.2, 17]];
 const ORDER = [0, 1, 2, 3, 4, 5];
 
 const CSS = `
