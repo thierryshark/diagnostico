@@ -810,3 +810,4 @@ body.cml-pg-blog .post-item-information p,body.cml-pg-blog .post-item-informatio
 #single-product>*:not(.cml-mot),.cml-ps>.cml-w{position:relative;z-index:1}
 @keyframes cmlDeriva{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(4deg)}}
 @media (max-width:760px){.cml-mot{width:130px;opacity:.09}.cml-mot-b{display:none}}
+html,body{overflow-x:clip}.cml-mot-a{right:0}.cml-mot-b{left:0}
