@@ -1,7 +1,7 @@
 name: fotos
 on:
   push:
-    paths: ['chefmaisleve-midia/produtos/lista.txt']
+    paths: ['chefmaisleve-midia/produtos/lista.txt','.github/workflows/fotos.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -13,6 +13,7 @@ jobs:
       - run: |
           cd chefmaisleve-midia/produtos
           while read n f; do [ -n "$n" ] && curl -sSfL -o "$n.webp" "https://acdn-us.mitiendanube.com/stores/005/060/752/products/$f-640-0.webp" || echo "falhou $n"; done < lista.txt
+          curl -sSfL -o logo-email.bin 'https://cdn.cashing.com.br/49266/message_templates/email/d7fca8cf-f53e-4c9f-9849-5e9e4134d37a' || echo falhou logo
           ls -la
       - run: |
           git config user.name "Thierry"
