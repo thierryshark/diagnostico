@@ -289,7 +289,7 @@ function montaQuick(q){var it=(RK&&RK.items||[]).filter(function(x){return x.url
  fetch("/account/orders/").then(function(r){return r.text()}).then(function(h){var d=new DOMParser().parseFromString(h,"text/html"),o=d.querySelector("a[href*='/account/orders/']");if(!o)throw 0;return fetch(o.getAttribute("href")).then(function(r){return r.text()})}).then(function(h){var d=new DOMParser().parseFromString(h,"text/html"),vis={};JA=[].filter.call(d.querySelectorAll("img"),function(i){return/products/.test(i.getAttribute("src")||i.getAttribute("data-src")||"")&&i.alt}).map(function(i){return{name:i.alt.replace(/\s*\(.*?\)\s*$/,""),img:i.getAttribute("data-src")||i.getAttribute("src"),url:"/search/?q="+encodeURIComponent(i.alt)}}).filter(function(x){if(vis[x.name])return false;vis[x.name]=1;return true}).slice(0,5);poe(JA)}).catch(function(){})}
 
 /* ---------- TIPOS DE PAGINA DE PRODUTO: padrao, destaque, kit, kit destaque ---------- */
-var DESTAQUE=[224675737],KIT_DESTAQUE=[313665100];
+var DESTAQUE=[224675737],KIT_DESTAQUE=[313665100,379187357];
 function fotoPrincipal(){var im=D.querySelector(".js-product-slide img");if(!im)return"";var u=im.getAttribute("data-srcset")||im.getAttribute("srcset")||"";if(u){var ps=u.split(",").map(function(x){return x.trim().split(" ")[0]});return ps[ps.length-1].replace(/^\/\//,"https://")}return(im.currentSrc||im.src||"").replace(/^\/\//,"https://")}
 function idProduto(){var f=D.querySelector('.js-product-form input[name="add_to_cart"]');return f?+f.value:0}
 function partir(t){t=t.replace(/[.!]\s*$/,"");var m=t.match(/^(.+?)([,:]\s*|\s+)(".+"|.{0,1}\S+(\s+\S+){0,3})$/);if(!m)return esc(t);var a=t.split(/\s+/),k=Math.max(1,a.length-Math.min(4,Math.ceil(a.length/2)));return esc(a.slice(0,k).join(" "))+" <em>"+esc(a.slice(k).join(" "))+"</em>"}
@@ -298,7 +298,7 @@ function tipoPagina(){if(!/\/produtos\//.test(P)||D.body.getAttribute("data-cml-
  var id=idProduto(),nome=h1.getAttribute("data-cml-n")||h1.textContent.trim(),pd=D.querySelector(".cml-pd"),top=pd&&pd.querySelector(".cml-f-top");
  var ehKit=/kit presente|combo/i.test(kind(nome))||!!(D.querySelector(".cml-side .cml-acc")&&/vem no kit/i.test(D.querySelector(".cml-side").textContent));
  var tipo=KIT_DESTAQUE.indexOf(id)>=0?"kitdest":DESTAQUE.indexOf(id)>=0?"destaque":ehKit?"kit":"padrao";
- if((tipo==="destaque"||tipo==="kitdest")&&!top)return;
+ if((tipo==="destaque"||tipo==="kitdest")&&!top)tipo=tipo==="kitdest"?"kit":"padrao";
  D.body.setAttribute("data-cml-tipo",tipo);D.body.classList.add("cml-pg-"+tipo);if(tipo==="padrao")return;
  var foto=fotoPrincipal(),sec=sp.closest("section")||sp;
  if(tipo==="destaque"||tipo==="kitdest"){var eb=(top.querySelector("span")||{}).textContent||"",h2=(top.querySelector("h2")||{}).textContent||nome,tx=(top.querySelector("p")||{}).textContent||"";
