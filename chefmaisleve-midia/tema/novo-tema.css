@@ -517,3 +517,15 @@ textarea{border-radius:18px!important}
 .cml-acc-b{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;padding:2px 0;border:0;background:none;cursor:pointer;font:600 12px Poppins,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--cml-ambar2);text-align:left}
 .cml-acc>div{display:none;margin-top:10px}
 .cml-acc.aberto>div{display:block}
+/* compra rapida */
+.cml-quick{width:min(440px,calc(100% - 24px))}
+.cml-qx{border:0;background:none;font-size:22px;color:var(--cml-oliva);cursor:pointer}
+.cml-qtabs{display:flex;gap:6px;margin:6px 0 8px}
+.cml-qtabs button{border:1px solid var(--cml-linha);background:#fff;border-radius:999px;min-height:32px;padding:0 14px;font:500 12px Poppins,sans-serif;color:var(--cml-oliva);cursor:pointer}
+.cml-qtabs button.on{background:var(--cml-oliva);color:var(--cml-papel);border-color:var(--cml-oliva)}
+.cml-quick .cml-qi{grid-template-columns:48px minmax(0,1fr) auto}
+.cml-quick .cml-qi a{display:flex;flex-direction:column;min-width:0;text-decoration:none!important;color:var(--cml-ink)!important;font:500 13px Poppins,sans-serif}
+.cml-quick .cml-qi a span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cml-quick .cml-qi small{font:600 12px Poppins,sans-serif;color:var(--cml-ambar2)}
+.cml-qadd{border:0;border-radius:999px;min-height:34px;padding:0 14px;background:var(--cml-ouro);color:#0b0a08;font:600 12px Poppins,sans-serif;cursor:pointer;white-space:nowrap}
+.cml-qadd.ok{background:var(--cml-salvia);color:var(--cml-oliva)}
