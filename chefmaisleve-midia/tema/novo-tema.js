@@ -8,9 +8,9 @@ var WA="https://wa.me/5547992726557";
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function brl(v){return"R$ "+Number(v).toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g,".")}
 function num(t){var m=String(t||"").replace(/\s/g,"").match(/(\d{1,3}(\.\d{3})*|\d+),(\d{2})/);return m?parseFloat(m[0].replace(/\./g,"").replace(",",".")):0}
-function kind(n){n=n.toLowerCase();if(/combo/.test(n))return"Combo";if(/\bkit\b|ternura|desdobramento|natal|materna/.test(n))return"Kit presente";if(/trouxinha/.test(n))return"Trouxinha";if(/c[aá]psula/.test(n))return"Cápsula de chá";if(/ch[aá] blend|blend/.test(n))return"Chá blend";if(/infus[aã]o|ch[aá]/.test(n))return"Infusão natural";if(/granola/.test(n))return"Granola";if(/chocolate|choco|stroopwafel|wafel|wafer|laranja/.test(n))return"Snack";if(/desidratad/.test(n))return"Fruta desidratada";if(/x[ií]cara|garrafa|infusor|chaleira|raspador|caneca/.test(n))return"Acessório";return""}
+function kind(n){n=n.toLowerCase();if(/combo/.test(n))return"Combo";if(/\bkit\b|ternura|desdobramento|natal|materna/.test(n))return"Kit presente";if(/trouxinha/.test(n))return"Trouxinha";if(/c[aá]psula/.test(n))return"Cápsula de chá";if(/ch[aá] blend|blend/.test(n))return/lata/.test(n)?"Chá blend (lata)":"Chá blend (pacote)";if(/infus[aã]o|ch[aá]/.test(n))return"Infusão natural";if(/granola/.test(n))return"Granola";if(/chocolate|choco|stroopwafel|wafel|wafer|laranja/.test(n))return"Snack";if(/desidratad/.test(n))return"Fruta desidratada";if(/x[ií]cara|garrafa|infusor|chaleira|raspador|caneca/.test(n))return"Acessório";return""}
 /* nome com a segunda metade em itálico: "Chá Blend <em>Sereníssimo 40g</em>" */
-function emName(t){t=t.trim();var w=t.split(/\s+/);if(w.length<2)return esc(t);var k=/^ch[aá]$/i.test(w[0])&&w.length>2?2:Math.ceil(w.length/2);if(w.length===2)k=1;return esc(w.slice(0,k).join(" "))+" <em>"+esc(w.slice(k).join(" "))+"</em>"}
+function emName(t){t=t.trim().replace(/\s*\((lata|pacote)\)\s*/ig," ").trim();var m=t.match(/^(ch[aá] blend|ch[aá] trouxinha de|ch[aá] em|infus[aã]o na|granola|chocolate|x[ií]cara|chaleira de vidro com|garrafa de vidro|infusor|raspador de cobre para|embalagem de|cart[aã]o)\s+(.+)$/i);if(m)return esc(m[1])+' <em>'+esc(m[2])+"</em>";var d=t.match(/^(.+?)\s+(desidratad[ao]s?.*)$/i);if(d)return"<em>"+esc(d[1])+"</em> "+esc(d[2]);var w=t.split(/\s+/);if(w.length<2)return esc(t);var k=Math.ceil(w.length/2);if(w.length===2)k=1;return esc(w.slice(0,k).join(" "))+" <em>"+esc(w.slice(k).join(" "))+"</em>"}
 var STAR='<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#dfae58" d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>';
 var COIN='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.6-.8-1.6-1.2-2.8-1.2-1.6 0-2.8.8-2.8 2s1.2 1.6 2.8 2 2.8.8 2.8 2-1.2 2-2.8 2c-1.2 0-2.3-.5-2.9-1.3M12 6.5v11"/></svg>';
 /* nota media e quantidade a partir das estrelas do app de avaliacoes */
@@ -52,10 +52,13 @@ function cards(){[].forEach.call(D.querySelectorAll(".js-item-product"),function
 /* ---------- ESPIADINHA (pop-up rapido do produto) ---------- */
 var OLHO='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/></svg>';
 var PEEK={};
+function galeria(v,fs){var mf=v.querySelector(".cml-mfoto");if(!mf||fs.length<2)return;var i=0;mf.innerHTML=fs.map(function(u,k){return'<img src="'+esc(u)+'" alt=""'+(k?' class="cml-gx"':"")+">"}).join("")+'<button type="button" class="cml-ga cml-ga-p" aria-label="Foto anterior">&#8249;</button><button type="button" class="cml-ga cml-ga-n" aria-label="Próxima foto">&#8250;</button><div class="cml-gd">'+fs.map(function(u,k){return'<i'+(k?"":' class="on"')+"></i>"}).join("")+"</div>";
+ var ims=mf.querySelectorAll("img"),ds=mf.querySelectorAll(".cml-gd i");function vai(n){i=(n+fs.length)%fs.length;[].forEach.call(ims,function(x,k){x.classList.toggle("cml-gx",k!==i)});[].forEach.call(ds,function(x,k){x.classList.toggle("on",k===i)})}
+ mf.querySelector(".cml-ga-p").onclick=function(){vai(i-1)};mf.querySelector(".cml-ga-n").onclick=function(){vai(i+1)};var x0=null;mf.addEventListener("touchstart",function(e){x0=e.touches[0].clientX},{passive:true});mf.addEventListener("touchend",function(e){if(x0==null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)vai(i+(dx<0?1:-1));x0=null})}
 function urlProduto(c){var a=c.querySelector("a.product-item-link,a[href*='/produtos/']");return a?a.getAttribute("href"):""}
-function botaoEspia(c){var im=c.querySelector(".product-item-image-container");if(!im||im.querySelector(".cml-espia"))return;var b=D.createElement("button");b.type="button";b.className="cml-espia";b.innerHTML=OLHO+"<span>Espiadinha</span>";
+function botaoEspia(c){var im=c.querySelector(".product-item-image-container");if(!im||c.querySelector(".cml-espia"))return;var b=D.createElement("button");b.type="button";b.className="cml-espia cml-espia-c";b.innerHTML=OLHO+"<span>Espiadinha</span>";
  b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();var nm=c.querySelector(".js-item-name");var foto=(c.querySelector(".cml-img1")||c.querySelector("img.product-item-image")||{}).src||"";espiar(urlProduto(c),{nome:nm?(nm.getAttribute("data-cml-n")||nm.textContent):"",foto:foto,preco:((c.querySelector(".js-price-display")||{}).textContent||"").trim(),de:(function(){var x=c.querySelector(".js-compare-price-display");return x&&getComputedStyle(x).display!=="none"?x.textContent.trim():""})()})});
- im.appendChild(b)}
+ var qs=c.querySelector(".product-item-quick-shop-container")||c.querySelector(".js-addtocart");if(qs&&qs.parentNode)qs.parentNode.insertBefore(b,qs.nextSibling);else im.appendChild(b)}
 function espiar(url,base){if(!url)return;var v=D.querySelector(".cml-veu");if(v)v.remove();
  v=D.createElement("div");v.className="cml cml-veu";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.setAttribute("aria-label","Espiadinha");
  var pr=String(base.nome||"").split(/\s+-\s+/);
@@ -70,6 +73,7 @@ function espiar(url,base){if(!url)return;var v=D.querySelector(".cml-veu");if(v)
   var rend=d2.querySelector(".cml-rend+p");if(rend)out+='<p class="cml-mnota">'+esc(rend.textContent.trim())+"</p>";
   if(!out){var ds=d2.querySelector(".js-product-description, .product-description");if(ds)out='<p class="cml-tx">'+esc(ds.textContent.trim().replace(/\s+/g," ").slice(0,260))+"...</p>"}
   corpo.innerHTML=out||'<p class="cml-tx">Veja todos os detalhes na página do produto.</p>';
+  var fs=[];[].forEach.call(d2.querySelectorAll(".js-product-slide img, .js-product-slide-img"),function(im){var u=im.getAttribute("data-srcset")||im.getAttribute("srcset")||"",best="";if(u){var ps=u.split(",").map(function(x){return x.trim().split(" ")[0]});best=ps[ps.length-1]}best=best||im.getAttribute("data-src")||im.getAttribute("src")||"";if(best&&!/data:/.test(best)){best=best.replace(/^\/\//,"https://");if(fs.indexOf(best)<0)fs.push(best)}});galeria(v,fs.slice(0,8));
   if(!base.preco){var pe=d2.querySelector("#price_display");if(pe)v.querySelector(".cml-mpreco b").textContent=pe.textContent.trim()}}
  if(PEEK[url]){monta(PEEK[url]);return}
  fetch(url).then(function(r){return r.text()}).then(function(h){var d2=new DOMParser().parseFromString(h,"text/html");PEEK[url]=d2;monta(d2)}).catch(function(){corpo.innerHTML='<p class="cml-tx">Veja todos os detalhes na página do produto.</p>'})}
@@ -181,7 +185,78 @@ function titulos(){[].forEach.call(D.querySelectorAll(".heading-block"),function
 /* ajustes do site atual que continuam valendo (icones da descricao, frete) */
 (function(){if(D.querySelector("script[src*='cml-ui']"))return;var x=D.createElement("script");x.async=true;x.src="https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-ui";(D.head||D.documentElement).appendChild(x)})();
 /* ---------- RODAR ---------- */
-function tudo(){try{ranking()}catch(e){}try{titulos()}catch(e){}try{cards()}catch(e){}try{produto()}catch(e){}try{categoria()}catch(e){}try{depoimentos()}catch(e){}try{rodape()}catch(e){}try{atalhos()}catch(e){}try{esconde()}catch(e){}}
+/* ---------- AUTORIDADE: depoimentos em caixas ---------- */
+function frase(t){t=t.trim().replace(/\s+/g," ");if(t.length>8&&t===t.toUpperCase()){t=t.toLowerCase().replace(/(^|[.!?]\s+)([a-zà-ú])/g,function(m,a,b){return a+b.toUpperCase()})}return t}
+function autoridade(){var nums=D.querySelector(".cml-nums");if(!nums)return;var dep=D.querySelector(".cml-dep");if(D.querySelector(".cml-tst")){if(dep)dep.classList.add("cml-off");return}
+ var us=[].map.call(D.querySelectorAll(".mi-embla strong"),function(st){var u=st;while(u&&!u.querySelector("p"))u=u.parentElement;return u}).filter(Boolean);
+ var vis={},lst=[];us.forEach(function(u){var p=u.querySelector("p");if(!p)return;var t=frase(p.textContent);if(t.length<18||vis[t]||/poderia|demor|ruim|péssim|nao gostei|não gostei/i.test(t))return;var ws=u.querySelectorAll("clipPath rect, clippath rect"),sm=0;[].forEach.call(ws,function(x){sm+=(parseFloat(x.getAttribute("width"))||0)/20});var n=ws.length?sm:5;if(n<4.5)return;vis[t]=1;lst.push(t)});
+ if(lst.length<3)return;lst.sort(function(a,b){return Math.abs(a.length-110)-Math.abs(b.length-110)});lst=lst.slice(0,6);
+ var est=new Array(6).join(STAR).replace(/width="13" height="13"/g,'width="16" height="16"');
+ var w=D.createElement("div");w.className="cml-tst";
+ w.innerHTML='<div class="cml-tst-h"><p class="cml-eb">Avaliações de quem comprou no site</p><a class="cml-lnk" href="https://www.google.com/search?q=Chef+Mais+Leve+avalia%C3%A7%C3%B5es" target="_blank" rel="noopener">Ver nossas avaliações no Google</a></div><div class="cml-tst-g">'+lst.map(function(t){return'<figure class="cml-tbox"><div class="cml-test">'+est+'</div><blockquote>'+esc(t)+'</blockquote><figcaption>Cliente verificado</figcaption></figure>'}).join("")+"</div>";
+ nums.parentNode.insertBefore(w,nums.nextSibling);if(dep)dep.classList.add("cml-off")}
+
+/* ---------- FAQ ---------- */
+var FAQ=[["Os produtos têm conservantes ou açúcar adicionado?","Não. Tudo é feito à mão, sem aditivos. As frutas são desidratadas em baixa temperatura, sem conservantes e sem açúcar adicionado."],
+["Como preparo o chá e quanto rende?","Use uma colher de chá por xícara, com água quente sem ferver, e deixe abafado por alguns minutos. O Chá Blend de 40 g rende até 20 xícaras e cada trouxinha prepara uma xícara."],
+["Não sei qual escolher. Por onde começo?","Comece pelo seu momento do dia: manhã, tarde, dias frios ou fim do dia. Na página de chás você filtra por momento, e no WhatsApp a gente te ajuda a escolher."],
+["Posso mandar de presente para outra pessoa?","Pode. No Monte o presente você escolhe a caixa, os itens e escreve o cartão, que vai escrito à mão. Na entrega, é só colocar o endereço de quem vai receber."],
+["Quanto custa o frete e quando ele é grátis?","Enviamos para todo o Brasil. O frete grátis depende da região: em SP, a partir de R$ 249. No carrinho você vê o valor e o prazo para o seu CEP."],
+["Como acompanho o meu pedido?","Assim que o pedido sai, você recebe o código de rastreio por e-mail e WhatsApp."],
+["Como funciona o cashback?","Parte do valor de cada compra volta para você como cashback, para usar no próximo pedido. O saldo vale por 30 dias."],
+["Vocês fazem presentes para empresas?","Fazemos. Montamos kits com a marca Chef Mais Leve para equipes e clientes. Chama a gente no WhatsApp com a quantidade e a data."]];
+function faq(){var f=D.querySelector(".cml-faq");if(!f||f.getAttribute("data-cml"))return;var col=f.children[1];if(!col)return;f.setAttribute("data-cml","1");
+ col.innerHTML=FAQ.map(function(q,i){return'<details class="cml-q"'+(i===0?" open":"")+'><summary>'+esc(q[0])+'<span aria-hidden="true"></span></summary><p>'+esc(q[1])+"</p></details>"}).join("")}
+
+/* ---------- INSTAGRAM ---------- */
+var IGI='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor"/></svg>';
+var WAI='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.5-1.5-2-1-1 1c-1-.4-2-1.4-2.5-2.5l1-1-1-2z"/></svg>';
+var PLAY='<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l10.5-6.5z"/></svg>';
+function icones(){[].forEach.call(D.querySelectorAll(".cml-b2, .cml-fsoc a"),function(a){if(a.querySelector("svg"))return;var t=a.textContent;if(/instagram/i.test(t))a.insertAdjacentHTML("afterbegin",IGI);else if(/whats|comunidade/i.test(t))a.insertAdjacentHTML("afterbegin",WAI)})}
+var IG=null,igPed=false;
+function insta(){var g=D.querySelector(".cml-redes .cml-feeds");if(!g||g.getAttribute("data-cml"))return;
+ if(!IG){try{IG=JSON.parse(sessionStorage.getItem("cml_ig")||"null")}catch(e){}}
+ if(!IG){if(!igPed){igPed=true;fetch("https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-insta").then(function(r){return r.json()}).then(function(j){if(j&&j.length){IG=j;try{sessionStorage.setItem("cml_ig",JSON.stringify(j))}catch(e){}insta()}}).catch(function(){})}return}
+ g.setAttribute("data-cml","1");g.className="cml-ig";g.innerHTML=IG.slice(0,6).map(function(x){return'<a class="cml-igi" href="'+esc(x.link)+'" target="_blank" rel="noopener" aria-label="Ver post no Instagram"><img src="'+esc(x.img)+'" alt="" loading="lazy">'+(x.tipo==="reel"?'<span class="cml-igr">'+PLAY+"</span>":"")+"</a>"}).join("")}
+
+/* ---------- RODAPE: dados da empresa ---------- */
+function legal(){var ft=D.querySelector(".cml-ft");if(!ft||ft.querySelector(".cml-fleg"))return;var p=D.createElement("div");p.className="cml-w cml-fleg";p.innerHTML="<span>Chef Mais Leve</span><span>CNPJ 61.728.220/0001-20</span><span>Penha, Santa Catarina</span>";ft.appendChild(p)}
+
+/* ---------- FILTROS POR MOMENTO (chas) ---------- */
+var MOM=[["todos","Todos",null,["Nossa coleção","Chás","e infusões","Blends, trouxinhas e infusões feitos à mão, com ervas, flores e frutas desidratadas em casa."]],
+["manha","Manhã",[228278848,273215028,343019497,345698613,350838426],["Para começar o dia","Chás para","a manhã","Blends com mais presença para a primeira xícara do dia."]],
+["tarde","Tarde",[224678609,228278848,343019497,345698613],["Depois do almoço","Chás","frutados","Sabores de fruta que vão bem quentes ou gelados, na pausa da tarde."]],
+["frio","Dias frios",[273215028,343019497,345698613,350838426],["Para os dias frios","Chás para","aquecer","Especiarias e frutas para as tardes e noites mais frias."]],
+["noite","Fim do dia",[224678493,350683290],["Fim do dia","Chás para","desacelerar","Blends florais e suaves para a última xícara do dia."]],
+["semcafeina","Sem cafeína",[343019505,350838426,224678493],["Sem cafeína","Chás","sem cafeína","Para tomar a qualquer hora, inclusive à noite."]]];
+var FMT=[["blends","Blends",/ch[aá] blend/i,["Chá blend","Blends","da casa","Pacotes de 40 g que rendem até 20 xícaras. O Durex vem em lata de 80 g."]],
+["trouxinhas","Trouxinhas",/trouxinha/i,["Infusão natural","Trouxinhas","aromáticas","Frutas e flores amarradas à mão. Cada pacote tem 6 trouxinhas, uma por xícara."]],
+["fases","Fases da mulher",[273215028,343019488,343019491,343019493,343019494,343019505,311670419,350683290],["Fases da mulher","Blends para","cada fase","Blends pensados para gestação, lactação, ciclo e maturidade. Na dúvida, converse com seu médico."]]];
+var todosOk=false,carregando=false;
+function carregaTodos(cb){if(todosOk)return cb();if(carregando)return;carregando=true;var gr=D.querySelector(".js-product-table");if(!gr)return;var pv=(location.search.match(/preview_theme_installation_id=\d+/)||[""])[0];
+ var tem={};[].forEach.call(gr.querySelectorAll(".js-item-product"),function(x){tem[x.getAttribute("data-product-id")]=1});
+ (function pag(n){fetch("/chas/?page="+n+(pv?"&"+pv:"")).then(function(r){return r.text()}).then(function(h){var d2=new DOMParser().parseFromString(h,"text/html"),its=d2.querySelectorAll(".js-product-table .js-item-product"),novo=0;
+  [].forEach.call(its,function(x){var id=x.getAttribute("data-product-id");if(tem[id])return;tem[id]=1;novo++;var el=x.closest(".js-product-table>*")||x;gr.appendChild(D.importNode(el,true))});
+  if(novo&&n<6)pag(n+1);else fim()}).catch(fim)})(2);
+ function fim(){todosOk=true;carregando=false;[].forEach.call(D.querySelectorAll(".js-pagination-container, .pagination, .js-load-more"),function(x){x.style.display="none"});cb()}}
+function filtra(k){var all=MOM.concat(FMT),f=null;all.forEach(function(x){if(x[0]===k)f=x});if(!f)f=MOM[0];
+ [].forEach.call(D.querySelectorAll(".cml-mbtn"),function(b){b.classList.toggle("on",b.getAttribute("data-f")===f[0])});
+ var s=D.querySelector(".cml-cat");if(s){s.querySelector(".cml-eb").textContent=f[3][0];s.querySelector(".cml-bn-t").innerHTML=palavras(f[3][1],f[3][2]);var tx=s.querySelector(".cml-bn-tx");if(tx)tx.textContent=f[3][3]}
+ carregaTodos(function(){var n=0,foto="";[].forEach.call(D.querySelectorAll(".js-product-table .js-item-product"),function(c){var id=+c.getAttribute("data-product-id"),nm=(c.querySelector(".js-item-name")||{}).textContent||"",ok=!f[2]||(f[2].test?f[2].test(nm):f[2].indexOf(id)>=0);var cel=c.closest(".js-product-table>*")||c;cel.style.display=ok?"":"none";if(ok){n++;if(!foto){var im=c.querySelector("img");foto=im&&(im.currentSrc||im.src||im.getAttribute("data-src"))||""}}});
+  var cn=D.querySelector(".cml-mcount");if(cn)cn.textContent=n+(n===1?" produto":" produtos");if(s&&foto&&!/data:/.test(foto))s.style.setProperty("--cml-bnimg",'url("'+foto+'")')})}
+function momentos(){if(!/^\/chas\//.test(P)||D.querySelector(".cml-mom-f"))return;var s=D.querySelector(".cml-cat");if(!s)return;var ac=s.querySelector(".cml-bn-ac");if(ac)ac.remove();
+ var mesma=P==="/chas/";function bt(x){return mesma?'<button type="button" class="cml-mbtn" data-f="'+x[0]+'">'+esc(x[1])+"</button>":'<a class="cml-mbtn" href="/chas/#'+x[0]+'">'+esc(x[1])+"</a>"}
+ var w=D.createElement("div");w.className="cml-mom-f";w.innerHTML='<div class="cml-mrow"><span>Seu momento</span>'+MOM.map(bt).join("")+'</div><div class="cml-mrow"><span>Formato</span>'+FMT.map(bt).join("")+(mesma?'<em class="cml-mcount"></em>':"")+"</div>";
+ s.querySelector(".cml-w").appendChild(w);s.classList.add("cml-bn--foto");
+ if(mesma){w.addEventListener("click",function(e){var b=e.target.closest(".cml-mbtn");if(!b)return;filtra(b.getAttribute("data-f"));try{history.replaceState(null,"",location.pathname+location.search+"#"+b.getAttribute("data-f"))}catch(x){}});filtra((location.hash||"#todos").slice(1))}
+ else{var cur=null;[["energia","manha"],["sem-cafeina","semcafeina"],["relaxar|noite","noite"],["trouxinha","trouxinhas"],["frio","frio"],["fases|gesta|lacta","fases"]].forEach(function(m){if(new RegExp(m[0]).test(P))cur=m[1]});if(cur){var b=w.querySelector('[href="/chas/#'+cur+'"]');if(b)b.classList.add("on")}}}
+
+/* ---------- BARRA FLUTUANTE SO DEPOIS DO BANNER ---------- */
+function limiar(){var h=P==="/"?D.querySelector(".code-block"):D.querySelector(".cml-cat");return h?h.getBoundingClientRect().bottom+scrollY-60:240}
+function flutVis(){var n=D.querySelector(".cml-flut");if(!n)return;var on=scrollY>limiar();n.classList.toggle("on",on);if(!on){var q=D.querySelector(".cml-quick");if(q)q.classList.remove("on")}}
+addEventListener("scroll",flutVis,{passive:true});
+
+function tudo(){try{ranking()}catch(e){}try{titulos()}catch(e){}try{cards()}catch(e){}try{produto()}catch(e){}try{categoria()}catch(e){}try{depoimentos()}catch(e){}try{rodape()}catch(e){}try{atalhos()}catch(e){}try{esconde()}catch(e){}try{autoridade()}catch(e){}try{faq()}catch(e){}try{icones()}catch(e){}try{insta()}catch(e){}try{legal()}catch(e){}try{momentos()}catch(e){}try{flutVis()}catch(e){}}
 function ini(){tudo();var n=0;(function l(){tudo();if(++n<20)setTimeout(l,600)})();var t=0;new MutationObserver(function(){clearTimeout(t);t=setTimeout(tudo,250)}).observe(D.body,{childList:true,subtree:true})}
 if(D.readyState==="loading")D.addEventListener("DOMContentLoaded",ini);else ini();
 })();
