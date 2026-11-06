@@ -15,7 +15,7 @@ var STAR='<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><pa
 var COIN='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.6-.8-1.6-1.2-2.8-1.2-1.6 0-2.8.8-2.8 2s1.2 1.6 2.8 2 2.8.8 2.8 2-1.2 2-2.8 2c-1.2 0-2.3-.5-2.9-1.3M12 6.5v11"/></svg>';
 /* nota media e quantidade a partir das estrelas do app de avaliacoes */
 function nota(box){if(!box)return null;var cnt=[].filter.call(box.querySelectorAll("span"),function(s){return/^\(\d+\)$/.test(s.textContent.trim())})[0];if(!cnt)return null;var n=parseInt(cnt.textContent.replace(/\D/g,""),10)||0,sum=0,ws=box.querySelectorAll("clipPath rect, clippath rect");[].forEach.call(ws,function(x){sum+=(parseFloat(x.getAttribute("width"))||0)/20});return{n:n,avg:ws.length?sum:5}}
-function linhaNota(r){return r&&r.n>0?STAR+" <b>"+r.avg.toFixed(1).replace(".",",")+"</b> <span>("+r.n+(r.n===1?" avaliação":" avaliações")+")</span>":"<span>Ainda sem avaliações</span>"}
+function linhaNota(r){return r&&r.n>0?STAR+" <b>"+r.avg.toFixed(1).replace(".",",")+"</b> <span>("+r.n+'<span class="cml-rtw">'+(r.n===1?" avaliação":" avaliações")+"</span>)</span>":"<span>Ainda sem avaliações</span>"}
 
 /* ---------- CARDS DE PRODUTO ---------- */
 function card(c){var nm=c.querySelector(".js-item-name");if(!nm)return;var link=c.querySelector(".product-item-link")||nm.parentElement;

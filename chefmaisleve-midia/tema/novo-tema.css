@@ -287,3 +287,8 @@ textarea{border-radius:18px!important}
 .cml-cat-tx{min-width:0}
 .navigation-bar{overflow:hidden;max-width:100vw}
 .cml-poff{top:20px;bottom:auto!important;left:20px}
+.product-item .swiper-pagination,.product-item [class*="pagination"],.product-item-image-container .js-swiper-product-item-pagination{display:none!important}
+.product-item-quick-shop-container,.product-item-quick-shop-container form,.product-item-quick-shop-container>*{display:block!important;width:100%!important}
+.cml-cbl{height:auto;min-height:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cml-rt{white-space:nowrap;overflow:hidden}
+@media (max-width:640px){.cml-rt .cml-rtw{display:none}.cml-cbl{font-size:11px}.product-item{padding:8px 8px 12px!important}.product-item-information{padding:10px 4px 0!important}.cml-ey{font-size:9.5px;letter-spacing:.12em}}
