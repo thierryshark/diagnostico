@@ -72,7 +72,7 @@ function categoria(){var ph=D.querySelector(".page-header"),bn=D.querySelector("
 
 /* ---------- DEPOIMENTOS ---------- */
 function depoimentos(){if(D.querySelector(".cml-dep"))return true;var h=[].filter.call(D.querySelectorAll("h4"),function(x){return x.textContent.trim().toUpperCase()==="DEPOIMENTOS"})[0];if(!h)return false;
- var r=h;while(r.parentElement&&r.parentElement!==D.body&&!(r.parentElement.id||"").match(/^ns-|cashing/)&&r.parentElement.children.length===1)r=r.parentElement;
+ var r=h;while(r.parentElement&&r.parentElement!==D.body&&!r.querySelector(".mi-embla"))r=r.parentElement;if(!r.querySelector(".mi-embla"))return false;while(r.parentElement&&r.parentElement!==D.body&&r.parentElement.children.length===1&&!/^ns-/.test(r.parentElement.id||""))r=r.parentElement;
  r.classList.add("cml-dep");var hd=D.createElement("div");hd.className="cml cml-w cml-dep-h";hd.innerHTML='<div class="cml-head"><div><p class="cml-eb">Avaliações de quem comprou</p><h2 class="cml-tt cml-h2">Quem provou, <em>recomenda</em></h2></div><a class="cml-lnk" href="https://www.google.com/search?q=Chef+Mais+Leve" target="_blank" rel="noopener">Nota 5,0 no Google</a></div>';r.insertBefore(hd,r.firstChild);
  var aut=D.querySelector(".cml-nums");if(aut){var sec=aut.closest("section");var blk=sec&&sec.closest(".cml")||sec;if(blk&&blk.parentNode&&!r.contains(blk))blk.parentNode.insertBefore(r,blk.nextSibling)}
  return true}
