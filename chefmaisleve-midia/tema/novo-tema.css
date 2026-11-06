@@ -802,3 +802,11 @@ body.cml-pg-blog .post-item-information p,body.cml-pg-blog .post-item-informatio
 .cml-r1 .cml-btn{align-self:stretch;justify-content:center;margin-top:10px}
 .cml-r1 .cml-espia-c{max-width:none!important;align-self:center}
 @media (max-width:640px){.cml-r1{grid-row:auto}}
+/* motivos de ingrediente */
+.cml-mot{position:absolute;z-index:0;pointer-events:none;opacity:.12;width:clamp(160px,18vw,260px);height:auto;animation:cmlDeriva 16s ease-in-out infinite}
+.cml-mot-a{right:-30px;top:40px}
+.cml-mot-b{left:-40px;bottom:40px;width:clamp(120px,13vw,190px);animation-delay:-6s}
+.cml-dh .cml-mot,.cml-kb .cml-mot{opacity:.16;filter:brightness(2.2)}
+#single-product>*:not(.cml-mot),.cml-ps>.cml-w{position:relative;z-index:1}
+@keyframes cmlDeriva{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(4deg)}}
+@media (max-width:760px){.cml-mot{width:130px;opacity:.09}.cml-mot-b{display:none}}
