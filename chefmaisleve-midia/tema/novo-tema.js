@@ -19,7 +19,7 @@ function linhaNota(r){return r&&r.n>0?STAR+" <b>"+r.avg.toFixed(1).replace(".","
 
 /* ---------- CARDS DE PRODUTO ---------- */
 function card(c){var nm=c.querySelector(".js-item-name");if(!nm)return;var link=c.querySelector(".product-item-link")||nm.parentElement;
- var sig=nm.textContent+"|"+((c.querySelector(".js-price-display")||{}).textContent||"")+"|"+((c.querySelector(".js-compare-price-display")||{}).style||{}).display;if(c.__cml===sig)return;c.__cml=sig;
+ var sig=(c.querySelector(".product-item-link")||c).textContent.replace(/\s+/g,"").length+"|"+nm.textContent+"|"+((c.querySelector(".js-price-display")||{}).textContent||"")+"|"+((c.querySelector(".js-compare-price-display")||{}).style||{}).display;if(c.__cml===sig)return;c.__cml=sig;
  var t=nm.getAttribute("data-cml-n")||nm.textContent.trim();nm.setAttribute("data-cml-n",t);
  var ey=c.querySelector(".cml-ey");if(!ey){ey=D.createElement("p");ey.className="cml-ey";nm.parentNode.insertBefore(ey,nm)}ey.textContent=kind(t)||"Chef Mais Leve";
  nm.innerHTML=emName(t);
