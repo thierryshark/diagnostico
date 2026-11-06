@@ -273,3 +273,6 @@ textarea{border-radius:18px!important}
 .category-controls,.filters-container{font-family:Poppins,sans-serif}
 .js-category-controls h2,.js-category-controls .h4,.filters-container .h4,.filters-container h2,.filters-container h3{font:600 22px/1.2 Poppins,sans-serif!important;color:var(--cml-oliva2)!important}
 .filters-container .h6,.filters-container h4,.filters-container .filter-title{font:600 12px Poppins,sans-serif!important;letter-spacing:.18em;text-transform:uppercase;color:var(--cml-ambar2)!important}
+.cml-dep [class*="mi-py-"]{max-width:1320px!important;width:100%!important;padding-left:24px!important;padding-right:24px!important;padding-top:0!important}
+.cml-dep .cml-dep-h{width:100%;align-self:stretch;max-width:1320px;margin:0 auto}
+@media (max-width:640px){.cml-dep [class*="mi-py-"]{padding-left:16px!important;padding-right:16px!important}}
