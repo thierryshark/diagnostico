@@ -401,7 +401,7 @@ function montePresente(){if(!/^\/presentes-de-natal\/?$/.test(P)||D.querySelecto
  render();catalogo(function(){render()})}
 
 /* ---------- ENCONTRE SEU CHA (quiz) e personagens ---------- */
-var PJB="__PJB__";
+var PJB="https://cdn.jsdelivr.net/gh/thierryshark/diagnostico@32afb6f7548f21e3070ae18dd970c6624ab8414a/chefmaisleve-midia/tema/pj/";
 var MOMS=[["manha","Manhã","produtiva","estuda","m-read","Foco para trabalhar e estudar",[343019497,224679048]],["energia","Muita","energia","maromba","m-flex","Começo de dia com disposição",[228278848,345698613]],["treino","Depois do","treino","karate","m-kick","Cítrico e ótimo gelado",[224678609,224679971]],["respiro","Um","respiro","zen","m-float","Pausa para você",[273215028,224679101]],["noite","Fim do","dia","sono","m-sway","Para desacelerar",[224678493,224679381]]];
 var SABS=[["floral","Floral",[224678493,224679530,311682784]],["frutado","Frutado",[228278848,224679381,224679101,224679971,227899802]],["citrico","Cítrico",[224678609,224679048,224679971]],["especiado","Especiado",[273215028,350838426,224679101]],["herbal","Herbal",[343019497,224679048]]];
 function pjImg(k,mov){if(PJB.indexOf("__")===0)return"";return'<img class="cml-pj '+mov+'" src="'+PJB+k+'.svg" alt="" loading="lazy">'}
