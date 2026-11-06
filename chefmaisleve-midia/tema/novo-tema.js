@@ -18,15 +18,15 @@ function nota(box){if(!box)return null;var cnt=[].filter.call(box.querySelectorA
 function linhaNota(r){return r&&r.n>0?STAR+" <b>"+r.avg.toFixed(1).replace(".",",")+"</b> <span>("+r.n+'<span class="cml-rtw">'+(r.n===1?" avaliação":" avaliações")+"</span>)</span>":"<span>Ainda sem avaliações</span>"}
 
 
-/* ---------- FOTOS NA MOLDURA DOS CARDS ---------- */
-/* recorte sem fundo (so para a moldura dos cards; a pagina do produto continua com a foto original) */
-var REC=null,RECU="https://dzmlyrkzcdqicwfmxnxd.supabase.co/storage/v1/object/public/recortes/";
-(function(){try{var c=sessionStorage.getItem("cml_rec");if(c){REC=JSON.parse(c);return}}catch(e){}fetch("https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-recorte").then(function(r){return r.json()}).then(function(j){REC=j;try{sessionStorage.setItem("cml_rec",JSON.stringify(j))}catch(e){}tudo()}).catch(function(){REC={}})})();
-function moldura(c){var im=c.querySelector(".product-item-image-container");if(!im||im.__cmlM)return;var id=c.getAttribute("data-product-id");var t=REC?REC[id]:null;if(REC===null)return;
+/* ---------- FOTO NA MOLDURA DOS CARDS ---------- */
+/* cada card usa a foto ambientada do produto (1250x1250), ajustada para preencher o arco */
+var REC=null;
+(function(){try{var c=sessionStorage.getItem("cml_amb");if(c){REC=JSON.parse(c);return}}catch(e){}fetch("https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-recorte").then(function(r){return r.json()}).then(function(j){REC=j;try{sessionStorage.setItem("cml_amb",JSON.stringify(j))}catch(e){}tudo()}).catch(function(){REC={}})})();
+function moldura(c){var im=c.querySelector(".product-item-image-container");if(!im||im.__cmlM||REC===null)return;var id=c.getAttribute("data-product-id");var u=REC[id];
  var imgs=im.querySelectorAll("img.product-item-image,img.js-product-item-image-private");if(!imgs.length)return;im.__cmlM=1;
  var a=imgs[0];a.classList.add("cml-img1");
- if(t==="r"){var u=RECU+id+".webp";a.removeAttribute("srcset");a.removeAttribute("data-srcset");a.removeAttribute("sizes");a.setAttribute("data-src",u);a.src=u;a.classList.remove("lazyload");a.classList.add("lazyloaded");im.classList.add("cml-tem-rec")}
- else im.classList.add("cml-tem-foto")}
+ if(u){a.removeAttribute("srcset");a.removeAttribute("data-srcset");a.removeAttribute("sizes");a.setAttribute("data-src",u);a.src=u;a.classList.remove("lazyload");a.classList.add("lazyloaded")}
+ im.classList.add("cml-tem-foto")}
 /* ---------- CARDS DE PRODUTO ---------- */
 function card(c){var nm=c.querySelector(".js-item-name");if(!nm)return;var link=c.querySelector(".product-item-link")||nm.parentElement;
  var sig=(c.querySelector(".product-item-link")||c).textContent.replace(/\s+/g,"").length+"|"+nm.textContent+"|"+((c.querySelector(".js-price-display")||{}).textContent||"")+"|"+((c.querySelector(".js-compare-price-display")||{}).style||{}).display;if(c.__cml===sig)return;c.__cml=sig;
