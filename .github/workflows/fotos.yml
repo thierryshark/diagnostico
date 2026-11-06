@@ -1,0 +1,22 @@
+name: fotos
+on:
+  push:
+    paths: ['chefmaisleve-midia/produtos/lista.txt']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cd chefmaisleve-midia/produtos
+          while read n f; do [ -n "$n" ] && curl -sSfL -o "$n.webp" "https://acdn-us.mitiendanube.com/stores/005/060/752/products/$f-640-0.webp" || echo "falhou $n"; done < lista.txt
+          ls -la
+      - run: |
+          git config user.name "Thierry"
+          git config user.email "thierry.elements@gmail.com"
+          git add chefmaisleve-midia/produtos
+          git commit -m "Fotos de produto para a apresentação" || exit 0
+          git push
