@@ -115,8 +115,11 @@ function atalhos(){if(D.querySelector(".cml-flut")||/\/checkout\//.test(P))retur
  n.querySelector(".cml-fcb").onclick=function(e){var s=window.__cmlSelo||selo();if(s){e.preventDefault();(s.querySelector("button")||s).click()}}}
 function esconde(){var x=window.__cmlSelo;if(!x||!D.body.contains(x)){x=selo();if(!x)return;window.__cmlSelo=x}x.style.setProperty("opacity","0","important");x.style.setProperty("pointer-events","none","important")}
 
+
+/* titulos das secoes nativas com a segunda metade em italico */
+function titulos(){[].forEach.call(D.querySelectorAll(".heading-block"),function(h){if(h.querySelector("em"))return;var el=h.querySelector("h1,h2,h3,p")||h;if(el.children.length)return;var t=el.textContent.trim();if(!t)return;var w=t.split(/\s+/);if(w.length<2)return;var k=Math.ceil(w.length/2);el.innerHTML=esc(w.slice(0,k).join(" "))+" <em>"+esc(w.slice(k).join(" "))+"</em>"})}
 /* ---------- RODAR ---------- */
-function tudo(){try{cards()}catch(e){}try{produto()}catch(e){}try{categoria()}catch(e){}try{depoimentos()}catch(e){}try{rodape()}catch(e){}try{atalhos()}catch(e){}try{esconde()}catch(e){}}
+function tudo(){try{titulos()}catch(e){}try{cards()}catch(e){}try{produto()}catch(e){}try{categoria()}catch(e){}try{depoimentos()}catch(e){}try{rodape()}catch(e){}try{atalhos()}catch(e){}try{esconde()}catch(e){}}
 function ini(){tudo();var n=0;(function l(){tudo();if(++n<20)setTimeout(l,600)})();var t=0;new MutationObserver(function(){clearTimeout(t);t=setTimeout(tudo,250)}).observe(D.body,{childList:true,subtree:true})}
 if(D.readyState==="loading")D.addEventListener("DOMContentLoaded",ini);else ini();
 })();

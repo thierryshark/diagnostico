@@ -77,7 +77,7 @@ body{background-color:var(--cml-papel);background-image:linear-gradient(rgba(246
 .section-featured-home .grid>*{width:auto!important;max-width:none!important;padding:0!important;margin:0!important;flex:none!important}
 .section-featured-home .grid>*:first-child{grid-row:span 2}
 .section-featured-home .product-item{display:grid!important;align-items:center;column-gap:16px}
-.section-featured-home .grid>*:first-child .product-item{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:14px!important;border-radius:32px!important;column-gap:22px}
+.section-featured-home .grid>.product-item:first-child,.section-featured-home .grid>*:first-child>.product-item{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:14px!important;border-radius:32px!important;column-gap:22px}
 .section-featured-home .grid>*:first-child .product-item-image-container{border-radius:999px 999px 18px 18px/48% 48% 18px 18px}
 .section-featured-home .grid>*:first-child .product-item-image-container>div:not(.js-nubesdk-slot){padding-bottom:125%!important}
 .section-featured-home .grid>*:first-child .product-item-information{padding:0!important;height:100%;justify-content:center}
@@ -87,7 +87,7 @@ body{background-color:var(--cml-papel);background-image:linear-gradient(rgba(246
 .section-featured-home .grid>*:first-child .product-item-quick-shop-container{margin-top:18px!important;padding-top:0}
 .section-featured-home .grid>*:first-child .product-item-quick-shop-container :is(.js-quickshop-modal-open,input.js-addtocart){background:var(--cml-ouro)!important;border-color:var(--cml-ouro)!important;color:#0b0a08!important;font-weight:600!important;min-height:50px}
 .section-featured-home .grid>*:first-child .product-item-information::before{content:"O mais querido da casa";align-self:flex-start;margin-bottom:12px;padding:6px 14px;border-radius:999px;background:var(--cml-ouro);color:#0b0a08;font:600 12px Poppins,sans-serif;letter-spacing:.04em}
-.section-featured-home .grid>*:not(:first-child) .product-item{grid-template-columns:110px minmax(0,1fr);padding:10px!important}
+.section-featured-home .grid>.product-item:not(:first-child),.section-featured-home .grid>*:not(:first-child)>.product-item{grid-template-columns:110px minmax(0,1fr);padding:10px!important}
 .section-featured-home .grid>*:not(:first-child) .product-item-image-container>div:not(.js-nubesdk-slot){padding-bottom:125%!important}
 .section-featured-home .grid>*:not(:first-child) .product-item-information{padding:0!important}
 .section-featured-home .grid>*:not(:first-child) .product-item-name{font-size:14px!important}
@@ -96,7 +96,7 @@ body{background-color:var(--cml-papel);background-image:linear-gradient(rgba(246
 .section-featured-home .grid>*:not(:first-child) .product-item-quick-shop-container{padding-top:10px}
 .section-featured-home .grid>*:not(:first-child) :is(.js-quickshop-modal-open,input.js-addtocart){min-height:36px}
 @media (max-width:900px){.section-featured-home .grid{grid-template-columns:1fr 1fr!important}.section-featured-home .grid>*:first-child{grid-column:span 2;grid-row:auto}}
-@media (max-width:640px){.section-featured-home .grid{grid-template-columns:1fr!important;gap:10px!important}.section-featured-home .grid>*:first-child{grid-column:auto}.section-featured-home .grid>*:first-child .product-item{grid-template-columns:42% minmax(0,1fr);column-gap:14px;padding:10px!important;border-radius:24px!important}.section-featured-home .grid>*:first-child .product-item-name{font-size:19px!important}.section-featured-home .grid>*:first-child .product-item-price{font-size:22px!important}.section-featured-home .grid>*:first-child .product-item-information::before{font-size:10.5px;padding:4px 10px;margin-bottom:8px}.product-item-name{font-size:14px!important}.product-item-price{font-size:17px!important}}
+@media (max-width:640px){.section-featured-home .grid{grid-template-columns:1fr!important;gap:10px!important}.section-featured-home .grid>*:first-child{grid-column:auto}.section-featured-home .grid>.product-item:first-child,.section-featured-home .grid>*:first-child>.product-item{grid-template-columns:42% minmax(0,1fr);column-gap:14px;padding:10px!important;border-radius:24px!important}.section-featured-home .grid>*:first-child .product-item-name{font-size:19px!important}.section-featured-home .grid>*:first-child .product-item-price{font-size:22px!important}.section-featured-home .grid>*:first-child .product-item-information::before{font-size:10.5px;padding:4px 10px;margin-bottom:8px}.product-item-name{font-size:14px!important}.product-item-price{font-size:17px!important}}
 
 /* depoimentos (app de avaliações) no padrão dos cards */
 .cml-dep{padding:72px 0;background:transparent}
