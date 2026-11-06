@@ -362,5 +362,5 @@ textarea{border-radius:18px!important}
 .cml-cat.cml-bn .cml-w{display:flex!important;grid-template-columns:none}
 @media (max-width:640px){.cml-cat.cml-bn{padding-top:36px}}
 .cml-hero2 .cml-w{min-height:calc(100vh - 230px)}
-.cml-hero2 .cml-bn-t{max-width:12ch}
+.cml-hero2 .cml-bn-t{max-width:15ch}
 @media (max-width:640px){.cml-hero2 .cml-w{min-height:0}}
