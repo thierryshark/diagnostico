@@ -49,7 +49,7 @@ function produto(){var h=D.querySelector("h1.js-product-name");if(!h)return;var 
  var pe=box.querySelector(".js-price-display"),pv=pe?num(pe.textContent):0,cb=box.querySelector(".cml-pcb");
  if(pv>0){if(!cb){cb=D.createElement("a");cb.className="cml-pcb";cb.href="/cashback/";var pc=box.querySelector(".js-price-container");if(pc)pc.parentNode.insertBefore(cb,pc.nextSibling)}var hc=COIN+"<span>+ <b>"+brl(Math.round(pv*5)/100)+"</b> de cashback nesta compra</span>";if(cb.__h!==hc){cb.__h=hc;cb.innerHTML=hc}}
  var op=box.querySelector(".js-offer-label"),cp=box.querySelector(".js-compare-price-display"),pct=op&&cp&&getComputedStyle(cp).display!=="none"?parseInt(op.textContent.replace(/\D/g,""),10)||0:0;
- var im=D.querySelector(".js-product-images"),off=D.querySelector(".cml-poff");
+ var im=D.querySelector(".js-product-slider")||D.querySelector(".product-images-slider")||D.querySelector(".js-product-images"),off=D.querySelector(".cml-poff");if(im&&getComputedStyle(im).position==="static")im.style.position="relative";
  if(im&&pct>0){if(!off){off=D.createElement("span");off.className="cml-off cml-poff";im.appendChild(off)}off.textContent="-"+pct+"%"}else if(off)off.remove();
 }
 
