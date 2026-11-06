@@ -40,7 +40,7 @@ function cards(){[].forEach.call(D.querySelectorAll(".js-item-product"),function
 
 /* ---------- PAGINA DE PRODUTO ---------- */
 function produto(){var h=D.querySelector("h1.js-product-name");if(!h)return;var box=h.parentElement;
- var t=h.getAttribute("data-cml-n")||h.textContent.trim();if(h.getAttribute("data-cml-n")!==t||!h.querySelector("em")){h.setAttribute("data-cml-n",t);h.innerHTML=emName(t)}
+ var t=h.getAttribute("data-cml-n")||h.textContent.trim();if(h.getAttribute("data-cml-n")!==t||!h.querySelector("em")){h.setAttribute("data-cml-n",t);var pr=t.split(/\s+-\s+/);h.innerHTML=emName(pr[0])+(pr[1]?'<span class="cml-pqt">'+esc(pr.slice(1).join(" - "))+"</span>":"")}
  if(!box.querySelector(".cml-pey")){var ey=D.createElement("p");ey.className="cml-eb cml-pey";ey.textContent=kind(t)||"Chef Mais Leve";box.insertBefore(ey,h)}
  var nb=[].filter.call(box.children,function(x){return!x.className&&/\(\d+\)/.test(x.textContent)})[0],r=nota(nb),rt=box.querySelector(".cml-prt");
  if(!rt){rt=D.createElement("p");rt.className="cml-prt";h.parentNode.insertBefore(rt,h.nextSibling)}var hh=linhaNota(r);if(rt.__h!==hh){rt.__h=hh;rt.innerHTML=hh}
@@ -118,6 +118,8 @@ function esconde(){var x=window.__cmlSelo;if(!x||!D.body.contains(x)){x=selo();i
 
 /* titulos das secoes nativas com a segunda metade em italico */
 function titulos(){[].forEach.call(D.querySelectorAll(".heading-block"),function(h){if(h.querySelector("em"))return;var el=h.querySelector("h1,h2,h3,p")||h;if(el.children.length)return;var t=el.textContent.trim();if(!t)return;var w=t.split(/\s+/);if(w.length<2)return;var k=Math.ceil(w.length/2);el.innerHTML=esc(w.slice(0,k).join(" "))+" <em>"+esc(w.slice(k).join(" "))+"</em>"})}
+/* ajustes do site atual que continuam valendo (icones da descricao, frete) */
+(function(){if(D.querySelector("script[src*='cml-ui']"))return;var x=D.createElement("script");x.async=true;x.src="https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-ui";(D.head||D.documentElement).appendChild(x)})();
 /* ---------- RODAR ---------- */
 function tudo(){try{titulos()}catch(e){}try{cards()}catch(e){}try{produto()}catch(e){}try{categoria()}catch(e){}try{depoimentos()}catch(e){}try{rodape()}catch(e){}try{atalhos()}catch(e){}try{esconde()}catch(e){}}
 function ini(){tudo();var n=0;(function l(){tudo();if(++n<20)setTimeout(l,600)})();var t=0;new MutationObserver(function(){clearTimeout(t);t=setTimeout(tudo,250)}).observe(D.body,{childList:true,subtree:true})}
