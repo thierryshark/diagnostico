@@ -46,7 +46,53 @@ function card(c){var nm=c.querySelector(".js-item-name");if(!nm)return;var link=
  /* botao */
  var b=c.querySelector(".js-open-quickshop-wording");if(b&&b.textContent.trim()==="Comprar")b.textContent="Comprar";
 }
-function cards(){[].forEach.call(D.querySelectorAll(".js-item-product"),function(c){try{card(c)}catch(e){}try{moldura(c)}catch(e){}})}
+function cards(){[].forEach.call(D.querySelectorAll(".js-item-product"),function(c){try{card(c)}catch(e){}try{moldura(c)}catch(e){}try{botaoEspia(c)}catch(e){}})}
+
+
+/* ---------- ESPIADINHA (pop-up rapido do produto) ---------- */
+var OLHO='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/></svg>';
+var PEEK={};
+function urlProduto(c){var a=c.querySelector("a.product-item-link,a[href*='/produtos/']");return a?a.getAttribute("href"):""}
+function botaoEspia(c){var im=c.querySelector(".product-item-image-container");if(!im||im.querySelector(".cml-espia"))return;var b=D.createElement("button");b.type="button";b.className="cml-espia";b.innerHTML=OLHO+"<span>Espiadinha</span>";
+ b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();var nm=c.querySelector(".js-item-name");var foto=(c.querySelector(".cml-img1")||c.querySelector("img.product-item-image")||{}).src||"";espiar(urlProduto(c),{nome:nm?(nm.getAttribute("data-cml-n")||nm.textContent):"",foto:foto,preco:((c.querySelector(".js-price-display")||{}).textContent||"").trim(),de:(function(){var x=c.querySelector(".js-compare-price-display");return x&&getComputedStyle(x).display!=="none"?x.textContent.trim():""})()})});
+ im.appendChild(b)}
+function espiar(url,base){if(!url)return;var v=D.querySelector(".cml-veu");if(v)v.remove();
+ v=D.createElement("div");v.className="cml cml-veu";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.setAttribute("aria-label","Espiadinha");
+ var pr=String(base.nome||"").split(/\s+-\s+/);
+ v.innerHTML='<div class="cml-modal"><button type="button" class="cml-fecha" aria-label="Fechar">×</button><div class="cml-mfoto">'+(base.foto?'<img src="'+esc(base.foto)+'" alt="">':"")+'</div><div class="cml-mtx"><p class="cml-eb">Espiadinha'+(kind(base.nome||"")?" · "+esc(kind(base.nome)):"")+'</p><h3 class="cml-tt cml-mh">'+emName(pr[0])+(pr[1]?'<span class="cml-pqt">'+esc(pr.slice(1).join(" - "))+"</span>":"")+'</h3><div class="cml-mcorpo"><p class="cml-tx">Carregando...</p></div><div class="cml-mpreco"><b>'+esc(base.preco||"")+'</b>'+(base.de?"<s>"+esc(base.de)+"</s>":"")+'</div><div class="cml-mac"><a class="cml-btn" href="'+esc(url)+'">Gostei, quero esse</a><a class="cml-lnk" href="'+esc(url)+'">Ver a página completa</a></div></div></div>';
+ D.body.appendChild(v);D.documentElement.classList.add("cml-sem-rolar");
+ function fecha(){v.remove();D.documentElement.classList.remove("cml-sem-rolar");D.removeEventListener("keydown",tecla)}function tecla(e){if(e.key==="Escape")fecha()}
+ v.querySelector(".cml-fecha").onclick=fecha;v.addEventListener("click",function(e){if(e.target===v)fecha()});D.addEventListener("keydown",tecla);
+ var corpo=v.querySelector(".cml-mcorpo");
+ function monta(d2){var out="";var intro=d2.querySelector(".cml-s-intro");if(intro)out+='<p class="cml-tx">'+esc(intro.textContent.trim())+"</p>";
+  var acc=[].slice.call(d2.querySelectorAll(".cml-acc"));acc.forEach(function(a){var t=(a.querySelector("h4")||{}).textContent||"";if(/ingrediente/i.test(t)){var ps=[].map.call(a.querySelectorAll("li"),function(l){return'<span class="cml-chip">'+esc(l.textContent.trim())+"</span>"}).join("");if(ps)out+='<div class="cml-mlin"><b>Ingredientes</b><div class="cml-mchips">'+ps+"</div></div>"}});
+  var prep=[].map.call(d2.querySelectorAll(".cml-prep li"),function(l){var b=l.querySelector("b"),sp=l.querySelector("span");return"<li><b>"+esc(b?b.textContent.trim():"")+"</b><span>"+esc(sp?sp.textContent.trim():"")+"</span></li>"}).join("");if(prep)out+='<div class="cml-mlin"><b>Como preparar</b><ul class="cml-mprep">'+prep+"</ul></div>";
+  var rend=d2.querySelector(".cml-rend+p");if(rend)out+='<p class="cml-mnota">'+esc(rend.textContent.trim())+"</p>";
+  if(!out){var ds=d2.querySelector(".js-product-description, .product-description");if(ds)out='<p class="cml-tx">'+esc(ds.textContent.trim().replace(/\s+/g," ").slice(0,260))+"...</p>"}
+  corpo.innerHTML=out||'<p class="cml-tx">Veja todos os detalhes na página do produto.</p>';
+  if(!base.preco){var pe=d2.querySelector("#price_display");if(pe)v.querySelector(".cml-mpreco b").textContent=pe.textContent.trim()}}
+ if(PEEK[url]){monta(PEEK[url]);return}
+ fetch(url).then(function(r){return r.text()}).then(function(h){var d2=new DOMParser().parseFromString(h,"text/html");PEEK[url]=d2;monta(d2)}).catch(function(){corpo.innerHTML='<p class="cml-tx">Veja todos os detalhes na página do produto.</p>'})}
+
+/* ---------- RANKING DOS MAIS PEDIDOS (home) ---------- */
+var RK=null,rkPedido=false;
+function ranking(){var nat=D.querySelector(".section-featured-home");if(!nat||D.querySelector(".cml-rk"))return;
+ if(!rkPedido){rkPedido=true;fetch("https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-rank").then(function(r){return r.json()}).then(function(j){RK=j;tudo()}).catch(function(){RK={mode:"off",items:[]}})}
+ if(!RK||REC===null)return;var it=(RK.items||[]).filter(function(x){return x.url});if(RK.mode==="off"||it.length<3)return;
+ var sec=nat.closest("section")||nat;var rank=RK.mode==="rank";
+ function foto(x){return(REC&&REC[x.id])||x.img}
+ function prc(x){return(x.from?"<small>a partir de</small> ":"")+brl(x.price)}
+ function de(x){return x.de?"<s>"+brl(x.de)+"</s>":""}
+ function cbk(x){return'<p class="cml-cbl">+ <b>'+brl(Math.round(x.price*5)/100)+"</b> de cashback</p>"}
+ var x1=it[0];var pr1=x1.name.split(/\s+-\s+/);
+ var big='<article class="cml-r1" data-url="'+esc(x1.url)+'"><span class="cml-pos cml-pos1">1º</span><div class="cml-rfoto"><img src="'+esc(foto(x1))+'" alt="'+esc(x1.name)+'" loading="lazy"><button type="button" class="cml-espia">'+OLHO+'<span>Espiadinha</span></button></div><div class="cml-rtx"><p class="cml-eb">'+(rank?"O mais pedido do mês":"O favorito da casa")+'</p><h3 class="cml-tt cml-rh">'+emName(pr1[0])+(pr1[1]?'<span class="cml-pqt">'+esc(pr1.slice(1).join(" - "))+"</span>":"")+"</h3>"+(rank&&x1.orders?'<p class="cml-rped">'+x1.orders+" pedidos nos últimos 30 dias</p>":"")+'<div class="cml-rpreco"><b>'+prc(x1)+"</b>"+de(x1)+"</div>"+cbk(x1)+'<a class="cml-btn" href="'+esc(x1.url)+'">Quero esse</a></div></article>';
+ var peq=it.slice(1,5).map(function(x,i){var pr=x.name.split(/\s+-\s+/);return'<article class="cml-rn" data-url="'+esc(x.url)+'"><span class="cml-pos">'+(i+2)+'º</span><div class="cml-rfoto"><img src="'+esc(foto(x))+'" alt="'+esc(x.name)+'" loading="lazy"></div><div class="cml-rtx"><p class="cml-ey">'+esc(kind(x.name)||"Chef Mais Leve")+(pr[1]?" · "+esc(pr.slice(1).join(" - ")):"")+'</p><h4 class="cml-rnn">'+emName(pr[0])+'</h4><div class="cml-rpreco"><b>'+prc(x)+"</b>"+de(x)+'</div><div class="cml-racs"><a class="cml-rbtn" href="'+esc(x.url)+'">Comprar</a><button type="button" class="cml-espia cml-espia-t">'+OLHO+"<span>Espiadinha</span></button></div></div></article>"}).join("");
+ var ult=RK.last&&RK.last.city?'<p class="cml-rult"><span class="cml-rponto"></span>O último pedido foi para <b>'+esc(RK.last.city)+(RK.last.uf?", "+esc(RK.last.uf):"")+"</b></p>":"";
+ var s=D.createElement("section");s.className="cml cml-rk";
+ s.innerHTML='<div class="cml-w"><div class="cml-head"><div><p class="cml-eb">'+(rank?"Ranking do mês":"Favoritos da casa")+'</p><h2 class="cml-tt cml-h2">Os mais queridos <em>por vocês</em></h2></div>'+ult+'</div><div class="cml-rgrid">'+big+peq+"</div></div>";
+ sec.parentNode.insertBefore(s,sec);sec.style.display="none";
+ [].forEach.call(s.querySelectorAll("article"),function(a){var u=a.getAttribute("data-url");var nm=(a.querySelector("h3,h4")||{}).textContent||"";var f=(a.querySelector(".cml-rfoto img")||{}).src;var pb=(a.querySelector(".cml-rpreco b")||{}).textContent||"";var pd=(a.querySelector(".cml-rpreco s")||{}).textContent||"";
+  [].forEach.call(a.querySelectorAll(".cml-espia"),function(b){b.addEventListener("click",function(e){e.preventDefault();espiar(u,{nome:nm,foto:f,preco:pb,de:pd})})})})}
 
 /* ---------- PAGINA DE PRODUTO ---------- */
 function produto(){var h=D.querySelector("h1.js-product-name");if(!h)return;var box=h.parentElement;
@@ -135,7 +181,7 @@ function titulos(){[].forEach.call(D.querySelectorAll(".heading-block"),function
 /* ajustes do site atual que continuam valendo (icones da descricao, frete) */
 (function(){if(D.querySelector("script[src*='cml-ui']"))return;var x=D.createElement("script");x.async=true;x.src="https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-ui";(D.head||D.documentElement).appendChild(x)})();
 /* ---------- RODAR ---------- */
-function tudo(){try{titulos()}catch(e){}try{cards()}catch(e){}try{produto()}catch(e){}try{categoria()}catch(e){}try{depoimentos()}catch(e){}try{rodape()}catch(e){}try{atalhos()}catch(e){}try{esconde()}catch(e){}}
+function tudo(){try{ranking()}catch(e){}try{titulos()}catch(e){}try{cards()}catch(e){}try{produto()}catch(e){}try{categoria()}catch(e){}try{depoimentos()}catch(e){}try{rodape()}catch(e){}try{atalhos()}catch(e){}try{esconde()}catch(e){}}
 function ini(){tudo();var n=0;(function l(){tudo();if(++n<20)setTimeout(l,600)})();var t=0;new MutationObserver(function(){clearTimeout(t);t=setTimeout(tudo,250)}).observe(D.body,{childList:true,subtree:true})}
 if(D.readyState==="loading")D.addEventListener("DOMContentLoaded",ini);else ini();
 })();
