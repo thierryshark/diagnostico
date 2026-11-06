@@ -811,3 +811,6 @@ body.cml-pg-blog .post-item-information p,body.cml-pg-blog .post-item-informatio
 @keyframes cmlDeriva{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(4deg)}}
 @media (max-width:760px){.cml-mot{width:130px;opacity:.09}.cml-mot-b{display:none}}
 html,body{overflow-x:clip}.cml-mot-a{right:0}.cml-mot-b{left:0}
+/* rodape em moldura */
+footer.section-footer,footer.cml-pronto{width:calc(100% - 48px)!important;max-width:1380px;margin:24px auto 96px!important;border-radius:36px!important;overflow:hidden}
+@media (max-width:760px){footer.section-footer,footer.cml-pronto{width:calc(100% - 24px)!important;margin:14px auto 88px!important;border-radius:26px!important}}
