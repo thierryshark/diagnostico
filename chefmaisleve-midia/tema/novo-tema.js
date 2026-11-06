@@ -17,6 +17,16 @@ var COIN='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="cu
 function nota(box){if(!box)return null;var cnt=[].filter.call(box.querySelectorAll("span"),function(s){return/^\(\d+\)$/.test(s.textContent.trim())})[0];if(!cnt)return null;var n=parseInt(cnt.textContent.replace(/\D/g,""),10)||0,sum=0,ws=box.querySelectorAll("clipPath rect, clippath rect");[].forEach.call(ws,function(x){sum+=(parseFloat(x.getAttribute("width"))||0)/20});return{n:n,avg:ws.length?sum:5}}
 function linhaNota(r){return r&&r.n>0?STAR+" <b>"+r.avg.toFixed(1).replace(".",",")+"</b> <span>("+r.n+'<span class="cml-rtw">'+(r.n===1?" avaliação":" avaliações")+"</span>)</span>":"<span>Ainda sem avaliações</span>"}
 
+
+/* ---------- FOTOS NA MOLDURA DOS CARDS ---------- */
+/* recorte sem fundo (so para a moldura dos cards; a pagina do produto continua com a foto original) */
+var REC=null,RECU="https://dzmlyrkzcdqicwfmxnxd.supabase.co/storage/v1/object/public/recortes/";
+(function(){try{var c=sessionStorage.getItem("cml_rec");if(c){REC=JSON.parse(c);return}}catch(e){}fetch("https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-recorte").then(function(r){return r.json()}).then(function(j){REC=j;try{sessionStorage.setItem("cml_rec",JSON.stringify(j))}catch(e){}tudo()}).catch(function(){REC={}})})();
+function moldura(c){var im=c.querySelector(".product-item-image-container");if(!im||im.__cmlM)return;var id=c.getAttribute("data-product-id");var t=REC?REC[id]:null;if(REC===null)return;
+ var imgs=im.querySelectorAll("img.product-item-image,img.js-product-item-image-private");if(!imgs.length)return;im.__cmlM=1;
+ var a=imgs[0];a.classList.add("cml-img1");
+ if(t==="r"){var u=RECU+id+".webp";a.removeAttribute("srcset");a.removeAttribute("data-srcset");a.removeAttribute("sizes");a.setAttribute("data-src",u);a.src=u;a.classList.remove("lazyload");a.classList.add("lazyloaded");im.classList.add("cml-tem-rec")}
+ else im.classList.add("cml-tem-foto")}
 /* ---------- CARDS DE PRODUTO ---------- */
 function card(c){var nm=c.querySelector(".js-item-name");if(!nm)return;var link=c.querySelector(".product-item-link")||nm.parentElement;
  var sig=(c.querySelector(".product-item-link")||c).textContent.replace(/\s+/g,"").length+"|"+nm.textContent+"|"+((c.querySelector(".js-price-display")||{}).textContent||"")+"|"+((c.querySelector(".js-compare-price-display")||{}).style||{}).display;if(c.__cml===sig)return;c.__cml=sig;
@@ -36,7 +46,7 @@ function card(c){var nm=c.querySelector(".js-item-name");if(!nm)return;var link=
  /* botao */
  var b=c.querySelector(".js-open-quickshop-wording");if(b&&b.textContent.trim()==="Comprar")b.textContent="Comprar";
 }
-function cards(){[].forEach.call(D.querySelectorAll(".js-item-product"),function(c){try{card(c)}catch(e){}})}
+function cards(){[].forEach.call(D.querySelectorAll(".js-item-product"),function(c){try{card(c)}catch(e){}try{moldura(c)}catch(e){}})}
 
 /* ---------- PAGINA DE PRODUTO ---------- */
 function produto(){var h=D.querySelector("h1.js-product-name");if(!h)return;var box=h.parentElement;
