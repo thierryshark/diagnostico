@@ -663,3 +663,4 @@ textarea{border-radius:18px!important}
 .cml-mp-tot{display:flex;justify-content:space-between;gap:10px;padding-top:12px;font:400 14px Poppins,sans-serif}
 .cml-mp-tot b{font-weight:700}
 @media (max-width:760px){.cml-mp{padding:36px 0 56px}.cml-mp-g{grid-template-columns:1fr}.cml-mp-r{position:static;order:-1}.cml-mp-cx,.cml-mp-it{grid-template-columns:1fr}}
+.cml-mp-av{margin:8px 0 0;font:300 12px Poppins,sans-serif;color:var(--cml-mu)}
