@@ -16,11 +16,11 @@ html.cml-blk:not(#cmt) body .product-payments-info{background:transparent!import
 html.cml-blk:not(#cmt) body #ns-section-footer .footer-content{border:1px solid rgba(223,174,88,.20)!important;border-radius:28px!important;background-color:rgba(18,21,15,.52)!important}
 /* card de produto: foto em papel com topo em arco, preco dourado, botao de contorno */
 html.cml-blk:not(#cmt) body .js-item-product.product-item{border-radius:24px!important;padding:10px!important;box-shadow:none!important}
-html.cml-blk:not(#cmt) body .js-item-product .js-product-item-image-container-private,html.cml-blk:not(#cmt) body .js-item-product .product-item-image-container{border-radius:38% 38% 14px 14px/24% 24% 14px 14px!important;overflow:hidden!important;background:#f6efe9!important}
+html.cml-blk:not(#cmt) body .js-item-product .js-product-item-image-container-private,html.cml-blk:not(#cmt) body .js-item-product .product-item-image-container,html.cml-blk:not(#cmt) body .cbk-card:not(.c12-big) .cbk-img{border-radius:38% 38% 14px 14px/24% 24% 14px 14px!important;overflow:hidden!important;background:#f6efe9!important}
 html.cml-blk:not(#cmt) body .js-item-product .product-item-name{font-weight:500!important;color:#f6efe9!important}
 html.cml-blk:not(#cmt) body .js-item-product .product-item-price{color:#f3d48b!important;font-weight:600!important}
-html.cml-blk:not(#cmt) body .js-item-product .js-addtocart.btn,html.cml-blk:not(#cmt) body .js-item-product input.js-addtocart{background:transparent!important;border:1px solid rgba(223,174,88,.6)!important;color:#f3d48b!important;box-shadow:none!important;font-weight:600!important}
-html.cml-blk:not(#cmt) body .js-item-product .js-addtocart.btn:hover,html.cml-blk:not(#cmt) body .js-item-product input.js-addtocart:hover{background:rgba(223,174,88,.12)!important;border-color:#dfae58!important}
+html.cml-blk:not(#cmt) body .js-item-product .js-addtocart.btn,html.cml-blk:not(#cmt) body .js-item-product input.js-addtocart,html.cml-blk:not(#cmt) body .cbk-card .cbk-btn{background:transparent!important;border:1px solid rgba(223,174,88,.6)!important;color:#f3d48b!important;box-shadow:none!important;font-weight:600!important}
+html.cml-blk:not(#cmt) body .js-item-product .js-addtocart.btn:hover,html.cml-blk:not(#cmt) body .js-item-product input.js-addtocart:hover,html.cml-blk:not(#cmt) body .cbk-card .cbk-btn:hover{background:rgba(223,174,88,.12)!important;border-color:#dfae58!important}
 /* titulos mais finos */
 html.cml-blk:not(#cmt) body :is(h1,h2,h3,h4,.h1,.h2,.heading-block,.section-title,.c4-sig,.js-product-name){font-weight:600!important}
 html.cml-blk:not(#cmt) body :is(h1,h2,h3,h4,.heading-block,.c4-sig) :is(em,i){font-weight:300!important}
