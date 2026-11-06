@@ -63,11 +63,15 @@ var CAT={
  "/kits-presentes/":["Presente pronto","Kits","para presentear","Kits montados à mão, em embalagem de presente, com cartão escrito à mão.","cmw3ktxt2000000ilg3mw65a0-png-1024a1024-screenshot-e7d68eedc7195a3af917938956824193-1024-1024.webp",[["Monte seu presente","/presentes-de-natal/"]]],
  "/acessorios/":["Para o seu ritual","Acessórios","do chá","Xícaras, infusores e chaleiras para preparar o seu chá com calma.","chatgpt-image-11_05_2026-14_20_03-bc0a1d3fac9aaab95117785200217570-1024-1024.webp",[["Chás","/chas/"]]]
 };
+var COR={"/chas/": "salvia", "/chas/chas-infusoes-naturais/trouxinhas/": "", "/snacks-granolas/": "", "/snacks-granolas/snacks-saudaveis/": "", "/snacks-granolas/granolas/": "ouro", "/kits-presentes/": "oliva", "/acessorios/": "papel"};
+function enfeites(){var p="";for(var i=0;i<7;i++)p+='<span class="cml-bn-p" style="left:'+(8+i*13)+'%;animation-delay:'+(-i*1.3)+'s"></span>';return'<span class="cml-bn-f f1"></span><span class="cml-bn-f f2"></span><span class="cml-bn-f f3"></span><span class="cml-bn-f f4"></span>'+p}
+function faixa(itens){var t=itens.map(function(x,i){return(i%2?"<b>"+x+"</b>":"<span>"+x+"</span>")}).join("<span>·</span>");return'<div class="cml-bn-fx" aria-hidden="true"><div>'+t+"<span>·</span>"+t+"<span>·</span></div></div>"}
+function palavras(a,b){var w=esc(a).split(" ").map(function(x){return"<span>"+x+"</span>"}).join(" ");return w+(b?" <span><em>"+esc(b)+"</em></span>":"")}
 function categoria(){var ph=D.querySelector(".page-header"),bn=D.querySelector(".category-banner");if(!ph||!D.querySelector(".js-category-controls")||D.querySelector(".cml-cat"))return;
- var h=ph.querySelector("h1"),t=h?h.textContent.trim():"",k=CAT[P]||null;if(!k){var w=t.split(/\s+/),c=Math.ceil(w.length/2)||1;var fi=D.querySelector(".js-item-product .product-item-image");k=["Chef Mais Leve",w.slice(0,c).join(" "),w.slice(c).join(" "),"",fi?"":"",[]];k.img=fi?(fi.getAttribute("data-srcset")||fi.currentSrc||fi.src||"").split(" ")[0]:""}
- var img=k.img||(k[4]?CDN+k[4]:"");var chips=(k[5]||[]).map(function(x){return'<a class="cml-chip" href="'+x[1]+'">'+esc(x[0])+"</a>"}).join("");
- var s=D.createElement("section");s.className="cml cml-cat";
- s.innerHTML='<div class="cml-w"><div class="cml-cat-tx"><p class="cml-eb">'+esc(k[0])+'</p><h1 class="cml-tt cml-cat-h">'+esc(k[1])+(k[2]?" <em>"+esc(k[2])+"</em>":"")+'</h1>'+(k[3]?'<p class="cml-tx">'+esc(k[3])+"</p>":"")+(chips?'<div class="cml-chips">'+chips+"</div>":"")+'</div>'+(img?'<div class="cml-cat-ft"><img src="'+img+'" alt=""></div>':"")+"</div>";
+ var h=ph.querySelector("h1"),t=h?h.textContent.trim():"",k=CAT[P]||null;if(!k){var w=t.split(/\s+/),c=Math.ceil(w.length/2)||1;k=["Chef Mais Leve",w.slice(0,c).join(" "),w.slice(c).join(" "),"","",[]]}
+ var cor=COR[P]!=null?COR[P]:"";var chips=(k[5]||[]).map(function(x){return'<a class="cml-chip" href="'+x[1]+'">'+esc(x[0])+"</a>"}).join("");
+ var s=D.createElement("section");s.className="cml cml-cat cml-bn cml-bn--cat"+(cor?" cml-bn--"+cor:"");
+ s.innerHTML=enfeites()+'<div class="cml-w"><p class="cml-eb">'+esc(k[0])+'</p><h1 class="cml-bn-t">'+palavras(k[1],k[2])+'</h1>'+(k[3]?'<p class="cml-bn-tx">'+esc(k[3])+"</p>":"")+(chips?'<div class="cml-chips cml-bn-ac">'+chips+"</div>":"")+"</div>"+faixa(["Feito à mão","Sem aditivos","Santa Catarina","Nutrindo corpo e alma"]);
  var ref=bn||ph;ref.parentNode.insertBefore(s,ref);D.body.classList.add("cml-tem-cat")}
 
 /* ---------- DEPOIMENTOS ---------- */
