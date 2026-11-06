@@ -266,3 +266,10 @@ textarea{border-radius:18px!important}
 .shipping-option,.js-shipping-radio,label.js-shipping-radio,.radio-button.box{border-radius:16px!important;overflow:hidden}
 .js-price-container>*{width:auto!important}
 .cml-pqt{display:block;margin-top:6px;font:400 15px Poppins,sans-serif;letter-spacing:.02em;color:var(--cml-mu)}
+.product-price-main{display:flex!important;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.product-price-row{order:1}
+.product-price-main #compare_price_display{order:2}
+.product-item-image-container *:not(.cml-off){background-color:transparent!important}
+.category-controls,.filters-container{font-family:Poppins,sans-serif}
+.js-category-controls h2,.js-category-controls .h4,.filters-container .h4,.filters-container h2,.filters-container h3{font:600 22px/1.2 Poppins,sans-serif!important;color:var(--cml-oliva2)!important}
+.filters-container .h6,.filters-container h4,.filters-container .filter-title{font:600 12px Poppins,sans-serif!important;letter-spacing:.18em;text-transform:uppercase;color:var(--cml-ambar2)!important}
