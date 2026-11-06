@@ -14,6 +14,11 @@ jobs:
           cd chefmaisleve-midia/produtos
           while read n f; do [ -n "$n" ] && curl -sSfL -o "$n.webp" "https://acdn-us.mitiendanube.com/stores/005/060/752/products/$f-640-0.webp" || echo "falhou $n"; done < lista.txt
           curl -sSfL -o logo-email.bin 'https://cdn.cashing.com.br/49266/message_templates/email/d7fca8cf-f53e-4c9f-9849-5e9e4134d37a' || echo falhou logo
+          curl -sSL -A 'Mozilla/5.0' https://chefmaisleve.com.br/ -o home.html
+          grep -oE 'https?:[^"'"'"' ]*logo[^"'"'"' ]*' home.html | sort -u > logos.txt || true
+          grep -oE '//[^"'"'"' ]*mitiendanube[^"'"'"' ]*logo[^"'"'"' ]*' home.html | sort -u >> logos.txt || true
+          n=0; while read u; do n=$((n+1)); case "$u" in //*) u="https:$u";; esac; curl -sSfL -o "logo-site-$n.${u##*.}" "$u" || true; done < logos.txt
+          rm -f home.html
           ls -la
       - run: |
           git config user.name "Thierry"
