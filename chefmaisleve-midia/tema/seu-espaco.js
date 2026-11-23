@@ -1,4 +1,4 @@
-/* Chef Mais Leve: "Seu espaco" como mais uma categoria do menu (topo e celular) + cards da home compactos no celular */
+/* Chef Mais Leve: "Seu espaco" como mais uma categoria do menu (topo do computador; no celular o menu ja tem Para voce agora e Sua conta) + cards da home compactos no celular */
 (function(){
 var d=document;
 if(!d.getElementById('cml-se-css')){var st=d.createElement('style');st.id='cml-se-css';st.textContent=[
@@ -30,27 +30,9 @@ function desk(ul){
   +'<div class="cml-se-side"><img src="'+IMG+'" alt="Chá misto da Chef Mais Leve" loading="lazy" width="280" height="150"><div><span class="k">Em 1 minuto</span><b>Encontre <em>o seu chá</em></b><a href="/encontre-seu-cha/">Começar →</a></div></div></div></div>';
  ul.appendChild(li);
 }
-function mob(hb){
- var src=[].slice.call(hb.children).filter(function(c){return c.classList.contains('item-with-subitems')})[0];
- var m;
- if(src){
-  m=src.cloneNode(true);m.id='cml-se-m';
-  var modal=m.querySelector('.js-modal-private');var old=modal.id;var nid='nav-panel-cml-se';modal.id=nid;
-  [].forEach.call(m.querySelectorAll('[data-target="#'+old+'"]'),function(b){b.setAttribute('data-target','#'+nid)});
-  var btn=m.querySelector(':scope>button');[].forEach.call(btn.childNodes,function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent='Seu espaço '});
-  if(!/Seu espa/.test(btn.textContent))btn.insertBefore(d.createTextNode('Seu espaço '),btn.firstChild);
-  var tt=modal.querySelector('.modal-title');if(tt)tt.textContent='Seu espaço';
-  var body=modal.querySelector('.modal-body');
-  body.innerHTML=G.map(function(g){return g[1].map(function(x){return '<div class="nav-item"><a class="nav-list-link" href="'+x[1]+'">'+x[0]+'</a></div>'}).join('')}).join('');
- }else{
-  m=d.createElement('div');m.id='cml-se-m';m.className='nav-item';m.innerHTML='<a class="nav-list-link" href="/encontre-seu-cha/">Seu espaço</a>';
- }
- hb.appendChild(m);
-}
 function go(){
  var ul=d.querySelector('.js-nav-desktop-list');if(ul&&!d.getElementById('cml-se'))desk(ul);
- var hb=d.querySelector('#nav-hamburger .nav-list');if(hb&&hb.children.length&&!d.getElementById('cml-se-m'))mob(hb);
- return !!(d.getElementById('cml-se')&&d.getElementById('cml-se-m'));
+ return !!d.getElementById('cml-se');
 }
 var n=0;(function t(){var ok=false;try{ok=go()}catch(e){}if(!ok&&++n<40)setTimeout(t,250)})();
 })();
