@@ -47,7 +47,12 @@ Vários módulos montam uma vez só e dependem dessa ordem (o FAQ do produto cop
 - Antes de gravar classe, atributo ou estilo num laço, confira se o valor mudou.
 - Não ligue nem desligue a folha `site.css` pelo console (`link.disabled`): o navegador recria a folha e perde a conversão do `:has()`.
 
+## Galeria do produto (computador)
+`galeria.css` entra por último no `site.css`. Em telas de 1200 px ou mais, a galeria vira mosaico: foto principal maior e as outras ao lado, todas visíveis; clicar em qualquer uma abre o visor do tema. Com mais de 4 mídias aparecem a principal, duas fotos e o vídeo (ou a quarta foto) e o aviso "Ver todas as fotos". Abaixo de 1200 px e no celular continua o carrossel. Produtos com a página "destaque" (bloco `#cml-dst`) têm galeria própria e não mudam. O vídeo do produto só começa a carregar depois que a página terminou de carregar.
+
 ## Diferenças intencionais em relação à v18
+- Página de produto no computador: galeria em mosaico (pedido do Thierry em 23/11) e coluna de informações um pouco mais estreita em telas médias.
+- FAQ do produto: mostra sempre as respostas corrigidas (açúcar e redução do café); na v18 isso dependia do tempo de carregamento.
 - Lateral de categorias (computador): mostra só categorias. Na v18 ela herdava a lista de produtos que o menu do topo ganhou depois e o item "Seu espaço".
 
 ## O que ficou para depois

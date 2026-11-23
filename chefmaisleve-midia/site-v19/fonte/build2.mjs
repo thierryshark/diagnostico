@@ -80,6 +80,8 @@ const TROCAS = [
   // efeito de aparecer ao rolar: cada bloco era avaliado uma vez so; como a pagina agora monta mais rapido, a primeira avaliacao pegava blocos ainda "na tela"
   // (o conteudo acima deles nao tinha crescido) e eles ficavam sem o efeito. Bloco pulado pela posicao volta a ser avaliado ate a pagina terminar de carregar.
   ['cml-extra.js', 'if(seen.indexOf(el)>=0)continue;seen.push(el);if(el.closest(".c5-rv")&&el.closest(".c5-rv")!==el)continue;var r=el.getBoundingClientRect();if(r.height<40||r.top<vh*.92)continue;add.push(el)', 'if(seen.indexOf(el)>=0)continue;if(el.closest(".c5-rv")&&el.closest(".c5-rv")!==el){seen.push(el);continue}var r=el.getBoundingClientRect();if(r.height<40||r.top<vh*.92){if(D.readyState==="complete")seen.push(el);continue}seen.push(el);add.push(el)'],
+  // video do produto: o tocador (sem som, em laco) so comeca a carregar depois que a pagina terminou de carregar, para nao disputar a rede com fotos e codigo
+  ['extx-00.js', 'e.src=n+"?autoplay=true&muted=true&loop=true&controls=false&preload=auto&letterboxColor=transparent"', '(function(u){var g=function(){setTimeout(function(){e.src=u},500)};"complete"===document.readyState?g():window.addEventListener("load",g)})(n+"?autoplay=true&muted=true&loop=true&controls=false&preload=auto&letterboxColor=transparent")'],
   // reescritor de :has: enquanto a pagina ainda esta chegando, atualiza uma vez por quadro (antes da pintura); e converte cada folha de estilo assim que ela termina de carregar
   ['cml-extra.js', 'function later(){if(tm)return;var w=Math.max(0,120-(Date.now()-last));tm=setTimeout(run,w)}', 'function later(){if(tm)return;if(D.readyState==="loading"){tm=1;var d=0,g=function(){if(d)return;d=1;run()};requestAnimationFrame(g);setTimeout(g,120);return}var w=Math.max(0,120-(Date.now()-last));tm=setTimeout(run,w)}'],
   ['cml-extra.js', 'addEventListener("load",function(){needScan=true;later()});', 'addEventListener("load",function(){needScan=true;later()});D.addEventListener("load",function(e){var t=e.target;if(t&&t.nodeName==="LINK"&&/stylesheet/i.test(t.rel||"")){needScan=true;run()}},true);'],
@@ -257,7 +259,9 @@ for (const p of ['/', ...Object.keys(P).filter((p) => p !== '/')]) { const st = 
 for (const k of DERIVADOS) if (!vistos.has(k)) throw new Error('estilo derivado nao capturado: ' + k);
 let css = partes.map(([k, t]) => '/*' + k + '*/\n' + t + '\n').join('');
 for (const [a, b] of CSS_TROCAS) { if (css.split(a).length !== 2) throw new Error('troca css: esperava 1 ocorrencia: ' + a.slice(0, 60)); css = css.replace(a, () => b); }
-css = fs.readFileSync('fontes.css', 'utf8') + '\n' + css + '\n';
+// galeria.css: mosaico de fotos da pagina de produto no computador; entra por ultimo para valer sobre o carrossel
+const REFORCO = Array.from({ length: 9 }, (_, i) => ':not(#g' + (i + 1) + ')').join('');
+css = fs.readFileSync('fontes.css', 'utf8') + '\n' + css + '\n' + fs.readFileSync('galeria.css', 'utf8').split('%N%').join(REFORCO) + '\n';
 if (fs.existsSync('ajustes.css')) css += fs.readFileSync('ajustes.css', 'utf8') + '\n';
 // regras comprovadamente mortas: dependiam de classes que nenhum codigo cria mais (lista em modulos.json)
 if (cfg.tokensMortos && cfg.tokensMortos.length) {

@@ -1,0 +1,25 @@
+/* GALERIA EM MOSAICO na pagina de produto (computador, 23/11/2026).
+   Foto principal maior e as outras ao lado, todas visiveis de uma vez; clicar em qualquer uma abre a foto grande (visor do tema).
+   Mais de 4 midias: aparecem a principal, duas fotos e o video (ou a quarta foto) e o aviso "Ver todas as fotos"; as demais abrem no visor.
+   Celular e telas com menos de 1200 px continuam com o carrossel. %N% vira o reforco de prioridade na montagem. */
+@media (min-width:1200px){
+html body #ns-section-main_product .product-columns%N%{gap:clamp(32px,3.5vw,64px)!important}
+html body #ns-section-main_product .js-product-images%N%{flex:1 1 0!important;width:auto!important;max-width:none!important;min-width:0!important}
+html body #ns-section-main_product .product-columns>*:not(.js-product-images)%N%{flex:0 0 clamp(420px,32vw,520px)!important;width:clamp(420px,32vw,520px)!important;max-width:520px!important}
+html body #ns-section-main_product .js-product-slider .swiper-wrapper%N%{display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;gap:10px!important;overflow:visible!important;scroll-snap-type:none!important;transform:none!important;position:relative!important;width:100%!important;height:auto!important}
+html body #ns-section-main_product .js-product-slider .swiper-slide%N%{flex:none!important;width:auto!important;max-width:none!important;height:auto!important;aspect-ratio:1/1!important;margin:0!important;grid-column:span 3!important;grid-row:auto!important;scroll-snap-align:none!important;cursor:zoom-in}
+html body #ns-section-main_product .js-product-slider .swiper-slide:first-child%N%{grid-column:1/span 9!important;grid-row:1/span 3!important}
+/* 3 midias: principal em dois tercos, duas ao lado */
+html body #ns-section-main_product .js-product-slider .swiper-slide:first-child:nth-last-child(3)%N%{grid-column:1/span 8!important;grid-row:1/span 2!important}
+html body #ns-section-main_product .js-product-slider .swiper-slide:first-child:nth-last-child(3)~.swiper-slide%N%{grid-column:span 4!important}
+/* 2 midias: lado a lado */
+html body #ns-section-main_product .js-product-slider .swiper-slide:first-child:nth-last-child(2)%N%,html body #ns-section-main_product .js-product-slider .swiper-slide:first-child:nth-last-child(2)~.swiper-slide%N%{grid-column:span 6!important;grid-row:auto!important}
+/* 1 midia: quadrada, centralizada */
+html body #ns-section-main_product .js-product-slider .swiper-slide:only-child%N%{grid-column:1/-1!important;grid-row:auto!important;width:100%!important;max-width:620px!important;justify-self:center!important}
+/* mais de 4: mostra a principal, duas fotos e o video (ou a quarta foto) */
+html body #ns-section-main_product .js-product-slider .swiper-slide:nth-child(n+5):not(.js-product-video-slide)%N%{display:none!important}
+html body #ns-section-main_product .js-product-slider .swiper-wrapper:has(>.js-product-video-slide:nth-child(n+5))>.swiper-slide:nth-child(4)%N%{display:none!important}
+html body #ns-section-main_product .js-product-slider .swiper-wrapper:has(>.swiper-slide:nth-child(5))%N%::after{content:"Ver todas as fotos";position:absolute;right:calc(25% + 16px);bottom:14px;z-index:3;pointer-events:none;padding:9px 12px;border-radius:8px;border:1px solid rgba(86,82,41,.22);background:rgba(255,250,245,.94);color:#2b2916;font:500 12.5px/1 Poppins,sans-serif;letter-spacing:.01em;box-shadow:0 6px 18px -12px rgba(43,41,22,.55)}
+/* setas e contador do carrossel nao fazem sentido no mosaico */
+html body #ns-section-main_product .cx8-nav%N%,html body #ns-section-main_product .js-product-slider-pagination%N%,html body #ns-section-main_product .swiper-product-arrow%N%{display:none!important}
+}
