@@ -6,6 +6,15 @@ var d=document,N=':not(#b1):not(#b2):not(#b3):not(#b4):not(#b5):not(#b6):not(#b7
 if(!d.getElementById('cml-cat-css')){var s=d.createElement('style');s.id='cml-cat-css';s.textContent=[
 '#cml-cbar,.cml-cbar{display:none!important}',
 'aside.c2-side .cml-tree li:has(>.r>a[href$="/account/"]){display:none!important}',
+'@media(min-width:768px){',
+'.cx3-bar{display:flex!important;align-items:center;gap:16px}',
+'.cx3-bar>#modal-sort-by{position:static!important;display:flex!important;align-items:center;gap:10px;margin:0 0 0 auto!important;padding:0!important;width:auto!important;max-width:none!important;height:auto!important;background:none!important;box-shadow:none!important;transform:none!important;border:0!important;visibility:visible!important;opacity:1!important}',
+'.cx3-bar>#modal-sort-by .modal-header{padding:0!important;margin:0!important;border:0!important}',
+'.cx3-bar>#modal-sort-by .modal-header :is(.modal-close,.js-modal-close){display:none!important}',
+'.cx3-bar>#modal-sort-by .modal-title{font:500 13px/1 Poppins,sans-serif!important;color:#6f6656!important;margin:0!important}',
+'.cx3-bar>#modal-sort-by .modal-body{padding:0!important;margin:0!important}',
+'.cx3-bar>#modal-sort-by + .cx3-view{margin-left:0!important}',
+'}',
 '@media(max-width:767px){',
 '.c2-cbn .c2-cbt{padding:16px 18px!important;min-height:0!important}',
 '.c2-cbn .c2-cbt h1,.c2-cbn .c2-cbt h2{font-size:24px!important;line-height:1.15!important;margin:4px 0 0!important}',
@@ -21,7 +30,12 @@ if(!d.getElementById('cml-cat-css')){var s=d.createElement('style');s.id='cml-ca
 ].join('');(d.head||d.documentElement).appendChild(s);}
 function go(){
  if(!d.body||!d.body.classList.contains('template-category'))return true;
- if(window.innerWidth>=768)return true;
+ if(window.innerWidth>=768){
+  var bar=d.querySelector('.cx3-bar'),so=d.getElementById('modal-sort-by');
+  if(!bar)return false;
+  if(so&&so.parentNode!==bar){var vw=bar.querySelector('.cx3-view');bar.insertBefore(so,vw||null)}
+  return true;
+ }
  if(d.querySelector('.cml-fbtn'))return true;
  var nav=d.querySelector('nav.c2-chips'),side=d.querySelector('aside.c2-side');
  if(!nav||!side)return false;
