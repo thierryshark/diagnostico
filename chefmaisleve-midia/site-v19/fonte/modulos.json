@@ -1,0 +1,17 @@
+{
+ "remover": [
+  "cml-home#1",
+  "cml-paginas#3"
+ ],
+ "motivo": {
+  "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
+  "cml-paginas#3": "guarda de sombras do antigo conversor claro, que ja saiu"
+ },
+ "grupo": {},
+ "tokensMortos": [
+  "cml-ma",
+  "cml-ma-*",
+  "cml-hsnap",
+  "cml-hdk"
+ ]
+}
