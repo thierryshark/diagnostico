@@ -5,6 +5,7 @@
 var d=document,N=':not(#b1):not(#b2):not(#b3):not(#b4):not(#b5):not(#b6):not(#b7):not(#b8):not(#b9):not(#b10):not(#b11):not(#b12)';
 if(!d.getElementById('cml-cat-css')){var s=d.createElement('style');s.id='cml-cat-css';s.textContent=[
 '#cml-cbar,.cml-cbar{display:none!important}',
+'aside.c2-side .cml-tree li:has(>.r>a[href$="/account/"]){display:none!important}',
 '@media(max-width:767px){',
 '.c2-cbn .c2-cbt{padding:16px 18px!important;min-height:0!important}',
 '.c2-cbn .c2-cbt h1,.c2-cbn .c2-cbt h2{font-size:24px!important;line-height:1.15!important;margin:4px 0 0!important}',
