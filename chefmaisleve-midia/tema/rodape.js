@@ -48,6 +48,8 @@ function go(){
   fetch(URL_CAP,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({funil:'membros',nome:nome,email:email,whatsapp:wa,origem:'rodape do site',consentimento:true,pagina:location.pathname,site:f.site.value})})
    .then(function(r){return r.json()}).then(function(j){
     if(!j||!j.ok)throw 0;
+    /* Cashing: captura 1140, dispara a automacao de boas-vindas (como a inscricao antiga do rodape) */
+    try{if(!f.site.value){var ld={id_store:'5060752',platform:'nuvemshop',id_lead_capture:1140,name:nome,email:email};if(wa.length>=10)ld.phone=wa;fetch('https://api.cashing.com.br/api/leads/save',{method:'POST',keepalive:true,headers:{accept:'application/json','Content-Type':'application/json'},body:JSON.stringify(ld)}).catch(function(){})}}catch(x){}
     try{if(nat){var ni=nat.querySelector('input[type=email],input[name*=mail]');if(ni){ni.value=email;var fd=new FormData(nat);fetch(nat.action||location.href,{method:'POST',body:fd,credentials:'same-origin'}).catch(function(){})}}}catch(x){}
     f.innerHTML='<p class="ok">Pronto, '+nome.split(' ')[0].replace(/[<>&"]/g,'')+'! Você já é membro da Chef.</p>';
    }).catch(function(){b.disabled=false;b.textContent='Tentar de novo'});
