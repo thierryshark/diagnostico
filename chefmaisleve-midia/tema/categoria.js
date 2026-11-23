@@ -23,6 +23,14 @@ if(!d.getElementById('cml-cat-css')){var s=d.createElement('style');s.id='cml-ca
 '.cml-trow>nav.c2-chips{flex:1 1 auto;min-width:0;margin:0!important}',
 '.cml-fbtn{flex:none;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 11px;border:1px solid #d9c9b5;border-radius:10px;background:#fffaf5;font:500 13px/1 Poppins,sans-serif;color:#2b2916}',
 'body.cml-fo aside.c2-side'+N+'{display:block!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;z-index:1001!important;width:auto!important;max-width:none!important;max-height:72vh!important;overflow:auto!important;margin:0!important;background:#fffaf5!important;border-radius:16px 16px 0 0!important;padding:18px 18px 28px!important;box-shadow:0 -20px 40px -16px rgba(43,41,22,.45)!important}',
+'.cx4-sec{margin-bottom:16px!important}.cx4-sec .cx4-h{font-size:22px!important}',
+'.cx4-sec .cx4-trio{display:grid!important;grid-template-columns:40% minmax(0,1fr)!important;gap:12px!important;align-items:center!important;padding:10px!important}',
+'.cx4-sec .cx4-trio .ims,.cx4-sec .cx4-trio .ims>a{height:auto!important;min-height:0!important}',
+'.cx4-sec .cx4-trio .ims img{display:block;width:100%!important;height:auto!important;aspect-ratio:1/1!important;object-fit:cover!important;border-radius:12px!important}',
+'.cx4-sec .cx4-trio .tx{padding:0!important}',
+'.cx4-sec .cx4-math,.cx4-sec .cx4-d,.cx4-sec .cx4-lead{display:none!important}',
+'.cx4-sec .cx4-pr{display:flex!important;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin:0!important}.cx4-sec .cx4-pr b{font-size:20px!important}.cx4-sec .cx4-pr s{font-size:12px!important}.cx4-sec .cx4-save{font-size:11px!important;padding:3px 8px!important;margin-top:4px!important}',
+'.cx4-sec .cx4-btn{min-height:0!important;height:40px!important;font-size:13px!important;padding:0 10px!important;margin-top:10px!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important}',
 '.cml-fbk{display:none}body.cml-fo .cml-fbk{display:block;position:fixed;inset:0;z-index:1000;background:rgba(43,41,22,.35)}',
 '}'
 ].join('');(d.head||d.documentElement).appendChild(s);}
