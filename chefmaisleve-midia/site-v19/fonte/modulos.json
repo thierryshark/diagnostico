@@ -1,11 +1,13 @@
 {
  "remover": [
   "cml-home#1",
-  "cml-paginas#3"
+  "cml-paginas#3",
+  "cml-extra#37"
  ],
  "motivo": {
   "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
-  "cml-paginas#3": "guarda de sombras do antigo conversor claro, que ja saiu"
+  "cml-paginas#3": "guarda de sombras do antigo conversor claro, que ja saiu",
+  "cml-extra#37": "trocava na tela duas respostas do FAQ a cada 400 ms; as respostas corrigidas agora entram direto na lista de perguntas (extx-13), na montagem"
  },
  "grupo": {},
  "tokensMortos": [

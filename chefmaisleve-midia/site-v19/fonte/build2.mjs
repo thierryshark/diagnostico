@@ -6,6 +6,7 @@ import * as acorn from 'acorn';
 import * as walk from 'acorn-walk';
 import * as esbuild from 'esbuild';
 import { minify as terser } from 'terser';
+import { vivas as hasVivas } from './tools/has-vivas.mjs';
 
 const COV = process.argv.includes('--cov');
 const PROF = process.argv.includes('--prof');
@@ -17,9 +18,23 @@ const est = JSON.parse(fs.readFileSync('est.json', 'utf8'));
 const cfg = fs.existsSync('modulos.json') ? JSON.parse(fs.readFileSync('modulos.json', 'utf8')) : { remover: [], grupo: {} };
 const T = est.texts, P = est.pages;
 const ok = new Set(dec.ok);
+// Estilos constantes (o mesmo texto em todas as paginas capturadas) que a analise automatica nao reconheceu como fixos, porque o texto vem de uma variavel:
+// saem do codigo e entram no site.css na posicao em que eram criados. Sem isso eles ficavam fora de ordem em relacao aos estilos fixos
+// (ex.: no celular, a contagem "1 / 4" da galeria do produto sumia, porque a regra que a esconde passava a valer por ultimo).
+const FORCA_FIXO = [['cml-paginas.js', 33, 'txt:37'], ['cml-paginas.js', 36, 'txt:38'], ['cml-paginas.js', 37, 'txt:39'], ['cml-paginas.js', 38, 'txt:40'], ['extx-00.js', 0, 'txt:64']];
+for (const [f, i, k] of FORCA_FIXO) { const p = dec.plan.find((x) => x[0] === f && x[1] === i); if (!p || p[3]) throw new Error('forca fixo: plano inesperado para ' + f + ' ' + i); p[2] = k; p[3] = true; ok.add(k); }
+// O mesmo para um estilo escrito como texto direto no "extras": [arquivo, comeco do texto, chave do texto capturado]
+const LITERAL_FIXO = [['extx-01.js', '.cml-fr{cursor:pointer}', 'txt:65']];
+for (const x of LITERAL_FIXO) ok.add(x[2]);
 
 // ordem original: partes imediatas, codigo proprio, scripts do rodape e, por ultimo, as que esperavam a pagina montar
-const ORDEM = [['cml-black', ''], ['cml-extra', ''], ['cml-destaque', ''], ['cml-paginas', ''], ['cpv-own', ''], ['ext-seu-espaco', ''], ['ext-categoria', ''], ['ext-extras', ''], ['ext-rodape', ''], ['cml-icons', ''], ['cml-home', 'home'], ['cml-ui', '']];
+// Ordem de execucao, igual a do site v18. La o pacote era um script comum (o carregador usava document.write), executado no meio da leitura da pagina:
+//   1) INICIO de cada parte, com a pagina "ainda sendo lida": cml-black, cml-extra, cml-destaque, cml-paginas, cpv-own e, em seguida, os quatro arquivos do tema;
+//      quase todo modulo so se registra para o evento "pagina lida" (DOMContentLoaded);
+//   2) no evento, os registros rodavam na ordem: os do pacote, depois as partes adiadas (cml-icons, cml-home, cml-ui), depois cpv-own e os arquivos do tema.
+// Varios modulos montam uma vez so e dependem dessa ordem (o FAQ do produto copia as perguntas que o "extras" ja trocou; a lateral le o menu ja completo).
+// Aqui tudo roda num arquivo so, depois da leitura; os modulos "fase-*" reproduzem as duas etapas.
+const ORDEM = [['fase-ini', ''], ['cml-black', ''], ['cml-extra', ''], ['cml-destaque', ''], ['cml-paginas', ''], ['fase-marca', ''], ['cpv-own', ''], ['ext-seu-espaco', ''], ['ext-categoria', ''], ['ext-extras', ''], ['ext-rodape', ''], ['fase-evento1', ''], ['cml-icons', ''], ['cml-home', 'home'], ['cml-ui', ''], ['fase-evento2', '']];
 
 const LIMPA = [
   ['cpv-own.js', '/* Chef Mais Leve: carrega o tema Black (funcao cml-black)', '.appendChild(s)})();'],
@@ -45,6 +60,31 @@ const TROCAS = [
   ['extx-00.js', 'i.querySelector("b").textContent=a?a.textContent.trim():"",i.querySelector(".t span").textContent=c?c.textContent.trim():""', '__cmlT(i.querySelector("b"),a?a.textContent.trim():""),__cmlT(i.querySelector(".t span"),c?c.textContent.trim():"")'],
   ['extx-00.js', 'i.querySelector(".go").textContent=m?"Avise-me":"Comprar"', '__cmlT(i.querySelector(".go"),m?"Avise-me":"Comprar")'],
   ['extx-02.js', 't.querySelector("em").textContent=i?[n?"Caixa "+n:"",e?"Cartão":""].filter(Boolean).join(" + "):"",t.querySelector("u").textContent=i?"✓":"Adicionar"', '__cmlT(t.querySelector("em"),i?[n?"Caixa "+n:"",e?"Cartão":""].filter(Boolean).join(" + "):""),__cmlT(t.querySelector("u"),i?"✓":"Adicionar")'],
+  // cantos: os ajustes passam a rodar uma vez por quadro (antes da pintura), em vez de a cada alteracao da pagina; raizes repetidas sao conferidas uma vez so
+  ['cml-paginas.js', 'var a=q;q=[];for(var k=0;k<a.length;k++){try{if(a[k].isConnected){soft(a[k].parentNode||a[k])}}catch(e){}}},250)', 'var a=q;q=[];var vs=new Set();for(var k=0;k<a.length;k++){try{if(a[k].isConnected){var rr=a[k].parentNode||a[k];if(!vs.has(rr)){vs.add(rr);soft(rr)}}}catch(e){}}},250)'],
+  ['cml-paginas.js', 'try{new MutationObserver(function(ms){if(!window.__cx3soft)return;for(var i=0;i<ms.length;i++)for(var j=0;j<ms[i].addedNodes.length;j++){var n=ms[i].addedNodes[j];if(n.nodeType===1){try{window.__cx3soft(n.parentNode||n)}catch(e){}}}}).observe(D.documentElement,{childList:true,subtree:true})}catch(e){}',
+    'try{var cq=new Set(),cf=0,cgo=function(){cf=0;var a=cq;cq=new Set();a.forEach(function(r){try{if(r.isConnected)window.__cx3soft(r)}catch(e){}})};new MutationObserver(function(ms){if(!window.__cx3soft)return;for(var i=0;i<ms.length;i++)for(var j=0;j<ms[i].addedNodes.length;j++){var n=ms[i].addedNodes[j];if(n.nodeType===1)cq.add(n.parentNode||n)}if(cq.size&&!cf){cf=1;__cmlF(cgo)}}).observe(D.documentElement,{childList:true,subtree:true})}catch(e){}'],
+  ['cml-paginas.js', 'var q=[],t;function flush(){var a=q;q=[];a.forEach(function(n){if(n.isConnected){soft(n);promo(n.parentNode||D)}})}', 'var q=[],t,ft=0;function flush(){ft=0;var a=q;q=[];var vp=new Set();a.forEach(function(n){if(n.isConnected){soft(n);var pp=n.parentNode||D;if(!vp.has(pp)){vp.add(pp);promo(pp)}}})}'],
+  ['cml-paginas.js', 'function go(){full();setTimeout(full,1500);setTimeout(full,4000);new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,function(n){if(n.nodeType===1)q.push(n)})});flush()})', 'function go(){full();setTimeout(full,1500);setTimeout(full,4000);new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,function(n){if(n.nodeType===1)q.push(n)})});if(q.length&&!ft){ft=1;__cmlF(flush)}})'],
+  // cantos em duas fases: primeiro le tudo, depois escreve tudo (mesmo resultado; antes cada escrita no meio da leitura forcava um recalculo de estilo)
+  ['cml-paginas.js', 'function soft(root){var els=root.querySelectorAll?root.querySelectorAll("*"):[];for(var i=0;', 'function soft(root){var wr=[],els=root.querySelectorAll?root.querySelectorAll("*"):[];for(var i=0;'],
+  ['cml-paginas.js', 'if(v<r)e.style.setProperty("border-radius",v+"px","important")}}', 'if(v<r)wr.push(e,v)}for(var k2=0;k2<wr.length;k2+=2)wr[k2].style.setProperty("border-radius",wr[k2+1]+"px","important")}'],
+  ['cml-paginas.js', 'function soft(root){if(!root||root.nodeType!==1)return;var list=[root].concat(', 'function soft(root){if(!root||root.nodeType!==1)return;var wr=[],list=[root].concat('],
+  ['cml-paginas.js', 'if(!vis)return;e.style.setProperty("border-radius",L+"px","important")})}', 'if(!vis)return;wr.push(e,L)});for(var k2=0;k2<wr.length;k2+=2)wr[k2].style.setProperty("border-radius",wr[k2+1]+"px","important")}'],
+  ['cml-paginas.js', 'html:has(body.modal-show)', 'html:has(>body.modal-show)'],
+  // "Encontre seu cha": o estilo c10-css era montado na hora a partir das regras do c4-css (que agora mora no site.css); ele entra pronto no site.css e o laco sai
+  ['cml-extra.js', 'var n=0;(function loop(){if(build()&&n>6)return;if(++n<30)setTimeout(loop,n<10?120:500)})();', ''],
+  // home: no v18 os dados do ranking vinham dentro do pacote (window.__cmlRk); aqui o ranking busca os dados e precisa deixa-los no mesmo lugar,
+  // porque a contagem de avaliacoes dos cartoes e o painel "O que os clientes dizem" leem dali
+  ['cml-extra.js', '.then(function(j){rkData=j})', '.then(function(j){rkData=j;if(j&&j.items&&!window.__cmlRk)window.__cmlRk=j})'],
+  // reescritor de :has: enquanto a pagina ainda esta chegando, atualiza uma vez por quadro (antes da pintura); e converte cada folha de estilo assim que ela termina de carregar
+  ['cml-extra.js', 'function later(){if(tm)return;var w=Math.max(0,120-(Date.now()-last));tm=setTimeout(run,w)}', 'function later(){if(tm)return;if(D.readyState==="loading"){tm=1;var d=0,g=function(){if(d)return;d=1;run()};requestAnimationFrame(g);setTimeout(g,120);return}var w=Math.max(0,120-(Date.now()-last));tm=setTimeout(run,w)}'],
+  ['cml-extra.js', 'addEventListener("load",function(){needScan=true;later()});', 'addEventListener("load",function(){needScan=true;later()});D.addEventListener("load",function(e){var t=e.target;if(t&&t.nodeName==="LINK"&&/stylesheet/i.test(t.rel||"")){needScan=true;run()}},true);'],
+  // reescritor de :has: pode ser chamado na hora (no fim do pacote), sem esperar o proximo ciclo
+  ['cml-extra.js', 'window.__cmlHzInfo=function(){', 'window.__cmlHzNow=function(){needScan=false;scan();try{mo.takeRecords()}catch(e){}};window.__cmlHzInfo=function(){'],
+  // arvore de categorias da lateral: so categorias (nao entram os produtos listados no menu nem o item Seu espaco)
+  ['cml-destaque.js', 'if (aa && aa.pathname) kids.push(node(aa, li.querySelector("ul")));', 'if (aa && aa.pathname && aa.pathname.indexOf("/produtos/") !== 0) kids.push(node(aa, li.querySelector("ul")));'],
+  ['cml-destaque.js', 'if (a && dd && dd.children.length) T.push(node(a, dd));', 'if (a && dd && dd.children.length && li.id !== "cml-se") T.push(node(a, dd));'],
   // barra de compra do produto: a leitura de posicao na rolagem passa a acontecer uma vez por quadro
   ['extx-00.js', 'window.addEventListener("scroll",function(){var x=document.querySelector("#product_form .js-addtocart:not(.js-addtocart-placeholder)")||document.querySelector("#product_form");if(x){var on=x.getBoundingClientRect().bottom<0;i.classList.toggle("on",on),document.body.classList.toggle("cml-baron",on)}},{passive:!0})', 'window.addEventListener("scroll",function(){if(i.__rq)return;i.__rq=requestAnimationFrame(function(){i.__rq=0;var x=document.querySelector("#product_form .js-addtocart:not(.js-addtocart-placeholder)")||document.querySelector("#product_form");if(x){var on=x.getBoundingClientRect().bottom<0;i.classList.toggle("on",on),document.body.classList.toggle("cml-baron",on)}})},{passive:!0})'],
   // redimensionamento artificial (acorda todos os carrosseis): so na pagina de produto, onde a largura das fotos muda
@@ -56,6 +96,20 @@ const CSS_TROCAS = [
   ['html.cml-blk body.template-category:not(.c2-ready) :is(#ns-section-category_hero,#ns-section-product_list){opacity:0!important}', 'html.cml-blk body.template-category:not(.c2-ready) :is(#ns-section-category_hero,#ns-section-product_list){opacity:0;animation:cmlrv 0s 1.6s forwards}'],
 ];
 const PARSE = { ecmaVersion: 'latest', sourceType: 'script', allowReturnOutsideFunction: true };
+
+// FAQ: a lista de perguntas (extx-13) tinha duas respostas antigas; um bloco do cml-extra ("respostas corrigidas no FAQ") trocava o texto na tela de 400 em 400 ms.
+// O FAQ do produto copia a lista uma vez so e podia copiar antes da troca. Aqui a resposta corrigida entra direto na lista; o bloco de troca sai (modulos.json).
+function faqCorrigido(code) {
+  const ext = fs.readFileSync('src/cml-extra.js', 'utf8'); const i = ext.indexOf('var FIX=['); const j = ext.indexOf('];', i);
+  if (i < 0 || j < 0) throw new Error('faq: bloco FIX nao encontrado');
+  const arr = Function('return ' + ext.slice(i + 8, j + 1))();
+  for (const [re, html] of arr) {
+    const ms = [...code.matchAll(/\[("(?:[^"\\]|\\.)*")\s*,\s*("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g)].filter((x) => re.test(JSON.parse(x[1])));
+    if (ms.length !== 1) throw new Error('faq: esperava 1 pergunta para ' + re + ', achou ' + ms.length);
+    const x = ms[0]; code = code.slice(0, x.index) + '[' + x[1] + ',' + JSON.stringify(html) + code.slice(x.index + x[0].length);
+  }
+  return code;
+}
 
 function prepara(f) {
   let code = fs.readFileSync('src/' + f, 'utf8');
@@ -70,12 +124,13 @@ function prepara(f) {
   }
   // 2) carregadores antigos
   for (const [arq, ini, fim] of LIMPA) if (arq === f) { const i = code.indexOf(ini); if (i < 0) throw new Error('limpeza nao achou: ' + ini.slice(0, 60)); const j = code.indexOf(fim, i); code = code.slice(0, i) + code.slice(j + fim.length); }
-  // 3) ajuste de cantos por JS (lia o estilo de cada elemento): os cantos ficam fixos em cantos.css
-  if (f === 'cml-paginas.js') {
-    const ast = acorn.parse(code, PARSE); const cs = [];
-    walk.full(ast, (n) => { if (n.type === 'FunctionDeclaration' && n.id && n.id.name === 'soft') cs.push([n.body.start, n.body.end]); });
-    if (cs.length !== 2) throw new Error('soft: esperava 2, achou ' + cs.length);
-    cs.sort((a, b) => b[0] - a[0]); for (const [a, b] of cs) code = code.slice(0, a) + '{}' + code.slice(b);
+  if (f === 'extx-13.js') code = faqCorrigido(code);
+  for (const [arq, ini, k] of LITERAL_FIXO) if (arq === f) {
+    const alvo = est.texts[+k.slice(4)]; let achou = null;
+    walk.full(acorn.parse(code, PARSE), (n) => { if (n.type === 'Literal' && typeof n.value === 'string' && n.value.length > 3000 && n.value.indexOf(ini) === 0) achou = n; });
+    if (!achou) throw new Error('literal fixo nao encontrado em ' + arq);
+    if (achou.value !== alvo) throw new Error('literal fixo de ' + arq + ' difere do texto capturado (' + achou.value.length + ' x ' + alvo.length + ')');
+    code = code.slice(0, achou.start) + '""' + code.slice(achou.end);
   }
   return code;
 }
@@ -94,18 +149,23 @@ function modulos(f, code) {
   return out;
 }
 
-// o pacote "extras" era uma lista de textos avaliados com um ajuste temporario de addEventListener; aqui vira codigo normal entre dois modulos que ligam e desligam o mesmo ajuste
-const XON = '(function(){var d=document,w=window;if(w.__cmlXA)return;var dA=d.addEventListener,wA=w.addEventListener,q=function(f,ty,tg){setTimeout(function(){try{typeof f=="function"?f.call(tg,new Event(ty)):f&&f.handleEvent&&f.handleEvent(new Event(ty))}catch(e){}},0)};w.__cmlXA=[dA,wA];d.addEventListener=function(ty,f,o){if(ty=="DOMContentLoaded"&&d.readyState!="loading")return q(f,ty,d);return dA.call(this,ty,f,o)};w.addEventListener=function(ty,f,o){if((ty=="load"&&d.readyState=="complete")||(ty=="DOMContentLoaded"&&d.readyState!="loading"))return q(f,ty,w);return wA.call(this,ty,f,o)}})();';
-const XOFF = '(function(){var x=window.__cmlXA;if(x){document.addEventListener=x[0];window.addEventListener=x[1];window.__cmlXA=null}})();';
+// Modulos de fase (ver ORDEM).
+// fase-ini: enquanto as partes iniciam, a pagina responde "ainda sendo lida" e os pedidos de "pagina lida" ficam guardados, na ordem.
+//   Tambem decide onde entra cada estilo criado pelo codigo: no v18 a ordem dos estilos era a ordem de criacao; agora os estilos fixos estao todos no site.css.
+//   Medido no v18: os estilos que o codigo cria durante o inicio das partes ficavam no comeco da fila (antes da maioria dos fixos) e os criados depois
+//   (pagina lida, respostas de rede, servicos de terceiros) ficavam no fim. Entao: durante o inicio -> <head> (antes do site.css); depois -> logo apos o site.css.
+const FASE = {
+  'fase-ini': '(function(){var d=document,w=window;if(w.__cmlQ)return;var Q=w.__cmlQ={d:[],w:[],m:0,dA:d.addEventListener,wA:w.addEventListener};try{Object.defineProperty(d,"readyState",{configurable:true,get:function(){return"loading"}})}catch(e){}d.addEventListener=function(t,f,o){if(t==="DOMContentLoaded"){Q.d.push(f);return}return Q.dA.call(this,t,f,o)};w.addEventListener=function(t,f,o){if(t==="DOMContentLoaded"){Q.w.push(f);return}return Q.wA.call(this,t,f,o)};var h=d.head,l=d.getElementById("cml-site-css");if(h&&l&&l.parentNode&&!h.__cmlAp){var ap=h.appendChild,a=d.createComment("cml-estilos");l.parentNode.insertBefore(a,l.nextSibling);h.__cmlAp=1;h.appendChild=function(n){if(Q.f&&n&&n.nodeName==="STYLE"&&a.parentNode)return a.parentNode.insertBefore(n,a);return ap.call(this,n)}}})();',
+  'fase-marca': '(function(){var Q=window.__cmlQ;if(Q)Q.m=Q.d.length})();',
+  'fase-evento1': '(function(){var d=document,w=window,Q=w.__cmlQ;if(!Q||Q.f)return;Q.f=1;try{delete d.readyState}catch(e){}try{delete d.addEventListener}catch(e){}try{delete w.addEventListener}catch(e){}Q.run=function(f,t){try{typeof f==="function"?f.call(t,new Event("DOMContentLoaded")):f&&f.handleEvent&&f.handleEvent(new Event("DOMContentLoaded"))}catch(e){try{console.warn("cml evento",e)}catch(x){}}};for(var i=0;i<Q.m;i++)Q.run(Q.d[i],d)})();',
+  'fase-evento2': '(function(){var d=document,w=window,Q=w.__cmlQ;if(!Q||!Q.run||Q.g)return;Q.g=1;for(var i=Q.m;i<Q.d.length;i++)Q.run(Q.d[i],d);for(var j=0;j<Q.w.length;j++)Q.run(Q.w[j],w)})();',
+};
 const mods = [];
 for (const [p, cond] of ORDEM) {
+  if (FASE[p]) { mods.push({ parte: 'fase', nome: p, code: FASE[p], tipo: 'x', id: p, cond: '' }); continue; }
   if (p === 'ext-extras') {
-    mods.push({ parte: 'extx', nome: 'extras: liga o ajuste de eventos', code: XON, tipo: 'x', id: 'extx-on', cond: '' });
     for (const f of fs.readdirSync('src').filter((x) => /^extx-\d+\.js$/.test(x)).sort()) { const ms = modulos(f, prepara(f)); ms.forEach((m, i) => { m.id = f.replace('.js', '') + '#' + i; m.cond = ''; mods.push(m); }); }
-    mods.push({ parte: 'extx', nome: 'extras: desliga o ajuste de eventos', code: XOFF, tipo: 'x', id: 'extx-off', cond: '' });
-    continue;
-  }
-  const f = p + '.js'; const ms = modulos(f, prepara(f)); ms.forEach((m, i) => { m.id = p + '#' + i; m.cond = cond; mods.push(m); });
+  } else { const f = p + '.js'; const ms = modulos(f, prepara(f)); ms.forEach((m, i) => { m.id = p + '#' + i; m.cond = cond; mods.push(m); }); }
 }
 
 // minifica cada modulo (nomes locais curtos; nomes globais e de propriedades ficam como estao)
@@ -114,6 +174,9 @@ for (const m of mods) {
   m.min = r.code.replace(/;\s*$/, '');
   m.bruto = m.code.length;
 }
+
+// o reescritor de :has tambem vai sozinho num arquivo pequeno (cedo.js): o tema carrega esse arquivo antes do pacote, para a conversao nao depender da chegada do pacote
+{ const hz = mods.find((m) => m.id === 'cml-extra#0'); if (!hz || hz.min.indexOf('__cmlHz') < 0) throw new Error('reescritor nao encontrado'); fs.mkdirSync(OUT, { recursive: true }); fs.writeFileSync(OUT + '/cedo.js', '/* Chef Mais Leve: conversor de :has (v19). Mesmo modulo do pacote; roda uma vez so. */\ntry{' + hz.min + '}catch(e){}\n'); }
 
 // cobertura: contador no inicio de cada funcao
 let nFn = 0; const fnInfo = [];
@@ -156,6 +219,7 @@ function monta(lista, titulo) {
     if (PROF) s += cond + '{__cmlP.b(' + JSON.stringify(m.id) + ');try{' + corpo + '}catch(e){__cmlW(' + JSON.stringify(m.id) + ',e)}__cmlP.e()}\n';
     else s += cond + 'try{' + corpo + '}catch(e){__cmlW(' + JSON.stringify(m.id) + ',e)}\n';
   }
+  s += 'try{window.__cmlHzNow&&window.__cmlHzNow()}catch(e){}\n';
   return s;
 }
 const remover = new Set(cfg.remover || []);
@@ -163,6 +227,7 @@ const vazio = (m) => !m.min || /^(void 0|!0|!1|0)?$/.test(m.min.trim());
 const vivos = mods.filter((m) => !remover.has(m.id) && !vazio(m));
 const ini = 'window.__cmlV2=1;window.__cmlV3=1;window.__cmlPack2=1;window.__cmlPack=1;window.__cefLoader=1;'
   // troca o texto de um elemento sem recriar o no (nao acorda os observadores de estrutura)
+  + 'window.__cmlF=function(f){var d=0,g=function(){if(d)return;d=1;f()};requestAnimationFrame(g);setTimeout(g,120)};'
   + 'window.__cmlT=function(e,v){if(!e)return;v=String(v);var c=e.firstChild;if(c&&c.nodeType===3&&c===e.lastChild){if(c.nodeValue!==v)c.nodeValue=v}else if(e.textContent!==v)e.textContent=v};'
   + (COV ? 'window.__c=new Uint8Array(' + nFn + ');window.__cmlE=[];window.__cmlW=function(i,e){window.__cmlE.push(i+": "+(e&&e.message))};' : 'window.__cmlW=function(i,e){try{console.warn("cml",i,e)}catch(x){}};') + '\n';
 const grupos = {}; // grupo -> lista de modulos ('' = nucleo, carregado em todas as paginas)
@@ -178,13 +243,18 @@ fs.writeFileSync(OUT + '/mapa.json', JSON.stringify({ nFn, fnTam: fnInfo, mods: 
 
 // visual: na ordem em que aparecia na pagina
 const rkey = (s) => (s.id ? s.id : 'txt:' + s.t);
-const vistos = new Set(); let css = '';
-for (const p of ['/', ...Object.keys(P).filter((p) => p !== '/')]) for (const s of P[p].styles || []) {
-  if (s.tag !== 'STYLE') continue; const k = rkey(s); if (vistos.has(k)) continue;
-  if (k === 'custom-theme-css' || ok.has(k)) { vistos.add(k); css += '/*' + k + '*/\n' + T[s.t] + '\n'; }
-}
+// DERIVADOS: estilos que o codigo montava na hora a partir de outro estilo; entram prontos, logo depois do estilo que vinha antes deles na pagina de origem
+const DERIVADOS = new Set(['c10-css']);
+const vistos = new Set(); const partes = [];
+for (const p of ['/', ...Object.keys(P).filter((p) => p !== '/')]) { const st = (P[p].styles || []).filter((s) => s.tag === 'STYLE'); st.forEach((s, idx) => {
+  const k = rkey(s); if (vistos.has(k)) return;
+  if (DERIVADOS.has(k)) { vistos.add(k); let pos = partes.length; for (let q = idx - 1; q >= 0; q--) { const at = partes.findIndex((x) => x[0] === rkey(st[q])); if (at >= 0) { pos = at + 1; break; } } partes.splice(pos, 0, [k, T[s.t]]); return; }
+  if (k === 'custom-theme-css' || ok.has(k)) { vistos.add(k); partes.push([k, T[s.t]]); }
+}); }
+for (const k of DERIVADOS) if (!vistos.has(k)) throw new Error('estilo derivado nao capturado: ' + k);
+let css = partes.map(([k, t]) => '/*' + k + '*/\n' + t + '\n').join('');
 for (const [a, b] of CSS_TROCAS) { if (css.split(a).length !== 2) throw new Error('troca css: esperava 1 ocorrencia: ' + a.slice(0, 60)); css = css.replace(a, () => b); }
-css = fs.readFileSync('fontes.css', 'utf8') + '\n' + css + '\n' + fs.readFileSync('cantos.css', 'utf8') + '\n';
+css = fs.readFileSync('fontes.css', 'utf8') + '\n' + css + '\n';
 if (fs.existsSync('ajustes.css')) css += fs.readFileSync('ajustes.css', 'utf8') + '\n';
 // regras comprovadamente mortas: dependiam de classes que nenhum codigo cria mais (lista em modulos.json)
 if (cfg.tokensMortos && cfg.tokensMortos.length) {
@@ -197,5 +267,20 @@ if (cfg.tokensMortos && cfg.tokensMortos.length) {
 }
 fs.writeFileSync(OUT + '/site.bruto.css', css);
 const cssMin = (await esbuild.transform(css, { loader: 'css', minify: true, legalComments: 'none' })).code;
-fs.writeFileSync(OUT + '/site.css', '/* Chef Mais Leve: visual do site (v19, 23/11/2026). */\n' + cssMin);
+// :has() dentro de :is() ficava fora do alcance do reescritor: cada seletor vira lista simples, com a mesma especificidade (":not(.cml-0)", "html", "body" so igualam o peso)
+const P3 = '[data-product-id="382762068"],[data-product-id="382762073"],[data-product-id="382762078"]', V3 = '[data-variants*="382762068,"],[data-variants*="382762073,"],[data-variants*="382762078,"]';
+const PG = 'link[rel=canonical]:is([href$="/contato/"],[href$="/quem-somos/"],[href$="/faq/"],[href$="/presentes-de-natal/"],[href$="/encontre-seu-cha/"],[href$="/politica-de-cashback/"],[href$="/ofertas/"])', BD = 'body:is(.template-blog,.template-blog-post,[class*=template-account])';
+const DESANINHA = [
+  ['html:not(.cml-rdy):is(:has(' + PG + '),:has(' + BD + ')) main', 'html:not(.cml-rdy):has(' + PG + ') main,html:not(.cml-rdy):not(.cml-0):has(' + BD + ') main'],
+  [':is(' + P3 + ',.js-item-product:has(a[href*="/combo-"])) .js-product-item-image-container-private:after', 'body :is(' + P3 + '):not(.cml-0) .js-product-item-image-container-private:after,.js-item-product:has(a[href*="/combo-"]) .js-product-item-image-container-private:after'],
+  [':is(#single-product:is(' + V3 + '),html:has(link[rel=canonical][href*="/combo-"]) #single-product) .js-product-name:before', 'html body #single-product:is(' + V3 + '):not(.cml-0) .js-product-name:before,html:has(link[rel=canonical][href*="/combo-"]) #single-product .js-product-name:before'],
+];
+let cssFim = cssMin;
+for (const [de, para] of DESANINHA) { if (!cssFim.includes(de)) throw new Error('desaninha: nao achou ' + de.slice(0, 70)); cssFim = cssFim.split(de).join(para); }
+{ const re = /(html body(?:\.template-home)? \.adbar):is\(:has\(a\[href\*="#black"\]\),:has\(a\[href\*="\/account"\]\)\)((?::not\(#a\d+\))+:after)/g; if (!re.test(cssFim)) throw new Error('desaninha: nao achou a regra da barra'); cssFim = cssFim.replace(re, '$1:has(a[href*="#black"])$2,$1:has(a[href*="/account"])$2'); }
+// consultas presas ao html passam a olhar so os filhos diretos (o link canonico fica sempre no head; o body e filho do html): mesmo resultado, sem varrer a pagina inteira
+for (const [de, para, min] of [[':has(link[rel=canonical]', ':has(>head>link[rel=canonical]', 5], [':has(body:is(.template-blog', ':has(>body:is(.template-blog', 1]]) { const n = cssFim.split(de).length - 1; if (n < min) throw new Error('consulta direta: esperava ao menos ' + min + ' de ' + de + ', achou ' + n); cssFim = cssFim.split(de).join(para); }
+const hasVivo = hasVivas(cssFim);
+if (hasVivo.length) throw new Error("site.css ficaria com :has() vivo (fora do alcance do reescritor):\n  " + [...new Set(hasVivo)].join("\n  "));
+fs.writeFileSync(OUT + '/site.css', '/* Chef Mais Leve: visual do site (v19, 23/11/2026). */\n' + cssFim);
 console.log(COV ? '[cobertura] funcoes ' + nFn : '[producao]', '| modulos', mods.length, 'vivos', vivos.length, '| site.css', Math.round(cssMin.length / 1024) + 'KB |', Object.entries(tam).map(([k, v]) => k + ' ' + Math.round(v / 1024) + 'KB').join(', '));
