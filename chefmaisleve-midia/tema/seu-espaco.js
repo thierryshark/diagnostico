@@ -25,7 +25,7 @@ var IMG='https://acdn-us.mitiendanube.com/stores/005/060/752/products/aa99458c07
 function desk(ul){
  var li=d.createElement('li');li.id='cml-se';li.className='nav-item nav-main-item nav-dropdown';
  var cols=G.map(function(g){return '<li class="nav-item"><span class="nav-list-link nav-list-link-heading">'+g[0]+'</span><ul class="list-subitems list-unstyled">'+g[1].map(function(x){return '<li class="nav-item"><a class="nav-list-link" href="'+x[1]+'">'+x[0]+'</a></li>'}).join('')+'</ul></li>'}).join('');
- li.innerHTML='<a class="nav-list-link" href="/encontre-seu-cha/">Seu espaço <svg class="nav-list-link-icon icon-inline"><use xlink:href="#chevron"></use></svg></a>'
+ li.innerHTML='<a class="nav-list-link" href="/account/">Seu espaço <svg class="nav-list-link-icon icon-inline"><use xlink:href="#chevron"></use></svg></a>'
   +'<div class="js-desktop-dropdown nav-dropdown-content desktop-dropdown"><div class="container desktop-dropdown-container"><ul class="desktop-list-subitems list-unstyled">'+cols+'</ul>'
   +'<div class="cml-se-side"><img src="'+IMG+'" alt="Chá misto da Chef Mais Leve" loading="lazy" width="280" height="150"><div><span class="k">Em 1 minuto</span><b>Encontre <em>o seu chá</em></b><a href="/encontre-seu-cha/">Começar →</a></div></div></div></div>';
  ul.appendChild(li);
@@ -34,5 +34,6 @@ function go(){
  var ul=d.querySelector('.js-nav-desktop-list');if(ul&&!d.getElementById('cml-se'))desk(ul);
  return !!d.getElementById('cml-se');
 }
-var n=0;(function t(){var ok=false;try{ok=go()}catch(e){}if(!ok&&++n<40)setTimeout(t,250)})();
+function clean(){var e=d.getElementById('cml-se');if(!e)return;e.className=e.className.split(' ').filter(function(c){return !/^(cml-nv-|cmlh-)/.test(c)}).join(' ')}
+var n=0;(function t(){try{go();clean()}catch(e){}if(++n<40)setTimeout(t,250)})();
 })();
