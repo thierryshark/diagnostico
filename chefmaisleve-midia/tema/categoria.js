@@ -8,12 +8,10 @@ if(!d.getElementById('cml-cat-css')){var s=d.createElement('style');s.id='cml-ca
 'aside.c2-side .cml-tree li:has(>.r>a[href$="/account/"]){display:none!important}',
 '@media(min-width:768px){',
 '.cx3-bar{display:flex!important;align-items:center;gap:16px}',
-'.cx3-bar>#modal-sort-by{position:static!important;display:flex!important;align-items:center;gap:10px;margin:0 0 0 auto!important;padding:0!important;width:auto!important;max-width:none!important;height:auto!important;background:none!important;box-shadow:none!important;transform:none!important;border:0!important;visibility:visible!important;opacity:1!important}',
-'.cx3-bar>#modal-sort-by .modal-header{padding:0!important;margin:0!important;border:0!important}',
-'.cx3-bar>#modal-sort-by .modal-header :is(.modal-close,.js-modal-close){display:none!important}',
-'.cx3-bar>#modal-sort-by .modal-title{font:500 13px/1 Poppins,sans-serif!important;color:#6f6656!important;margin:0!important}',
-'.cx3-bar>#modal-sort-by .modal-body{padding:0!important;margin:0!important}',
-'.cx3-bar>#modal-sort-by + .cx3-view{margin-left:0!important}',
+'.cx3-bar>.product-list-sort-by{margin:0 0 0 auto!important;padding:0!important;text-align:right}',
+'.cx3-bar>.product-list-sort-by .form-group{display:flex;align-items:center;gap:10px;margin:0!important}',
+'.cx3-bar>.product-list-sort-by .form-label{margin:0!important;font:500 13px/1 Poppins,sans-serif;color:#6f6656}',
+'.cx3-bar>.product-list-sort-by select,.cx3-bar>.product-list-sort-by .form-select{height:36px!important;min-height:0!important;padding:0 32px 0 12px!important;border-radius:10px!important;font:500 13px Poppins,sans-serif!important}',
 '}',
 '@media(max-width:767px){',
 '.c2-cbn .c2-cbt{padding:16px 18px!important;min-height:0!important}',
@@ -31,7 +29,7 @@ if(!d.getElementById('cml-cat-css')){var s=d.createElement('style');s.id='cml-ca
 function go(){
  if(!d.body||!d.body.classList.contains('template-category'))return true;
  if(window.innerWidth>=768){
-  var bar=d.querySelector('.cx3-bar'),so=d.getElementById('modal-sort-by');
+  var bar=d.querySelector('.cx3-bar'),so=d.querySelector('.product-list-sort-by');
   if(!bar)return false;
   if(so&&so.parentNode!==bar){var vw=bar.querySelector('.cx3-view');bar.insertBefore(so,vw||null)}
   return true;
