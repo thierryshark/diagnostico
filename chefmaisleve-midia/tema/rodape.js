@@ -1,29 +1,29 @@
 /* Chef Mais Leve: rodape compacto + cadastro de membro com nome, WhatsApp e e-mail (vai para o funil "membros" do sistema de gestao).
    Substitui o formulario nativo so de e-mail. 22/11/2026 */
 (function(){
-var d=document,URL_CAP='https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/gestao-captura';
+var N=':not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6)',d=document,URL_CAP='https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/gestao-captura';
 if(!d.getElementById('cml-rd-css')){var s=d.createElement('style');s.id='cml-rd-css';s.textContent=[
-'#ns-block-newsletter .footer-newsletter-form{display:none!important}',
-'.cml-nlf{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:10px}',
-'.cml-nlf input{width:100%;height:40px;padding:0 12px;border:1px solid rgba(246,239,233,.35);border-radius:10px;background:rgba(246,239,233,.08);color:#f6efe9;font:400 14px Poppins,sans-serif;outline:0}',
-'.cml-nlf input::placeholder{color:rgba(246,239,233,.6)}',
-'.cml-nlf input:focus{border-color:#dfae58}',
-'.cml-nlf .em{grid-column:1/-1}',
-'.cml-nlf .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px}',
-'.cml-nlf button{grid-column:1/-1;height:42px;border:0;border-radius:10px;background:#dfae58;color:#0b0a08;font:600 14px Poppins,sans-serif;cursor:pointer}',
-'.cml-nlf button[disabled]{opacity:.6}',
-'.cml-nlf small{grid-column:1/-1;font:400 11px/1.4 Poppins,sans-serif;color:rgba(246,239,233,.65)}',
-'.cml-nlf .ok{grid-column:1/-1;font:500 14px/1.4 Poppins,sans-serif;color:#f3d48b}',
+"#ns-block-newsletter .footer-newsletter-form"+N+"{display:none!important}",
+".cml-nlf"+N+"{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:10px}",
+".cml-nlf input"+N+"{width:100%!important;height:40px!important;padding:0 12px!important;margin:0!important;border:1px solid rgba(246,239,233,.35)!important;border-radius:10px!important;background:rgba(246,239,233,.08)!important;color:#f6efe9!important;font:400 14px Poppins,sans-serif!important;outline:0}",
+".cml-nlf input::placeholder{color:rgba(246,239,233,.6)}",
+".cml-nlf input:focus{border-color:#dfae58}",
+".cml-nlf .em"+N+"{grid-column:1/-1}",
+".cml-nlf .hp"+N+"{position:absolute!important;left:-9999px!important;width:1px;height:1px}",
+".cml-nlf button"+N+"{grid-column:1/-1;height:42px!important;border:0!important;border-radius:10px!important;background:#dfae58!important;color:#0b0a08!important;font:600 14px Poppins,sans-serif!important;cursor:pointer;width:100%!important;margin:0!important}",
+".cml-nlf button[disabled]{opacity:.6}",
+".cml-nlf small"+N+"{grid-column:1/-1;font:400 11px/1.4 Poppins,sans-serif;color:rgba(246,239,233,.65)}",
+".cml-nlf .ok"+N+"{grid-column:1/-1;font:500 14px/1.4 Poppins,sans-serif;color:#f3d48b}",
 '@media(max-width:767px){',
-'.c7-ft{gap:20px!important;padding:24px 18px!important}',
-'.c7-fb a img{height:34px!important;width:auto!important}',
-'.c7-fb h4{font-size:20px!important;margin:8px 0 0!important}',
-'.c7-fb p{display:none!important}',
-'.c7-fm{padding:16px!important}',
-'.c7-fg{gap:10px 16px!important}',
-'.c7-fc a{font-size:13.5px!important;line-height:1.3!important;padding:4px 0!important;min-height:0!important}',
-'.c7-fc .c7-fe{margin-bottom:4px!important}',
-'.c7-fp{gap:6px!important;flex-wrap:wrap}',
+".c7-ft"+N+"{gap:20px!important;padding:24px 18px!important}",
+".c7-fb a img"+N+"{height:34px!important;width:auto!important}",
+".c7-fb h4"+N+"{font-size:20px!important;margin:8px 0 0!important}",
+".c7-fb p"+N+"{display:none!important}",
+".c7-fm"+N+"{padding:16px!important}",
+".c7-fg"+N+"{gap:10px 16px!important}",
+".c7-fc a"+N+"{font-size:13.5px!important;line-height:1.3!important;padding:4px 0!important;min-height:0!important}",
+".c7-fc .c7-fe"+N+"{margin-bottom:4px!important}",
+".c7-fp"+N+"{gap:6px!important;flex-wrap:wrap}",
 '}'
 ].join('');(d.head||d.documentElement).appendChild(s);}
 function so(v){return String(v||'').replace(/\D/g,'').slice(0,13)}
