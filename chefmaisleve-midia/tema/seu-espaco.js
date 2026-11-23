@@ -18,9 +18,9 @@ if(!d.getElementById('cml-se-css')){var st=d.createElement('style');st.id='cml-s
 '@media(max-width:640px){#cml-hl .cml-hl-g{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}',
 '#cml-hl .cml-hl-c{position:relative;min-height:0!important;padding:14px 14px 16px!important;border-radius:14px!important}',
 '#cml-hl .cml-hl-c .k{display:block;font-size:9.5px!important;letter-spacing:.14em!important;margin:0 0 6px!important}',
-'#cml-hl .cml-hl-c h3{font-size:16px!important;line-height:1.22!important;margin:0!important;padding:0!important}',
+'#cml-hl .cml-hl-c h3,#cml-hl .cml-hl-c h3 *{font-size:16px!important;line-height:1.22!important}#cml-hl .cml-hl-c h3{margin:0!important;padding:0!important}',
 '#cml-hl .cml-hl-c p,#cml-hl .cml-hl-c .ar{display:none!important}',
-'#cml-hl .cml-hl-c .nv{position:static!important;display:inline-block!important;margin:0 0 6px!important;font-size:9px!important;padding:3px 7px!important}}'
+'#cml-hl .cml-hl-c .nv{position:static!important;display:inline-block!important;width:max-content!important;margin:0 0 6px!important;font-size:9px!important;padding:3px 7px!important}}'
 ].join('');d.head.appendChild(st);}
 var L=[['Encontre seu chá','/encontre-seu-cha/','Em 1 minuto'],['Monte seu presente','/presentes-de-natal/','Família e empresas'],['Clube Chef','/clube-chef/','Assinatura mensal'],['Rastrear pedido','/account/','Na sua conta'],['Como funciona o cashback','/politica-de-cashback/','5% de volta em cada compra']];
 function H(){return L.map(function(x){return '<a class="cml-se-i" href="'+x[1]+'"><b>'+x[0]+'</b><small>'+x[2]+'</small></a>'}).join('')}
