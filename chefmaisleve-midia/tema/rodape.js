@@ -38,7 +38,7 @@ function go(){
   +'<input class="hp" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">'
   +'<button type="submit">Quero ser membro</button>'
   +'<small>Novidades e lançamentos por e-mail e WhatsApp. Você pode sair quando quiser.</small>';
- (nat&&nat.parentNode||nl).insertBefore(f,nat||null);
+ if(nat)nat.parentNode.insertBefore(f,nat.nextSibling);else nl.appendChild(f);
  f.addEventListener('submit',function(e){
   e.preventDefault();
   var nome=f.nome.value.trim(),email=f.email.value.trim().toLowerCase(),wa=so(f.whatsapp.value);
