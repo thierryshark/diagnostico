@@ -352,6 +352,8 @@ for (const g of Object.keys(grupos)) {
       const arco = ps.some((x) => x >= 99) && ps.some((x) => x > 0 && x < 99); const alvo = (x) => (x <= 16 ? x : (x >= 99 && !arco ? 10 : 16));
       nc++; return 'border-radius:' + esp + val.split(' ').map((x) => { const n = parseFloat(x); return n > 16 ? alvo(n) + 'px' : x; }).join(' ');
     }); if (!g) console.log('cantos no script:', nc, 'declaracoes ajustadas'); }
+  // contraste, parte 2: texto em preto transparente abaixo de 70% (menos de 4,5:1 sobre o fundo claro) sobe para 70% tambem nos estilos que moram no script
+  { let nt = 0; txt = txt.replace(/(^|[^-a-z])color:rgba\(43,41,22,\.(4|45|5|55|6|65)\)/g, (m, p1) => { nt++; return p1 + 'color:rgba(43,41,22,.7)'; }); if (!g) console.log('contraste no script:', nt, 'textos ajustados'); }
   new Function(txt); // confere a sintaxe do arquivo final
   fs.writeFileSync(OUT + '/' + nome, (g ? '' : '') + txt); tam[nome] = txt.length;
 }
@@ -412,5 +414,7 @@ if (fs.existsSync('cantos-origem.json')) {
   }
   cssFim = saida + cssFim.slice(pos); console.log('cantos na origem:', fez, 'de', lista.length, 'trocas aplicadas');
 }
+// contraste: texto em preto transparente abaixo de 70% (menos de 4,5:1 sobre o fundo claro) sobe para 70% (#2b2916b3, 5,2:1); so a cor do texto, bordas e fundos ficam como estao
+{ let nt = 0; cssFim = cssFim.replace(/(^|[^-a-z])color:#2b2916(66|6b|73|80|8c|99|9e|a6)(?![0-9a-f])/g, (m, p1) => { nt++; return p1 + 'color:#2b2916b3'; }); console.log('contraste no estilo:', nt, 'textos ajustados'); }
 fs.writeFileSync(OUT + '/site.css', '/* Chef Mais Leve: visual do site (v19, 23/11/2026). */\n' + cssFim);
 console.log(COV ? '[cobertura] funcoes ' + nFn : '[producao]', '| modulos', mods.length, 'vivos', vivos.length, '| site.css', Math.round(cssMin.length / 1024) + 'KB |', Object.entries(tam).map(([k, v]) => k + ' ' + Math.round(v / 1024) + 'KB').join(', '));
