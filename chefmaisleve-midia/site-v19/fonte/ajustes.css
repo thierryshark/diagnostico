@@ -7,6 +7,11 @@ html.cml-home2:not(.cml-hok) main [id^=ns-section-faq],html.cml-home2:not(.cml-h
    Agora o bloco fica invisivel ate o codigo terminar (classe cml-pk no html) ou, no maximo, por 2,5 s. A foto do produto aparece na hora. */
 html:not(.cml-pk) body.template-product #ns-block-product_info{visibility:hidden;animation:cmlhok 0s linear 2.5s forwards}
 /* app de avaliacoes (estilo do proprio app, de fora do site): o botao em capsula passa ao canto padrao de 10 px */
-html body div.mi-cursor-pointer[style*="border-radius: 9999px"]{border-radius:10px!important}
+html body :is(div,button).mi-cursor-pointer[style*="border-radius: 9999px"]{border-radius:10px!important}
+/* app de avaliacoes: a caixa "Ganhe descontos avaliando este produto" entra no padrao do site (fundo claro da marca, linha fina inteira, sem o desenho de estrela) */
+html body [data-slot-item^="evaluations"] div[style*="dashed"]{border:1px solid #e8ddd0!important;background:#fffaf5!important;border-radius:16px!important;padding:24px 16px!important;gap:12px!important}
+html body [data-slot-item^="evaluations"] div[style*="dashed"]>img{display:none!important}
+html body [data-slot-item^="evaluations"] div[style*="dashed"] p{font-size:16px!important;line-height:1.5!important;color:#6f6656!important}
+html body [data-slot-item^="evaluations"] div[style*="dashed"] button{min-height:44px;font-size:14px!important;font-weight:600!important}
 /* paginas de texto: bandeiras de pagamento e outros icones dentro de tabela ficam com canto de etiqueta (6 px), nao com o canto das fotos */
 body.template-page .user-content td img{border-radius:6px}

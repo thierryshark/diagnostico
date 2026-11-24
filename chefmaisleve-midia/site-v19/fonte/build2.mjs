@@ -158,6 +158,8 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // app de avaliacoes: o botao de contorno ficava com letra branca em fundo claro (duas regras de cor brigavam). Agora contorno e letra no laranja da marca, fundo branco
+  ['[style*="border: 1px solid rgb(249, 148, 76)"]{border-color:#565229!important;background:#f5f7ef!important}', '[style*="border: 1px solid rgb(249, 148, 76)"]{border-color:#a65a14!important;background:#fff!important;color:#a65a14!important}'],
   // contraste (minimo 4,5:1): preco riscado, contagem de avaliacoes e caminho de navegacao saem da transparencia e passam ao cinza #6f6656 (5:1 sobre o fundo claro); preco riscado em 14 px
   ["html.cml-blk body .js-item-product .product-item-price-compare{color:rgba(43,41,22,.5)!important}", "html.cml-blk body .js-item-product .product-item-price-compare{color:#6f6656!important}"],
   ["order:1!important;margin:0!important;font:300 11.5px/1 Poppins,sans-serif!important;color:rgba(43,41,22,.45)!important", "order:1!important;margin:0!important;font:400 14px/1 Poppins,sans-serif!important;color:#6f6656!important"],
