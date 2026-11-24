@@ -184,6 +184,10 @@ const TROCAS = [
   ['cml-paginas.js', ',289,399,1]];', ',289,399,10]];'],
   ['cml-paginas.js', "'<small>por kit</small></div><div class=\"cx4-qty\"><label>Kits<input type=\"number\" min=\"1\"", "'<small>por kit · mínimo 10</small></div><div class=\"cx4-qty\"><label>Kits<input type=\"number\" min=\"10\""],
   ['cml-paginas.js', 'i.addEventListener("input",function(){var n=Math.max(1,parseInt(i.value,10)||1);b.setAttribute("data-q",String(n))})', 'i.addEventListener("input",function(){var n=Math.max(10,parseInt(i.value,10)||10);b.setAttribute("data-q",String(n))});i.addEventListener("change",function(){if((parseInt(i.value,10)||0)<10)i.value=10})'],
+  // 24/11 (Thierry): a pagina de chas nao abre mais com o anuncio do Combo Trio; fica so a lista (o combo ja aparece como produto). O "return" no inicio faz o compactador descartar o resto da funcao
+  ['cml-paginas.js', 'function cha(){if(D.querySelector(".cx4-cha"))return;', 'function cha(){return;if(D.querySelector(".cx4-cha"))return;'],
+  // home no celular: o sobretitulo do quadro de presentes quebrava em duas linhas; fica "Feito à mão"
+  ['cml-paginas.js', '<span class="k">Presentes · feito à mão</span>', '<span class="k">Feito à mão</span>'],
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [

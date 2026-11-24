@@ -102,3 +102,9 @@
 - Textos da campanha na origem: etapa nova no build2 aplica, no codigo de cada modulo, as trocas que cml-extra#11 e cml-paginas#22 faziam na tela. Removidos: cml-extra#11, cml-paginas#22, cml-ui#7 (e o cml-paginas#55, morto).
 - AINDA EXISTE: cml-paginas#12 (corrige textos das paginas de ajuda: valores de frete, erros de escrita; tem tambem uma copia da tabela da Black, hoje sem efeito). Para tirar: corrigir o conteudo das paginas no painel (Paginas) e remover o modulo. Outros modulos que varrem texto: cml-extra#16/#17/#20/#38, cml-paginas#31/#43/#86, cpv-own#3, extx-13#2 (ver um a um).
 - Plano do Thierry: publicar o v19 e seguir ajustando numa copia. Depois de publicar: ligar modelos (ENCONTRE, PRESENTE, CORPORATIVO), menu (Seu espaco nativo, apagar 3 itens escondidos), tirar reservas do menu, kits() do #43.
+
+
+## 24/11, 17h20: celular (Thierry)
+- /chas/ sem o anuncio do Combo Trio no topo (funcao cha() do cml-paginas#43 desligada com return; o compactador descarta o resto).
+- Cartao de produto no celular: sobretitulo e preco antigo em 12 px (rem), numa linha; preco antigo ao lado do preco. Home: sobretitulo dos quadros e avaliacao do ranking em 12 px numa linha.
+- Excecoes a regra de 14 px no celular, todas em rem para a etapa de letra minima nao mexer: faixa do topo, sobretitulo do cartao, preco antigo do cartao, sobretitulo dos quadros da home, avaliacao do ranking.
