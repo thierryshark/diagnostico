@@ -60,17 +60,16 @@ const TROCAS = [
   ['extx-00.js', 'i.querySelector("b").textContent=a?a.textContent.trim():"",i.querySelector(".t span").textContent=c?c.textContent.trim():""', '__cmlT(i.querySelector("b"),a?a.textContent.trim():""),__cmlT(i.querySelector(".t span"),c?c.textContent.trim():"")'],
   ['extx-00.js', 'i.querySelector(".go").textContent=m?"Avise-me":"Comprar"', '__cmlT(i.querySelector(".go"),m?"Avise-me":"Comprar")'],
   ['extx-02.js', 't.querySelector("em").textContent=i?[n?"Caixa "+n:"",e?"Cartão":""].filter(Boolean).join(" + "):"",t.querySelector("u").textContent=i?"✓":"Adicionar"', '__cmlT(t.querySelector("em"),i?[n?"Caixa "+n:"",e?"Cartão":""].filter(Boolean).join(" + "):""),__cmlT(t.querySelector("u"),i?"✓":"Adicionar")'],
-  // cantos: os ajustes passam a rodar uma vez por quadro (antes da pintura), em vez de a cada alteracao da pagina; raizes repetidas sao conferidas uma vez so
-  ['cml-paginas.js', 'var a=q;q=[];for(var k=0;k<a.length;k++){try{if(a[k].isConnected){soft(a[k].parentNode||a[k])}}catch(e){}}},250)', 'var a=q;q=[];var vs=new Set();for(var k=0;k<a.length;k++){try{if(a[k].isConnected){var rr=a[k].parentNode||a[k];if(!vs.has(rr)){vs.add(rr);soft(rr)}}}catch(e){}}},250)'],
-  ['cml-paginas.js', 'try{new MutationObserver(function(ms){if(!window.__cx3soft)return;for(var i=0;i<ms.length;i++)for(var j=0;j<ms[i].addedNodes.length;j++){var n=ms[i].addedNodes[j];if(n.nodeType===1){try{window.__cx3soft(n.parentNode||n)}catch(e){}}}}).observe(D.documentElement,{childList:true,subtree:true})}catch(e){}',
-    'try{var cq=new Set(),cf=0,cgo=function(){cf=0;var a=cq;cq=new Set();a.forEach(function(r){try{if(r.isConnected)window.__cx3soft(r)}catch(e){}})};new MutationObserver(function(ms){if(!window.__cx3soft)return;for(var i=0;i<ms.length;i++)for(var j=0;j<ms[i].addedNodes.length;j++){var n=ms[i].addedNodes[j];if(n.nodeType===1)cq.add(n.parentNode||n)}if(cq.size&&!cf){cf=1;__cmlF(cgo)}}).observe(D.documentElement,{childList:true,subtree:true})}catch(e){}'],
-  ['cml-paginas.js', 'var q=[],t;function flush(){var a=q;q=[];a.forEach(function(n){if(n.isConnected){soft(n);promo(n.parentNode||D)}})}', 'var q=[],t,ft=0;function flush(){ft=0;var a=q;q=[];var vp=new Set();a.forEach(function(n){if(n.isConnected){soft(n);var pp=n.parentNode||D;if(!vp.has(pp)){vp.add(pp);promo(pp)}}})}'],
+  // cantos: o corretor por script saiu (3 trechos que conferiam elemento por elemento a cada mudanca da pagina); os cantos agora vem certos do proprio estilo (cantos-origem.json, aplicado no fim da montagem)
+  ['cml-paginas.js', /\/\* cantos sobrios[^\n]*\*\/\nvar SK="cx3r";[\s\S]*?\n(?=function run\(\)\{css\(\);)/, ''],
+  ['cml-paginas.js', 'function boot(){run();try{soft(D.body)}catch(e){}}', 'function boot(){run()}'],
+  ['cml-paginas.js', /var ct=0;D\.addEventListener\("click",function\(\)\{if\(ct\)return;ct=setTimeout\(function\(\)\{ct=0;try\{soft\(D\.body\)\}catch\(e\)\{\}\},450\)\},true\);\s*window\.addEventListener\("load",function\(\)\{try\{soft\(D\.body\)\}catch\(e\)\{\}\}\);/, ''],
+  ['cml-paginas.js', 'var t=0,q=[];new MutationObserver(function(ms){for(var i=0;i<ms.length;i++)for(var j=0;j<ms[i].addedNodes.length;j++){var n=ms[i].addedNodes[j];if(n.nodeType===1)q.push(n)}if(t)return;t=setTimeout(function(){t=0;run();var a=q;q=[];for(var k=0;k<a.length;k++){try{if(a[k].isConnected){soft(a[k].parentNode||a[k])}}catch(e){}}},250)})', 'var t=0;new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=0;run()},250)})'],
+  ['cml-paginas.js', 'try{new MutationObserver(function(ms){if(!window.__cx3soft)return;for(var i=0;i<ms.length;i++)for(var j=0;j<ms[i].addedNodes.length;j++){var n=ms[i].addedNodes[j];if(n.nodeType===1){try{window.__cx3soft(n.parentNode||n)}catch(e){}}}}).observe(D.documentElement,{childList:true,subtree:true})}catch(e){}', ''],
+  ['cml-paginas.js', /function lim\(h\)\{return h<=30\?6:\(h<=64\?10:16\)\}\nfunction soft\(root\)\{if\(!root\|\|root\.nodeType!==1\)return;[^\n]*\n/, ''],
+  ['cml-paginas.js', 'var q=[],t;function flush(){var a=q;q=[];a.forEach(function(n){if(n.isConnected){soft(n);promo(n.parentNode||D)}})}', 'var q=[],t,ft=0;function flush(){ft=0;var a=q;q=[];var vp=new Set();a.forEach(function(n){if(n.isConnected){var pp=n.parentNode||D;if(!vp.has(pp)){vp.add(pp);promo(pp)}}})}'],
+  ['cml-paginas.js', 'function full(){soft(D.body);promo(D)}', 'function full(){promo(D)}'],
   ['cml-paginas.js', 'function go(){full();setTimeout(full,1500);setTimeout(full,4000);new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,function(n){if(n.nodeType===1)q.push(n)})});flush()})', 'function go(){full();setTimeout(full,1500);setTimeout(full,4000);new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,function(n){if(n.nodeType===1)q.push(n)})});if(q.length&&!ft){ft=1;__cmlF(flush)}})'],
-  // cantos em duas fases: primeiro le tudo, depois escreve tudo (mesmo resultado; antes cada escrita no meio da leitura forcava um recalculo de estilo)
-  ['cml-paginas.js', 'function soft(root){var els=root.querySelectorAll?root.querySelectorAll("*"):[];for(var i=0;', 'function soft(root){var wr=[],els=root.querySelectorAll?root.querySelectorAll("*"):[];for(var i=0;'],
-  ['cml-paginas.js', 'if(v<r)e.style.setProperty("border-radius",v+"px","important")}}', 'if(v<r)wr.push(e,v)}for(var k2=0;k2<wr.length;k2+=2)wr[k2].style.setProperty("border-radius",wr[k2+1]+"px","important")}'],
-  ['cml-paginas.js', 'function soft(root){if(!root||root.nodeType!==1)return;var list=[root].concat(', 'function soft(root){if(!root||root.nodeType!==1)return;var wr=[],list=[root].concat('],
-  ['cml-paginas.js', 'if(!vis)return;e.style.setProperty("border-radius",L+"px","important")})}', 'if(!vis)return;wr.push(e,L)});for(var k2=0;k2<wr.length;k2+=2)wr[k2].style.setProperty("border-radius",wr[k2+1]+"px","important")}'],
   ['cml-paginas.js', 'html:has(body.modal-show)', 'html:has(>body.modal-show)'],
   // "Encontre seu cha": o estilo c10-css era montado na hora a partir das regras do c4-css (que agora mora no site.css); ele entra pronto no site.css e o laco sai
   ['cml-extra.js', 'var n=0;(function loop(){if(build()&&n>6)return;if(++n<30)setTimeout(loop,n<10?120:500)})();', ''],
@@ -358,5 +357,17 @@ for (const [de, para] of DESANINHA) { if (!cssFim.includes(de)) throw new Error(
 for (const [de, para, min] of [[':has(link[rel=canonical]', ':has(>head>link[rel=canonical]', 5], [':has(body:is(.template-blog', ':has(>body:is(.template-blog', 1]]) { const n = cssFim.split(de).length - 1; if (n < min) throw new Error('consulta direta: esperava ao menos ' + min + ' de ' + de + ', achou ' + n); cssFim = cssFim.split(de).join(para); }
 const hasVivo = hasVivas(cssFim);
 if (hasVivo.length) throw new Error("site.css ficaria com :has() vivo (fora do alcance do reescritor):\n  " + [...new Set(hasVivo)].join("\n  "));
+// cantos na origem: cada declaracao de canto listada em cantos-origem.json troca o valor declarado pelo valor final (10 botao/campo, 6 etiqueta, 16 cartao/foto); substitui o corretor por script
+if (fs.existsSync('cantos-origem.json')) {
+  const lista = JSON.parse(fs.readFileSync('cantos-origem.json', 'utf8')); const mapa = new Map(lista.map((x) => [x.s + '¦' + x.v + '¦' + x.n, x.t])); const usados = new Set(); const ord = new Map(); let fez = 0;
+  const RE = /border(?:-(?:top|bottom)-(?:left|right))?-radius:([^;}]+)/g; let m, saida = '', pos = 0;
+  while ((m = RE.exec(cssFim))) {
+    const ob = cssFim.lastIndexOf('{', m.index); const st = Math.max(cssFim.lastIndexOf('}', ob), cssFim.lastIndexOf('{', ob - 1)) + 1; const sel = cssFim.slice(st, ob); const val = m[1];
+    const ch = sel + '¦' + val; const n = ord.get(ch) || 0; ord.set(ch, n + 1); const t = mapa.get(ch + '¦' + n); if (!t) continue; usados.add(ch + '¦' + n);
+    const T = +t; const novo = /%/.test(val) ? T + 'px' + (/!important/.test(val) ? '!important' : '') : val.replace(/([\d.]+)px/g, (x, a) => (+a > T ? T + 'px' : x));
+    saida += cssFim.slice(pos, m.index) + m[0].slice(0, m[0].length - val.length) + novo; pos = m.index + m[0].length; fez++;
+  }
+  cssFim = saida + cssFim.slice(pos); console.log('cantos na origem:', fez, 'de', lista.length, 'trocas aplicadas');
+}
 fs.writeFileSync(OUT + '/site.css', '/* Chef Mais Leve: visual do site (v19, 23/11/2026). */\n' + cssFim);
 console.log(COV ? '[cobertura] funcoes ' + nFn : '[producao]', '| modulos', mods.length, 'vivos', vivos.length, '| site.css', Math.round(cssMin.length / 1024) + 'KB |', Object.entries(tam).map(([k, v]) => k + ' ' + Math.round(v / 1024) + 'KB').join(', '));
