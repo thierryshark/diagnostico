@@ -148,6 +148,11 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // blocos de combo (chas, kits): botao no laranja padrao do site (era dourado) e letra de 14 px
+  ["border-radius:10px;background:#dfae58;color:#0b0a08!important;font:600 14.5px/1 Poppins", "border-radius:10px;background:#a65a14;color:#fff!important;font:600 15px/1 Poppins"],
+  [".cx4-btn:hover{background:#d09d45}", ".cx4-btn:hover{background:#8f4c10}"],
+  ["height:40px!important;font-size:13px!important;padding:0 10px!important", "height:40px!important;font-size:14px!important;padding:0 10px!important"],
+  [".cx4-kits .cx4-qty .cx4-btn{min-height:40px;font-size:13px}", ".cx4-kits .cx4-qty .cx4-btn{min-height:40px;font-size:14px}"],
   // Black, "vale mais levar junto": no computador cada oferta vira um bloco de destaque (foto de um lado, enredo, opcoes de quantidade e conta do outro), no molde das secoes da Chocoleve; no celular segue o carrossel compacto
   [".of3-cb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}", ".of3-cb{display:grid;grid-template-columns:minmax(0,1fr);gap:64px}"],
   [".of3-c{display:flex;flex-direction:column;border-radius:24px;background:var(--pp);border:1px solid var(--ln);overflow:hidden;box-shadow:0 18px 40px -32px rgba(43,41,22,.45)}", ".of3-c{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:48px;align-items:center;width:100%;max-width:1040px;margin:0 auto}.of3-c:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,400px)}.of3-c:nth-child(even) .of3-ci{order:2}"],
