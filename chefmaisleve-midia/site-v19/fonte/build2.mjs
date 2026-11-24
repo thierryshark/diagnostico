@@ -308,7 +308,16 @@ for (const m of vivos) { const g = (cfg.grupo && cfg.grupo[m.id]) || ''; (grupos
 const tam = {};
 for (const g of Object.keys(grupos)) {
   const nome = g ? 'pack-' + g + '.js' : 'pack.js';
-  const txt = (g ? '' : ini + (PROF ? PROF_INI : '')) + monta(grupos[g], g ? 'comportamento (' + g + ')' : 'comportamento (nucleo)');
+  let txt = (g ? '' : ini + (PROF ? PROF_INI : '')) + monta(grupos[g], g ? 'comportamento (' + g + ')' : 'comportamento (nucleo)');
+  // cantos na origem, parte 2: os estilos que ainda moram dentro do script (injetados na hora) tambem passam a declarar o canto final.
+  // capsula (99px ou mais) vira 10; 17 a 98 vira 16; arco (capsula em cima com canto menor embaixo) vira 16; circulo (largura = altura na mesma regra) e % ficam.
+  { let nc = 0; txt = txt.replace(/border-radius:(\s*)((?:[\d.]+(?:px)?)(?: [\d.]+(?:px)?){0,3})/g, (tudo, esp, val, pos) => {
+      const ps = val.split(' ').map((x) => parseFloat(x)); const mx = Math.max(...ps); if (!(mx > 16)) return tudo;
+      const ini2 = txt.lastIndexOf('{', pos), fim2 = txt.indexOf('}', pos); const corpo = ini2 >= 0 && fim2 > pos && pos - ini2 < 900 ? txt.slice(ini2, fim2) : '';
+      const w = /(?:[;{])width:(\d+)px/.exec(corpo), h = /(?:[;{])height:(\d+)px/.exec(corpo); if (w && h && w[1] === h[1] && +w[1] <= 64) return tudo;
+      const arco = ps.some((x) => x >= 99) && ps.some((x) => x > 0 && x < 99); const alvo = (x) => (x <= 16 ? x : (x >= 99 && !arco ? 10 : 16));
+      nc++; return 'border-radius:' + esp + val.split(' ').map((x) => { const n = parseFloat(x); return n > 16 ? alvo(n) + 'px' : x; }).join(' ');
+    }); if (!g) console.log('cantos no script:', nc, 'declaracoes ajustadas'); }
   new Function(txt); // confere a sintaxe do arquivo final
   fs.writeFileSync(OUT + '/' + nome, (g ? '' : '') + txt); tam[nome] = txt.length;
 }
