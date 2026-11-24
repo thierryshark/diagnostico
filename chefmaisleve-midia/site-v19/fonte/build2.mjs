@@ -170,6 +170,8 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // home: a faixa de informativos somava 24 px ao vao de 72
+  ['html.cml-blk body.template-home #ns-section-icon_text{background:#f6efe9!important;padding-bottom:24px!important}', 'html.cml-blk body.template-home #ns-section-icon_text{background:#f6efe9!important;padding-bottom:0!important}'],
   // vaos entre blocos (padrao: 72 px no computador, 48 no celular). Home: as secoes somavam recuo interno ao vao (96, 90, 132) e o Instagram colava no rodape (34); produto: Veja tambem para Duvidas era 92
   ['html.cml-home2 body main>#ns-section-icon_text,html.cml-home2 body main>.c2-rk,html.cml-home2 body main>.cml-nc,html.cml-home2 body main>[id^=ns-section-faq]{margin-bottom:72px!important}', 'html.cml-home2 body main>#ns-section-icon_text,html.cml-home2 body main>.c2-rk,html.cml-home2 body main>.cml-nc,html.cml-home2 body main>[id^=ns-section-faq]{margin-bottom:72px!important;padding-bottom:0!important}html.cml-home2 body main>[id^=ns-section-instagram-feed]{margin-bottom:38px!important}'],
   ['html.cml-home2 body main>#ns-section-icon_text,html.cml-home2 body main>.c2-rk,html.cml-home2 body main>.cml-nc,html.cml-home2 body main>[id^=ns-section-faq]{margin-bottom:44px!important}', 'html.cml-home2 body main>#ns-section-icon_text,html.cml-home2 body main>.c2-rk,html.cml-home2 body main>.cml-nc,html.cml-home2 body main>[id^=ns-section-faq]{margin-bottom:48px!important;padding-bottom:0!important}html.cml-home2 body main>[id^=ns-section-instagram-feed]{margin-bottom:14px!important}'],
