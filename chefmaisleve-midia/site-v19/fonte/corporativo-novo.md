@@ -76,3 +76,14 @@
 - Corporativos (category.CORPORATIVO.json): um banner so; diferenciais em 4 moldes pequenos (no celular so o titulo); kits em quadros com foto em moldura (2 colunas no computador, 1 no celular); chamada final em molde claro.
 - A CONFERIR quando o navegador voltar: faixa (antes/depois do codigo, 360/390/1440), cabecalho fixo ao rolar (altura -34px), troca de pagina, quadros dos kits (estrutura nativa da grade), e como ver o modelo CORPORATIVO no rascunho (categoria ainda nao esta ligada ao modelo; se ele ve a pagina padrao com 2 banners, e por isso).
 - Para a limpeza: modulos que trocam texto por script (cml-extra#11 Esquenta 22/11, cml-paginas#22 textos da Black, cml-ui#7) e textos de estilo mortos dentro do pack (c1-css).
+
+
+## 24/11, 16h: conferido na tela (Chrome voltou)
+- Pacote no rascunho: ver ultimo hash do publica.sh (apos 3f9a233).
+- Faixa do topo: 34 px fixos antes e depois do codigo em 360/390/1440. A reserva da contagem NAO pode usar :has (o conversor cedo.js so aplica a classe depois da primeira pintura); usa :not(.cx5-on):not(.cx5-fim). Largura fixa 262 px (computador) e 122 px (celular).
+- Cabecalho no computador pulava de 79 para 89 px: o tema entrega o menu com visibility:hidden;height:0 na tag e so mostra depois do codigo dele. Agora nasce visivel. O item "Seu espaco" e criado por codigo: lugar reservado pelo item 4 (margin-right 110px). Os itens escondidos (5, 7, 8) e a ordem do Black Friday (6) passaram a valer pela posicao. DEPOIS DE PUBLICAR: cadastrar "Seu espaco" no menu, apagar os 3 itens escondidos, tirar modulo e reservas.
+- Corporativos: a URL /kits-presentes/presentes-corporativos/ no rascunho usa o modelo padrao + modulo cml-paginas#43 (kits de Natal). O painel so oferece modelos do tema publicado, entao o modelo CORPORATIVO so pode ser ligado depois de publicar. Para ver o modelo: editor do rascunho, admin/brand-editor/themes/14955147?template=pages/category.CORPORATIVO (conferido, computador e celular). Na pagina atual, o bloco de Natal deixou de ser banner (CSS_TROCAS cx4-nat). Ao ligar o modelo, tirar a parte kits() do modulo #43 para nao duplicar.
+- Chocoleve (category.CHOCOLEVE.json): letras de 9 a 13,5 px para 14 px.
+- PageSpeed celular no rascunho (24/11 16h): home 59 (LCP 4,1 s, TBT 670 ms, CLS 0), produto 70 (LCP 4,5 s, TBT 290 ms, CLS 0), chas 43 (LCP 6,6 s, TBT 1640 ms, CLS 0). Proximo alvo: categoria (lista espera o codigo; TBT alto).
+- Varredura 390 e 1440 em 15 paginas: sem vazamento lateral, sem letra abaixo de 14 px (fora a faixa do topo no celular), sem imagem quebrada, sem erro de script.
+- home.json tem varias secoes desativadas (Carrossel, Banners, CHAS, KITS, INFUSOES, SNACKS, GRANOLAS, banners categorias): entram na limpeza.

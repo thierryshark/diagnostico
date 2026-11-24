@@ -170,6 +170,8 @@ const TROCAS = [
   // barra flutuante no celular: com a letra em 14 px os rotulos longos se sobrepunham; a segunda palavra some no celular (o rotulo completo segue no computador e na leitura de tela)
   ['cml-extra.js', '<span class="lb">Compra rápida</span>', '<span class="lb">Compra<i> rápida</i></span>'],
   ['cml-extra.js', '<span class="lb">Rastrear pedido</span>', '<span class="lb">Rastrear<i> pedido</i></span>'],
+  // faixa do topo: quando a contagem acaba, marca a faixa (cx5-fim) para o espaco reservado sumir
+  ['cml-paginas.js', 'if(!t){if(el)el.remove();ab.classList.remove("cx5-on");return}', 'if(!t){if(el)el.remove();ab.classList.remove("cx5-on");ab.classList.add("cx5-fim");return}'],
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
@@ -267,6 +269,18 @@ const CSS_TROCAS = [
   // barra flutuante no celular: rotulo curto para caber a letra de 14 px
   ['html.cml-dockcb body .c1-dock .lb{font-size:9px;letter-spacing:0}', 'html.cml-dockcb body .c1-dock .lb{font-size:14px;letter-spacing:0}html body .c1-dock .lb i{display:none}'],
   ['.c1-dock .lb{font:300 9px/1 Poppins,sans-serif;letter-spacing:.02em;', '.c1-dock .lb i{font-style:normal}.c1-dock .lb{font:300 14px/1 Poppins,sans-serif;letter-spacing:.02em;'],
+  // corporativos (pagina atual da categoria): o bloco de Natal deixa de ser um segundo banner. Fica o banner da categoria; o titulo vira texto e as 3 datas viram moldes claros pequenos
+  ['.cx4-nat{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:center;margin:0 0 18px;padding:clamp(18px,2.6vw,30px);border-radius:16px;background:radial-gradient(110% 120% at 20% 10%,rgb(107,30,42) 0%,rgb(92,24,35) 45%,rgb(74,20,29) 100%);color:#f6efe9}', '.cx4-nat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:20px;align-items:center;margin:0 0 20px}'],
+  ['.cx4-nat .cx4-k{color:#dfae58}', ''],
+  ['.cx4-nat .cx4-h{color:#f6efe9}', ''],
+  ['.cx4-nat .cx4-h em{color:#f3d48b}', ''],
+  ['.cx4-nat .cx4-lead{margin:0;color:#efe4da}', '.cx4-nat .cx4-lead{margin:0}'],
+  ['.cx4-dt{display:grid;gap:8px;margin:0;padding:0;list-style:none}', '.cx4-dt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0;list-style:none}@media(max-width:767px){.cx4-dt{grid-template-columns:minmax(0,1fr);gap:8px}.cx4-dt li{display:flex;align-items:center;gap:12px}.cx4-dt b{margin-bottom:0}}'],
+  ['.cx4-dt li{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid rgba(223,174,88,.35);border-radius:10px;background:rgba(246,239,233,.06)}', '.cx4-dt li{padding:12px 14px;border:1px solid #e8ddd0;border-radius:10px;background:#fffaf5}'],
+  ['.cx4-dt b{min-width:74px;font:700 17px/1 Poppins,sans-serif;color:#f3d48b}', '.cx4-dt b{display:block;min-width:74px;margin-bottom:6px;font:700 17px/1 Poppins,sans-serif;color:#a65a14}'],
+  ['.cx4-dt span{font:400 13px/1.35 Poppins,sans-serif;color:#efe4da}', '.cx4-dt span{font:400 14px/1.35 Poppins,sans-serif;color:#6f6656}'],
+  // corporativos no celular: a etiqueta sobre a foto (112 px) cobria a foto inteira com a letra de 14 px; no celular ela sai
+  ['.cx4-kits .cx4-tag{font-size:9px;padding:4px 6px;top:6px;left:6px}', '.cx4-kits .cx4-tag{display:none}'],
 ];
 const PARSE = { ecmaVersion: 'latest', sourceType: 'script', allowReturnOutsideFunction: true };
 
