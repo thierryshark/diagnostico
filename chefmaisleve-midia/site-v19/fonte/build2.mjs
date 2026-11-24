@@ -188,6 +188,8 @@ const TROCAS = [
   ['cml-paginas.js', 'function cha(){if(D.querySelector(".cx4-cha"))return;', 'function cha(){return;if(D.querySelector(".cx4-cha"))return;'],
   // home no celular: o sobretitulo do quadro de presentes quebrava em duas linhas; fica "Feito à mão"
   ['cml-paginas.js', '<span class="k">Presentes · feito à mão</span>', '<span class="k">Feito à mão</span>'],
+  // v20: a pagina de Presentes corporativos passa a ser o modelo CORPORATIVO do tema (nativo). Sai a montagem por script dos kits de Natal nessa pagina; sem isso o modelo e o script apareceriam juntos
+  ['cml-paginas.js', 'function kits(){if(D.querySelector(".cx4-kits"))return;', 'function kits(){return;if(D.querySelector(".cx4-kits"))return;'],
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [

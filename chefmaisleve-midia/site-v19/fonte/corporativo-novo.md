@@ -115,3 +115,12 @@
 - Rascunho novo: "Chef Mais Leve v20 (rascunho de ajustes)", id 14968778, copia do v19 com o pacote 82bac86. Todo ajuste novo vai nele (trocar o hash so no header.json do 14968778).
 - Combo Trouxinhas (382766299): capa trocada para a foto dos 5 pacotes na palha (a colagem ficou como segunda foto). Os 5 pacotes parecem do mesmo sabor: ideal uma foto com os 5 sabores.
 - Depois de publicado: ligar modelos ENCONTRE/PRESENTE/CORPORATIVO as categorias, menu (Seu espaco nativo, apagar 3 escondidos), apagar tema v17 (com aprovacao), medir o site no ar.
+
+
+## 24/11, 17h50: v19 NO AR (publicado pelo Thierry). Tema v17 ja nao existe; ficam Tulum, v18 (penultimo), v19 (no ar), v20 (rascunho 14968778).
+- No ar com o pacote 82bac86. Conferencia 390: sem vazamento, sem erro, faixa 34 px.
+- PageSpeed celular NO AR: home 73 (LCP 3,8 s, TBT 330 ms), produto 71 (LCP 4,2 s, TBT 370 ms), chas 49 (LCP 5,9 s, TBT 1100 ms, CLS 0,047). Antes (v18): 27 e 31.
+- Categorias ligadas aos modelos (painel): Encontre seu cha (41821547) -> ENCONTRE; Monte seu presente (42265942) -> PRESENTE. Antes mostravam so a lista padrao. Conferido no ar no celular.
+- CORPORATIVO ainda NAO ligado: o v19 no ar monta os kits por script nessa pagina; ligar agora mostraria modelo + script juntos. No v20 (pacote 0ee1ba7) a montagem por script saiu (kits() com return). Ao publicar o v20: ligar a categoria 42104596 ao modelo CORPORATIVO na mesma hora.
+- v20: category.PRESENTE.json com .ec-pr em flex-wrap (preco antigo vazava por baixo do botao).
+- MENU: "Seu espaco" e um menu grande montado por script (ext-seu-espaco#0, com imagem e atalhos) e os itens Encontre/Monte/Clube sao usados pelo menu do celular como cartoes. Nao da para so cadastrar/apagar no painel: refazer o menu de forma nativa e um trabalho a parte. As reservas de lugar ficam ate la.
