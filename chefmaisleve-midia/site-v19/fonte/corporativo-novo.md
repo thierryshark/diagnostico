@@ -87,3 +87,11 @@
 - PageSpeed celular no rascunho (24/11 16h): home 59 (LCP 4,1 s, TBT 670 ms, CLS 0), produto 70 (LCP 4,5 s, TBT 290 ms, CLS 0), chas 43 (LCP 6,6 s, TBT 1640 ms, CLS 0). Proximo alvo: categoria (lista espera o codigo; TBT alto).
 - Varredura 390 e 1440 em 15 paginas: sem vazamento lateral, sem letra abaixo de 14 px (fora a faixa do topo no celular), sem imagem quebrada, sem erro de script.
 - home.json tem varias secoes desativadas (Carrossel, Banners, CHAS, KITS, INFUSOES, SNACKS, GRANOLAS, banners categorias): entram na limpeza.
+
+
+## 24/11, 16h40: decisoes do Thierry
+- Combos (Trouxinhas e 4 chas) sem opcao de 1, 2 ou 3: so a oferta do combo. Combo Trio fica como esta (nao criar opcoes).
+- Laranja Chocoleve: anunciar os 2 formatos (5 ou 10 fatias), sem faixas de volume. Na Black o cartao virou "em dois tamanhos" e o botao abre a escolha de tamanho e quantidade. Saiu a pergunta "Vale a pena comprar mais pacotes?" da pagina do produto. A promocao progressiva nativa continua ativa no carrinho (decidir se desliga). As opcoes do produto se chamam "5 un." e "10 un." (cadastro): sugerir "5 fatias" e "10 fatias".
+- Kits corporativos so a partir de 10 unidades: pagina de corporativos com minimo 10 nos 4 kits (campo e botao), Black "Lembrancinhas corporativas" comeca em 10, modelo CORPORATIVO com o texto "a partir de 10 unidades". PENDENTE: o minimo nao e travado no carrinho nem na pagina de cada kit (precisa de regra nativa de quantidade minima no produto ou conferencia no pedido).
+- home.json: o bloco de icones tinha "Esquenta Black / Precos de Black ate 20/11" no cadastro e um modulo trocava o texto na tela; agora o texto certo esta no cadastro.
+- NAO REMOVIDOS: cml-extra#11 e cml-paginas#22 (trocam textos do Esquenta por Black). Dez modulos ainda escrevem textos do Esquenta que esses dois corrigem em cadeia (20/11 -> 22/11 -> 30/11). Para tirar, corrigir o texto na origem de cada um: cml-black#2, cml-destaque#0, cml-extra#8/#14/#15/#16/#17/#22/#31, cml-paginas#8, cml-ui#7.

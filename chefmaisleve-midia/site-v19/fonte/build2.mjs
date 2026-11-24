@@ -172,6 +172,18 @@ const TROCAS = [
   ['cml-extra.js', '<span class="lb">Rastrear pedido</span>', '<span class="lb">Rastrear<i> pedido</i></span>'],
   // faixa do topo: quando a contagem acaba, marca a faixa (cx5-fim) para o espaco reservado sumir
   ['cml-paginas.js', 'if(!t){if(el)el.remove();ab.classList.remove("cx5-on");return}', 'if(!t){if(el)el.remove();ab.classList.remove("cx5-on");ab.classList.add("cx5-fim");return}'],
+  // 24/11 (Thierry): combos sem opcao de 1, 2 ou 3 (so a oferta do combo); Laranja Chocoleve anunciada pelos dois formatos (5 ou 10 fatias), sem faixas de volume: o botao abre a escolha de tamanho e quantidade que ja existe na pagina; kits corporativos so a partir de 10 unidades
+  ['cml-paginas.js', 'pk:5,q:[1,2,3],', 'pk:5,q:[1],'],
+  ['cml-paginas.js', 'pk:4,q:[1,2,3],', 'pk:4,q:[1],'],
+  ['cml-paginas.js', 't:"Laranja Chocoleve <em>em quantidade</em>",d:"Pacotes de 5 fatias de laranja com chocolate 70%, para a casa, para dividir e para presentear.",it:[[224675737,1]],q:[1,5,10,20],dq:5,pd:[[5,4],[10,6],[20,10]],', 't:"Laranja Chocoleve <em>em dois tamanhos</em>",d:"Pacote com 5 ou com 10 fatias de laranja com chocolate 70%. Você escolhe o tamanho e a quantidade.",it:[[224675737,1]],pick:1,q:[1],'],
+  ['cml-paginas.js', 'it:[[343280690,1]],q:[1,10,20,50],dq:10,', 'it:[[343280690,1]],q:[10,20,50],dq:10,'],
+  ['cml-paginas.js', "'</p><p class=\"of3-ql\">Quantidade e valor de cada '+uni(c)+'</p><div class=\"of3-q\"'", "'</p>'+(c.q.length<2?'<div class=\"of3-q\" hidden style=\"display:none!important\"':'<p class=\"of3-ql\">Quantidade e valor de cada '+uni(c)+'</p><div class=\"of3-q\"')"],
+  ['cml-paginas.js', "<button type=\"button\" class=\"of3-add\" data-addc=\"'+c.id+'\">Adicionar tudo à sacola</button>", "'+(c.pick?'<button type=\"button\" class=\"of3-add\" data-pick=\"'+c.it[0][0]+'\">Escolher tamanho e quantidade</button>':'<button type=\"button\" class=\"of3-add\" data-addc=\"'+c.id+'\">'+(c.q.length<2?'Adicionar à sacola':'Adicionar tudo à sacola')+'</button>')+'"],
+  ['cml-paginas.js', 'var ar=b.closest(".of3-p");', 'var ar=b.closest(".of3-p,.of3-c");'],
+  ['cml-paginas.js', 'if(k==="lar")Q.push(["Vale a pena comprar mais pacotes?","<p>Sim. Em 10 pacotes cada um sai a R$ 33,50 e em 20 pacotes a R$ 32,00. Escolha a quantidade logo abaixo do preço.</p>"]);', ''],
+  ['cml-paginas.js', ',289,399,1]];', ',289,399,10]];'],
+  ['cml-paginas.js', "'<small>por kit</small></div><div class=\"cx4-qty\"><label>Kits<input type=\"number\" min=\"1\"", "'<small>por kit · mínimo 10</small></div><div class=\"cx4-qty\"><label>Kits<input type=\"number\" min=\"10\""],
+  ['cml-paginas.js', 'i.addEventListener("input",function(){var n=Math.max(1,parseInt(i.value,10)||1);b.setAttribute("data-q",String(n))})', 'i.addEventListener("input",function(){var n=Math.max(10,parseInt(i.value,10)||10);b.setAttribute("data-q",String(n))});i.addEventListener("change",function(){if((parseInt(i.value,10)||0)<10)i.value=10})'],
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
