@@ -168,6 +168,12 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // alinhamento no computador (pedido do Thierry em 24/11): tudo comeca na mesma linha da moldura. Foto do produto em destaque encosta no inicio da coluna (ficava centralizada, 108 px para dentro) e cresce de 500 para 620 px
+  ['.cml-dst .dh-media{position:relative;width:100%;max-width:500px;justify-self:center}', '.cml-dst .dh-media{position:relative;width:100%;max-width:620px;justify-self:start}'],
+  // paginas institucionais: o conteudo usa a largura da moldura (era uma coluna de 1240 px centralizada)
+  ['body.template-page:has(.cml-st2) .page-content.user-content,body.template-page .cml-st2{max-width:1240px!important}', 'body.template-page:has(.cml-st2) .page-content.user-content,body.template-page .cml-st2{max-width:none!important}'],
+  // Black: perguntas rapidas na largura da moldura do site (era um bloco de 960 px centralizado), em 2 colunas no computador, titulo alinhado ao inicio da coluna
+  ['html body #cml-of3 .of3-faq:not(#a1):not(#a2){margin-top:120px!important;max-width:960px!important}', 'html body #cml-of3 .of3-faq:not(#a1):not(#a2){margin-top:72px!important;max-width:none!important}@media(min-width:981px){html body #cml-of3 .of3-faq:not(#a1):not(#a2){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;align-items:start}html body #cml-of3 .of3-faq:not(#a1):not(#a2)>h2{grid-column:1/-1;text-align:left}}'],
   // categorias: os filtros foram desligados no painel da loja em 24/11 (ok do Thierry); a coluna nativa nao e mais montada, entao sai a regra que a escondia
   ['html.cml-blk body .cml-cgrid.c2-has>.filters-controls-content{display:none!important}', ''],
   // rodape enxuto no celular: sem a segunda margem interna, sem o logo repetido (ja esta no topo), menus sem quebra de linha, bandeiras numa linha so e menos vao entre os blocos
@@ -201,7 +207,7 @@ const CSS_TROCAS = [
   [".cx4-kits .cx4-qty .cx4-btn{min-height:40px;font-size:13px}", ".cx4-kits .cx4-qty .cx4-btn{min-height:40px;font-size:14px}"],
   // Black, "vale mais levar junto": no computador cada oferta vira um bloco de destaque (foto de um lado, enredo, opcoes de quantidade e conta do outro), no molde das secoes da Chocoleve; no celular segue o carrossel compacto
   [".of3-cb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}", ".of3-cb{display:grid;grid-template-columns:minmax(0,1fr);gap:64px}"],
-  [".of3-c{display:flex;flex-direction:column;border-radius:24px;background:var(--pp);border:1px solid var(--ln);overflow:hidden;box-shadow:0 18px 40px -32px rgba(43,41,22,.45)}", ".of3-c{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:48px;align-items:center;width:100%;max-width:1040px;margin:0 auto}.of3-c:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,400px)}.of3-c:nth-child(even) .of3-ci{order:2}"],
+  [".of3-c{display:flex;flex-direction:column;border-radius:24px;background:var(--pp);border:1px solid var(--ln);overflow:hidden;box-shadow:0 18px 40px -32px rgba(43,41,22,.45)}", ".of3-c{display:grid;grid-template-columns:minmax(0,480px) minmax(0,1fr);gap:56px;align-items:center;width:100%;max-width:none;margin:0}.of3-c:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,480px)}.of3-c:nth-child(even) .of3-ci{order:2}"],
   [".of3-ci{position:relative;display:grid;gap:2px;aspect-ratio:16/10;background:#f6efe9;overflow:hidden}", ".of3-ci{position:relative;display:grid;gap:2px;aspect-ratio:4/3;background:#f6efe9;overflow:hidden;border-radius:16px;border:6px solid #fff;box-shadow:0 18px 40px -32px rgba(43,41,22,.45)}"],
   [".of3-cbd{display:flex;flex-direction:column;gap:6px;flex:1;padding:18px 18px 18px}", ".of3-cbd{display:flex;flex-direction:column;gap:10px;flex:1;padding:0;min-width:0;max-width:560px}"],
   [".of3-c h3{margin:0;font:700 18px/1.25 Poppins,sans-serif;color:var(--ink)}", ".of3-c h3{margin:0;font:700 clamp(22px,2.4vw,32px)/1.15 Poppins,sans-serif;color:var(--ink)}"],
