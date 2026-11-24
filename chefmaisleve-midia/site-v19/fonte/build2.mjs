@@ -150,6 +150,13 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // contraste (minimo 4,5:1): preco riscado, contagem de avaliacoes e caminho de navegacao saem da transparencia e passam ao cinza #6f6656 (5:1 sobre o fundo claro); preco riscado em 14 px
+  ["html.cml-blk body .js-item-product .product-item-price-compare{color:rgba(43,41,22,.5)!important}", "html.cml-blk body .js-item-product .product-item-price-compare{color:#6f6656!important}"],
+  ["font:300 11.5px/1 Poppins,sans-serif!important;color:rgba(43,41,22,.45)!important", "font:400 14px/1 Poppins,sans-serif!important;color:#6f6656!important"],
+  ["html.cml-blk body #modal-cart .price-compare{color:rgba(43,41,22,.45)!important}", "html.cml-blk body #modal-cart .price-compare{color:#6f6656!important}"],
+  ["html.cml-blk body .breadcrumb a{color:rgba(43,41,22,.65)!important}", "html.cml-blk body .breadcrumb a{color:#6f6656!important}"],
+  // paginas de texto: o botao cheio "Falar no WhatsApp" ficava com letra laranja sobre fundo laranja (a cor dos links do texto vencia a do botao); os links do texto deixam de valer para botoes
+  ["html.cml-blk body .c6-uc a{", "html.cml-blk body .c6-uc a:not(.c7-bt){"],
   // blocos de combo (chas, kits): botao no laranja padrao do site (era dourado) e letra de 14 px
   ["border-radius:10px;background:#dfae58;color:#0b0a08!important;font:600 14.5px/1 Poppins", "border-radius:10px;background:#a65a14;color:#fff!important;font:600 15px/1 Poppins"],
   [".cx4-btn:hover{background:#d09d45}", ".cx4-btn:hover{background:#8f4c10}"],
@@ -175,6 +182,7 @@ const CSS_TROCAS = [
   ["@media(min-width:1100px){html body .js-product-table.grid-md-4:not(#u1):not(#u2):not(#u3):not(#u4):not(#u5){grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:28px!important}}", ""],
   // nada abaixo de 14 px: avaliacao e etiqueta sobre a foto
   [".cml-avq{font-size:12px!important", ".cml-avq{font-size:14px!important"],
+  ["font-weight:400!important;opacity:.78", "font-weight:400!important;opacity:1"],
   [".cx6-ov{display:block;margin:0 0 3px;font:600 10.5px/1.2 Poppins,sans-serif;letter-spacing:.16em;", ".cx6-ov{display:block;margin:0 0 3px;font:600 14px/1.2 Poppins,sans-serif;letter-spacing:.06em;"],
   // a lista nativa de produtos deixa de ser escondida no Encontre seu cha (a pagina nova usa essa lista) e a pagina de presentes antiga deixa de ter regra propria
   ["html:has(link[rel=canonical][href$=\"/encontre-seu-cha/\"]) :is(#ns-section-category_hero,#ns-section-product_list),html:has(link[rel=canonical][href$=\"/ofertas/\"]) :is(#ns-section-category_hero,#ns-section-product_list,#ns-section-divider_1789950202654),html:has(link[rel=canonical][href$=\"/presentes-de-natal/\"]) :is([id^=ns-section-faq],[id^=ns-section-divider]){display:none!important}", "html:has(link[rel=canonical][href$=\"/ofertas/\"]) :is(#ns-section-category_hero,#ns-section-product_list,#ns-section-divider_1789950202654){display:none!important}"],
