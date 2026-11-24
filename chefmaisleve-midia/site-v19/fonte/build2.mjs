@@ -190,6 +190,12 @@ const TROCAS = [
   ['cml-paginas.js', '<span class="k">Presentes · feito à mão</span>', '<span class="k">Feito à mão</span>'],
   // v20: a pagina de Presentes corporativos passa a ser o modelo CORPORATIVO do tema (nativo). Sai a montagem por script dos kits de Natal nessa pagina; sem isso o modelo e o script apareceriam juntos
   ['cml-paginas.js', 'function kits(){if(D.querySelector(".cx4-kits"))return;', 'function kits(){return;if(D.querySelector(".cx4-kits"))return;'],
+  // v21: perguntas frequentes nativas. As 6 perguntas foram cadastradas no tema (home, pagina e produto); sai o script que apagava as perguntas do tema e montava outras por cima, e o que embrulhava o texto de cada pergunta
+  ['extx-13.js', 'function m(){[].forEach.call(document.querySelectorAll(\'[id^="ns-section-faq"]:not([data-cmlf])\')', 'function m(){return;[].forEach.call(document.querySelectorAll(\'[id^="ns-section-faq"]:not([data-cmlf])\')'],
+  ['cml-extra.js', 'function faq(){[].forEach.call(D.querySelectorAll(".cml-faq .accordion-item-toggle-text")', 'function faq(){return;[].forEach.call(D.querySelectorAll(".cml-faq .accordion-item-toggle-text")'],
+  ['cml-extra.js', '.js-quantity-up,.c4-fq,.cml-rev', '.js-quantity-up,.cml-rev'],
+  // janela "Frete gratis": o valor de R$ 249 vale para o estado de Sao Paulo inteiro (regra cadastrada na loja), nao so para a capital
+  ['extx-01.js', '<b>R$ 249</b>São Paulo (capital)</li>', '<b>R$ 249</b>Estado de São Paulo</li>'],
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
@@ -497,6 +503,12 @@ css = fs.readFileSync('fontes.css', 'utf8') + '\n' + css + '\n' + fs.readFileSyn
   root.walkAtRules((a) => { if (/media|supports/.test(a.name) && a.nodes && a.nodes.length === 0) a.remove(); });
   css = root.toString(); if (nr < 20) throw new Error('faixa do topo: esperava remover ao menos 20 regras, removeu ' + nr); console.log('faixa do topo: regras antigas removidas:', nr);
   const alt = '--announcements-height-negative:-29px'; if (css.split(alt).length < 2) throw new Error('faixa do topo: nao achou a altura usada pelo cabecalho fixo'); css = css.split(alt).join('--announcements-height-negative:-34px'); }
+// perguntas frequentes nativas (v21): o visual era preso a classes que um script punha na secao (cml-faq) e na pergunta aberta (cml-open). Passa a valer para a secao nativa de perguntas e para o estado aberto que o proprio tema controla
+{ const F = '[id^="ns-section-faq"]', AB = F + ' .accordion-item:has(>.js-accordion-private-content:not([style*="none"])) ';
+  const n1 = css.split('.cml-faq .cml-open ').length - 1; css = css.split('.cml-faq .cml-open ').join(AB);
+  const n2 = css.split('.cml-faq').length - 1; css = css.split('.cml-faq').join(F);
+  if (n1 < 3 || n2 < 20 || css.includes('.cml-open')) throw new Error('perguntas frequentes: troca de seletores inesperada ' + n1 + ' ' + n2);
+  console.log('perguntas frequentes: seletores nativos', n1, n2); }
 if (fs.existsSync('ajustes.css')) css += fs.readFileSync('ajustes.css', 'utf8') + '\n';
 // regras comprovadamente mortas: dependiam de classes que nenhum codigo cria mais (lista em modulos.json)
 if (cfg.tokensMortos && cfg.tokensMortos.length) {
