@@ -139,11 +139,19 @@ const TROCAS = [
   ['cml-paginas.js', "if(/^\\/presentes-de-natal\\/?$/.test(P))return !!D.querySelector(\"#cml-natal .cmn-hero\");", ''],
   ['cml-paginas.js', "try { natPre(); } catch (e) {}", ''],
   // paginas novas do proprio tema (Encontre seu cha e Monte seu presente): o pacote nao repinta os botoes delas nem espera para mostrar a lista de produtos
+  // Espiar: o resumo comeca a ser buscado quando o mouse para no cartao (o Espiar so existe no computador), entao o clique abre com o texto pronto
+  ['cml-paginas.js', 'fetch("https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-espiar?id=" + encodeURIComponent(id)).then(function (r) { return r.json(); }).then(function (j) { ESPC[id] = j; fill(j); }).catch(function () { fill(null); });', 'espGet(id).then(fill);'],
+  ['cml-paginas.js', 'function espClose() {', 'var ESPP = {}, ESPL = null, ESPT = 0; function espGet(id) { if (ESPC[id]) return Promise.resolve(ESPC[id]); if (!ESPP[id]) ESPP[id] = fetch("https://dzmlyrkzcdqicwfmxnxd.supabase.co/functions/v1/cml-espiar?id=" + encodeURIComponent(id)).then(function (r) { return r.json(); }).then(function (j) { ESPC[id] = j; return j; }).catch(function () { delete ESPP[id]; return null; }); return ESPP[id]; } D.addEventListener("mouseover", function (e) { var c = e.target.closest && e.target.closest(".js-item-product[data-product-id]"); if (c === ESPL) return; ESPL = c; clearTimeout(ESPT); if (c && c.querySelector(".cml-esp")) { var pid = c.getAttribute("data-product-id"); ESPT = setTimeout(function () { espGet(pid); }, 120); } }, { passive: true }); function espClose() {'],
   ['cml-extra.js', ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev\";", ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev,[data-cml-nat],[data-cml-nat] button,[data-cml-nat] a\";"],
   ['cml-extra.js', "if(!b.classList.contains(\"template-category\")||/^\\/ofertas\\//.test(P)){b.classList.add(\"c2-ready\");return true}", "if(!b.classList.contains(\"template-category\")||/^\\/ofertas\\//.test(P)||D.querySelector(\"[data-cml-nat]\")){b.classList.add(\"c2-ready\");return true}"],
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // categorias: sai a regra que forcava 3 colunas no computador (o tema ja esta configurado para 4, como pede o documento do Thierry)
+  ["@media(min-width:1100px){html body .js-product-table.grid-md-4:not(#u1):not(#u2):not(#u3):not(#u4):not(#u5){grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:28px!important}}", ""],
+  // nada abaixo de 14 px: avaliacao e etiqueta sobre a foto
+  [".cml-avq{font-size:12px!important", ".cml-avq{font-size:14px!important"],
+  [".cx6-ov{display:block;margin:0 0 3px;font:600 10.5px/1.2 Poppins,sans-serif;letter-spacing:.16em;", ".cx6-ov{display:block;margin:0 0 3px;font:600 14px/1.2 Poppins,sans-serif;letter-spacing:.06em;"],
   // a lista nativa de produtos deixa de ser escondida no Encontre seu cha (a pagina nova usa essa lista) e a pagina de presentes antiga deixa de ter regra propria
   ["html:has(link[rel=canonical][href$=\"/encontre-seu-cha/\"]) :is(#ns-section-category_hero,#ns-section-product_list),html:has(link[rel=canonical][href$=\"/ofertas/\"]) :is(#ns-section-category_hero,#ns-section-product_list,#ns-section-divider_1789950202654),html:has(link[rel=canonical][href$=\"/presentes-de-natal/\"]) :is([id^=ns-section-faq],[id^=ns-section-divider]){display:none!important}", "html:has(link[rel=canonical][href$=\"/ofertas/\"]) :is(#ns-section-category_hero,#ns-section-product_list,#ns-section-divider_1789950202654){display:none!important}"],
   // produto: os botoes de mais e menos da quantidade estavam com o icone na cor do fundo (sobra do tema escuro da Black) e sumiam; o icone passa a ser escuro
