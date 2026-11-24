@@ -27,3 +27,15 @@
 - Cartão no celular (24/11, depois): nome com até 3 linhas (altura livre), sobretítulo em até 2 linhas com altura reservada, contagem de avaliações curta "(26)" em tela estreita. Segunda linha dos kits no formato "Nome do kit: o que vem". Bateria em 6 páginas (390 e 1440 px): sem rolagem lateral e sem texto cortado.
 - Bloco da Black: a foto do Combo 4 Chás ainda é a antiga (mãos com Equilibrado e Performance, que não são do combo). Falta apontar para a foto nova.
 - Pacote atual no rascunho: 176019d.
+
+## 24/11/2026 (10h às 10h40)
+
+- Snack Tropical: foto quadrada subida (Thierry liberou subir todas as fotos).
+- Black, bloco "Vale mais levar junto": a foto dos combos de chá agora vem gravada no próprio combo (campo `im` em COMBOS). Saiu o módulo cx14 (cml-paginas#33), que trocava a foto depois de o cartão aparecer, com observador na página inteira. Saiu também o cx10 (cml-paginas#29), que já estava desligado. Combo 4 Chás com a foto nova (rótulos certos).
+- Rodapé no celular: de 1054 para 790 px de altura. Sem a segunda margem interna, sem o logo repetido, menus sem quebra desnecessária, bandeiras em uma linha (6 colunas), menos vão entre os blocos. No computador ficou igual (498 px).
+- Sacola e demais gavetas laterais: linha de contorno de 1 px (#d9cbb9) na borda.
+- Categorias: saiu a coluna lateral de filtros montada pelo nosso código (trecho de cml-extra#15) e o botão "Mostrar filtros". Padrão no computador: 4 produtos por linha. Ficam a fileira de subcategorias, o "Ordenar por" e o "Ver em".
+  - ATENÇÃO: o tema tem filtro nativo em coluna ("Filtrar por": Categorias e Preço). Ele continua escondido por uma regra de estilo (era assim antes também). Passo final, com ok do Thierry: desligar os filtros no painel da loja (Configurações > Filtros) e apagar a regra `.cml-cgrid>.filters-controls-content`.
+  - Sobra de código para limpar depois: os módulos que enfeitavam a coluna (árvore de categorias em cml-destaque#0, cml-extra#21, cx22, ext-categoria#0) ainda carregam, sem efeito.
+- Sobra antiga vista no pacote: código das páginas antigas de Encontre seu chá e Monte seu presente (nx-side, cx-side) ainda está no pacote; sai quando os modelos novos forem ligados depois de publicar.
+- Pacote atual no rascunho: efb7204.
