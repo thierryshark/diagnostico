@@ -108,3 +108,10 @@
 - /chas/ sem o anuncio do Combo Trio no topo (funcao cha() do cml-paginas#43 desligada com return; o compactador descarta o resto).
 - Cartao de produto no celular: sobretitulo e preco antigo em 12 px (rem), numa linha; preco antigo ao lado do preco. Home: sobretitulo dos quadros e avaliacao do ranking em 12 px numa linha.
 - Excecoes a regra de 14 px no celular, todas em rem para a etapa de letra minima nao mexer: faixa do topo, sobretitulo do cartao, preco antigo do cartao, sobretitulo dos quadros da home, avaliacao do ranking.
+
+
+## 24/11, 17h25: publicacao e rascunho novo
+- Thierry vai publicar o v19 (id 14955147) ele mesmo. A PARTIR DAI NAO MEXER MAIS NO 14955147.
+- Rascunho novo: "Chef Mais Leve v20 (rascunho de ajustes)", id 14968778, copia do v19 com o pacote 82bac86. Todo ajuste novo vai nele (trocar o hash so no header.json do 14968778).
+- Combo Trouxinhas (382766299): capa trocada para a foto dos 5 pacotes na palha (a colagem ficou como segunda foto). Os 5 pacotes parecem do mesmo sabor: ideal uma foto com os 5 sabores.
+- Depois de publicado: ligar modelos ENCONTRE/PRESENTE/CORPORATIVO as categorias, menu (Seu espaco nativo, apagar 3 escondidos), apagar tema v17 (com aprovacao), medir o site no ar.
