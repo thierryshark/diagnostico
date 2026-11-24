@@ -124,3 +124,9 @@
 - CORPORATIVO ainda NAO ligado: o v19 no ar monta os kits por script nessa pagina; ligar agora mostraria modelo + script juntos. No v20 (pacote 0ee1ba7) a montagem por script saiu (kits() com return). Ao publicar o v20: ligar a categoria 42104596 ao modelo CORPORATIVO na mesma hora.
 - v20: category.PRESENTE.json com .ec-pr em flex-wrap (preco antigo vazava por baixo do botao).
 - MENU: "Seu espaco" e um menu grande montado por script (ext-seu-espaco#0, com imagem e atalhos) e os itens Encontre/Monte/Clube sao usados pelo menu do celular como cartoes. Nao da para so cadastrar/apagar no painel: refazer o menu de forma nativa e um trabalho a parte. As reservas de lugar ficam ate la.
+
+
+## 24/11, 18h10: v20 NO AR (pacote 0ee1ba7). Rascunho novo: v21, id 14969131. NAO MEXER MAIS no 14968778.
+- Categoria Presentes corporativos (42104596) ligada ao modelo CORPORATIVO no painel; conferido no ar (celular e computador).
+- ATENCAO, numeracao dos modulos: o numero usado no modulos.json e o do build (dist/mapa.json), que NAO e a posicao crua no arquivo. Conferir sempre no mapa.json (campo nome) antes de remover. Correcoes: o corretor de textos da Black e o cml-paginas#12 (bfMode), removido so a partir do pacote do v21 (no v19/v20 ele ainda roda, sem efeito, porque os textos ja saem certos); o corretor das perguntas frequentes e o cml-paginas#7.
+- v21: textos das perguntas frequentes corrigidos no cadastro (home.json, page.json, product.json); removidos cml-paginas#7 e #12.

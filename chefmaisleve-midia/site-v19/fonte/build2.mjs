@@ -383,7 +383,7 @@ for (const [p, cond] of ORDEM) {
     [/<h1 class="cbk-h1">Esquenta<b>Black<\/b><\/h1>/g, '<h1 class="cbk-h1">Black<b>Friday</b></h1>'],
     [/<p class="c1-ed">edição 2026<\/p><span class="c1-hand">esquenta<\/span>/g, '<p class="c1-ed">23 a 30 de novembro</p><span class="c1-hand">black</span>'], [/ c1-blk">Black<\/h2>/g, ' c1-blk">Friday</h2>'],
     [/<span class="hand">esquenta<\/span><p class="blk" role="heading" aria-level="1">Black<\/p>/g, '<span class="hand">black</span><p class="blk" role="heading" aria-level="1">Friday</p>']];
-  const fora = new Set(JSON.parse(fs.readFileSync('modulos.json', 'utf8')).remover || []); let nt = 0; for (const m of mods) { if (fora.has(m.id) || m.id === 'cml-paginas#12') continue; /* o #12 corrige textos das paginas de ajuda e tem tabela propria: fica para a limpeza das paginas */ let c = m.code; for (const [a, b] of R) c = c.replace(a, b); if (c !== m.code) { m.code = c; nt++; } }
+  const fora = new Set(JSON.parse(fs.readFileSync('modulos.json', 'utf8')).remover || []); let nt = 0; for (const m of mods) { if (fora.has(m.id)) continue; let c = m.code; for (const [a, b] of R) c = c.replace(a, b); if (c !== m.code) { m.code = c; nt++; } }
   console.log('textos da campanha na origem:', nt, 'modulos ajustados'); }
 // minifica cada modulo (nomes locais curtos; nomes globais e de propriedades ficam como estao)
 for (const m of mods) {
