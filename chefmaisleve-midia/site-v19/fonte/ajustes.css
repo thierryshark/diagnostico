@@ -15,3 +15,6 @@ html body [data-slot-item^="evaluations"] div[style*="dashed"] p{font-size:16px!
 html body [data-slot-item^="evaluations"] div[style*="dashed"] button{min-height:44px;font-size:14px!important;font-weight:600!important}
 /* paginas de texto: bandeiras de pagamento e outros icones dentro de tabela ficam com canto de etiqueta (6 px), nao com o canto das fotos */
 body.template-page .user-content td img{border-radius:6px}
+/* gavetas laterais (sacola e demais): linha de contorno na borda, para a gaveta nao se confundir com a pagina (as duas tem o mesmo fundo claro) */
+html body .modal.modal-right{border-left:1px solid #d9cbb9}
+html body .modal.modal-left{border-right:1px solid #d9cbb9}
