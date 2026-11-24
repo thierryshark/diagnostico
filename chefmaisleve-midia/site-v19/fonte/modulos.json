@@ -2,18 +2,25 @@
  "remover": [
   "cml-home#1",
   "cml-paginas#3",
-  "cml-extra#37"
+  "cml-extra#37",
+  "cml-ui#2"
  ],
  "motivo": {
   "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
   "cml-paginas#3": "guarda de sombras do antigo conversor claro, que ja saiu",
-  "cml-extra#37": "trocava na tela duas respostas do FAQ a cada 400 ms; as respostas corrigidas agora entram direto na lista de perguntas (extx-13), na montagem"
+  "cml-extra#37": "trocava na tela duas respostas do FAQ a cada 400 ms; as respostas corrigidas agora entram direto na lista de perguntas (extx-13), na montagem",
+  "cml-ui#2": "acrescentava ao bloco nativo de novidades do rodape um texto e uma lista que ja ficavam escondidos; o bloco nativo saiu do tema e a caixa Seja membro nasce pronta no rodape (c7)"
  },
  "grupo": {},
  "tokensMortos": [
   "cml-ma",
   "cml-ma-*",
   "cml-hsnap",
-  "cml-hdk"
+  "cml-hdk",
+  "footer-newsletter-form",
+  "footer-newsletter-title",
+  "cml-nl-tx",
+  "cml-nl-b",
+  "c4-ey"
  ]
 }
