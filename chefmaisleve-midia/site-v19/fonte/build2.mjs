@@ -170,6 +170,8 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // Black: o fim da pagina somava 64 px ao vao do rodape (139); agora 75
+  ['padding:8px 0 64px', 'padding:8px 0 0'],
   // home: a faixa de informativos somava 24 px ao vao de 72
   ['html.cml-blk body.template-home #ns-section-icon_text{background:#f6efe9!important;padding-bottom:24px!important}', 'html.cml-blk body.template-home #ns-section-icon_text{background:#f6efe9!important;padding-bottom:0!important}'],
   // vaos entre blocos (padrao: 72 px no computador, 48 no celular). Home: as secoes somavam recuo interno ao vao (96, 90, 132) e o Instagram colava no rodape (34); produto: Veja tambem para Duvidas era 92

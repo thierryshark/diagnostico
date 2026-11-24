@@ -53,3 +53,7 @@
 - Pacote atual no rascunho: 82afda7.
 - 24/11, 11h20: produto em destaque (Kit Ternura, Laranja etc.), coluna de compra enquadrada: selos em colunas iguais (4 no computador, 2x2 no celular), faixa "Lote limitado" e botão "Comprar agora" na largura da coluna; no celular a descrição fica em até 3 linhas (16 px). Pacote: 0f949c0.
 - 24/11, 11h35: cronômetro da Black no produto em destaque, no celular: texto e contador ocupam a largura do bloco (4 caixas iguais). O estilo desse bloco mora no script (cml-paginas.js), não no site.css. Pacote: f50e1b5.
+- 24/11, 12h: vãos entre blocos no padrão. Home: 72 px entre todos os blocos no computador e 48 no celular (antes 96, 90, 132, 112 e 34). A regra de vão da home agora zera o recuo de baixo das seções; o recuo vertical da seção de dúvidas foi a zero no home.json (ajuste nativo). Black: 75 px antes do rodapé (era 139). Produto: Veja também para Dúvidas 72 (era 92).
+- Margens laterais no celular: conferidas com a tela real de 390 px (sem a barra de rolagem do teste), todos os blocos em 16 px. Os 9 e 13 px medidos antes eram efeito da barra de rolagem do quadro de teste.
+- Falta em vãos: banner da categoria para a lista (28) e destaque do produto para o bloco seguinte (44).
+- Pacote atual no rascunho: 9347611.
