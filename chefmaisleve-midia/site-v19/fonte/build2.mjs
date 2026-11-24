@@ -151,6 +151,8 @@ const TROCAS = [
   ['cml-paginas.js', "it:[[382766180,1]],q:[1,2,3],", "it:[[382766180,1]],pk:4,q:[1,2,3],"],
   ['cml-paginas.js', "'>'+esc(c.ql(n))+'</button>'", "'><b>'+esc(c.ql(n))+'</b><i>'+(function(x){return brl(x.por/(x.un*(c.pk||1)))})(comboCalc(c,n))+'</i></button>'"],
   ['cml-paginas.js', "'</p><div class=\"of3-q\"'", "'</p><p class=\"of3-ql\">Quantidade e valor de cada '+uni(c)+'</p><div class=\"of3-q\"'"],
+  // cartao no celular: a contagem de avaliacoes passava 5 px da borda ("26 avaliacoe"); em tela estreita vira "(26)"
+  ['cml-paginas.js', 'function txt(n){return "· "+n+(n===1?" avaliação":" avaliações")}', 'function txt(n){return window.innerWidth<=640?"("+n+")":"· "+n+(n===1?" avaliação":" avaliações")}'],
   // cartoes: sobretitulo e segunda linha dos combos novos e dos 4 kits corporativos (os kits foram recadastrados e ganharam ids novos; os ids antigos saem)
   ['cml-paginas.js', '381152464:[PC,"Flowers Tropical"],381152487:[PC,"Snack Tropical"],381152499:[PC,"Café da Manhã"],381152515:[PC,"Queridinho"],381152535:[PC,"Para Aquela Pessoa"]};', '381152499:[PC,"Café da Manhã"],382766180:["Combo de chás mistos","Intenso, Sereníssimo, Quentão e Sport"],382766299:["Combo de chá na fruta","Abacaxi, Maçã, Frutas Vermelhas, Capim-Limão e Calêndula"],382888421:["Kit corporativo","Flowers Tropical: Rosa de Maçã e 3 trouxinhas"],382888467:["Kit corporativo","Snack Tropical: Laranja Chocoleve e 3 trouxinhas"],382888501:["Kit corporativo","Queridinho: Rosas de Maçã, Laranja Chocoleve e chá"],382888542:["Kit corporativo","Para Aquela Pessoa: o ritual do chá em caixa de madeira"]};'],
   ['cml-extra.js', ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev\";", ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev,[data-cml-nat],[data-cml-nat] button,[data-cml-nat] a\";"],
@@ -158,6 +160,8 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // cartao no celular: o sobretitulo comprido ("Presente mais famoso") era cortado com reticencias; agora quebra em ate 2 linhas, com altura reservada para os nomes ficarem alinhados
+  ['html body .js-item-product .cx6-ov:not(#a1){min-height:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}', 'html body .js-item-product .cx6-ov:not(#a1){min-height:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media(max-width:640px){html body .js-item-product .cx6-ov:not(#a1){min-height:34px;white-space:normal;overflow:visible;text-overflow:clip}}'],
   // app de avaliacoes: o botao de contorno ficava com letra branca em fundo claro (duas regras de cor brigavam). Agora contorno e letra no laranja da marca, fundo branco
   ['[style*="border: 1px solid rgb(249, 148, 76)"]{border-color:#565229!important;background:#f5f7ef!important}', '[style*="border: 1px solid rgb(249, 148, 76)"]{border-color:#a65a14!important;background:#fff!important;color:#a65a14!important}'],
   // contraste (minimo 4,5:1): preco riscado, contagem de avaliacoes e caminho de navegacao saem da transparencia e passam ao cinza #6f6656 (5:1 sobre o fundo claro); preco riscado em 14 px
