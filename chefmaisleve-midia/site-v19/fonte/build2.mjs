@@ -139,8 +139,8 @@ const TROCAS = [
   ['cml-paginas.js', "if(/^\\/presentes-de-natal\\/?$/.test(P))return !!D.querySelector(\"#cml-natal .cmn-hero\");", ''],
   ['cml-paginas.js', "try { natPre(); } catch (e) {}", ''],
   // paginas novas do proprio tema (Encontre seu cha e Monte seu presente): o pacote nao repinta os botoes delas nem espera para mostrar a lista de produtos
-  ['cml-extra.js', ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev\";", ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev,#cml-ec button,#cml-mp button,#cml-mp .nx\";"],
-  ['cml-extra.js', "if(!b.classList.contains(\"template-category\")||/^\\/ofertas\\//.test(P)){b.classList.add(\"c2-ready\");return true}", "if(!b.classList.contains(\"template-category\")||/^\\/ofertas\\//.test(P)||D.getElementById(\"cml-ec\")||D.getElementById(\"cml-mp\")){b.classList.add(\"c2-ready\");return true}"],
+  ['cml-extra.js', ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev\";", ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev,[data-cml-nat] button,[data-cml-nat] a\";"],
+  ['cml-extra.js', "if(!b.classList.contains(\"template-category\")||/^\\/ofertas\\//.test(P)){b.classList.add(\"c2-ready\");return true}", "if(!b.classList.contains(\"template-category\")||/^\\/ofertas\\//.test(P)||D.querySelector(\"[data-cml-nat]\")){b.classList.add(\"c2-ready\");return true}"],
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
