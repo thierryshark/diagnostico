@@ -152,7 +152,8 @@ const TROCAS = [
 const CSS_TROCAS = [
   // contraste (minimo 4,5:1): preco riscado, contagem de avaliacoes e caminho de navegacao saem da transparencia e passam ao cinza #6f6656 (5:1 sobre o fundo claro); preco riscado em 14 px
   ["html.cml-blk body .js-item-product .product-item-price-compare{color:rgba(43,41,22,.5)!important}", "html.cml-blk body .js-item-product .product-item-price-compare{color:#6f6656!important}"],
-  ["font:300 11.5px/1 Poppins,sans-serif!important;color:rgba(43,41,22,.45)!important", "font:400 14px/1 Poppins,sans-serif!important;color:#6f6656!important"],
+  ["order:1!important;margin:0!important;font:300 11.5px/1 Poppins,sans-serif!important;color:rgba(43,41,22,.45)!important", "order:1!important;margin:0!important;font:400 14px/1 Poppins,sans-serif!important;color:#6f6656!important"],
+  ["html.cml-blk body .cbk-de{font:300 11.5px/1 Poppins,sans-serif!important;color:rgba(43,41,22,.45)!important", "html.cml-blk body .cbk-de{font:400 14px/1 Poppins,sans-serif!important;color:#6f6656!important"],
   ["html.cml-blk body #modal-cart .price-compare{color:rgba(43,41,22,.45)!important}", "html.cml-blk body #modal-cart .price-compare{color:#6f6656!important}"],
   ["html.cml-blk body .breadcrumb a{color:rgba(43,41,22,.65)!important}", "html.cml-blk body .breadcrumb a{color:#6f6656!important}"],
   // paginas de texto: o botao cheio "Falar no WhatsApp" ficava com letra laranja sobre fundo laranja (a cor dos links do texto vencia a do botao); os links do texto deixam de valer para botoes
