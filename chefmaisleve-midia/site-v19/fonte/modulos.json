@@ -3,7 +3,13 @@
   "cml-home#1",
   "cml-paginas#3",
   "cml-extra#37",
-  "cml-ui#2"
+  "cml-ui#2",
+  "cml-extra#3",
+  "cml-extra#10",
+  "cml-extra#23",
+  "cml-extra#24",
+  "cml-extra#26",
+  "cml-paginas#17"
  ],
  "motivo": {
   "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
@@ -22,6 +28,14 @@
   "cml-nl-tx",
   "cml-nl-b",
   "c4-ey",
-  "cml-lz"
+  "cml-lz",
+  "cef",
+  "cef-*",
+  "cml-cef",
+  "cmn",
+  "cmn-*",
+  "nx",
+  "nx-*",
+  "cml-natw"
  ]
 }
