@@ -57,3 +57,13 @@
 - Margens laterais no celular: conferidas com a tela real de 390 px (sem a barra de rolagem do teste), todos os blocos em 16 px. Os 9 e 13 px medidos antes eram efeito da barra de rolagem do quadro de teste.
 - Falta em vãos: banner da categoria para a lista (28) e destaque do produto para o bloco seguinte (44).
 - Pacote atual no rascunho: 9347611.
+
+
+## 24/11, 13h: letra minima concluida (nada abaixo de 14 px)
+- Etapa "letra minima" do build agora cobre 9 a 13,5 px (estilo e script). Pacote no rascunho: 411fb1f.
+- Celular: faixa do topo passou para duas linhas (aviso em cima, "Termina em" + contagem embaixo), 34 px -> 55 px. Texto do aviso encurtado no rascunho: "BLACK FRIDAY ATE 30/11 - LIVE QUINTA AS 20H" (saiu "NA CHEF").
+- Celular: barra flutuante com rotulos curtos (Rastrear, Compra); rotulo completo segue no computador.
+- Modelos do rascunho: home.json (#cml-bf26 .k/.d e #cml-ch26 .k em 14 px) e product.json (.cml-f-top>span em 14 px).
+- App de avaliacoes: textos de 10 a 13 px em 14 px (ajustes.css). Atencao: seletor com "font-size: 13px" e reescrito pela propria etapa; usar "-size: 13px".
+- Ficam abaixo de 14 px so as ilustracoes de tela de celular (5,6 a 8,5 px), que sao desenho e nao texto de leitura.
+- Sobra de codigo: os modelos do tema (home.json etc.) ainda tem CSS antigo (cpvp, draft) com letras pequenas que nao aparecem na tela; entra na limpeza de codigo morto.

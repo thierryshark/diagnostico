@@ -20,3 +20,5 @@ html body .modal.modal-right{border-left:1px solid #d9cbb9}
 html body .modal.modal-left{border-right:1px solid #d9cbb9}
 /* app de avaliacoes na pagina de produto: a caixa comeca e termina na mesma linha dos blocos de cima (o app deixava 10 px de recuo de cada lado) */
 html body [data-slot-item^="evaluations"]>div{padding-left:0!important;padding-right:0!important}
+/* app de avaliacoes: textos de 10 a 13 px sobem para 14 px (regra do site: nada abaixo de 14 px) */
+html body :is([class*="mi-text-[10px]"],[class*="mi-text-[11px]"],[class*="mi-text-[12px]"],[class*="mi-text-[13px]"]),html body [data-slot-item^="evaluations"] [class*="mi-w-[32px]"][class*="mi-rounded-full"]{font-size:14px}html body [class*="mi-"][style*="-size: 13px"],html body [class*="mi-"][style*="-size: 12px"]{font-size:14px!important}
