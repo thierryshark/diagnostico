@@ -153,6 +153,10 @@ const TROCAS = [
   ['cml-paginas.js', "'</p><div class=\"of3-q\"'", "'</p><p class=\"of3-ql\">Quantidade e valor de cada '+uni(c)+'</p><div class=\"of3-q\"'"],
   // cartao no celular: a contagem de avaliacoes passava 5 px da borda ("26 avaliacoe"); em tela estreita vira "(26)"
   ['cml-paginas.js', 'function txt(n){return "· "+n+(n===1?" avaliação":" avaliações")}', 'function txt(n){return window.innerWidth<=640?"("+n+")":"· "+n+(n===1?" avaliação":" avaliações")}'],
+  // Black: foto propria dos combos de cha gravada no proprio combo (antes um modulo a parte, cx14, trocava a foto depois de o cartao aparecer). Combo 4 chas com a foto nova (rotulos certos)
+  ['cml-paginas.js', 'it:[[382766299,1]],pk:5,q:[1,2,3],', 'it:[[382766299,1]],im:"https://acdn-us.mitiendanube.com/stores/005/060/752/products/0001-8666574502263601674-c2069e09b81939a2d817953028382498-640-0.jpg",pk:5,q:[1,2,3],'],
+  ['cml-paginas.js', 'it:[[382766180,1]],pk:4,q:[1,2,3],', 'it:[[382766180,1]],im:"https://acdn-us.mitiendanube.com/stores/005/060/752/products/combo-4-chas-maos-1200-d898fb72eed2d7cf2b17955248724904-640-0.jpg",pk:4,q:[1,2,3],'],
+  ['cml-paginas.js', "return'<img src=\"'+esc(img(p))+'\" alt=\"\" loading=\"lazy\" decoding=\"async\">'}).join(\"\");\n return'<article class=\"of3-c\"", "return'<img src=\"'+esc(c.im||img(p))+'\" alt=\"\" loading=\"lazy\" decoding=\"async\">'}).join(\"\");\n return'<article class=\"of3-c\""],
   // cartoes: sobretitulo e segunda linha dos combos novos e dos 4 kits corporativos (os kits foram recadastrados e ganharam ids novos; os ids antigos saem)
   ['cml-paginas.js', '381152464:[PC,"Flowers Tropical"],381152487:[PC,"Snack Tropical"],381152499:[PC,"Café da Manhã"],381152515:[PC,"Queridinho"],381152535:[PC,"Para Aquela Pessoa"]};', '381152499:[PC,"Café da Manhã"],382766180:["Combo de chás mistos","Intenso, Sereníssimo, Quentão e Sport"],382766299:["Combo de chá na fruta","Os 5 sabores, 6 trouxinhas de cada"],382888421:["Kit corporativo","Flowers Tropical: rosa de maçã e 3 trouxinhas"],382888467:["Kit corporativo","Snack Tropical: Laranja Chocoleve e 3 trouxinhas"],382888501:["Kit corporativo","Queridinho: rosas de maçã, laranja e chá"],382888542:["Kit corporativo","Para Aquela Pessoa: ritual do chá completo"]};'],
   ['cml-extra.js', ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev\";", ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev,[data-cml-nat],[data-cml-nat] button,[data-cml-nat] a\";"],
@@ -160,6 +164,9 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // Black: as fotos dos combos de cha agora nascem certas no cartao (campo "im" do combo); saem as regras que escondiam a foto ate o script trocar
+  ['#cml-of3 article[data-c="trx"] .of3-ci:not([data-cx14]) img,#cml-of3 article[data-c="blm"] .of3-ci:not([data-cx14]) img{visibility:hidden}', ''],
+  ['#cml-of3 .of3-ci[data-cx14] img{object-fit:cover!important;width:100%!important;height:100%!important}', ''],
   // cartao no celular: nome com ate 3 linhas (a segunda linha dos combos, "Intenso, Serenissimo e Performance", era cortada na tela estreita)
   ['html body .js-item-product .js-item-name:not(#a1):not(#a2){line-height:1.3!important;min-height:2.6em!important;max-height:2.6em;overflow:hidden;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical}', 'html body .js-item-product .js-item-name:not(#a1):not(#a2){line-height:1.3!important;min-height:2.6em!important;max-height:2.6em;overflow:hidden;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical}@media(max-width:640px){html body .js-item-product .js-item-name:not(#a1):not(#a2){height:auto;max-height:3.9em;-webkit-line-clamp:3}}'],
   // cartao no celular: o sobretitulo comprido ("Presente mais famoso") era cortado com reticencias; agora quebra em ate 2 linhas, com altura reservada para os nomes ficarem alinhados

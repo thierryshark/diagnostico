@@ -10,13 +10,17 @@
   "cml-extra#24",
   "cml-extra#26",
   "cml-paginas#17",
-  "cml-ui#1"
+  "cml-ui#1",
+  "cml-paginas#33",
+  "cml-paginas#29"
  ],
  "motivo": {
   "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
   "cml-paginas#3": "guarda de sombras do antigo conversor claro, que ja saiu",
   "cml-extra#37": "trocava na tela duas respostas do FAQ a cada 400 ms; as respostas corrigidas agora entram direto na lista de perguntas (extx-13), na montagem",
-  "cml-ui#2": "acrescentava ao bloco nativo de novidades do rodape um texto e uma lista que ja ficavam escondidos; o bloco nativo saiu do tema e a caixa Seja membro nasce pronta no rodape (c7)"
+  "cml-ui#2": "acrescentava ao bloco nativo de novidades do rodape um texto e uma lista que ja ficavam escondidos; o bloco nativo saiu do tema e a caixa Seja membro nasce pronta no rodape (c7)",
+  "cml-paginas#33": "trocava a foto dos combos de cha na Black depois de o cartao aparecer (mascara por script, com observador na pagina inteira); a foto agora vem gravada no proprio combo",
+  "cml-paginas#29": "faixas de preco da Laranja na Black: ja estava desligado desde 22/11 (a promocao progressiva nativa assumiu); codigo morto"
  },
  "grupo": {},
  "tokensMortos": [
