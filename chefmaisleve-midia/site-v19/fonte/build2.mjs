@@ -171,8 +171,8 @@ const TROCAS = [
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
   // vaos que faltavam: banner da categoria para o bloco do combo (36 -> 72) e do combo para a lista (40 -> 72); destaque do produto para o bloco seguinte (44 -> 72)
-  ['.cx4-sec{max-width:1255px;margin:8px auto 40px;', '.cx4-sec{max-width:1255px;margin:44px auto 72px;'],
-  ['.cml-dst .dw{max-width:1240px;margin:0 auto;padding:28px 32px 8px}', '.cml-dst .dw{max-width:1240px;margin:0 auto;padding:28px 32px 36px}'],
+  ['.cx4-sec{max-width:1255px;margin:8px auto 40px;', '@media(max-width:767px){.cx4-sec{margin-top:8px!important}}.cx4-sec{max-width:1255px;margin:44px auto 72px;'],
+  ['.cml-dst .dw{max-width:1240px;margin:0 auto;padding:28px 32px 8px}', '.cml-dst .dw{max-width:1240px;margin:0 auto;padding:28px 32px 28px}'],
   // Black: o fim da pagina somava 64 px ao vao do rodape (139); agora 75
   ['padding:8px 0 64px', 'padding:8px 0 0'],
   // home: a faixa de informativos somava 24 px ao vao de 72
