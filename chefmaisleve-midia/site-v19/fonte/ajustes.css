@@ -22,3 +22,22 @@ html body .modal.modal-left{border-right:1px solid #d9cbb9}
 html body [data-slot-item^="evaluations"]>div{padding-left:0!important;padding-right:0!important}
 /* app de avaliacoes: textos de 10 a 13 px sobem para 14 px (regra do site: nada abaixo de 14 px) */
 html body :is([class*="mi-text-[10px]"],[class*="mi-text-[11px]"],[class*="mi-text-[12px]"],[class*="mi-text-[13px]"]),html body [data-slot-item^="evaluations"] [class*="mi-w-[32px]"][class*="mi-rounded-full"]{font-size:14px}html body [class*="mi-"][style*="-size: 13px"],html body [class*="mi-"][style*="-size: 12px"]{font-size:14px!important}
+/* FAIXA DO TOPO: regra unica (as camadas antigas saem na montagem, etapa "faixa do topo" do build2). O espaco da contagem ja nasce reservado com a mesma medida, entao a faixa e o cabecalho ficam iguais antes e depois de o codigo chegar: nada pisca nem empurra a pagina. No celular a faixa fica em uma linha com letra de 12 px (excecao combinada com o Thierry em 24/11; escrita em rem para a etapa de letra minima nao mexer). Quando a Black acabar, trocar o link do aviso (sem "#black") para o espaco da contagem sumir. */
+html body .adbar{display:flex;align-items:center;justify-content:center;box-sizing:border-box;height:34px;min-height:0;padding:0 16px;overflow:hidden;white-space:nowrap;font:300 14px/1 Poppins,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+html body .adbar>.adbar-static,html body .adbar>.adbar-marquee{flex:0 1 auto;min-width:0;overflow:hidden}
+html body .adbar .adbar-item{display:block;padding:0;overflow:hidden;text-overflow:ellipsis;font:inherit;letter-spacing:inherit;color:inherit}
+html body .adbar .adbar-item::before{content:none}
+html body .adbar .adbar-item~.adbar-item{display:none}
+html body .adbar .adbar-item a{font:inherit;letter-spacing:inherit;color:inherit;text-decoration:none}
+html body .adbar:has(a[href*='#black']):not(.cx5-on)::after,html body .adbar .cx5-bar{flex:0 0 250px;box-sizing:border-box;min-height:1em;margin-left:14px;padding-left:14px;border-left:1px solid rgba(223,174,88,.35);font-weight:500;line-height:1;color:#e9e2d6;font-variant-numeric:tabular-nums}
+html body .adbar:has(a[href*='#black']):not(.cx5-on)::after{content:"Termina em"}
+html body .adbar .cx5-bar{display:flex;align-items:center;gap:8px}
+html body .adbar .cx5-bar b{font-weight:600;letter-spacing:.06em;color:#f3d48b}
+html body .sticky-header-wrapper .adbar,html body .sticky-header-wrapper .section-announcement-bar{position:relative;z-index:3}
+@media(max-width:767px){html body .adbar{padding:0 10px;font-size:.75rem;letter-spacing:.04em}html body .adbar:has(a[href*='#black']):not(.cx5-on)::after,html body .adbar .cx5-bar{flex-basis:106px;margin-left:10px;padding-left:10px}html body .adbar:has(a[href*='#black']):not(.cx5-on)::after{content:""}html body .adbar .cx5-bar .l{display:none}html body .adbar .cx5-bar b{letter-spacing:.04em}}
+/* TROCA DE PAGINA: recurso do proprio navegador (sem script). O cabecalho e a faixa do topo ficam parados enquanto so o conteudo da pagina troca. Navegador que nao tem o recurso segue como antes. */
+@view-transition{navigation:auto}
+html body .sticky-header-wrapper{view-transition-name:cml-topo}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.16s}
+::view-transition-group(cml-topo),::view-transition-old(cml-topo),::view-transition-new(cml-topo){animation:none}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}

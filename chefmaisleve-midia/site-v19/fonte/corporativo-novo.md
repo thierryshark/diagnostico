@@ -67,3 +67,12 @@
 - App de avaliacoes: textos de 10 a 13 px em 14 px (ajustes.css). Atencao: seletor com "font-size: 13px" e reescrito pela propria etapa; usar "-size: 13px".
 - Ficam abaixo de 14 px so as ilustracoes de tela de celular (5,6 a 8,5 px), que sao desenho e nao texto de leitura.
 - Sobra de codigo: os modelos do tema (home.json etc.) ainda tem CSS antigo (cpvp, draft) com letras pequenas que nao aparecem na tela; entra na limpeza de codigo morto.
+
+
+## 24/11, 14h: faixa do topo em regra unica, troca de pagina e corporativos (AINDA SEM CONFERENCIA NA TELA: o computador com o Chrome ficou fora do ar)
+- Pacote no rascunho: bd91c72. Etapa nova no build2 ("faixa do topo"): remove as 46 regras antigas de .adbar/.cx5-bar; a regra unica mora no ajustes.css. Espaco da contagem reservado antes do codigo (::after com a mesma medida da .cx5-bar): 250 px no computador, 106 px no celular. Altura fixa de 34 px. Antes: 34 -> 55 px quando o codigo chegava (era o "piscar").
+- Celular: uma linha, letra de 12 px (.75rem), excecao aprovada pelo Thierry. Aviso no rascunho: "BLACK ATE 30/11 - LIVE QUINTA 20H".
+- Troca de pagina: @view-transition (navegador), cabecalho com view-transition-name cml-topo.
+- Corporativos (category.CORPORATIVO.json): um banner so; diferenciais em 4 moldes pequenos (no celular so o titulo); kits em quadros com foto em moldura (2 colunas no computador, 1 no celular); chamada final em molde claro.
+- A CONFERIR quando o navegador voltar: faixa (antes/depois do codigo, 360/390/1440), cabecalho fixo ao rolar (altura -34px), troca de pagina, quadros dos kits (estrutura nativa da grade), e como ver o modelo CORPORATIVO no rascunho (categoria ainda nao esta ligada ao modelo; se ele ve a pagina padrao com 2 banners, e por isso).
+- Para a limpeza: modulos que trocam texto por script (cml-extra#11 Esquenta 22/11, cml-paginas#22 textos da Black, cml-ui#7) e textos de estilo mortos dentro do pack (c1-css).

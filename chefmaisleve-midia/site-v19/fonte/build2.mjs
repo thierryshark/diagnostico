@@ -264,11 +264,7 @@ const CSS_TROCAS = [
   ["@keyframes cmlrv{to{opacity:1}}html:not(.cml-rdy):is(:has(link[rel=canonical]:is([href$=\"/contato/\"],[href$=\"/quem-somos/\"],[href$=\"/faq/\"],[href$=\"/presentes-de-natal/\"],[href$=\"/encontre-seu-cha/\"],[href$=\"/politica-de-cashback/\"],[href$=\"/ofertas/\"])),:has(body:is(.template-blog,.template-blog-post,[class*=template-account]))) main{opacity:0;animation:cmlrv 0s 2.4s forwards}", "@keyframes cmlrv{to{opacity:1;visibility:visible}}html:not(.cml-rdy):is(:has(link[rel=canonical]:is([href$=\"/contato/\"],[href$=\"/quem-somos/\"],[href$=\"/faq/\"],[href$=\"/presentes-de-natal/\"],[href$=\"/encontre-seu-cha/\"],[href$=\"/politica-de-cashback/\"],[href$=\"/ofertas/\"])),:has(body:is(.template-blog,.template-blog-post,[class*=template-account]))) main{opacity:0;visibility:hidden;animation:cmlrv 0s 2.4s forwards}html:not(.cml-rdy):has(link[rel=canonical]:is([href$=\"/contato/\"],[href$=\"/quem-somos/\"],[href$=\"/faq/\"],[href$=\"/presentes-de-natal/\"],[href$=\"/encontre-seu-cha/\"],[href$=\"/politica-de-cashback/\"],[href$=\"/ofertas/\"])) main~footer,html:not(.cml-rdy):not(.cml-0):has(body:is(.template-blog,.template-blog-post,[class*=template-account])) main~footer{visibility:hidden;animation:cmlrv 0s 2.4s forwards}"],
   // categoria: a espera pelo codigo agora tem prazo (1,6 s); antes a lista ficava invisivel ate o codigo chegar
   ['html.cml-blk body.template-category:not(.c2-ready) :is(#ns-section-category_hero,#ns-section-product_list){opacity:0!important}', 'html.cml-blk body.template-category:not(.c2-ready) :is(#ns-section-category_hero,#ns-section-product_list){opacity:0;animation:cmlrv 0s 1.6s forwards}'],
-  // letra minima no celular (14 px): faixa do topo em duas linhas (aviso em cima, contagem embaixo) em vez de texto cortado; barra flutuante com rotulo curto
-  ['@media(max-width:767px){.cx5-bar{padding:0 10px;font-size:9.5px;letter-spacing:.08em}', '@media(max-width:767px){.cx5-bar{padding:0;border-left:0;font-size:14px;letter-spacing:.06em}html body .adbar.cx5-on>:is(.adbar-marquee,.adbar-static){flex:1 1 100%}html body .adbar.cx5-on .adbar-item{padding:0!important}'],
-  ['.cx5-bar .l{display:none}', ''],
-  ['html body .cx5-bar .l:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){display:none!important}', ''],
-  ['{gap:8px!important;overflow:hidden!important;justify-content:center!important}', '{gap:3px 8px!important;flex-wrap:wrap!important;overflow:hidden!important;justify-content:center!important}'],
+  // barra flutuante no celular: rotulo curto para caber a letra de 14 px
   ['html.cml-dockcb body .c1-dock .lb{font-size:9px;letter-spacing:0}', 'html.cml-dockcb body .c1-dock .lb{font-size:14px;letter-spacing:0}html body .c1-dock .lb i{display:none}'],
   ['.c1-dock .lb{font:300 9px/1 Poppins,sans-serif;letter-spacing:.02em;', '.c1-dock .lb i{font-style:normal}.c1-dock .lb{font:300 14px/1 Poppins,sans-serif;letter-spacing:.02em;'],
 ];
@@ -451,6 +447,12 @@ for (const [a, b] of CSS_TROCAS) { if (css.split(a).length !== 2) throw new Erro
 // galeria.css: mosaico de fotos da pagina de produto no computador; entra por ultimo para valer sobre o carrossel
 const REFORCO = Array.from({ length: 9 }, (_, i) => ':not(#g' + (i + 1) + ')').join('');
 css = fs.readFileSync('fontes.css', 'utf8') + '\n' + css + '\n' + fs.readFileSync('galeria.css', 'utf8').split('%N%').join(REFORCO) + '\n';
+// faixa do topo: saem todas as camadas antigas (dez estilos empilhados, de campanhas diferentes, um por cima do outro). A faixa passa a ter uma regra unica, no ajustes.css
+{ const postcss = (await import('postcss')).default; const root = postcss.parse(css); let nr = 0;
+  root.walkRules((r) => { if (r.parent && r.parent.type === 'atrule' && /keyframes/.test(r.parent.name)) return; const fica = r.selectors.filter((sel) => !/\.adbar|\.cx5-bar/.test(sel)); if (!fica.length) { r.remove(); nr++; } else if (fica.length < r.selectors.length) { r.selectors = fica; nr++; } });
+  root.walkAtRules((a) => { if (/media|supports/.test(a.name) && a.nodes && a.nodes.length === 0) a.remove(); });
+  css = root.toString(); if (nr < 20) throw new Error('faixa do topo: esperava remover ao menos 20 regras, removeu ' + nr); console.log('faixa do topo: regras antigas removidas:', nr);
+  const alt = '--announcements-height-negative:-29px'; if (css.split(alt).length < 2) throw new Error('faixa do topo: nao achou a altura usada pelo cabecalho fixo'); css = css.split(alt).join('--announcements-height-negative:-34px'); }
 if (fs.existsSync('ajustes.css')) css += fs.readFileSync('ajustes.css', 'utf8') + '\n';
 // regras comprovadamente mortas: dependiam de classes que nenhum codigo cria mais (lista em modulos.json)
 if (cfg.tokensMortos && cfg.tokensMortos.length) {
@@ -473,7 +475,7 @@ const DESANINHA = [
 ];
 let cssFim = cssMin;
 for (const [de, para] of DESANINHA) { if (!cssFim.includes(de)) throw new Error('desaninha: nao achou ' + de.slice(0, 70)); cssFim = cssFim.split(de).join(para); }
-{ const re = /(html body(?:\.template-home)? \.adbar):is\(:has\(a\[href\*="#black"\]\),:has\(a\[href\*="\/account"\]\)\)((?::not\(#a\d+\))+:after)/g; if (!re.test(cssFim)) throw new Error('desaninha: nao achou a regra da barra'); cssFim = cssFim.replace(re, '$1:has(a[href*="#black"])$2,$1:has(a[href*="/account"])$2'); }
+// (a regra da barra que era desaninhada aqui saiu junto com as camadas antigas da faixa do topo)
 // consultas presas ao html passam a olhar so os filhos diretos (o link canonico fica sempre no head; o body e filho do html): mesmo resultado, sem varrer a pagina inteira
 for (const [de, para, min] of [[':has(link[rel=canonical]', ':has(>head>link[rel=canonical]', 5], [':has(body:is(.template-blog', ':has(>body:is(.template-blog', 1]]) { const n = cssFim.split(de).length - 1; if (n < min) throw new Error('consulta direta: esperava ao menos ' + min + ' de ' + de + ', achou ' + n); cssFim = cssFim.split(de).join(para); }
 const hasVivo = hasVivas(cssFim);
