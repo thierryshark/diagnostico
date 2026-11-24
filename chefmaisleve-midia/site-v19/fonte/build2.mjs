@@ -167,6 +167,9 @@ const TROCAS = [
   ['cml-paginas.js', '381152464:[PC,"Flowers Tropical"],381152487:[PC,"Snack Tropical"],381152499:[PC,"Café da Manhã"],381152515:[PC,"Queridinho"],381152535:[PC,"Para Aquela Pessoa"]};', '381152499:[PC,"Café da Manhã"],382766180:["Combo de chás mistos","Intenso, Sereníssimo, Quentão e Sport"],382766299:["Combo de chá na fruta","Os 5 sabores, 6 trouxinhas de cada"],382888421:["Kit corporativo","Flowers Tropical: rosa de maçã e 3 trouxinhas"],382888467:["Kit corporativo","Snack Tropical: Laranja Chocoleve e 3 trouxinhas"],382888501:["Kit corporativo","Queridinho: rosas de maçã, laranja e chá"],382888542:["Kit corporativo","Para Aquela Pessoa: ritual do chá completo"]};'],
   ['cml-extra.js', ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev\";", ".js-quantity-down,.js-quantity-up,.c4-fq,.cml-rev,[data-cml-nat],[data-cml-nat] button,[data-cml-nat] a\";"],
   ['cml-extra.js', "if(!b.classList.contains(\"template-category\")||/^\\/ofertas\\//.test(P)){b.classList.add(\"c2-ready\");return true}", "if(!b.classList.contains(\"template-category\")||/^\\/ofertas\\//.test(P)||D.querySelector(\"[data-cml-nat]\")){b.classList.add(\"c2-ready\");return true}"],
+  // barra flutuante no celular: com a letra em 14 px os rotulos longos se sobrepunham; a segunda palavra some no celular (o rotulo completo segue no computador e na leitura de tela)
+  ['cml-extra.js', '<span class="lb">Compra rápida</span>', '<span class="lb">Compra<i> rápida</i></span>'],
+  ['cml-extra.js', '<span class="lb">Rastrear pedido</span>', '<span class="lb">Rastrear<i> pedido</i></span>'],
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
@@ -261,6 +264,13 @@ const CSS_TROCAS = [
   ["@keyframes cmlrv{to{opacity:1}}html:not(.cml-rdy):is(:has(link[rel=canonical]:is([href$=\"/contato/\"],[href$=\"/quem-somos/\"],[href$=\"/faq/\"],[href$=\"/presentes-de-natal/\"],[href$=\"/encontre-seu-cha/\"],[href$=\"/politica-de-cashback/\"],[href$=\"/ofertas/\"])),:has(body:is(.template-blog,.template-blog-post,[class*=template-account]))) main{opacity:0;animation:cmlrv 0s 2.4s forwards}", "@keyframes cmlrv{to{opacity:1;visibility:visible}}html:not(.cml-rdy):is(:has(link[rel=canonical]:is([href$=\"/contato/\"],[href$=\"/quem-somos/\"],[href$=\"/faq/\"],[href$=\"/presentes-de-natal/\"],[href$=\"/encontre-seu-cha/\"],[href$=\"/politica-de-cashback/\"],[href$=\"/ofertas/\"])),:has(body:is(.template-blog,.template-blog-post,[class*=template-account]))) main{opacity:0;visibility:hidden;animation:cmlrv 0s 2.4s forwards}html:not(.cml-rdy):has(link[rel=canonical]:is([href$=\"/contato/\"],[href$=\"/quem-somos/\"],[href$=\"/faq/\"],[href$=\"/presentes-de-natal/\"],[href$=\"/encontre-seu-cha/\"],[href$=\"/politica-de-cashback/\"],[href$=\"/ofertas/\"])) main~footer,html:not(.cml-rdy):not(.cml-0):has(body:is(.template-blog,.template-blog-post,[class*=template-account])) main~footer{visibility:hidden;animation:cmlrv 0s 2.4s forwards}"],
   // categoria: a espera pelo codigo agora tem prazo (1,6 s); antes a lista ficava invisivel ate o codigo chegar
   ['html.cml-blk body.template-category:not(.c2-ready) :is(#ns-section-category_hero,#ns-section-product_list){opacity:0!important}', 'html.cml-blk body.template-category:not(.c2-ready) :is(#ns-section-category_hero,#ns-section-product_list){opacity:0;animation:cmlrv 0s 1.6s forwards}'],
+  // letra minima no celular (14 px): faixa do topo em duas linhas (aviso em cima, contagem embaixo) em vez de texto cortado; barra flutuante com rotulo curto
+  ['@media(max-width:767px){.cx5-bar{padding:0 10px;font-size:9.5px;letter-spacing:.08em}', '@media(max-width:767px){.cx5-bar{padding:0;border-left:0;font-size:14px;letter-spacing:.06em}html body .adbar.cx5-on>:is(.adbar-marquee,.adbar-static){flex:1 1 100%}html body .adbar.cx5-on .adbar-item{padding:0!important}'],
+  ['.cx5-bar .l{display:none}', ''],
+  ['html body .cx5-bar .l:not(#a1):not(#a2):not(#a3):not(#a4):not(#a5):not(#a6){display:none!important}', ''],
+  ['{gap:8px!important;overflow:hidden!important;justify-content:center!important}', '{gap:3px 8px!important;flex-wrap:wrap!important;overflow:hidden!important;justify-content:center!important}'],
+  ['html.cml-dockcb body .c1-dock .lb{font-size:9px;letter-spacing:0}', 'html.cml-dockcb body .c1-dock .lb{font-size:14px;letter-spacing:0}html body .c1-dock .lb i{display:none}'],
+  ['.c1-dock .lb{font:300 9px/1 Poppins,sans-serif;letter-spacing:.02em;', '.c1-dock .lb i{font-style:normal}.c1-dock .lb{font:300 14px/1 Poppins,sans-serif;letter-spacing:.02em;'],
 ];
 const PARSE = { ecmaVersion: 'latest', sourceType: 'script', allowReturnOutsideFunction: true };
 
@@ -418,7 +428,7 @@ for (const g of Object.keys(grupos)) {
     }); if (!g) console.log('cantos no script:', nc, 'declaracoes ajustadas'); }
   // contraste, parte 2: texto em preto transparente abaixo de 70% (menos de 4,5:1 sobre o fundo claro) sobe para 70% tambem nos estilos que moram no script
   // letra minima, parte 2: textos de 10 a 13,5 px sobem para 14 px tambem nos estilos que moram no script (regra do site: nada abaixo de 14 px)
-  { let nf = 0; txt = txt.replace(/font-size:\s*(10|10\.5|11|11\.5|12|12\.5|13|13\.5)px/g, () => { nf++; return 'font-size:14px'; }).replace(/(font:[^;}"'`]*?[\s])(10|10\.5|11|11\.5|12|12\.5|13|13\.5)px\//g, (m, p1) => { nf++; return p1 + '14px/'; }); if (!g) console.log('letra minima no script:', nf, 'textos ajustados'); }
+  { let nf = 0; txt = txt.replace(/font-size:\s*(9|9\.5|10|10\.5|11|11\.5|12|12\.5|13|13\.5)px/g, () => { nf++; return 'font-size:14px'; }).replace(/(font:[^;}"'`]*?[\s])(9|9\.5|10|10\.5|11|11\.5|12|12\.5|13|13\.5)px\//g, (m, p1) => { nf++; return p1 + '14px/'; }); if (!g) console.log('letra minima no script:', nf, 'textos ajustados'); }
   { let nt = 0; txt = txt.replace(/(^|[^-a-z])color:rgba\(43,41,22,\.(4|45|5|55|6|65)\)/g, (m, p1) => { nt++; return p1 + 'color:rgba(43,41,22,.7)'; }); if (!g) console.log('contraste no script:', nt, 'textos ajustados'); }
   new Function(txt); // confere a sintaxe do arquivo final
   fs.writeFileSync(OUT + '/' + nome, (g ? '' : '') + txt); tam[nome] = txt.length;
@@ -482,7 +492,7 @@ if (fs.existsSync('cantos-origem.json')) {
 }
 // contraste: texto em preto transparente abaixo de 70% (menos de 4,5:1 sobre o fundo claro) sobe para 70% (#2b2916b3, 5,2:1); so a cor do texto, bordas e fundos ficam como estao
 // letra minima: textos de 10 a 13,5 px sobem para 14 px (regra do site: nada abaixo de 14 px). Etiquetas e sobretitulos menores que 12 px ficam para revisao caso a caso
-{ let nf = 0; cssFim = cssFim.replace(/font-size:\s*(10|10\.5|11|11\.5|12|12\.5|13|13\.5)px/g, () => { nf++; return 'font-size:14px'; }).replace(/(font:[^;}]*?[\s])(10|10\.5|11|11\.5|12|12\.5|13|13\.5)px\//g, (m, p1) => { nf++; return p1 + '14px/'; }); console.log('letra minima no estilo:', nf, 'textos ajustados'); }
+{ let nf = 0; cssFim = cssFim.replace(/font-size:\s*(9|9\.5|10|10\.5|11|11\.5|12|12\.5|13|13\.5)px/g, () => { nf++; return 'font-size:14px'; }).replace(/(font:[^;}]*?[\s])(9|9\.5|10|10\.5|11|11\.5|12|12\.5|13|13\.5)px\//g, (m, p1) => { nf++; return p1 + '14px/'; }); console.log('letra minima no estilo:', nf, 'textos ajustados'); }
 { let nt = 0; cssFim = cssFim.replace(/(^|[^-a-z])color:#2b2916(66|6b|73|80|8c|99|9e|a6)(?![0-9a-f])/g, (m, p1) => { nt++; return p1 + 'color:#2b2916b3'; }); console.log('contraste no estilo:', nt, 'textos ajustados'); }
 fs.writeFileSync(OUT + '/site.css', '/* Chef Mais Leve: visual do site (v19, 23/11/2026). */\n' + cssFim);
 console.log(COV ? '[cobertura] funcoes ' + nFn : '[producao]', '| modulos', mods.length, 'vivos', vivos.length, '| site.css', Math.round(cssMin.length / 1024) + 'KB |', Object.entries(tam).map(([k, v]) => k + ' ' + Math.round(v / 1024) + 'KB').join(', '));
