@@ -168,8 +168,8 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
-  // categorias no computador: sem coluna lateral. A coluna nativa "Filtrar por" continua escondida (ja era, quando existia a nossa coluna); o passo final e desligar os filtros no painel da loja, ai esta regra sai
-  ['html.cml-blk body .cml-cgrid.c2-has>.filters-controls-content{display:none!important}', 'html.cml-blk body .cml-cgrid>.filters-controls-content{display:none!important}@media(min-width:768px){html.cml-blk body .cml-cgrid{grid-template-columns:minmax(0,1fr)!important}}'],
+  // categorias: os filtros foram desligados no painel da loja em 24/11 (ok do Thierry); a coluna nativa nao e mais montada, entao sai a regra que a escondia
+  ['html.cml-blk body .cml-cgrid.c2-has>.filters-controls-content{display:none!important}', ''],
   // rodape enxuto no celular: sem a segunda margem interna, sem o logo repetido (ja esta no topo), menus sem quebra de linha, bandeiras numa linha so e menos vao entre os blocos
   ['.c7-ft:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6){gap:20px!important;padding:24px 18px!important}', '.c7-ft:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6){gap:14px!important;padding:0!important;grid-template-columns:minmax(0,1fr)!important}'],
   ['.c7-fg:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6){gap:10px 16px!important}', '.c7-fg:not(#z1):not(#z2):not(#z3):not(#z4):not(#z5):not(#z6){gap:10px 16px!important;margin-top:0!important;grid-template-columns:auto minmax(0,1fr)!important}'],
