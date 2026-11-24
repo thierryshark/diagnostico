@@ -6,3 +6,5 @@ html.cml-home2:not(.cml-hok) main [id^=ns-section-faq],html.cml-home2:not(.cml-h
 /* pagina de produto: o bloco de compra (titulo, preco, botao) aparecia do jeito do tema e, um instante depois, o codigo encaixava sobretitulo, subtitulo, cashback e bolinhas, empurrando tudo (salto de layout).
    Agora o bloco fica invisivel ate o codigo terminar (classe cml-pk no html) ou, no maximo, por 2,5 s. A foto do produto aparece na hora. */
 html:not(.cml-pk) body.template-product #ns-block-product_info{visibility:hidden;animation:cmlhok 0s linear 2.5s forwards}
+/* app de avaliacoes (estilo do proprio app, de fora do site): o botao em capsula passa ao canto padrao de 10 px */
+html body div[class*=mi-rounded-full][class*=mi-cursor-pointer]{border-radius:10px!important}

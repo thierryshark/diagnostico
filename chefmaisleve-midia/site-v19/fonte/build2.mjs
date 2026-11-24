@@ -146,6 +146,9 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // cantos: as variaveis de canto do padrao antigo (20 e 28 px) passam ao teto de 16 px
+  ["--ds-r-md:20px", "--ds-r-md:16px"],
+  ["--ds-r-lg:28px", "--ds-r-lg:16px"],
   // categorias: sai a regra que forcava 3 colunas no computador (o tema ja esta configurado para 4, como pede o documento do Thierry)
   ["@media(min-width:1100px){html body .js-product-table.grid-md-4:not(#u1):not(#u2):not(#u3):not(#u4):not(#u5){grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:28px!important}}", ""],
   // nada abaixo de 14 px: avaliacao e etiqueta sobre a foto
