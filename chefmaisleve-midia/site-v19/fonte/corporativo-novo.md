@@ -24,3 +24,6 @@
 - Convite para avaliar (app de avaliações, na página de produto): botão ficava com letra branca em fundo claro por causa de duas regras de cor nossas que brigavam. Corrigido na origem; caixa com fundo da marca, linha fina, sem o desenho de estrela, botão de contorno laranja com canto de 10 px.
 - Letra mínima: passo novo no build sobe para 14 px todos os textos de 12 a 13,5 px (330 no estilo, mais os do script). Ficam para revisão caso a caso 206 + 142 declarações abaixo de 12 px (etiquetas e sobretítulos).
 - Aviso visto no Canva: assinatura Pro suspensa por erro de pagamento; cota de geração de imagem esgotada.
+- Cartão no celular (24/11, depois): nome com até 3 linhas (altura livre), sobretítulo em até 2 linhas com altura reservada, contagem de avaliações curta "(26)" em tela estreita. Segunda linha dos kits no formato "Nome do kit: o que vem". Bateria em 6 páginas (390 e 1440 px): sem rolagem lateral e sem texto cortado.
+- Bloco da Black: a foto do Combo 4 Chás ainda é a antiga (mãos com Equilibrado e Performance, que não são do combo). Falta apontar para a foto nova.
+- Pacote atual no rascunho: 176019d.
