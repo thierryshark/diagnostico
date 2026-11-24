@@ -39,3 +39,15 @@
   - Sobra de código para limpar depois: os módulos que enfeitavam a coluna (árvore de categorias em cml-destaque#0, cml-extra#21, cx22, ext-categoria#0) ainda carregam, sem efeito.
 - Sobra antiga vista no pacote: código das páginas antigas de Encontre seu chá e Monte seu presente (nx-side, cx-side) ainda está no pacote; sai quando os modelos novos forem ligados depois de publicar.
 - Pacote atual no rascunho: efb7204.
+
+## 24/11/2026 (10h50 às 11h30): alinhamento no computador e filtros
+
+- Filtros nativos DESLIGADOS no painel da loja (Loja online > Filtros: Variações e Preço desmarcados), com ok do Thierry. Vale para o site publicado também. A coluna nativa não é mais montada; saiu a regra de estilo que a escondia.
+- Moldura única (bloco de código `code_mf` no header.json do rascunho): entraram na lista `.cml-dst .dw` (destaque do produto), `.cml-ig` (Instagram da home), `.cml-bar>div` (barra fixa de compra) e `body.template-page:has(.cml-st2) .page-content-section` (páginas institucionais).
+- Black: destaques dos combos na largura da moldura (foto 560 px no início ou no fim da coluna, texto até 640 px); "Dúvidas rápidas" na largura da moldura, em 2 colunas.
+- Produto em destaque (Laranja etc.): foto encosta no início da coluna (max 620 px).
+- Produto comum: texto de apresentação (`.cml-pd`, no product.json) sem recuo de 16 px e sem margem de 56 px; seção com 36/40 px (16/16 no celular): 72 px para a foto e 74 px para o "Veja também". Título `.cml-f-top` alinhado à esquerda.
+- Caixa de avaliação: sem o recuo de 10 px do app, alinhada aos blocos da coluna.
+- Conferência (1440 px): home, chás, ofertas, corporativos, 3 produtos, quem somos: todos os blocos começam e terminam na linha da moldura. Celular sem rolagem lateral.
+- Vãos verticais medidos e ainda fora do padrão de 72 px (próxima tarefa): home (28, 96, 90, 132, 123), categoria (banner para lista 37; lista para rodapé 91), ofertas para rodapé 139, produto (veja também para dúvidas 92; dúvidas para rodapé 36).
+- Pacote atual no rascunho: 82afda7.

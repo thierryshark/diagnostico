@@ -168,6 +168,8 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // pagina de produto: o texto de apresentacao ficava a 140 px da foto e a 58 px do "Veja tambem"; agora 72 px para cima e para baixo no computador (padrao de vao entre blocos) e cerca de 50 px no celular
+  ['html body #ns-section-product_description:not(#a1):not(#a2){padding-top:48px!important;padding-bottom:24px!important}', 'html body #ns-section-product_description:not(#a1):not(#a2){padding-top:36px!important;padding-bottom:40px!important}@media(max-width:767px){html body #ns-section-product_description:not(#a1):not(#a2){padding-top:16px!important;padding-bottom:16px!important}}'],
   // alinhamento no computador (pedido do Thierry em 24/11): tudo comeca na mesma linha da moldura. Foto do produto em destaque encosta no inicio da coluna (ficava centralizada, 108 px para dentro) e cresce de 500 para 620 px
   ['.cml-dst .dh-media{position:relative;width:100%;max-width:500px;justify-self:center}', '.cml-dst .dh-media{position:relative;width:100%;max-width:620px;justify-self:start}'],
   // paginas institucionais: o conteudo usa a largura da moldura (era uma coluna de 1240 px centralizada)

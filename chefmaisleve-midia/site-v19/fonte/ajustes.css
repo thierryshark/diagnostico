@@ -18,3 +18,5 @@ body.template-page .user-content td img{border-radius:6px}
 /* gavetas laterais (sacola e demais): linha de contorno na borda, para a gaveta nao se confundir com a pagina (as duas tem o mesmo fundo claro) */
 html body .modal.modal-right{border-left:1px solid #d9cbb9}
 html body .modal.modal-left{border-right:1px solid #d9cbb9}
+/* app de avaliacoes na pagina de produto: a caixa comeca e termina na mesma linha dos blocos de cima (o app deixava 10 px de recuo de cada lado) */
+html body [data-slot-item^="evaluations"]>div{padding-left:0!important;padding-right:0!important}
