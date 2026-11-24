@@ -3,3 +3,6 @@
    O "visibility" fica sem !important de proposito: com ele a animacao que solta as secoes aos 3 s nao conseguiria valer. */
 html.cml-home2:not(.cml-hok) main [id^=ns-section-faq],html.cml-home2:not(.cml-hok) main [id^=ns-section-instagram-feed]{visibility:hidden;animation:cmlhok 0s linear 3s forwards!important}
 @keyframes cmlhok{to{visibility:visible}}
+/* pagina de produto: o bloco de compra (titulo, preco, botao) aparecia do jeito do tema e, um instante depois, o codigo encaixava sobretitulo, subtitulo, cashback e bolinhas, empurrando tudo (salto de layout).
+   Agora o bloco fica invisivel ate o codigo terminar (classe cml-pk no html) ou, no maximo, por 2,5 s. A foto do produto aparece na hora. */
+html:not(.cml-pk) body.template-product #ns-block-product_info{visibility:hidden;animation:cmlhok 0s linear 2.5s forwards}
