@@ -52,3 +52,4 @@
 - Vãos verticais medidos e ainda fora do padrão de 72 px (próxima tarefa): home (28, 96, 90, 132, 123), categoria (banner para lista 37; lista para rodapé 91), ofertas para rodapé 139, produto (veja também para dúvidas 92; dúvidas para rodapé 36).
 - Pacote atual no rascunho: 82afda7.
 - 24/11, 11h20: produto em destaque (Kit Ternura, Laranja etc.), coluna de compra enquadrada: selos em colunas iguais (4 no computador, 2x2 no celular), faixa "Lote limitado" e botão "Comprar agora" na largura da coluna; no celular a descrição fica em até 3 linhas (16 px). Pacote: 0f949c0.
+- 24/11, 11h35: cronômetro da Black no produto em destaque, no celular: texto e contador ocupam a largura do bloco (4 caixas iguais). O estilo desse bloco mora no script (cml-paginas.js), não no site.css. Pacote: f50e1b5.
