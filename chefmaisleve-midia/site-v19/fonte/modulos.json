@@ -13,7 +13,10 @@
   "cml-ui#1",
   "cml-paginas#33",
   "cml-paginas#29",
-  "cml-paginas#55"
+  "cml-paginas#55",
+  "cml-extra#11",
+  "cml-paginas#22",
+  "cml-ui#7"
  ],
  "motivo": {
   "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
@@ -22,7 +25,10 @@
   "cml-ui#2": "acrescentava ao bloco nativo de novidades do rodape um texto e uma lista que ja ficavam escondidos; o bloco nativo saiu do tema e a caixa Seja membro nasce pronta no rodape (c7)",
   "cml-paginas#33": "trocava a foto dos combos de cha na Black depois de o cartao aparecer (mascara por script, com observador na pagina inteira); a foto agora vem gravada no proprio combo",
   "cml-paginas#29": "faixas de preco da Laranja na Black: ja estava desligado desde 22/11 (a promocao progressiva nativa assumiu); codigo morto",
-  "cml-paginas#55": "faixas da Laranja na Black (cx10): a primeira linha ja era \"return\", codigo morto desde 22/11"
+  "cml-paginas#55": "faixas da Laranja na Black (cx10): a primeira linha ja era \"return\", codigo morto desde 22/11",
+  "cml-extra#11": "corrigia na tela as datas do Esquenta (20/11 para 22/11) com observador na pagina inteira; os textos agora saem certos na origem (etapa \"textos da campanha na origem\")",
+  "cml-paginas#22": "trocava na tela os textos do Esquenta pelos da Black com observador na pagina inteira (mascara por script); os textos agora saem certos na origem",
+  "cml-ui#7": "efeito de brasa e calor no titulo do Esquenta Black e troca de \"Aquecimento\" por \"Esquenta\": campanha encerrada"
  },
  "grupo": {},
  "tokensMortos": [

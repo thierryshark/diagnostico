@@ -95,3 +95,10 @@
 - Kits corporativos so a partir de 10 unidades: pagina de corporativos com minimo 10 nos 4 kits (campo e botao), Black "Lembrancinhas corporativas" comeca em 10, modelo CORPORATIVO com o texto "a partir de 10 unidades". PENDENTE: o minimo nao e travado no carrinho nem na pagina de cada kit (precisa de regra nativa de quantidade minima no produto ou conferencia no pedido).
 - home.json: o bloco de icones tinha "Esquenta Black / Precos de Black ate 20/11" no cadastro e um modulo trocava o texto na tela; agora o texto certo esta no cadastro.
 - NAO REMOVIDOS: cml-extra#11 e cml-paginas#22 (trocam textos do Esquenta por Black). Dez modulos ainda escrevem textos do Esquenta que esses dois corrigem em cadeia (20/11 -> 22/11 -> 30/11). Para tirar, corrigir o texto na origem de cada um: cml-black#2, cml-destaque#0, cml-extra#8/#14/#15/#16/#17/#22/#31, cml-paginas#8, cml-ui#7.
+
+
+## 24/11, 17h: limpeza pedida pelo Thierry
+- Home: removidas pelo editor as 8 secoes desativadas (Carrossel, Banners, CHAS, KITS E PRESENTES, INFUSOES, SNACKS, GRANOLAS, banners categorias). Ficam: CSS base, Abertura Black, Icones, Perguntas, Instagram.
+- Textos da campanha na origem: etapa nova no build2 aplica, no codigo de cada modulo, as trocas que cml-extra#11 e cml-paginas#22 faziam na tela. Removidos: cml-extra#11, cml-paginas#22, cml-ui#7 (e o cml-paginas#55, morto).
+- AINDA EXISTE: cml-paginas#12 (corrige textos das paginas de ajuda: valores de frete, erros de escrita; tem tambem uma copia da tabela da Black, hoje sem efeito). Para tirar: corrigir o conteudo das paginas no painel (Paginas) e remover o modulo. Outros modulos que varrem texto: cml-extra#16/#17/#20/#38, cml-paginas#31/#43/#86, cpv-own#3, extx-13#2 (ver um a um).
+- Plano do Thierry: publicar o v19 e seguir ajustando numa copia. Depois de publicar: ligar modelos (ENCONTRE, PRESENTE, CORPORATIVO), menu (Seu espaco nativo, apagar 3 itens escondidos), tirar reservas do menu, kits() do #43.
