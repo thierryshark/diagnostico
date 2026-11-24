@@ -1,0 +1,5 @@
+/* home: a secao de duvidas e a do Instagram (nativas) apareciam logo abaixo dos icones e eram empurradas para baixo quando o ranking entrava (salto de layout).
+   Ficam invisiveis ate o ranking entrar (classe cml-hok) ou, no maximo, por 3 s.
+   O "visibility" fica sem !important de proposito: com ele a animacao que solta as secoes aos 3 s nao conseguiria valer. */
+html.cml-home2:not(.cml-hok) main [id^=ns-section-faq],html.cml-home2:not(.cml-hok) main [id^=ns-section-instagram-feed]{visibility:hidden;animation:cmlhok 0s linear 3s forwards!important}
+@keyframes cmlhok{to{visibility:visible}}

@@ -117,6 +117,17 @@ const TROCAS = [
   // home, carrossel de categorias: a foto do cartao Chocoleve vinha inteira (168 KB, sem guardar no navegador); agora vem em 640 px (se falhar, entra a original)
   ['cml-paginas.js', `"https://dzmlyrkzcdqicwfmxnxd.supabase.co/storage/v1/object/public/cml-fotos/chocoleve-cafe-da-manha.jpg", "Lançamento"]`, `"https://dzmlyrkzcdqicwfmxnxd.supabase.co/storage/v1/render/image/public/cml-fotos/chocoleve-cafe-da-manha.jpg?width=640", "Lançamento", "https://dzmlyrkzcdqicwfmxnxd.supabase.co/storage/v1/object/public/cml-fotos/chocoleve-cafe-da-manha.jpg"]`],
   ['cml-paginas.js', `<img src="' + cim(c[3]) + '" alt="'`, `<img src="' + cim(c[3]) + '"' + (c[5] ? ' onerror="this.onerror=null;this.src=\\'' + c[5] + '\\'"' : '') + ' alt="'`],
+  // home, ranking "Os mais pedidos": cada cartao baixava a foto de fundo branco em PNG (1,8 MB nos 5) e logo trocava pela foto ambientada.
+  // Agora o cartao ja nasce com a foto ambientada quando ela e conhecida; a foto de fundo branco, quando precisa, vem em WebP.
+  // Produto fora da lista de fotos ambientadas: a pagina dele era baixada (115 KB) a cada visita a home so para achar a foto; o achado agora fica guardado no navegador por 7 dias.
+  ['cml-extra.js', `var u=x.url.replace(/^https?:\\/\\/[^\\/]+/,"");return'<a class="rc'+(i?"":" first")+'" href="'+esc(u)+'"><span class="ri"><img src="'+esc(x.img)+'" alt=""`, `var u=x.url.replace(/^https?:\\/\\/[^\\/]+/,""),sm=u.match(/\\/produtos\\/([^\\/?#]+)/),ab=sm&&window.__cmlAmb?window.__cmlAmb(sm[1]):"",im=ab?"https://acdn-us.mitiendanube.com/stores/005/060/752/products/"+ab+"-640-0.webp":__cmlWp(x.img);return'<a class="rc'+(i?"":" first")+'" href="'+esc(u)+'"><span class="ri"><img'+(ab?' class="cml-amb"':'')+' src="'+esc(im)+'" alt=""`],
+  ['cml-paginas.js', `function setImg(img,base){if(img.__amb)return;img.__amb=1;`, `var AC={};try{var ac0=JSON.parse(localStorage.getItem("cml-amb1")||"{}");if(ac0&&ac0.t&&Date.now()-ac0.t<6048e5&&ac0.m)AC=ac0.m}catch(e){}window.__cmlAmb=function(h){return AMB[h]||AC[h]||""}; function setImg(img,base){if(img.__amb)return;img.__amb=1;`],
+  ['cml-paginas.js', `if(AMB[h])return setImg(img,AMB[h]);if(ri.__f)return;ri.__f=1;`, `var kn=AMB[h]||AC[h];if(kn)return setImg(img,kn);if(ri.__f)return;ri.__f=1;`],
+  ['cml-paginas.js', `var b=U[2]||U[1];if(b)setImg(img,b)}).catch(function(){})`, `var b=U[2]||U[1];if(b){setImg(img,b);AC[h]=b;try{localStorage.setItem("cml-amb1",JSON.stringify({t:Date.now(),m:AC}))}catch(e){}}}).catch(function(){})`],
+  ['cml-paginas.js', `<div class="cx2-bump"><img src="'+cheap.img+'" alt="" loading="lazy">`, `<div class="cx2-bump"><img src="'+__cmlWp(cheap.img)+'" alt="" loading="lazy">`],
+  // home: avisa o visual quando o ranking entrou (ou nao vai entrar), para soltar as secoes de baixo sem salto de layout (ver ajustes.css)
+  ['cml-extra.js', `if(rkData.mode==="off"||it.length<3)return true;`, `if(rkData.mode==="off"||it.length<3){D.documentElement.classList.add("cml-hok");return true}`],
+  ['cml-extra.js', `ref.parentNode.insertBefore(s,ref);return true}`, `ref.parentNode.insertBefore(s,ref);D.documentElement.classList.add("cml-hok");return true}`],
   ['ext-rodape.js', "var nat=nl.querySelector('form.footer-newsletter-form');", ''],
   ['ext-rodape.js', 'if(nat)nat.parentNode.insertBefore(f,nat.nextSibling);else nl.appendChild(f);', 'nl.appendChild(f);'],
   ['ext-rodape.js', "try{if(nat){var ni=nat.querySelector('input[type=email],input[name*=mail]');if(ni){ni.value=email;var fd=new FormData(nat);fetch(nat.action||location.href,{method:'POST',body:fd,credentials:'same-origin'}).catch(function(){})}}}catch(x){}", ''],
@@ -259,6 +270,8 @@ const vivos = mods.filter((m) => !remover.has(m.id) && !vazio(m));
 const ini = 'window.__cmlV2=1;window.__cmlV3=1;window.__cmlPack2=1;window.__cmlPack=1;window.__cefLoader=1;'
   // troca o texto de um elemento sem recriar o no (nao acorda os observadores de estrutura)
   + 'window.__cmlF=function(f){var d=0,g=function(){if(d)return;d=1;f()};requestAnimationFrame(g);setTimeout(g,120)};'
+  // fotos de produto pedidas em PNG/JPG de 480 px passam a vir em WebP (mesma foto, de 4 a 8 vezes mais leve)
+  + 'window.__cmlWp=function(u){return String(u||"").replace(/-480-0\\.(png|jpe?g)$/i,"-480-0.webp")};'
   + 'window.__cmlT=function(e,v){if(!e)return;v=String(v);var c=e.firstChild;if(c&&c.nodeType===3&&c===e.lastChild){if(c.nodeValue!==v)c.nodeValue=v}else if(e.textContent!==v)e.textContent=v};'
   + (COV ? 'window.__c=new Uint8Array(' + nFn + ');window.__cmlE=[];window.__cmlW=function(i,e){window.__cmlE.push(i+": "+(e&&e.message))};' : 'window.__cmlW=function(i,e){try{console.warn("cml",i,e)}catch(x){}};') + '\n';
 const grupos = {}; // grupo -> lista de modulos ('' = nucleo, carregado em todas as paginas)
