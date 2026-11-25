@@ -51,3 +51,8 @@ html body .head-main .js-nav-desktop-container{visibility:visible!important;heig
 @media(max-width:767px){html body .cml-hl-c .k:not(#a1):not(#a2):not(#a3),html body .cml-hl-c .nv:not(#a1):not(#a2):not(#a3){font-size:.75rem!important;letter-spacing:.1em!important}html body .c2-rk .rc .cml-avr{white-space:nowrap!important;font-size:.75rem!important}html body .c2-rk .rc .cml-avr i{font-size:inherit!important}}
 /* cartao de produto, celular e computador: o preco antigo fica ao lado do preco, na mesma linha (antes caia para a linha de baixo) */
 html body .js-item-product .product-item-price-container{align-items:baseline!important;gap:2px 6px!important}html body .js-item-product .product-item-price-container .js-price-display{flex:0 0 auto!important;width:auto!important}
+
+/* combos de opcao unica (Trouxinhas, 4 chas, Laranja): no lugar das opcoes de quantidade entra a lista do que vem no combo, para o cartao ficar preenchido como os outros */
+html body #cml-of3 article.of3-c .of3-in:not(#a1):not(#a2):not(#a3){list-style:none!important;margin:0 0 14px!important;padding:0!important;display:flex;flex-wrap:wrap;gap:8px;width:100%!important;max-width:none!important;box-sizing:border-box;align-self:stretch}
+html body #cml-of3 article.of3-c .of3-in li{box-sizing:border-box;flex:1 1 calc(50% - 4px);min-width:0;max-width:100%;display:flex;align-items:center;min-height:44px;margin:0!important;padding:8px 12px!important;border:1px solid #e8ddd0;border-radius:10px;background:#fff;color:#2b2916;font:500 14px/1.25 Poppins,sans-serif;overflow-wrap:anywhere;list-style:none!important}
+html body #cml-of3 article.of3-c .of3-in li::before,html body #cml-of3 article.of3-c .of3-in li::marker{content:none!important}

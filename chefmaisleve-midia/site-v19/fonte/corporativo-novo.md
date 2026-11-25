@@ -139,3 +139,4 @@
 - A confirmar com Thierry: WhatsApp da pergunta de revenda e 47 99272-6557 (diferente do oficial 47 9157-1974).
 - 18h30: Thierry: WhatsApp e SEMPRE o oficial final 1974. Trocado na pergunta de revenda (3 modelos) e na pagina de contato (extx-13). Pacote do v21: 31edaf1. Pendente: cartao Telefone do contato ainda 99272-6557 (perguntado). Foto do Combo Trouxinhas: autorizado gerar no Gemini.
 - 23h45: telefone do contato tambem 1974 (extx-13). Pacote do v21: 85537a3. v21 ainda nao publicado (v20 no ar); v18 ja nao existe na lista de temas.
+- 24/11 23h55: combos de opcao unica (lar, trx, blm) ganham a lista do que vem no combo (campo inc + ul.of3-in) no lugar das opcoes, para o cartao nao ficar vazio no celular. Pacote do v21: 31c173c. Vazio restante no celular: lar 92, blm 73, flw 91 px (antes ~330). Foto do combo Trouxinhas: IA falhou 2x (inventou embalagem/sabores); feita versao da foto real com nome dos sabores, aguardando ok do Thierry para subir.
