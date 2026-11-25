@@ -195,6 +195,7 @@ const TROCAS = [
   ['cml-extra.js', 'function faq(){[].forEach.call(D.querySelectorAll(".cml-faq .accordion-item-toggle-text")', 'function faq(){return;[].forEach.call(D.querySelectorAll(".cml-faq .accordion-item-toggle-text")'],
   ['cml-extra.js', '.js-quantity-up,.c4-fq,.cml-rev', '.js-quantity-up,.cml-rev'],
   // 24/11 (Thierry): o WhatsApp do site e sempre o oficial, final 1974 (pagina de contato)
+  ['extx-13.js', '"tel:+5547992726557","Telefone","(47) 99272-6557"', '"tel:+554791571974","Telefone","(47) 9157-1974"'],
   ['extx-13.js', '"https://wa.me/5547992726557","WhatsApp","(47) 99272-6557 · resposta mais rápida"', '"https://wa.me/554791571974","WhatsApp","(47) 9157-1974 · resposta mais rápida"'],
   // janela "Frete gratis": o valor de R$ 249 vale para o estado de Sao Paulo inteiro (regra cadastrada na loja), nao so para a capital
   ['extx-01.js', '<b>R$ 249</b>São Paulo (capital)</li>', '<b>R$ 249</b>Estado de São Paulo</li>'],
