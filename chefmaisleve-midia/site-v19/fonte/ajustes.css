@@ -102,3 +102,5 @@ html body #modal-cart .cml-esv[hidden]{display:none!important}
 html body #modal-cart .cml-esv button{border-radius:10px!important;min-height:36px;font-size:14px!important}
 html body #modal-cart .cml-esv button[data-a="ask"]{width:40px;height:40px;min-height:40px;padding:0!important;display:inline-flex;align-items:center;justify-content:center;border:1px solid #e8ddd0!important;background:#fffaf5!important;color:#6f6656!important}
 html body #modal-cart .cml-esv button[data-a="ask"] svg{width:18px!important;height:18px!important}
+/* avaliacoes na pagina de produto comum (computador): a coluna tem 512 px e o aplicativo passa para duas colunas a partir de 501 px, cortando os cartoes. Com 500 px ele fica empilhado e inteiro, como no celular */
+html body #ns-section-main_product .js-product-info [class*="mi-@container"]{max-width:500px!important}
