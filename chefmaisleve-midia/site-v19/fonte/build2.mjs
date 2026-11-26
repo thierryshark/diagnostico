@@ -194,6 +194,8 @@ const TROCAS = [
   ['extx-13.js', 'function m(){[].forEach.call(document.querySelectorAll(\'[id^="ns-section-faq"]:not([data-cmlf])\')', 'function m(){return;[].forEach.call(document.querySelectorAll(\'[id^="ns-section-faq"]:not([data-cmlf])\')'],
   ['cml-extra.js', 'function faq(){[].forEach.call(D.querySelectorAll(".cml-faq .accordion-item-toggle-text")', 'function faq(){return;[].forEach.call(D.querySelectorAll(".cml-faq .accordion-item-toggle-text")'],
   ['cml-extra.js', '.js-quantity-up,.c4-fq,.cml-rev', '.js-quantity-up,.cml-rev'],
+  // 26/11 (Thierry): paginas de cha sem faixas de 1, 2, 3 pacotes (nao ha condicao especial; fica so o campo normal de quantidade) e Laranja sem faixas de volume. As faixas so aparecem quando existe promocao real cadastrada (Compre X, pague Y)
+  ['cml-paginas.js', "else if(k===\"lar\"){opts=[[1,\"1 pacote\",brl(pr)],[\"L10\",\"10 pacotes\",brl(33.5)+\" cada\"],[\"L20\",\"20 pacotes\",brl(32)+\" cada\"]]}\nelse if(k===\"misto\"||k===\"fruta\"){opts=[[1,\"1 pacote\",brl(pr)],[2,\"2 pacotes\",brl(pr*2)],[3,\"3 pacotes\",brl(pr*3)]]}", ''],
   // 24/11 (Thierry): o WhatsApp do site e sempre o oficial, final 1974 (pagina de contato)
   ['extx-13.js', '"tel:+5547992726557","Telefone","(47) 99272-6557"', '"tel:+554791571974","Telefone","(47) 9157-1974"'],
   ['extx-13.js', '"https://wa.me/5547992726557","WhatsApp","(47) 99272-6557 · resposta mais rápida"', '"https://wa.me/554791571974","WhatsApp","(47) 9157-1974 · resposta mais rápida"'],
