@@ -67,3 +67,10 @@ html body .js-product-info .cx11-xic li b{flex:0 0 auto;font-weight:600;color:#2
 html body .js-product-info .cx11-xic li.on{border-bottom:0;color:#2b2916;font-weight:600}
 html body .js-product-info .cx11-xic li.on b{font-size:20px;font-weight:700;color:#a65a14}
 html body .js-product-info .cx11-xic .f{margin:4px 0 0!important;font:400 14px/1.4 Poppins,system-ui,sans-serif;color:#6f6656}
+
+/* pagina de destaque com variacao: quantidade de embalagens (menos, numero, mais) */
+html body .cml-dst .cx17-q{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 14px}
+html body .cml-dst .cx17-q .h{font:500 14px/1.3 Poppins,system-ui,sans-serif;color:#2b2916}
+html body .cml-dst .cx17-q .s{display:flex;align-items:center;border:1px solid #d9cbb8;border-radius:10px;background:#fff;overflow:hidden}
+html body .cml-dst .cx17-q .s button{width:46px;height:46px;border:0;background:transparent;color:#2b2916;font:500 20px/1 Poppins,system-ui,sans-serif;cursor:pointer;padding:0}
+html body .cml-dst .cx17-q .s input{width:48px;height:46px;border:0;border-left:1px solid #e8ddd0;border-right:1px solid #e8ddd0;border-radius:0;background:#fff;text-align:center;font:600 16px/1 Poppins,system-ui,sans-serif;color:#2b2916;padding:0;margin:0;box-shadow:none}
