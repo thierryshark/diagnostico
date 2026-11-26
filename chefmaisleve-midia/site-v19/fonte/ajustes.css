@@ -76,3 +76,21 @@ html body .cml-dst .cx17-q .s button{width:46px;height:46px;border:0;background:
 html body .cml-dst .cx17-q .s input{width:48px;height:46px;border:0;border-left:1px solid #e8ddd0;border-right:1px solid #e8ddd0;border-radius:0;background:#fff;text-align:center;font:600 16px/1 Poppins,system-ui,sans-serif;color:#2b2916;padding:0;margin:0;box-shadow:none}
 /* avaliacoes na pagina de destaque: botao "Adicionar avaliacao" no padrao (10 px), sem capsula */
 html body .cml-dst .cml-rev [class*="mi-@container"] button{border-radius:10px!important}
+/* janela de compra rapida (botao Comprar dos cartoes): compacta e no padrao da marca */
+html body #quickshop-modal{border-radius:16px 16px 0 0;background:#f6efe9}
+html body #quickshop-modal .modal-header-close-only .modal-close{top:12px!important;right:12px!important;width:40px!important;height:40px!important;padding:0!important;display:flex!important;align-items:center;justify-content:center;border:1px solid #e8ddd0!important;border-radius:10px!important;background:#fffaf5!important}
+html body #quickshop-modal .modal-header-close-only .modal-close svg{width:16px!important;height:16px!important}
+html body #quickshop-modal .modal-body{padding:16px!important}
+html body #quickshop-modal .js-item-product>.grid{gap:14px!important}
+html body #quickshop-modal .quickshop-image-container{border-radius:12px;overflow:hidden}
+html body #quickshop-modal .quickshop-details{gap:8px!important;padding-top:0!important}
+html body #quickshop-modal .js-item-name.quickshop-name:not(#a1):not(#a2):not(#a3){min-height:0!important;height:auto!important;margin:0!important;font:600 22px/1.2 Poppins,system-ui,sans-serif!important;color:#2b2916!important}
+html body #quickshop-modal .quickshop-price-container{display:flex!important;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+html body #quickshop-modal .quickshop-price-container .price-compare{font-size:14px!important;color:#6f6656!important}
+html body #quickshop-modal .quickshop-price{font:700 26px/1.1 Poppins,system-ui,sans-serif!important;color:#a65a14!important}
+html body #quickshop-modal .js-product-variants{margin:4px 0 0!important}
+html body #quickshop-modal .js-quantity .form-control,html body #quickshop-modal .js-quantity>div,html body #quickshop-modal .form-quantity{border-radius:10px!important}
+@media(max-width:767px){html body #quickshop-modal .quickshop-image-container{max-height:210px}html body #quickshop-modal .quickshop-image-container .js-quickshop-image-padding{padding-bottom:0!important;height:210px!important}html body #quickshop-modal .quickshop-image-container img{position:static!important;width:100%!important;height:210px!important;object-fit:cover!important}}
+html body #quickshop-modal [data-slot="product_after_price"] [style*="visibility: hidden"]{display:none!important}
+html body #quickshop-modal [data-slot="product_after_price"]:not(:has(*:not([style*="visibility: hidden"]):not([data-slot-group]):not([data-slot-item]))){display:none!important}
+@media(min-width:768px){html body #quickshop-modal{border-radius:16px}}
