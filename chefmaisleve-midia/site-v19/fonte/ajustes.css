@@ -94,6 +94,3 @@ html body #quickshop-modal .js-quantity .form-control,html body #quickshop-modal
 html body #quickshop-modal [data-slot="product_after_price"] [style*="visibility: hidden"]{display:none!important}
 html body #quickshop-modal [data-slot="product_after_price"]:not(:has(*:not([style*="visibility: hidden"]):not([data-slot-group]):not([data-slot-item]))){display:none!important}
 @media(min-width:768px){html body #quickshop-modal{border-radius:16px}}
-/* sacola: regra do cashback (pedido acima de R$ 199) */
-html body .cml-fg .cb{margin:10px 0 0!important;padding-top:10px;border-top:1px solid #efe4d8;font:400 14px/1.35 Poppins,system-ui,sans-serif;color:#2b2916}
-html body .cml-fg .cb b{font-weight:600;color:#a65a14}
