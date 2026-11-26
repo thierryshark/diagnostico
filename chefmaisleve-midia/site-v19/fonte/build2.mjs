@@ -217,6 +217,8 @@ const TROCAS = [
   ['cpv-own.js', "function start(){var m=document.getElementById(\"modal-cart\");if(!m)return false;sync();", "function start(){var m=document.getElementById(\"modal-cart\");if(!m)return false;sync();m.addEventListener(\"click\",function(e){var r=e.target.closest&&e.target.closest(\".js-cart-item-remove\");if(r){var it=r.closest(\".js-cart-item\");if(it)it.classList.add(\"cml-out\")}},true);"],
   // 26/11 (Thierry): a linha "Esvaziar sacola" volta a aparecer na sacola (estava escondida pelo visual enxuto)
   ['cml-paginas.js', "#modal-cart .cml-fg,#modal-cart .cml-esv,#modal-cart .cg-trig", "#modal-cart .cml-fg,#modal-cart .cg-trig"],
+  // 26/11 (Thierry): esvaziar a sacola vira so o icone da lixeira; a pergunta de confirmacao aparece depois do toque
+  ['cpv-own.js', "<button type=\\\"button\\\" data-a=\\\"ask\\\">'+IC+'Esvaziar sacola</button>", "<button type=\\\"button\\\" data-a=\\\"ask\\\" aria-label=\\\"Esvaziar sacola\\\" title=\\\"Esvaziar sacola\\\">'+IC+'</button>"],
   // 24/11 (Thierry): o WhatsApp do site e sempre o oficial, final 1974 (pagina de contato)
   ['extx-13.js', '"tel:+5547992726557","Telefone","(47) 99272-6557"', '"tel:+554791571974","Telefone","(47) 9157-1974"'],
   ['extx-13.js', '"https://wa.me/5547992726557","WhatsApp","(47) 99272-6557 · resposta mais rápida"', '"https://wa.me/554791571974","WhatsApp","(47) 9157-1974 · resposta mais rápida"'],
