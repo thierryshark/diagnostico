@@ -94,3 +94,11 @@ html body #quickshop-modal .js-quantity .form-control,html body #quickshop-modal
 html body #quickshop-modal [data-slot="product_after_price"] [style*="visibility: hidden"]{display:none!important}
 html body #quickshop-modal [data-slot="product_after_price"]:not(:has(*:not([style*="visibility: hidden"]):not([data-slot-group]):not([data-slot-item]))){display:none!important}
 @media(min-width:768px){html body #quickshop-modal{border-radius:16px}}
+/* sacola: item removido some na hora (a resposta da loja chega depois) */
+html body #modal-cart .js-cart-item.cml-out{display:none!important}
+/* sacola: linha "N itens na sacola / Esvaziar sacola" no padrao (10 px, sem capsula) */
+html body #modal-cart .cml-esv{display:flex!important;align-items:center;justify-content:space-between;gap:10px;margin:0 0 8px!important;padding:0 2px 8px!important;border-bottom:1px solid #efe4d8;font:400 14px/1.3 Poppins,system-ui,sans-serif!important;color:#6f6656}
+html body #modal-cart .cml-esv[hidden]{display:none!important}
+html body #modal-cart .cml-esv button{border-radius:10px!important;min-height:36px;font-size:14px!important}
+html body #modal-cart .cml-esv button[data-a="ask"]{padding:4px 0!important;border:0!important;background:none!important;color:#6f6656!important;text-decoration:underline;text-underline-offset:3px}
+html body #modal-cart .cml-esv button[data-a="ask"] svg{display:none}
