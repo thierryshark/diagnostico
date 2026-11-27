@@ -56,6 +56,11 @@
   "cml-sw-n",
   "cml-sw-hd",
   "cml-sw-has",
-  "c4-fq"
+  "c4-fq",
+  "c2-cbn",
+  "c2-cbt",
+  "c2-cnt",
+  "c2-side",
+  "c2-has"
  ]
 }

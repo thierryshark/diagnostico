@@ -123,3 +123,10 @@ html body.template-category #ns-section-heading .page-header-description{display
 
 /* 26/11 (leveza): na lista da categoria o bloco do aplicativo de cashback dentro do card ja nasce fechado (antes ele abria e o pacote fechava em seguida, e o card dava um salto) */
 html body.template-category #ns-section-product_list .js-item-product [data-slot="product_after_price"]{display:none!important}
+
+/* 26/11 (leveza): computador. Enquanto a barra de ordenar ainda nao entrou, a lista ja fica na altura final (a barra ocupa 17 px a mais que a ordenacao nativa) */
+@media(min-width:768px){html body.template-category #ns-section-product_list .product-list-sort-by+.js-product-table{margin-top:17px}}
+
+/* 26/11 (leveza): pagina de destaque. Enquanto o pacote nao montou a pagina, o bloco nativo do produto fica invisivel ocupando a tela (antes ele aparecia e era trocado: a pagina inteira pulava). A classe cml-dstw e ligada no cabecalho do tema. Se o pacote nao chegar em 8 s, o bloco nativo aparece. */
+html.cml-dstw:not(.cml-dst-on) #ns-section-main_product{visibility:hidden;min-height:100vh;animation:cmldw 0s 8s forwards}
+@keyframes cmldw{to{visibility:visible}}
