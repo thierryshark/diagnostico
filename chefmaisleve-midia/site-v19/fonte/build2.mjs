@@ -280,6 +280,14 @@ const TROCAS = [
   ['cml-paginas.js', "'<span>'+k.un*(c.pk||1)+' '+uni(c)+(k.un*(c.pk||1)===1?'':'s')+'</span>'+(k.un*(c.pk||1)>1?'<span>'+brl(k.por/(k.un*(c.pk||1)))+' por '+uni(c)+'</span>':'')+'<span>'", "'<span>'"],
   // 27/11 (v30): titulo do bloco acompanha o carrossel por unidade (sem "em quantidade")
   ['cml-paginas.js', '<span class="k">Combos da Black</span><h2>Vale mais <em>levar junto</em><span class="of3-hw">em quantidade</span></h2><p>Escolha a quantidade e coloque tudo na sacola com um toque. Cada item entra com o preço de Black.</p>', '<span class="k">Destaques da Black</span><h2>Os mais <em>pedidos</em></h2><p>Escolha a opção e a quantidade no próprio cartão. Cada item entra com o preço de Black.</p>'],
+  // 27/11 (v31): Blacks anteriores saem do codigo. cml-extra#8 fica so com o que a Black atual usa (esconde a lista nativa em /ofertas/ e guarda os dados das ofertas, window.CMLOfertas);
+  // sai a faixa antiga da home (procurava por 12 s um lugar que nao existe mais) e a vitrine antiga de /ofertas/ (desligada desde a v2, so ocupava espaco)
+  ['cml-extra.js', /\/\* ---------- 3\) faixa na home ---------- \*\/[\s\S]*?retry\(homeBanner,80,150\);/, ''],
+  ['cml-extra.js', /if\(!IS_OF\|\|true\)return;[\s\S]*?retry\(mount,60,100\);/, ''],
+  // cml-extra#25: so a pagina do Kit Desdobramento usa (fotos dos itens); a parte da vitrine do Esquenta dependia de #cml-bk, que nao existe mais. Antes rodava em toda pagina com observador do documento inteiro
+  ['cml-extra.js', 'var D=document,P=location.pathname;', 'var D=document,P=location.pathname;if(!/^\\/produtos\\/kit-desdobramento/.test(P))return;'],
+  ['cml-extra.js', /function vitrine\([\s\S]*?(?=function desdob\()/, ''],
+  ['cml-extra.js', 'if(/^\\/ofertas/.test(P))try{vitrine()}catch(e){}', ''],
   // 24/11 (Thierry): o WhatsApp do site e sempre o oficial, final 1974 (pagina de contato)
   ['extx-13.js', '"tel:+5547992726557","Telefone","(47) 99272-6557"', '"tel:+554791571974","Telefone","(47) 9157-1974"'],
   ['extx-13.js', '"https://wa.me/5547992726557","WhatsApp","(47) 99272-6557 · resposta mais rápida"', '"https://wa.me/554791571974","WhatsApp","(47) 9157-1974 · resposta mais rápida"'],
