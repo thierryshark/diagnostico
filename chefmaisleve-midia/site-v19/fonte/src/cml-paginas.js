@@ -387,7 +387,7 @@
 
   /* 2) mega menu */
   var MM = {
-    "/chas/": { k: "Chás e infusões", t: "Para cada <em>momento do dia</em>", p: "Blends, trouxinhas e infusões na fruta, feitos à mão em Florianópolis.", b: ["Ver todos os chás", "/chas/"], l: ["Encontre o seu chá em 1 minuto", "/encontre-seu-cha/"] },
+    "/chas/": { k: "Chás e infusões", t: "Para cada <em>momento do dia</em>", p: "Chás mistos, trouxinhas e infusões na fruta, feitos à mão em Florianópolis.", b: ["Ver todos os chás", "/chas/"], l: ["Encontre o seu chá em 1 minuto", "/encontre-seu-cha/"] },
     "/snacks-granolas/": { k: "Snacks e granolas", t: "A pausa <em>que faz bem</em>", p: "Crocantes, frutas desidratadas e granolas sem açúcar refinado.", b: ["Ver todos os snacks", "/snacks-granolas/"], l: ["Preços de Black até 30/11", "/ofertas/"] },
     "/kits-presentes/": { k: "Kits e presentes", t: "Presentear <em>com cuidado</em>", p: "Caixas montadas à mão, com cartão escrito e entrega para todo o Brasil.", b: ["Ver todos os kits", "/kits-presentes/"], l: ["Montar o meu presente", "/presentes-de-natal/"] },
     "/acessorios/": { k: "Acessórios", t: "O ritual <em>completo</em>", p: "Xícaras, infusores, garrafas e chaleiras para a hora do chá.", b: ["Ver todos os acessórios", "/acessorios/"], l: ["Dúvidas sobre preparo", "/faq/"] }
@@ -642,18 +642,18 @@
     if (eb) { eb.textContent = "Em 1 minuto"; tx.appendChild(eb); }
     tx.appendChild(h);
     if (sub) { sub.textContent = "Você conta como prefere escolher e a gente mostra os chás que combinam com você. Dois toques, sem cadastro."; tx.appendChild(sub); }
-    tx.insertAdjacentHTML("beforeend", '<div class="cta"><a class="b" href="#cef-quiz">Começar agora <span aria-hidden="true">→</span></a><a class="l" href="/chas/">Ver todos os chás</a></div><ul class="chips"><li>11 blends artesanais</li><li>Feito à mão em SC</li><li>Sem aditivos</li></ul>');
+    tx.insertAdjacentHTML("beforeend", '<div class="cta"><a class="b" href="#cef-quiz">Começar agora <span aria-hidden="true">→</span></a><a class="l" href="/chas/">Ver todos os chás</a></div><ul class="chips"><li>11 chás mistos artesanais</li><li>Feito à mão em SC</li><li>Sem aditivos</li></ul>');
     var steps = D.createElement("section"); steps.className = "cml-cx cml-cx-steps"; steps.setAttribute("aria-label", "Como funciona");
-    steps.innerHTML = '<p class="k">Como funciona</p><h2>Simples assim, <em>em três toques.</em></h2><div class="st3"><div><b>1</b><strong>Diga como prefere escolher</strong><span>Pelo momento do dia, pelo sabor ou pelo ingrediente.</span></div><div><b>2</b><strong>Toque na sua opção</strong><span>Para a noite, dias frios, floral, frutado, cada escolha afina a lista.</span></div><div><b>3</b><strong>Veja os chás que combinam</strong><span>Os blends certos para você, com o que tem na xícara e como preparar.</span></div></div>';
+    steps.innerHTML = '<p class="k">Como funciona</p><h2>Simples assim, <em>em três toques.</em></h2><div class="st3"><div><b>1</b><strong>Diga como prefere escolher</strong><span>Pelo momento do dia, pelo sabor ou pelo ingrediente.</span></div><div><b>2</b><strong>Toque na sua opção</strong><span>Para a noite, dias frios, floral, frutado, cada escolha afina a lista.</span></div><div><b>3</b><strong>Veja os chás que combinam</strong><span>Os chás mistos certos para você, com o que tem na xícara e como preparar.</span></div></div>';
     var qh = D.createElement("div"); qh.className = "cml-cx cml-cx-h"; qh.innerHTML = '<p class="k">Vamos lá</p><h2>Conte como <em>você prefere.</em></h2>';
     cef.parentNode.insertBefore(hero, cef); /* 11/11: os passos estaticos (steps) sairam, confundiam com o quiz; para voltar: cef.parentNode.insertBefore(steps, cef) */ cef.parentNode.insertBefore(qh, cef);
     var faq = D.createElement("section"); faq.className = "cml-cx cml-cx-faq"; faq.setAttribute("aria-label", "Dúvidas");
     faq.innerHTML = '<p class="k">Dúvidas</p><h2>Antes de <em>escolher.</em></h2>'
       + '<details><summary>Posso refazer a escolha?</summary><p>Pode, quantas vezes quiser. Volte um passo ou comece de novo e veja outra combinação.</p></details>'
-      + '<details><summary>Os chás têm cafeína?</summary><p>Temos blends com e sem cafeína. Escolhendo "sem cafeína" ou "para a noite", a lista mostra só os livres de cafeína.</p></details>'
+      + '<details><summary>Os chás têm cafeína?</summary><p>Temos chás mistos com e sem cafeína. Escolhendo "sem cafeína" ou "para a noite", a lista mostra só os livres de cafeína.</p></details>'
       + '<details><summary>Como preparo o chá em casa?</summary><p>Uma colher de sopa por xícara, água entre 80 e 90°C (sem ferver) e 5 a 8 minutos abafado. Cada pacote de 40g rende até 20 xícaras.</p></details>';
     var end = D.createElement("section"); end.className = "cml-cx cml-cx-end"; end.setAttribute("aria-label", "Ver todos os chás");
-    end.innerHTML = '<div class="in"><div><h2>Prefere escolher <em>sozinho?</em></h2><p>Todos os blends, trouxinhas e infusões na fruta, com foto e descrição.</p></div><a class="b" href="/chas/">Ver todos os chás <span aria-hidden="true">→</span></a></div>';
+    end.innerHTML = '<div class="in"><div><h2>Prefere escolher <em>sozinho?</em></h2><p>Todos os chás mistos, trouxinhas e infusões na fruta, com foto e descrição.</p></div><a class="b" href="/chas/">Ver todos os chás <span aria-hidden="true">→</span></a></div>';
     cef.parentNode.insertBefore(faq, cef.nextSibling); faq.parentNode.insertBefore(end, faq.nextSibling);
     hero.addEventListener("click", function (e) { var a = e.target.closest && e.target.closest('a[href="#cef-quiz"]'); if (!a) return; e.preventDefault(); var top = cef.getBoundingClientRect().top + window.scrollY - 90; try { window.scrollTo({ top: top, behavior: "smooth" }); } catch (x) { window.scrollTo(0, top); } });
   }
@@ -842,7 +842,7 @@
         + '<div><dt>Sua escolha</dt><dd>' + (vals[2] ? E(vals[2]) : "<i>a definir</i>") + '</dd></div>'
         + '<div><dt>Só sem cafeína</dt><dd>' + (cur === 3 ? (caf ? "Sim" : "Não") : "<i>a definir</i>") + '</dd></div>'
         + '<div><dt>Chás que combinam</dt><dd>' + (cur === 3 ? (cnt ? cnt + (cnt > 1 ? " chás" : " chá") : "nenhum") : "<i>a definir</i>") + '</dd></div></dl>'
-        + '<div class="tt"><span>Blends artesanais</span><b>11</b></div><p class="pz">40g · 20 xícaras por pacote · feitos à mão em SC</p>'
+        + '<div class="tt"><span>Chás mistos artesanais</span><b>11</b></div><p class="pz">40g · 20 xícaras por pacote · feitos à mão em SC</p>'
         + '<button type="button" class="cx-go"' + (dis ? " disabled" : "") + (href ? ' data-href="' + href + '"' : "") + '>' + E(ctaTx) + '</button>' + (hint ? '<p class="hn">' + E(hint) + '</p>' : "")
         + '<p class="nt">Sem cadastro. Pode refazer quantas vezes quiser.</p>';
     }
@@ -2159,7 +2159,7 @@ var t=0,q=[];new MutationObserver(function(ms){for(var i=0;i<ms.length;i++)for(v
 
 ;(function(){var s=document.createElement("style");s.textContent="html body .cx3-view button.cx3-v{border-radius:8px!important}html body .cx3-fbtn{border-radius:10px!important}";(document.head||document.documentElement).appendChild(s)})();
 
-/* 21/11/2026: cha misto (troca de blend), cha na fruta, subtitulos, ofertas de Kits e trio de Chas, faixa da categoria Kits */
+/* 21/11/2026 (troca de blend na tela retirada em 27/11/2026): cha na fruta, subtitulos, ofertas de Kits e trio de Chas, faixa da categoria Kits */
 ;(function(){try{var D=document;if(window.__cmlCx4)return;window.__cmlCx4=1;
 var WA="https://wa.me/554791571974?text="+encodeURIComponent("Olá! Quero comprar kits para a minha empresa. Podem me enviar as condições?");
 var NOT=":not(#x1):not(#x2):not(#x3):not(#x4):not(#x5):not(#x6):not(#x7):not(#x8)";
@@ -2204,14 +2204,6 @@ var CSS=""
 +"@media(max-width:640px){.cx4-sec{padding:0 12px;margin-bottom:28px}.cx4-math b{font-size:16px}}";
 function css(){if(D.getElementById("cml-cx4"))return;var s=D.createElement("style");s.id="cml-cx4";s.textContent=CSS;(D.head||D.documentElement).appendChild(s)}
 function brl(v){return "R$ "+v.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g,".")}
-/* 1. troca de nomes no texto do site */
-var RX=[[/ch[áa] blends?\b/gi,"cha"],[/blends de ch[áa]/gi,"pl"],[/blend de ch[áa]/gi,"sg"],[/\bblends\b/gi,"pl"],[/\bblend\b/gi,"sg"],[/Infusões naturais/g,"fr"],[/INFUSÕES NATURAIS/g,"FR"]];
-function rep(m,k){var up=m===m.toUpperCase()&&/[A-Z]/.test(m),cap=/^[A-ZÁ]/.test(m);var r=k==="fr"?"Chá na fruta":k==="FR"?"CHÁ NA FRUTA":(k==="pl"||(k==="cha"&&/s$/i.test(m)))?"chás mistos":"chá misto";if(up)return r.toUpperCase();if(/ Blend|^Blends [A-Z]/.test(m)||(k!=="fr"&&/^B/.test(m)&&false))r=r.replace("misto","Misto").replace("mistos","Mistos");if(cap)return r.charAt(0).toUpperCase()+r.slice(1);return r}
-function fixText(n){if(!n||!n.nodeValue||!/blend|Infus|INFUS/i.test(n.nodeValue))return;var p=n.parentNode;if(!p||/^(SCRIPT|STYLE|TEXTAREA|NOSCRIPT)$/.test(p.nodeName)||p.isContentEditable)return;var v=n.nodeValue,o=v;for(var i=0;i<RX.length;i++){(function(k){v=v.replace(RX[i][0],function(m){return rep(m,k)})})(RX[i][1])}
-if(v!==o)n.nodeValue=v}
-function walk(root){if(!root)return;if(root.nodeType===3){fixText(root);return}if(root.nodeType!==1)return;var w=D.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n;while((n=w.nextNode()))fixText(n);
- [].forEach.call(root.querySelectorAll?root.querySelectorAll("[placeholder],[alt],[title]"):[],function(e){["placeholder","alt","title"].forEach(function(a){var v=e.getAttribute(a);if(v&&/blend/i.test(v))e.setAttribute(a,v.replace(/\bblends\b/gi,"chás mistos").replace(/\bblend\b/gi,"chá misto"))})})}
-function fixTitle(){if(/blend/i.test(D.title))D.title=D.title.replace(/\bblends\b/gi,"Chás Mistos").replace(/\bblend\b/gi,"Chá Misto")}
 /* 2. subtitulos */
 var TA="Trouxinhas aromáticas · ",TI="Infusão na tangerina · ";
 var SUB={224678493:["","Melissa, camomila, passiflora e alfazema"],224678609:["","Capim-limão, eucalipto, mate tostado e hibisco"],228278848:["","Hibisco, amora, maçã, morango e cranberry"],343019488:["","Melissa, camomila, erva-doce e maçã"],343019491:["","Jasmim, erva-doce, funcho e camomila"],343019493:["","Folha de amora, hortelã, erva-doce e camomila"],343019494:["","Folha de amora, camomila, hibisco e alfazema"],343019497:["","Chá verde, alecrim, gengibre e capim-limão"],343019505:["","Amora, hibisco, cranberry, morango e cacau"],350838426:["","Maçã, hibisco, canela, gengibre e cravo"],345698613:["","Hibisco, amora, maçã, morango e cranberry"],273215028:["","Equinácea, rosa mosqueta, gengibre, canela e cravo"],
@@ -2253,10 +2245,10 @@ function cha(){if(D.querySelector(".cx4-cha"))return;var p=location.pathname.rep
  +'<a class="cx4-btn" href="/produtos/combo-trio-chas-mistos/">Quero o combo por '+brl(tri)+'</a></div></div>';
  grid.parentNode.insertBefore(s,grid);bind(s)}
 function fitw(){var g=D.querySelector(".cml-cgrid .js-product-table")||D.querySelector(".cml-cgrid");if(!g)return;var w=g.getBoundingClientRect().width;[].forEach.call(D.querySelectorAll(".cx4-sec"),function(s){if(w>300){s.style.maxWidth=Math.round(w)+"px";s.style.paddingLeft="0";s.style.paddingRight="0"}})}addEventListener("resize",function(){try{fitw()}catch(e){}});
-function run(){css();try{subs()}catch(e){}try{fitw()}catch(e){}try{order()}catch(e){}try{kits()}catch(e){}try{cha()}catch(e){}try{fixTitle()}catch(e){}}
-function boot(){run();try{walk(D.body)}catch(e){}}
+function run(){css();try{subs()}catch(e){}try{fitw()}catch(e){}try{order()}catch(e){}try{kits()}catch(e){}try{cha()}catch(e){}}
+function boot(){run()}
 if(D.readyState==="loading")D.addEventListener("DOMContentLoaded",boot);else boot();
-var t=0,q=[];new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var m=ms[i];if(m.type==="characterData"){q.push(m.target);continue}for(var j=0;j<m.addedNodes.length;j++)q.push(m.addedNodes[j])}if(t)return;t=setTimeout(function(){t=0;var a=q;q=[];for(var k=0;k<a.length;k++){try{walk(a[k])}catch(e){}}run()},150)}).observe(D.documentElement,{childList:true,subtree:true,characterData:true});
+var t=0;new MutationObserver(function(){if(t)return;t=setTimeout(function(){t=0;run()},150)}).observe(D.documentElement,{childList:true,subtree:true,characterData:true});
 }catch(e){}})();
 
 /* 21/11/2026: barra de rastreio mais sobria + temporizador da Black (barra de anuncio e pagina /ofertas/) */

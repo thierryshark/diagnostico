@@ -375,7 +375,7 @@
     },
     "kitl-natal-feliz": {
       ey: "Kit presente · Natal", t1: "Natal", t2: "Feliz",
-      ld: "Um Natal com sabor de casa, numa caixa de madeira gravada para guardar. A laranja com chocolate, a infusão servida na própria tangerina, trouxinhas, o blend mais marcante da casa, a xícara e o infusor.",
+      ld: "Um Natal com sabor de casa, numa caixa de madeira gravada para guardar. A laranja com chocolate, a infusão servida na própria tangerina, trouxinhas, o chá misto mais marcante da casa, a xícara e o infusor.",
       chips: ["7 itens", "Caixa de madeira gravada", "Xícara e infusor inclusos", "Pronto para presentear"],
       whyT: ["O melhor da casa", "num presente só"],
       why: [["Carro-chefe", "Laranja Chocoleve, 10 fatias com borda de chocolate 70%."], ["Para a mesa toda", "Duas Infusões na Tangerina, 1 litro cada."], ["Pronto para usar", "Xícara de vidro duplo e infusor inox na caixa."], ["Caixa para guardar", "Madeira gravada com a marca, a nossa embalagem mais especial."]],
