@@ -29,7 +29,8 @@
   "cml-paginas#15",
   "cml-paginas#16",
   "cml-paginas#26",
-  "cml-paginas#50"
+  "cml-paginas#50",
+  "cml-paginas#37"
  ],
  "motivo": {
   "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
@@ -50,7 +51,8 @@
   "blacks-anteriores-27-11": "27/11 (v31): saem os modulos das Blacks anteriores: #22 pagina Esquenta (dependia de #cml-bk), #31 Duo Natal Feliz + Ternura (procurava por 16 s um lugar que nao existe mais em /ofertas/ e /kits-presentes/), #36 (escondia relogio do cashback antigo) e #18 (movimento da faixa #cml-bko, que nada cria; o estilo de toque dos botoes fica no site.css).",
   "tokensMortos-27-11c": "27/11 (v31): classes que so as Blacks anteriores criavam (Duo, vitrine c9/c12, faixa da home cbkh), apagadas junto com o codigo.",
   "natal-27-11": "Rascunho Natal: modulos so da Black Friday (relogio, vitrine e pagina /ofertas/ da Black, temporizador nos kits). A Black acaba em 30/11; depois disso esses modulos so pesavam.",
-  "tokensMortos-natal-27-11": "Classes da Black Friday (pagina /ofertas/ da Black, relogio, vitrine e abertura escura). Os modulos que criavam essas classes sairam no rascunho Natal; sobravam so seletores."
+  "tokensMortos-natal-27-11": "Classes da Black Friday (pagina /ofertas/ da Black, relogio, vitrine e abertura escura). Os modulos que criavam essas classes sairam no rascunho Natal; sobravam so seletores.",
+  "menu-27-11": "Cabecalho (27/11): sai o cartao lateral do menu do computador (cml-mm-side, criado no cml-paginas#4 e ajustado pelo cml-paginas#37). Ocupava 300 px e empurrava as colunas para baixo em telas menores; pedido do Thierry."
  },
  "grupo": {},
  "tokensMortos": [
@@ -259,6 +261,7 @@
   "cbk-*",
   "cbkh-*",
   "c2-oh",
-  "cml-of3"
+  "cml-of3",
+  "cml-mm-side"
  ]
 }

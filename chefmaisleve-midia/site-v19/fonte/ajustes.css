@@ -165,3 +165,19 @@ html body #cml-cl .go{grid-area:g;align-self:start;justify-self:start;display:in
 html body #cml-cl .go:hover{background:#f3d48b}
 @media(max-width:767px){html body #cml-cl{margin-bottom:44px}html body #cml-cl .w{display:block;padding:26px 18px 22px;overflow:hidden}html body #cml-cl h2{font-size:28px}html body #cml-cl p{font-size:15px}html body #cml-cl ul{display:flex;gap:10px;margin:20px -18px 0;padding:0 18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}html body #cml-cl ul::-webkit-scrollbar{display:none}html body #cml-cl li{flex:0 0 40%;scroll-snap-align:start}html body #cml-cl .go{display:flex;width:100%;margin-top:20px}}
 /* 27/11 (Natal): sairam as regras da pagina da Black (/ofertas/): abertura, carrossel no celular e cartoes. */
+/* menu do computador (27/11): sem o cartao lateral; as colunas de cada menu ficam numa linha so, em qualquer largura a partir de 1024 px.
+   Ordem dos chas: cha misto, cha na fruta, bem-estar, fases da mulher (a linha Verao entra depois delas). */
+@media (min-width:1024px){
+html body .nav-desktop .desktop-dropdown>.container:not(#cmlmm){display:block!important;max-width:1180px;padding:28px clamp(20px,3vw,40px) 30px!important}
+html body .nav-desktop .desktop-dropdown .desktop-list-subitems:not(#cmlmm){display:flex!important;flex-wrap:nowrap!important;align-items:flex-start;gap:0 clamp(28px,3.4vw,60px)!important;margin:0!important;padding:0!important}
+html body .nav-desktop .desktop-dropdown .desktop-list-subitems>li:not(#cmlmm){flex:0 1 auto;min-width:0;width:auto!important}
+html body .desktop-list-subitems>li.cxm-cha-misto:not(#cmlmm){order:1}
+html body .desktop-list-subitems>li.cxm-chas-infusoes-naturais:not(#cmlmm){order:2}
+html body .desktop-list-subitems>li.cxm-bem-estar1:not(#cmlmm){order:3}
+html body .desktop-list-subitems>li.cxm-todos-os-chas:not(#cmlmm){order:4}
+html body .desktop-list-subitems>li.cx19-li>.list-subitems:not(#cmlmm){column-gap:clamp(18px,2.4vw,32px)}
+html body .nav-desktop .desktop-dropdown .list-subitems a:not(#cmlmm){white-space:nowrap}
+}
+@media (min-width:1024px) and (max-width:1279px){
+html body .nav-desktop .desktop-dropdown .list-subitems a:not(#cmlmm){font-size:13.5px!important;padding:5px 0!important}
+}

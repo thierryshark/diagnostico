@@ -48,5 +48,20 @@
   "cml-paginas#24",
   "function tick(){try{xbtn()}catch(e){}try{css()}catch(e){}try{bar()}catch(e){}try{page();fit()}catch(e){}}\nif(D.readyState===\"loading\")D.addEventListener(\"DOMContentLoaded\",tick);else tick();\nsetInterval(tick,1000);",
   "function tick(){try{xbtn()}catch(e){}}\nif(D.readyState===\"loading\")D.addEventListener(\"DOMContentLoaded\",tick);else tick();\nsetTimeout(tick,1500);setTimeout(tick,4000);"
+ ],
+ [
+  "cml-paginas#4",
+  "/* 2) mega menu */\n  var MM = {\n    \"/chas/\": { k: \"Chás e infusões\", t: \"Para cada <em>momento do dia</em>\", p: \"Chás mistos, trouxinhas e infusões na fruta, feitos à mão em Florianópolis.\", b: [\"Ver todos os chás\", \"/chas/\"], l: [\"Encontre o seu chá em 1 minuto\", \"/encontre-seu-cha/\"] },\n    \"/snacks-granolas/\": { k: \"Snacks e granolas\", t: \"A pausa <em>que faz bem</em>\", p: \"Crocantes, frutas desidratadas e granolas sem açúcar refinado.\", b: [\"Ver todos os snacks\", \"/snacks-granolas/\"], l: [\"Conheça a linha Chocoleve\", \"/snacks-granolas/chocoleve/\"] },\n    \"/kits-presentes/\": { k: \"Kits e presentes\", t: \"Presentear <em>com cuidado</em>\", p: \"Caixas montadas à mão, com cartão escrito e entrega para todo o Brasil.\", b: [\"Ver todos os kits\", \"/kits-presentes/\"], l: [\"Montar o meu presente\", \"/presentes-de-natal/\"] },\n    \"/acessorios/\": { k: \"Acessórios\", t: \"O ritual <em>completo</em>\", p: \"Xícaras, infusores, garrafas e chaleiras para a hora do chá.\", b: [\"Ver todos os acessórios\", \"/acessorios/\"], l: [\"Dúvidas sobre preparo\", \"/faq/\"] }\n  };\n  function megaMenu() {\n    if (!matchMedia(\"(min-width:1024px)\").matches) return;\n    var lis = D.querySelectorAll(\".nav-desktop-list > li.nav-dropdown\");\n    [].forEach.call(lis, function (li) {\n      var dd = li.querySelector(\".desktop-dropdown > .container\"); if (!dd || dd.querySelector(\".cml-mm-side\")) return;\n      var a = li.querySelector(\":scope > a\"); var href = a ? (a.getAttribute(\"href\") || \"\").replace(/^https?:\\/\\/[^/]+/, \"\") : \"\";\n      var ul = dd.querySelector(\".desktop-list-subitems\");\n      var m = MM[href] || { k: a ? a.textContent.trim() : \"\", t: \"Ver <em>tudo</em>\", p: \"\", b: [\"Ver todos\", href || \"/produtos/\"], l: null };\n      var side = D.createElement(\"aside\"); side.className = \"cml-mm-side\";\n      side.innerHTML = '<span class=\"k\">' + esc(m.k) + '</span><h4>' + m.t + '</h4>' + (m.p ? '<p>' + esc(m.p) + '</p>' : '') + '<a class=\"b\" href=\"' + esc(m.b[1]) + '\">' + esc(m.b[0]) + ' →</a>' + (m.l ? '<a class=\"l\" href=\"' + esc(m.l[1]) + '\">' + esc(m.l[0]) + ' ›</a>' : '');\n      dd.appendChild(side);\n    });\n  }\n\n  ",
+  ""
+ ],
+ [
+  "cml-paginas#4",
+  "footPay, megaMenu, faqPage",
+  "footPay, faqPage"
+ ],
+ [
+  "cml-paginas#38",
+  "[].forEach.call(hs,function(a){var li=a.parentNode;if(li.querySelector(\"ul\"))return;",
+  "[].forEach.call(hs,function(a){var li=a.parentNode;var sg=(a.pathname||\"\").split(\"/\").filter(Boolean).pop();if(sg&&!li.classList.contains(\"cxm-\"+sg))li.classList.add(\"cxm-\"+sg);if(li.querySelector(\"ul\"))return;"
  ]
 ]
