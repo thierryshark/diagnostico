@@ -679,7 +679,7 @@ if (cfg.tokensMortos && cfg.tokensMortos.length) {
   const { tokensFora } = await import('./purga.mjs');
   const morto = (t) => cfg.tokensMortos.some((m) => t === m || (m.endsWith('*') && t.startsWith(m.slice(0, -1))));
   const postcss = (await import('postcss')).default; const root = postcss.parse(css); let nr = 0;
-  root.walkRules((r) => { if (r.parent && r.parent.type === 'atrule' && /keyframes/.test(r.parent.name)) return; const fica = r.selectors.filter((sel) => !tokensFora(sel).some(morto)); if (!fica.length) { r.remove(); nr++; } else if (fica.length < r.selectors.length) r.selectors = fica; });
+  root.walkRules((r) => { if (r.parent && r.parent.type === 'atrule' && /keyframes/.test(r.parent.name)) return; const fica = r.selectors.filter((sel) => !tokensFora(sel).some(morto) && !(cfg.seletoresMortos || []).some((x) => sel.replace(/\s+/g, "").includes(x))); if (!fica.length) { r.remove(); nr++; } else if (fica.length < r.selectors.length) r.selectors = fica; });
   root.walkAtRules((a) => { if (/media|supports/.test(a.name) && a.nodes && a.nodes.length === 0) a.remove(); });
   css = root.toString(); console.log('regras mortas removidas:', nr);
 }

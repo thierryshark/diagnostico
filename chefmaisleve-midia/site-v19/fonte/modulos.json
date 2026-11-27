@@ -52,7 +52,8 @@
   "tokensMortos-27-11c": "27/11 (v31): classes que so as Blacks anteriores criavam (Duo, vitrine c9/c12, faixa da home cbkh), apagadas junto com o codigo.",
   "natal-27-11": "Rascunho Natal: modulos so da Black Friday (relogio, vitrine e pagina /ofertas/ da Black, temporizador nos kits). A Black acaba em 30/11; depois disso esses modulos so pesavam.",
   "tokensMortos-natal-27-11": "Classes da Black Friday (pagina /ofertas/ da Black, relogio, vitrine e abertura escura). Os modulos que criavam essas classes sairam no rascunho Natal; sobravam so seletores.",
-  "menu-27-11": "Cabecalho (27/11): sai o cartao lateral do menu do computador (cml-mm-side, criado no cml-paginas#4 e ajustado pelo cml-paginas#37). Ocupava 300 px e empurrava as colunas para baixo em telas menores; pedido do Thierry."
+  "menu-27-11": "Cabecalho (27/11): sai o cartao lateral do menu do computador (cml-mm-side, criado no cml-paginas#4 e ajustado pelo cml-paginas#37). Ocupava 300 px e empurrava as colunas para baixo em telas menores; pedido do Thierry.",
+  "seletoresMortos-27-11": "Natal Feliz (27/11): a composicao do kit virou carrossel proprio (.cmlk-car, montado pelo cml-extra#27). As regras antigas que transformavam a descricao inteira em faixa rolavel saem."
  },
  "grupo": {},
  "tokensMortos": [
@@ -263,5 +264,9 @@
   "c2-oh",
   "cml-of3",
   "cml-mm-side"
+ ],
+ "seletoresMortos": [
+  ".cml-pd>div:has(>video)",
+  ".cml-pd:has(>div>video)"
  ]
 }

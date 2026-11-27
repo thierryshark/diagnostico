@@ -181,3 +181,30 @@ html body .nav-desktop .desktop-dropdown .list-subitems a:not(#cmlmm){white-spac
 @media (min-width:1024px) and (max-width:1279px){
 html body .nav-desktop .desktop-dropdown .list-subitems a:not(#cmlmm){font-size:13.5px!important;padding:5px 0!important}
 }
+/* Natal Feliz (27/11): composicao do kit em carrossel (montado pelo cml-extra#27) */
+html body #ns-section-product_description .cmlk-car{margin:28px 0;padding:22px;border:1px solid #e8ddd0;border-radius:16px;background:#fffaf5}
+html body #ns-section-product_description .cmlk-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px}
+html body #ns-section-product_description .cmlk-e{margin:0;font:500 14px/1 Poppins,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#a65a14}
+html body #ns-section-product_description .cmlk-nv{display:flex;align-items:center;gap:8px}
+html body #ns-section-product_description .cmlk-n{min-width:58px;font:500 14px/1 Poppins,sans-serif;color:#6f6656;text-align:right}
+html body #ns-section-product_description .cmlk-b{width:44px;height:44px;border:1.5px solid #565229;border-radius:10px;background:transparent;color:#565229;font:500 18px/1 Poppins,sans-serif;cursor:pointer}
+html body #ns-section-product_description .cmlk-b:hover{background:#565229;color:#f6efe9}
+html body #ns-section-product_description .cmlk-tr{display:grid;grid-auto-flow:column;grid-auto-columns:calc(50% - 10px);column-gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+html body #ns-section-product_description .cmlk-tr::-webkit-scrollbar{display:none}
+html body #ns-section-product_description .cmlk-s{display:grid;grid-template-columns:minmax(0,46%) minmax(0,1fr);gap:18px;align-items:center;scroll-snap-align:start;margin:0;padding:0;background:none;border:0}
+html body #ns-section-product_description .cmlk-m{position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#efe6db;cursor:pointer}
+html body #ns-section-product_description .cmlk-m video{display:block;width:100%!important;height:100%!important;object-fit:cover;border-radius:0}
+html body #ns-section-product_description .cmlk-p{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border:0;border-radius:50%;background:rgba(43,41,22,.55);cursor:pointer;transition:opacity .2s}
+html body #ns-section-product_description .cmlk-p:before{content:"";position:absolute;left:22px;top:17px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #fff}
+html body #ns-section-product_description .cmlk-m.on .cmlk-p{opacity:0}
+html body #ns-section-product_description .cmlk-s>div{padding:0}
+html body #ns-section-product_description .cmlk-s small{display:block;font:500 14px/1.35 Poppins,sans-serif;letter-spacing:.1em;color:#a65a14}
+html body #ns-section-product_description .cmlk-s h4{margin:8px 0 10px;font:700 19px/1.25 Poppins,sans-serif;color:#2b2916}
+html body #ns-section-product_description .cmlk-s p{margin:0 0 8px;font:400 15px/1.55 Poppins,sans-serif;color:#4a4636}
+@media(max-width:760px){
+html body #ns-section-product_description .cmlk-car{margin:22px 0;padding:16px 14px}
+html body #ns-section-product_description .cmlk-tr{grid-auto-columns:100%;column-gap:14px}
+html body #ns-section-product_description .cmlk-s{grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+html body #ns-section-product_description .cmlk-m{width:min(78%,300px);margin:0 auto}
+html body #ns-section-product_description .cmlk-s h4{font-size:18px}
+}
