@@ -261,3 +261,22 @@ Pendente / aprendido:
 - Achado para investigar: aviso do Meta Pixel "Invalid parameter format for currency" na página da Laranja (antes de rodar tráfego pago, conferir os eventos do Pixel).
 - Vídeos no computador: as pastas ligadas são só Claude e Downloads. Em Downloads há 8 vídeos, todos peças prontas (V1 história da marca 69 s, V2 Black 37 s, ANUNCIO 1 e 2 = telas da live com preço, Teaser Live Pastor, esquenta Black, oferta quadrado, black-reta-final). Nenhuma tomada bruta de kit, tangerina ou trouxinha. Folhas de contato em Claude/site-v19/videos-contato. Para usar tomadas dele, falta ligar a pasta onde elas ficam (Filmes ou Chef Conteúdo no iCloud).
 - Ainda no pacote: textos c2-side/c2-cbn em outros módulos (52 ocorrências).
+
+## 27/11 01h10 — v25 NO AR (confirmado no painel: "Layout atual: v25"; rascunhos v26, v24, Tulum; v23 apagado). Metas de desempenho: plano
+
+PageSpeed Laranja com v25 no ar (capturado 00:52): celular 55 (era 34 no v24; FCP 2,6 s, LCP 5,1 s, TBT 800 ms, CLS 0,017, SI 4,7 s); computador 89 (FCP 0,6 s, LCP 1,1 s, TBT 180 ms).
+A API sem chave do PageSpeed estourou a cota do dia (429): medir pela tela pagespeed.web.dev, lendo cada relatório por `.lh-root` (o primeiro é celular, o segundo computador; usar textContent, os detalhes vêm fechados).
+
+Diagnóstico do celular (Laranja):
+- Trava de primeira pintura: site.css 88,7 KiB transferidos (558 KB abertos), 1.500 ms; CSS do tema 17 + 4 KiB; Google Fonts.
+- CPU: pack.js 1.342 ms; cedo.js (conversor de :has) 250 ms; apps do Cashing 1.398 ms (evaluations 492, cashbacks 353, warnme 288, offers 166, coupon 99).
+- JS sem uso 271 KiB; CSS sem uso 105 KiB; imagens 442 KiB; cache 270 KiB; 17 tarefas longas; trabalho da linha principal 5,5 s.
+- Página: 99 folhas de estilo, 5.761 regras, 4.413 elementos; 49 marcadores de :has, 122 regras convertidas; varrer as regras custa 18 ms no computador.
+
+Ordem de ataque no v26:
+1. site.css por tipo de página (base + produto/categoria/home/carrinho) para cortar a trava de 1,5 s e o CSS sem uso.
+2. pack.js por tipo de página (tarefa #124): cortar os 271 KiB sem uso e o 1,3 s de CPU.
+3. Conversor de :has: converter na montagem (site.css já sai com as classes) e deixar no navegador só a aplicação das classes.
+4. Cashing: ver quais widgets (avise-me, ofertas, cupom) são usados de fato em cada tipo de página e desligar os demais no painel do Cashing.
+5. Imagens (442 KiB) e cache dos arquivos próprios (270 KiB).
+Já feito no v26: pack.js 673 -> 613 KB (montador antigo fora).
