@@ -243,3 +243,5 @@ html body #cml-lc ul::-webkit-scrollbar{display:none}
 html body #cml-lc li{flex:0 0 40%;scroll-snap-align:start}
 html body #cml-lc .go{display:flex;width:100%}
 html body #cml-lc .cv{padding-top:96px;background-size:auto}}
+/* Home (27/11): cartao Chocoleve dos destaques com tom de chocolate e brilho laranja (antes usava o fundo preto da Black, t-blk) */
+html body .cml-hl-c.t-cho{background:radial-gradient(120% 90% at 20% 0%,#8a4a1c,#4d2812 58%,#2e170a);border-color:#efb56599}
