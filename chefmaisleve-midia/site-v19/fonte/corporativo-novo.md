@@ -343,3 +343,7 @@ Já feito no v26: pack.js 673 -> 613 KB (montador antigo fora).
 - Corrigido na origem: Combos Performance, Elas e Bem-estar (descricao, conferida letra a letra); Kit Natal Feliz a venda 379081240 (descricao); texto do Google da Xicara Flowers e do Infusor Inox; pagina Clube Chef (texto e texto do Google, pelo painel).
 - Ficam com "blend" por decisao do Thierry: texto do Google do Natal Feliz, posts do blog e 2 titulos de categoria.
 - Regra: antes de montar pacote, puxar o GitHub (git pull) e copiar fonte/src para src; se mudar texto de src, rodar `node sites.mjs` antes do build.
+
+## 27/11 05h (v30, pacote 190a761)
+- Altura do cabecalho (cml-paginas#16): so roda em /ofertas/ e so grava quando muda. Computador, Laranja: nosso bloqueio medio 121 ms (v29) para 58 ms (v30), 3 aberturas de cada.
+- Abertura da Black refeita no conceito minimalista pedido pelo Thierry: "BLACK Friday" numa linha (Poppins 200 + italico 300 dourado), filete dourado, "Ate X% off em chas, kits e snacks", contagem sem caixas em numero fino, botao em contorno dourado, uma foto so (maior desconto) com legenda discreta. Regras antigas .of3-lk sairam do site.css. Conferido em 360/390/430 (uma linha) e no computador.
