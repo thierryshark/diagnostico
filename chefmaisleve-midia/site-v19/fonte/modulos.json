@@ -17,7 +17,9 @@
   "cml-paginas#22",
   "cml-ui#7",
   "cml-paginas#12",
-  "cml-paginas#7"
+  "cml-paginas#7",
+  "cml-paginas#31",
+  "cml-paginas#36"
  ],
  "motivo": {
   "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
@@ -30,7 +32,9 @@
   "cml-paginas#22": "criava uma folha de estilo vazia (o estilo dela ja mora no site.css); sem funcao",
   "cml-ui#7": "efeito de brasa e calor no titulo do Esquenta Black e troca de \"Aquecimento\" por \"Esquenta\": campanha encerrada",
   "cml-paginas#12": "bfMode: trocava na tela os textos do Esquenta pelos da Black com observador na pagina inteira (mascara por script); os textos agora saem certos na origem (etapa \"textos da campanha na origem\")",
-  "cml-paginas#7": "corrigia na tela os textos das perguntas frequentes (valores de frete, erros de escrita); os textos foram corrigidos no cadastro das secoes de perguntas (home, pagina e produto) no v21"
+  "cml-paginas#7": "corrigia na tela os textos das perguntas frequentes (valores de frete, erros de escrita); os textos foram corrigidos no cadastro das secoes de perguntas (home, pagina e produto) no v21",
+  "cml-paginas#31": "26/11: cx12 (complementos da pagina de destaque montada por script); a pagina de destaque agora e a pagina de produto do tema",
+  "cml-paginas#36": "26/11: cx17 (embalagem e quantidade da pagina de destaque montada por script); o tema ja tem variacao e quantidade"
  },
  "grupo": {},
  "tokensMortos": [
@@ -61,6 +65,12 @@
   "c2-cbt",
   "c2-cnt",
   "c2-side",
-  "c2-has"
+  "c2-has",
+  "cx12-*",
+  "cx17-*",
+  "cml-dst",
+  "cml-dst-on",
+  "cml-dstw",
+  "cml-dst-flash"
  ]
 }
