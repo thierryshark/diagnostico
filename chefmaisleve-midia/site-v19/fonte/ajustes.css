@@ -204,15 +204,24 @@ html body #cml-of3 .of3-st b{margin-top:12px;font:600 15px/1.25 Poppins,sans-ser
 html body #cml-of3 .of3-st small{margin-top:4px;font:600 14px/1.2 Poppins,sans-serif;color:#a65a14}
 @media(max-width:767px){html body #cml-of3 .of3-top{grid-template-columns:minmax(0,1fr);gap:28px;padding:34px 22px 24px}html body #cml-of3 .of3-top .k{margin-bottom:16px}html body #cml-of3 .of3-top h1{font-size:clamp(28px,8.4vw,40px)}html body #cml-of3 .of3-top .ds{margin-top:22px;padding-top:20px;font-size:15px}html body #cml-of3 .of3-top .of3-cd{margin-top:22px}html body #cml-of3 .of3-top .of3-cd .cx5-u{gap:18px}html body #cml-of3 .of3-top .of3-cd .cx5-u b{font-size:30px}html body #cml-of3 .of3-top .go{display:flex;justify-content:center;width:100%;margin-top:26px}html body #cml-of3 .of3-mz{aspect-ratio:4/3}html body #cml-of3 .of3-st{margin-top:40px}html body #cml-of3 .of3-st h2{font-size:24px;margin-bottom:18px}html body #cml-of3 .of3-st .r{justify-content:flex-start;gap:14px;margin:0 -14px;padding:0 14px;overflow-x:auto;scrollbar-width:none;min-height:150px}html body #cml-of3 .of3-st .r::-webkit-scrollbar{display:none}html body #cml-of3 .of3-st a{flex:0 0 96px;width:96px}html body #cml-of3 .of3-st i{width:92px;height:92px}html body #cml-of3 .of3-st b{font-size:14px}}
 
-/* BLACK, CARROSSEL DE COMBOS NO CELULAR (27/11, Thierry): cartao com a altura do proprio conteudo (antes todos esticavam ate o mais alto e sobrava um vazio antes do botao), foto mais baixa, texto em 3 linhas, opcoes compactas, botao numa linha so; o proximo cartao aparece na borda para indicar que desliza */
-@media(max-width:640px){html body #cml-of3 .of3-cb:not(#a1){align-items:flex-start;gap:12px;margin:0 -14px;padding:0 14px 8px;scroll-padding-left:14px}
+/* BLACK, CARROSSEL DE COMBOS NO CELULAR (27/11, Thierry): todos os cartoes do mesmo tamanho. Cada parte do cartao tem altura fixa: titulo em 2 linhas, texto em 2, opcoes numa caixa de altura unica (lista do que vem no combo em texto corrido, ou as quantidades em 2 colunas), preco numa linha, economia em 2 linhas, botao no pe */
+@media(max-width:640px){html body #cml-of3 .of3-cb:not(#a1){align-items:stretch;gap:12px;margin:0 -14px;padding:0 14px 8px;scroll-padding-left:14px}
 html body #cml-of3 .of3-cb .of3-c:not(#a1){flex:0 0 82%;scroll-snap-align:start;border-radius:14px}
-html body #cml-of3 .of3-cb .of3-ci:not(#a1){aspect-ratio:16/10}
-html body #cml-of3 .of3-cb .of3-cbd:not(#a1){gap:6px;padding:14px 14px 16px}
-html body #cml-of3 .of3-cb .of3-c h3:not(#a1){font-size:19px;line-height:1.2}
-html body #cml-of3 .of3-cb .of3-c .ds:not(#a1){font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-html body #cml-of3 .of3-cb .of3-ql:not(#a1){margin:6px 0 0;font-size:14px}
-html body #cml-of3 article.of3-c .of3-in:not(#a1):not(#a2):not(#a3){gap:6px;margin:4px 0 6px!important}
-html body #cml-of3 article.of3-c .of3-in li:not(#a1){flex:0 1 auto;min-height:36px;padding:6px 12px!important;white-space:nowrap}
+html body #cml-of3 .of3-cb .of3-ci:not(#a1){flex:none;aspect-ratio:16/10}
+html body #cml-of3 .of3-cb .of3-cbd:not(#a1){flex:1;gap:8px;padding:14px 14px 16px}
+html body #cml-of3 .of3-cb .of3-c h3:not(#a1){height:2.4em;font-size:19px;line-height:1.2;overflow:hidden}
+html body #cml-of3 .of3-cb .of3-c .ds:not(#a1){height:2.9em;font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+html body #cml-of3 .of3-cb .of3-ql:not(#a1){margin:0;font-size:14px;line-height:20px;height:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html body #cml-of3 article.of3-c .of3-in:not(#a1):not(#a2):not(#a3){display:block;box-sizing:border-box;height:96px;margin:0!important;padding:10px 12px!important;border:1px solid #e8ddd0;border-radius:10px;background:#fff;overflow:hidden}
+html body #cml-of3 article.of3-c .of3-in li:not(#a1){display:inline;min-height:0;padding:0!important;border:0;background:none;font:400 14px/1.5 Poppins,sans-serif;white-space:normal}
+html body #cml-of3 article.of3-c .of3-in li:not(:last-child):not(#a1)::after{content:" · "!important;color:#a65a14}
+html body #cml-of3 .of3-cb .of3-q:not(#a1):not(#a2){display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;height:96px;margin:0;align-content:start}
+html body #cml-of3 .of3-cb .of3-q button:not(#a1){display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:45px;height:45px;padding:0 6px;border-radius:10px}
+html body #cml-of3 .of3-cb .of3-q button b:not(#a1),html body #cml-of3 .of3-cb .of3-q button i:not(#a1){font-size:14px;line-height:1.1;font-style:normal;white-space:nowrap}
+html body #cml-of3 .of3-cb .of3-pr:not(#a1){flex-wrap:nowrap;margin:0;white-space:nowrap;gap:0 6px}
+html body #cml-of3 .of3-cb .of3-pr .por:not(#a1){font-size:clamp(16px,4.6vw,20px)}html body #cml-of3 .of3-cb .of3-pr .pc:not(#a1){margin-left:0;padding:4px 6px}
+html body #cml-of3 .of3-cb .of3-ec:not(#a1){display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;height:2.9em;overflow:hidden;font-size:14px;line-height:1.45}
+html body #cml-of3 .of3-cb .of3-ec span:not(#a1){display:inline;margin-right:10px}
 html body #cml-of3 .of3-cb .sp:not(#a1){display:none}
-html body #cml-of3 .of3-cb .of3-add:not(#a1){margin-top:12px;min-height:46px;padding:0 14px;font-size:14px;white-space:nowrap}}
+html body #cml-of3 .of3-cb .of3-add:not(#a1){margin-top:auto;min-height:46px;padding:0 14px;font-size:14px;white-space:nowrap}}
+@media(max-width:380px){html body #cml-of3 .of3-cb .of3-pr .pc:not(#a1){display:none}}
