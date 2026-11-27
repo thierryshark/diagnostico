@@ -1,0 +1,161 @@
+<!-- Chef Mais Leve: Natal Mais Leve, Monte do seu jeito. 1) caixa de madeira (premium 7 itens, compacta 5), 2) escolhas por categoria ate encher a caixa, 3) cartao escrito a mao com a mensagem ou sem cartao, 4) resumo e sacola. Caixas e cartao vem da grade nativa escondida desta pagina; os itens vem das paginas de categoria, so quando a pessoa abre a categoria. Tambem preenche os precos dos cards de kit acima. -->
+<style>
+#cml-mt{--bd:#4a141d;--gd:#dfae58;--gl:#f3d48b;--cr:#f6efe9;--ink:#2b2916;--mu:#6f6656;--am:#a65a14;--ol:#565229;--ln:#e8ddd0;padding:0 16px;font-family:Poppins,system-ui,sans-serif;color:var(--ink)}
+#cml-mt *{box-sizing:border-box}
+#cml-mt [hidden]{display:none!important}
+#cml-mt .w{max-width:var(--cmlF,1240px);margin:clamp(44px,6vw,72px) auto 0;border-radius:16px;background:#fffaf5;border:1px solid var(--ln);overflow:hidden}
+#cml-mt .hd{padding:clamp(24px,3.4vw,40px) clamp(20px,4vw,48px);background:var(--ol);color:var(--cr)}
+#cml-mt .k{display:flex;align-items:center;gap:12px;margin:0 0 10px;font:500 14px/1 Poppins,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gl)}
+#cml-mt .k:before{content:"";width:26px;height:1px;background:var(--gd)}
+#cml-mt h2{margin:0;font:700 clamp(26px,3vw,36px)/1.15 Poppins,sans-serif!important;letter-spacing:-.015em;color:var(--cr)!important;text-transform:none!important}
+#cml-mt h2 em{font-weight:300;font-style:italic;color:var(--gl)}
+#cml-mt .hd p{margin:8px 0 0;font:400 15.5px/1.5 Poppins,sans-serif;color:#eadfd2}
+#cml-mt .sp{display:flex;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+#cml-mt .sp li{flex:1;padding:10px 0 0;border-top:2px solid rgba(246,239,233,.25);font:500 14px/1.3 Poppins,sans-serif;color:#d8ccbb}
+#cml-mt .sp li.on{border-color:var(--gl);color:var(--cr)}
+#cml-mt .sp b{margin-right:6px;color:var(--gl)}
+#cml-mt .bd{padding:clamp(20px,3vw,36px) clamp(16px,4vw,48px)}
+#cml-mt h3{margin:0 0 6px;font:700 22px/1.25 Poppins,sans-serif;color:var(--ink)}
+#cml-mt .tx{margin:0 0 18px;font:400 15px/1.5 Poppins,sans-serif;color:var(--mu)}
+#cml-mt .bx{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#cml-mt .bc{display:grid;grid-template-columns:120px minmax(0,1fr);align-items:center;gap:16px;padding:12px;border:1.5px solid var(--ln);border-radius:14px;background:#fff}
+#cml-mt .bc.on{border-color:var(--ol);box-shadow:0 0 0 1px var(--ol)}
+#cml-mt .bc img,#cml-mt .it img,#cml-mt .cd img{display:block;width:100%!important;height:auto!important;aspect-ratio:1/1!important;object-fit:cover!important;border-radius:10px;background:#efe6db}
+#cml-mt .bc b,#cml-mt .it b{display:block;font:600 16px/1.3 Poppins,sans-serif}
+#cml-mt .bc small{display:block;margin-top:4px;font:400 14px/1.35 Poppins,sans-serif;color:var(--mu)}
+#cml-mt .pc{display:block;margin-top:8px;font:700 18px/1 Poppins,sans-serif;color:var(--am)}
+#cml-mt .pc s{margin-left:6px;font:400 14px/1 Poppins,sans-serif;color:var(--mu)}
+#cml-mt .ad,#cml-mt .go,#cml-mt .lk{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:10px;font:600 15px/1 Poppins,sans-serif;cursor:pointer;text-decoration:none!important}
+#cml-mt .ad{margin-top:10px;border:1.5px solid var(--ol);background:transparent;color:var(--ol)}
+#cml-mt .ad:hover,#cml-mt .on .ad{background:var(--ol);color:var(--cr)}
+#cml-mt .ad[disabled]{opacity:.45;cursor:not-allowed;background:transparent;color:var(--ol)}
+#cml-mt .go{min-height:50px;padding:0 28px;border:1.5px solid var(--am);background:var(--am);color:#fff}
+#cml-mt .go[disabled]{opacity:.45;cursor:not-allowed}
+#cml-mt .lk{padding:0 6px;border:0;background:none;color:var(--mu);font-weight:500;text-decoration:underline!important;text-underline-offset:3px}
+#cml-mt .ft{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:24px;padding-top:18px;border-top:1px solid var(--ln)}
+#cml-mt .ft .go{margin-left:auto}
+#cml-mt .cp{display:flex;align-items:center;gap:12px;margin:0 0 18px;font:500 14px/1.3 Poppins,sans-serif;color:var(--ink)}
+#cml-mt .cp i{flex:1;height:6px;border-radius:6px;background:#efe6db;overflow:hidden}
+#cml-mt .cp i span{display:block;height:100%;width:0;background:var(--gd);transition:width .3s}
+#cml-mt .ct{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#cml-mt .ct button{min-height:64px;padding:12px 14px;border:1.5px solid var(--ln);border-radius:12px;background:#fff;color:var(--ink);font:600 15px/1.25 Poppins,sans-serif;text-align:left;cursor:pointer}
+#cml-mt .ct button:hover{border-color:var(--ol)}
+#cml-mt .ct button small{display:block;margin-top:4px;font:400 14px/1.3 Poppins,sans-serif;color:var(--mu)}
+#cml-mt .ct button[disabled]{opacity:.45;cursor:not-allowed}
+#cml-mt .ch{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}
+#cml-mt .ch h4{margin:0;font:700 18px/1.2 Poppins,sans-serif}
+#cml-mt .ls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#cml-mt .it{display:flex;flex-direction:column;padding:8px 8px 12px;border:1px solid var(--ln);border-radius:12px;background:#fff}
+#cml-mt .it b{margin:10px 2px 0;font-size:14.5px}
+#cml-mt .it select{width:100%;min-height:40px;margin-top:8px;padding:0 8px;border:1px solid #c9bba9;border-radius:10px;background:#fff;font:400 14px/1 Poppins,sans-serif;color:var(--ink)}
+#cml-mt .it .pc{margin:8px 2px 0;font-size:16px}
+#cml-mt .it .ad{margin-top:auto;width:100%}
+#cml-mt .it .pc+.ad,#cml-mt .it select+.pc+.ad{margin-top:10px}
+#cml-mt .it .q{display:flex;align-items:center;justify-content:space-between;margin-top:10px;border:1.5px solid var(--ol);border-radius:10px}
+#cml-mt .it .q button{width:44px;height:42px;border:0;background:none;color:var(--ol);font:500 20px/1 Poppins,sans-serif;cursor:pointer}
+#cml-mt .it .q button[disabled]{opacity:.35;cursor:not-allowed}
+#cml-mt .it .q output{font:600 15px/1 Poppins,sans-serif}
+#cml-mt .ld{padding:28px 0;text-align:center;font:400 15px/1.4 Poppins,sans-serif;color:var(--mu)}
+#cml-mt .fl{margin:0 0 14px;padding:12px 14px;border-radius:10px;background:#f1f2e6;font:500 14.5px/1.4 Poppins,sans-serif;color:#4a4722}
+#cml-mt .cd{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:start}
+#cml-mt .cd label{display:block;margin:12px 0 6px;font:600 14px/1.3 Poppins,sans-serif}
+#cml-mt textarea{width:100%;min-height:120px;padding:12px;border:1px solid #c9bba9;border-radius:10px;background:#fff;font:400 15px/1.5 Poppins,sans-serif;color:var(--ink);resize:vertical}
+#cml-mt .cn{display:block;margin-top:4px;text-align:right;font:400 14px/1 Poppins,sans-serif;color:var(--mu)}
+#cml-mt .rs{margin:0;padding:0;list-style:none;border-top:1px solid var(--ln)}
+#cml-mt .rs li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--ln);font:400 15px/1.4 Poppins,sans-serif}
+#cml-mt .rs li b{font-weight:600;white-space:nowrap}
+#cml-mt .rs .ms{display:block;margin-top:4px;font-style:italic;color:var(--mu)}
+#cml-mt .tt{display:flex;justify-content:space-between;margin-top:14px;font:700 18px/1 Poppins,sans-serif}
+#cml-mt .nt{margin:14px 0 0;font:400 14px/1.5 Poppins,sans-serif;color:var(--mu)}
+#cml-mt .nt a{color:var(--am);text-decoration:underline}
+#cml-mt .er{margin:12px 0 0;color:#8f1d17;font:500 14px/1.4 Poppins,sans-serif}
+@media(max-width:900px){#cml-mt .ls{grid-template-columns:repeat(2,minmax(0,1fr))}#cml-mt .ct{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){#cml-mt{padding:0 10px}#cml-mt .bx{grid-template-columns:minmax(0,1fr)}#cml-mt .bc{grid-template-columns:96px minmax(0,1fr)}#cml-mt .cd{grid-template-columns:minmax(0,1fr)}#cml-mt .cd>img{max-width:180px}#cml-mt .sp li{font-size:14px}#cml-mt .sp li span{display:none}#cml-mt .ft .go{width:100%}}
+</style>
+<section id="cml-mt" data-cml-nat>
+<div class="w">
+<div class="hd"><p class="k">Do seu jeito</p><h2>Monte <em>do seu jeito</em></h2><p>Escolha a caixa de madeira, o que vai dentro e o cartão. A gente embala à mão.</p>
+<ol class="sp"><li class="on"><b>1</b><span>Caixa</span></li><li><b>2</b><span>Suas escolhas</span></li><li><b>3</b><span>Cartão</span></li><li><b>4</b><span>Resumo</span></li></ol></div>
+<div class="bd">
+
+<div class="st" data-s="0">
+<h3>Escolha a sua caixa exclusiva Chef Mais Leve</h3><p class="tx">Caixas de madeira com a nossa marca, que continuam com quem recebe.</p>
+<div class="bx"></div>
+<div class="ft"><span></span><button type="button" class="go" data-a="nx" disabled>Continuar</button></div>
+</div>
+
+<div class="st" data-s="1" hidden>
+<h3>Quais são as suas escolhas?</h3>
+<p class="cp"><span class="cpt"></span><i><span></span></i></p>
+<p class="fl" hidden>Sua caixa está completa. É só continuar.</p>
+<div class="ct">
+<button type="button" data-c="/chas/cha-misto/">Chás mistos<small>Ervas e frutas, 40 g</small></button>
+<button type="button" data-c="/chas/chas-infusoes-naturais/">Chá na fruta<small>Trouxinhas e tangerina</small></button>
+<button type="button" data-c="/snacks-granolas/granolas/">Granolas<small>Crocantes, 250 g</small></button>
+<button type="button" data-c="/snacks-granolas/snacks-saudaveis/chips-saudaveis/">Frutas desidratadas<small>Sem açúcar adicionado</small></button>
+<button type="button" data-c="/snacks-granolas/chocoleve/">Chocolate<small>Linha Chocoleve</small></button>
+<button type="button" data-c="/acessorios/">Acessórios<small>Xícaras, infusores e mais</small></button>
+</div>
+<div class="cv" hidden><div class="ch"><h4></h4><button type="button" class="lk" data-a="cats">← Outras categorias</button></div><div class="ls"></div></div>
+<div class="ft"><button type="button" class="lk" data-a="bk">Voltar</button><button type="button" class="go" data-a="nx" disabled>Continuar</button></div>
+</div>
+
+<div class="st" data-s="2" hidden>
+<h3>Inclua um cartão</h3><p class="tx">Escrito à mão por nós, com a sua mensagem.</p>
+<div class="cd"><img alt="Cartão escrito à mão" width="400" height="400" loading="lazy"><div><b class="cdn">Cartão escrito à mão</b><span class="pc cdp"></span>
+<label for="cml-mt-msg">Sua mensagem</label><textarea id="cml-mt-msg" maxlength="300" placeholder="Ex.: Feliz Natal, mãe! Com todo o carinho, Ana."></textarea><span class="cn">0 de 300</span></div></div>
+<div class="ft"><button type="button" class="lk" data-a="bk">Voltar</button><button type="button" class="lk" data-a="sem">Seguir sem cartão</button><button type="button" class="go" data-a="com" disabled>Incluir o cartão</button></div>
+</div>
+
+<div class="st" data-s="3" hidden>
+<h3>Seu presente</h3><p class="tx">Confira e coloque na sacola.</p>
+<ul class="rs"></ul><p class="tt"><span>Total</span><span class="tv"></span></p>
+<p class="nt" hidden></p><p class="er" hidden></p>
+<div class="ft"><button type="button" class="lk" data-a="bk">Voltar</button><button type="button" class="go" data-a="fim">Colocar na sacola</button></div>
+</div>
+
+</div></div>
+</section>
+<script>
+(function(){var R=document.getElementById('cml-mt');if(!R)return;
+var CX={'377539173':7,'377539289':5},CARD='371646209',WA='554791571974',st=R.querySelectorAll('.st'),sp=R.querySelectorAll('.sp li'),s=0,box=null,cap=0,sel={},card=null,msg='',cache={};
+function $(q,e){return (e||R).querySelector(q)}
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.textContent=h;return e}
+function grid(id){return document.querySelector('#ns-section-product_list .js-item-product[data-product-id="'+id+'"]')}
+function vars(c){try{return JSON.parse(c.getAttribute('data-variants'))||[]}catch(e){return[]}}
+function img(c){var i=c.querySelector('img');if(!i)return'';var s=i.getAttribute('data-srcset')||i.getAttribute('srcset')||'';var m=s.match(/(\S+)\s+(240|320|480)w/);return m?m[1]:(i.getAttribute('data-src')||i.src||'')}
+function nome(c){var n=c.querySelector('.js-item-name');return n?n.textContent.trim():''}
+function num(v){return v&&v.price_number||0}
+function brl(n){return 'R$ '+n.toFixed(2).replace('.',',')}
+function pre(v,box){box.textContent=v?v.price_short:'';if(v&&v.compare_at_price_short&&v.compare_at_price_number>v.price_number){box.appendChild(el('s','',v.compare_at_price_short))}}
+function total(){var n=0;for(var k in sel)n+=sel[k].q;return n}
+function go(n){s=n;for(var i=0;i<st.length;i++)st[i].hidden=i!==n;for(i=0;i<sp.length;i++)sp[i].classList.toggle('on',i<=n);if(n===1)cheio();if(n===3)resumo();R.scrollIntoView({behavior:'smooth',block:'start'})}
+/* precos dos cards de kit, lidos da grade nativa escondida */
+[].forEach.call(document.querySelectorAll('#cml-nt [data-p]'),function(k){var c=grid(k.getAttribute('data-p')),b=k.querySelector('.pr');if(!c||!b)return;var v=vars(c)[0];if(!v)return;b.textContent='';b.appendChild(el('b','',v.price_short));if(v.compare_at_price_short&&v.compare_at_price_number>v.price_number)b.appendChild(el('s','',v.compare_at_price_short))});
+/* passo 1: caixas */
+var bx=$('.bx');Object.keys(CX).forEach(function(id){var c=grid(id);if(!c)return;var v=vars(c)[0],d=el('div','bc');d.setAttribute('data-id',id);var im=el('img');im.src=img(c);im.alt=nome(c);im.width=240;im.height=240;im.loading='lazy';d.appendChild(im);var t=el('div');t.appendChild(el('b','',nome(c)));t.appendChild(el('small','','Cabem até '+CX[id]+' itens'));var p=el('span','pc');pre(v,p);t.appendChild(p);var a=el('button','ad','Adicionar');a.type='button';a.setAttribute('data-a','box');t.appendChild(a);d.appendChild(t);bx.appendChild(d)});
+/* cartao */
+(function(){var c=grid(CARD);if(!c)return;var v=vars(c)[0];$('.cd img').src=img(c);pre(v,$('.cdp'))})();
+function cheio(){var n=total(),f=n>=cap;$('.cpt').textContent=n+' de '+cap+' itens';$('.cp i span').style.width=(cap?Math.min(100,n/cap*100):0)+'%';$('.fl').hidden=!f;[].forEach.call(R.querySelectorAll('.ct button'),function(b){b.disabled=f});if(f){$('.cv').hidden=true;$('.ct').hidden=false}[].forEach.call(R.querySelectorAll('.it'),pinta);[].forEach.call(st[1].querySelectorAll('[data-a=nx]'),function(b){b.disabled=n<1})}
+function chave(pid,vid){return pid+':'+vid}
+function pinta(it){var pid=it.getAttribute('data-pid'),s=it.querySelector('select'),vs=it.__v,v=vs[s?s.selectedIndex:0],k=chave(pid,v.id),q=sel[k]?sel[k].q:0,cheia=total()>=cap;var ad=it.querySelector('.ad'),qq=it.querySelector('.q');pre(v,it.querySelector('.pc'));ad.hidden=q>0;ad.disabled=cheia||v.available===false;ad.textContent=v.available===false?'Esgotado':'Adicionar';qq.hidden=q===0;qq.querySelector('output').textContent=q;qq.querySelector('[data-a=mais]').disabled=cheia}
+function item(c){var vs=vars(c).filter(function(v){return v.is_visible!==false});if(!vs.length)return null;var it=el('div','it');it.__v=vs;it.__n=nome(c);it.setAttribute('data-pid',c.getAttribute('data-product-id'));var im=el('img');im.src=img(c);im.alt=it.__n;im.width=240;im.height=240;im.loading='lazy';it.appendChild(im);it.appendChild(el('b','',it.__n));if(vs.length>1){var s=el('select');s.setAttribute('aria-label','Opção de '+it.__n);vs.forEach(function(v){var o=el('option','',[v.option0,v.option1,v.option2].filter(Boolean).join(' · '));s.appendChild(o)});s.addEventListener('change',function(){pinta(it)});it.appendChild(s)}it.appendChild(el('span','pc'));var a=el('button','ad','Adicionar');a.type='button';a.setAttribute('data-a','add');it.appendChild(a);var q=el('div','q');q.innerHTML='<button type="button" data-a="menos" aria-label="Tirar um">−</button><output>0</output><button type="button" data-a="mais" aria-label="Colocar mais um">+</button>';it.appendChild(q);pinta(it);return it}
+function abreCat(b){var u=b.getAttribute('data-c'),cv=$('.cv'),ls=$('.ls');$('.ct').hidden=true;cv.hidden=false;cv.querySelector('h4').textContent=b.firstChild.nodeValue;ls.innerHTML='';function poe(h){var d=new DOMParser().parseFromString(h,'text/html'),n=0;[].forEach.call(d.querySelectorAll('.js-item-product[data-product-id]'),function(c){var nm=nome(c);if(/^(combo|kit)\b/i.test(nm)||CX[c.getAttribute('data-product-id')]||c.getAttribute('data-product-id')===CARD)return;var it=item(c);if(it){ls.appendChild(it);n++}});if(!n)ls.appendChild(el('p','ld','Nenhum item disponível agora nesta categoria.'))}
+if(cache[u]){poe(cache[u]);return}ls.appendChild(el('p','ld','Carregando…'));fetch(u,{credentials:'same-origin'}).then(function(r){return r.text()}).then(function(h){cache[u]=h;ls.innerHTML='';poe(h)}).catch(function(){ls.innerHTML='';ls.appendChild(el('p','ld','Não foi possível carregar. Tente de novo.'))})}
+function resumo(){var ul=$('.rs'),t=0;ul.innerHTML='';function li(n,q,v,m){var l=el('li');var a=el('span','',q>1?q+' × '+n:n);if(m){a.appendChild(el('span','ms','“'+m+'”'))}l.appendChild(a);l.appendChild(el('b','',brl(num(v)*q)));ul.appendChild(l);t+=num(v)*q}
+li(box.n,1,box.v);for(var k in sel)li(sel[k].n+(sel[k].o?' ('+sel[k].o+')':''),sel[k].q,sel[k].v);if(card)li('Cartão escrito à mão',1,card.v,msg);$('.tv').textContent=brl(t);var nt=$('.nt');nt.hidden=!card;if(card){nt.innerHTML='';nt.appendChild(document.createTextNode('Para o cartão chegar com a sua mensagem, depois de fechar o pedido toque em '));var a=el('a','','enviar a mensagem pelo WhatsApp');a.href='https://wa.me/'+WA+'?text='+encodeURIComponent('Olá! Fiz um pedido com o Monte do seu jeito. Mensagem do cartão: '+msg);a.target='_blank';a.rel='noopener';nt.appendChild(a);nt.appendChild(document.createTextNode('. A gente escreve à mão.'))}}
+function poeNaSacola(p,v,q){var f=new FormData();f.append('add_to_cart',p);[v.option0,v.option1,v.option2].forEach(function(o,i){if(o)f.append('variation['+i+']',o)});f.append('quantity',q);return fetch('/comprar/',{method:'POST',body:f,credentials:'same-origin'}).then(function(r){if(!r.ok)throw 0})}
+function fim(b){var L=[[box.p,box.v,1]];for(var k in sel)L.push([sel[k].p,sel[k].v,sel[k].q]);if(card)L.push([CARD,card.v,1]);b.disabled=true;b.textContent='Colocando na sacola…';var er=$('.er');er.hidden=true;var c=Promise.resolve();L.forEach(function(x){c=c.then(function(){return poeNaSacola(x[0],x[1],x[2])})});c.then(function(){try{sessionStorage.setItem('cmlCartao',msg)}catch(e){}location.href='/comprar/'}).catch(function(){b.disabled=false;b.textContent='Colocar na sacola';er.hidden=false;er.textContent='Não deu para colocar tudo na sacola. Confira a sacola ou tente de novo.'})}
+R.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!R.contains(b))return;var a=b.getAttribute('data-a'),it=b.closest('.it');
+if(b.hasAttribute('data-c')){abreCat(b);return}
+if(a==='box'){var d=b.closest('.bc'),id=d.getAttribute('data-id'),c=grid(id);[].forEach.call(R.querySelectorAll('.bc'),function(x){x.classList.toggle('on',x===d);x.querySelector('.ad').textContent=x===d?'Adicionada':'Adicionar'});box={p:id,v:vars(c)[0],n:nome(c)};cap=CX[id];var n=0;for(var k in sel){n+=sel[k].q;if(n>cap){sel[k].q-=n-cap;n=cap;if(sel[k].q<1)delete sel[k]}}st[0].querySelector('[data-a=nx]').disabled=false;return}
+if(a==='add'||a==='mais'||a==='menos'){var sl=it.querySelector('select'),v=it.__v[sl?sl.selectedIndex:0],k=chave(it.getAttribute('data-pid'),v.id);if(a!=='menos'&&total()>=cap)return;if(!sel[k])sel[k]={p:it.getAttribute('data-pid'),v:v,n:it.__n,o:it.__v.length>1?[v.option0,v.option1,v.option2].filter(Boolean).join(' · '):'',q:0};sel[k].q+=a==='menos'?-1:1;if(sel[k].q<1)delete sel[k];cheio();return}
+if(a==='cats'){$('.cv').hidden=true;$('.ct').hidden=false;return}
+if(a==='nx'){go(s+1);return}
+if(a==='bk'){go(s-1);return}
+if(a==='sem'){card=null;msg='';go(3);return}
+if(a==='com'){var c=grid(CARD);card={v:vars(c)[0]};msg=$('textarea').value.trim();go(3);return}
+if(a==='fim'){fim(b)}});
+var ta=$('textarea');ta.addEventListener('input',function(){$('.cn').textContent=ta.value.length+' de 300';st[2].querySelector('[data-a=com]').disabled=!ta.value.trim()});
+})();
+</script>
