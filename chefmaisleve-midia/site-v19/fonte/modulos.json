@@ -53,7 +53,8 @@
   "natal-27-11": "Rascunho Natal: modulos so da Black Friday (relogio, vitrine e pagina /ofertas/ da Black, temporizador nos kits). A Black acaba em 30/11; depois disso esses modulos so pesavam.",
   "tokensMortos-natal-27-11": "Classes da Black Friday (pagina /ofertas/ da Black, relogio, vitrine e abertura escura). Os modulos que criavam essas classes sairam no rascunho Natal; sobravam so seletores.",
   "menu-27-11": "Cabecalho (27/11): sai o cartao lateral do menu do computador (cml-mm-side, criado no cml-paginas#4 e ajustado pelo cml-paginas#37). Ocupava 300 px e empurrava as colunas para baixo em telas menores; pedido do Thierry.",
-  "seletoresMortos-27-11": "Natal Feliz (27/11): a composicao do kit virou carrossel proprio (.cmlk-car, montado pelo cml-extra#27). As regras antigas que transformavam a descricao inteira em faixa rolavel saem."
+  "seletoresMortos-27-11": "Natal Feliz (27/11): a composicao do kit virou carrossel proprio (.cmlk-car, montado pelo cml-extra#27). As regras antigas que transformavam a descricao inteira em faixa rolavel saem.",
+  "lancamentos-27-11": "Home (27/11): o bloco escuro da linha Chocoleve (#cml-cl) virou o bloco Lancamentos (#cml-lc), com Chocoleve e a linha Verao em cores vivas da marca. As regras do #cml-cl saem."
  },
  "grupo": {},
  "tokensMortos": [
@@ -263,7 +264,8 @@
   "cbkh-*",
   "c2-oh",
   "cml-of3",
-  "cml-mm-side"
+  "cml-mm-side",
+  "cml-cl"
  ],
  "seletoresMortos": [
   ".cml-pd>div:has(>video)",

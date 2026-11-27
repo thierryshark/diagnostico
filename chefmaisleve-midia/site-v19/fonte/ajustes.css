@@ -208,3 +208,38 @@ html body #ns-section-product_description .cmlk-s{grid-template-columns:minmax(0
 html body #ns-section-product_description .cmlk-m{width:min(78%,300px);margin:0 auto}
 html body #ns-section-product_description .cmlk-s h4{font-size:18px}
 }
+/* Home (27/11): bloco Lancamentos (#cml-lc, montado pelo cml-paginas#4). Cores vivas da identidade: laranja terroso e dourado (Chocoleve), salvia (Verao); texto sempre escuro sobre o fundo claro. */
+html body #cml-lc{width:min(1318px,calc(100% - 32px));margin:0 auto 72px;font-family:Poppins,system-ui,sans-serif;color:#2b2916}
+html body #cml-lc .hd{margin:0 0 20px}
+html body #cml-lc .k{display:block;margin:0 0 10px;font:600 14px/1 Poppins,system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#a65a14}
+html body #cml-lc h2{margin:0;font:700 36px/1.1 Poppins,system-ui,sans-serif;letter-spacing:-.01em;color:#565229;text-transform:none}
+html body #cml-lc h2 em,html body #cml-lc h3 em{font-weight:300;font-style:italic}
+html body #cml-lc .g{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:20px}
+html body #cml-lc .cc,html body #cml-lc .cv{position:relative;overflow:hidden;border-radius:16px;padding:32px}
+html body #cml-lc .cc{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:28px;align-items:center;background:radial-gradient(90% 120% at 100% 0%,rgba(255,240,214,.55),transparent 60%),linear-gradient(135deg,#f7dcae 0%,#efb565 55%,#e39a45 100%)}
+html body #cml-lc .cv{display:flex;flex-direction:column;justify-content:flex-end;min-height:300px;background:radial-gradient(circle at 84% 18%,#f3d48b 0 34px,rgba(243,212,139,.35) 35px 54px,transparent 55px),radial-gradient(70% 90% at 0% 100%,rgba(255,255,255,.45),transparent 60%),linear-gradient(160deg,#eef1dc 0%,#cdd5a4 55%,#a3ad7f 100%)}
+html body #cml-lc .tg{align-self:flex-start;display:inline-block;margin:0 0 12px;padding:7px 11px;border-radius:10px;background:#2b2916;color:#f7dcae;font:600 14px/1 Poppins,system-ui,sans-serif;letter-spacing:.04em}
+html body #cml-lc .cv .tg{background:#565229;color:#eef1dc}
+html body #cml-lc h3{margin:0;font:700 32px/1.1 Poppins,system-ui,sans-serif;letter-spacing:-.01em;color:#2b2916}
+html body #cml-lc p{margin:10px 0 0;font:400 16px/1.5 Poppins,system-ui,sans-serif;color:#2b2916}
+html body #cml-lc .go{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:20px;padding:0 24px;border-radius:10px;background:#2b2916;color:#fff7ea;font:600 15px/1 Poppins,system-ui,sans-serif;text-decoration:none;align-self:flex-start}
+html body #cml-lc .go:hover{background:#565229}
+html body #cml-lc .cv .go{background:#565229}
+html body #cml-lc .cv .go:hover{background:#2b2916}
+html body #cml-lc ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+html body #cml-lc li{margin:0}
+html body #cml-lc li a{display:block;text-decoration:none;color:#2b2916}
+html body #cml-lc img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;background:#f6efe9;box-shadow:0 14px 26px -18px rgba(43,41,22,.6)}
+html body #cml-lc b{display:block;margin-top:10px;text-align:center;font:600 15px/1.3 Poppins,system-ui,sans-serif}
+@media(max-width:1023px){html body #cml-lc .g{grid-template-columns:minmax(0,1fr)}html body #cml-lc .cv{min-height:0}}
+@media(max-width:767px){html body #cml-lc{margin-bottom:44px}
+html body #cml-lc h2{font-size:28px}
+html body #cml-lc .cc,html body #cml-lc .cv{padding:24px 18px}
+html body #cml-lc .cc{display:block}
+html body #cml-lc h3{font-size:26px}
+html body #cml-lc p{font-size:15px}
+html body #cml-lc ul{display:flex;gap:10px;margin:20px -18px 0;padding:0 18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+html body #cml-lc ul::-webkit-scrollbar{display:none}
+html body #cml-lc li{flex:0 0 40%;scroll-snap-align:start}
+html body #cml-lc .go{display:flex;width:100%}
+html body #cml-lc .cv{padding-top:96px;background-size:auto}}
