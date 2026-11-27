@@ -658,6 +658,7 @@ for (const [de, para, min] of [[':has(link[rel=canonical]', ':has(>head>link[rel
 const hasVivo = hasVivas(cssFim);
 if (hasVivo.length) throw new Error("site.css ficaria com :has() vivo (fora do alcance do reescritor):\n  " + [...new Set(hasVivo)].join("\n  "));
 // cantos na origem: cada declaracao de canto listada em cantos-origem.json troca o valor declarado pelo valor final (10 botao/campo, 6 etiqueta, 16 cartao/foto); substitui o corretor por script
+if (process.env.DUMP_PRE) fs.writeFileSync(process.env.DUMP_PRE, cssFim);
 if (fs.existsSync('cantos-origem.json')) {
   const lista = JSON.parse(fs.readFileSync('cantos-origem.json', 'utf8')); const mapa = new Map(lista.map((x) => [x.s + '¦' + x.v + '¦' + x.n, x.t])); const usados = new Set(); const ord = new Map(); let fez = 0;
   const RE = /border(?:-(?:top|bottom)-(?:left|right))?-radius:([^;}]+)/g; let m, saida = '', pos = 0;
