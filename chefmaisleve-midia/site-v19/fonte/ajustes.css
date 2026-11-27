@@ -148,3 +148,6 @@ html body #ns-section-main_product .product-content>.dq .dq-b li{position:relati
 html body #ns-section-main_product .product-content>.dq .dq-b li::before{content:"";position:absolute;left:2px;top:7px;width:10px;height:6px;border-left:2px solid #a65a14;border-bottom:2px solid #a65a14;transform:rotate(-45deg)}
 html body #ns-section-main_product .product-content>.dq .dq-w{margin:18px 0 0;font:400 14px/1.5 Poppins,system-ui,sans-serif;color:#6f6656}
 html body #ns-section-main_product .product-content>.dq .dq-w b{display:block;font:600 15px/1.25 Poppins,system-ui,sans-serif;color:#2b2916}
+/* 27/11 (v26): tipografia sem quebras soltas. Titulos distribuem as palavras entre as linhas; paragrafos evitam palavra sozinha na ultima linha. Recurso do proprio navegador, sem script */
+html body :is(h1,h2,h3,h4){text-wrap:balance}
+html body :is(p,li,figcaption,blockquote){text-wrap:pretty}
