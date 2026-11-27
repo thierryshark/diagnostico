@@ -441,13 +441,14 @@ for (const [p, cond] of ORDEM) {
   } else { const f = p + '.js'; const ms = modulos(f, prepara(f)); ms.forEach((m, i) => { m.id = p + '#' + i; m.cond = cond; mods.push(m); }); }
 }
 
+// 27/11: a live de 26/11 ja passou; saiu do texto do cartao da Black
 // textos da campanha na origem (24/11): dez modulos ainda escreviam os textos do Esquenta Black e dois modulos (cml-extra#11 e cml-paginas#22) corrigiam esses textos na tela, em cadeia (20/11 -> 22/11 -> 30/11), com observador na pagina inteira. As mesmas trocas passam a ser feitas aqui, uma vez, no codigo de cada modulo; os dois corretores (e o cml-ui#7, que so enfeitava o titulo do Esquenta) saem pelo modulos.json
 { const R = [[/20\/11\/2026/g, '22/11/2026'], [/(at[eé]\s+)20\/11/gi, '$122/11'], [/20 de novembro/gi, '22 de novembro'],
     [/PREÇOS DE BLACK ANTES DA BLACK/g, 'OS MENORES PREÇOS DO ANO'], [/Preços de Black antes da Black/g, 'Os menores preços do ano'], [/antes da Black/g, 'até 30/11'], [/A Black da Chef começou antes\./g, 'A Black da Chef começou.'],
     [/O Esquenta Black chegou/g, 'A Black Friday chegou'], [/ESQUENTA BLACK/g, 'BLACKFRIDAY NA CHEF'], [/Esquenta Black/g, 'Black Friday'],
     [/Só até 22 de novembro/g, 'De 23 a 30 de novembro'], [/[Aa]té 22 de novembro/g, 'Até 30 de novembro'], [/22\/11\/2026/g, '30/11/2026'],
     [/SÓ ATÉ 22\/11/g, 'SÓ ATÉ 30/11'], [/[Ss]ó até 22\/11/g, 'só até 30/11'], [/ATÉ 22\/11/g, '23 A 30/11'], [/Até 22\/11/g, '23 a 30/11'], [/até 22\/11/g, 'até 30/11'],
-    [/Combos com 15% off e 5% (de desconto )?no Pix, enquanto durar o estoque\./g, 'Os menores preços do ano em chás, kits e snacks. Live quinta, 26/11, às 20h.'],
+    [/Combos com 15% off e 5% (de desconto )?no Pix, enquanto durar o estoque\./g, 'Os menores preços do ano em chás, kits e snacks.'],
     [/<h1 class="cbk-h1">Esquenta<b>Black<\/b><\/h1>/g, '<h1 class="cbk-h1">Black<b>Friday</b></h1>'],
     [/<p class="c1-ed">edição 2026<\/p><span class="c1-hand">esquenta<\/span>/g, '<p class="c1-ed">23 a 30 de novembro</p><span class="c1-hand">black</span>'], [/ c1-blk">Black<\/h2>/g, ' c1-blk">Friday</h2>'],
     [/<span class="hand">esquenta<\/span><p class="blk" role="heading" aria-level="1">Black<\/p>/g, '<span class="hand">black</span><p class="blk" role="heading" aria-level="1">Friday</p>']];
