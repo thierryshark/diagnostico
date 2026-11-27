@@ -216,7 +216,7 @@ html body #cml-lc h2{margin:0;font:700 36px/1.1 Poppins,system-ui,sans-serif;let
 html body #cml-lc h2 em,html body #cml-lc h3 em{font-weight:300;font-style:italic}
 html body #cml-lc .g{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:20px}
 html body #cml-lc .cc,html body #cml-lc .cv{overflow:hidden;border-radius:16px}
-html body #cml-lc .cc{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:28px;align-items:center;padding:32px;background:radial-gradient(80% 120% at 100% 0%,#fff6e8 0%,transparent 60%),linear-gradient(135deg,#fdf1e0 0%,#f8dcb3 60%,#f2c48a 100%)}
+html body #cml-lc .cc{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:30px 32px 32px;background:radial-gradient(80% 120% at 100% 0%,#fff6e8 0%,transparent 60%),linear-gradient(135deg,#fdf1e0 0%,#f8dcb3 60%,#f2c48a 100%)}
 html body #cml-lc .cv{display:flex;flex-direction:column;background:linear-gradient(170deg,#f3f5e6 0%,#e3e8c8 100%)}
 html body #cml-lc .cv .ph{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 html body #cml-lc .cv .t{padding:22px 26px 26px}
@@ -228,6 +228,9 @@ html body #cml-lc .go.o{background:transparent;border-color:#565229;color:#56522
 html body #cml-lc .go.o:hover{background:#565229;color:#f6efe9}
 html body #cml-lc ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 html body #cml-lc li{margin:0}
+html body #cml-lc .cc .t{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px}
+html body #cml-lc .cc .t>div{min-width:0}
+html body #cml-lc .cc .t .go{margin-top:0}
 html body #cml-lc li a{display:block;padding:6px 6px 10px;border-radius:12px;background:#fffaf5;text-decoration:none;color:#2b2916;box-shadow:0 12px 24px -20px rgba(43,41,22,.45)}
 html body #cml-lc li img{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;border-radius:8px;background:#f6efe9}
 html body #cml-lc b{display:block;margin-top:8px;text-align:center;font:600 14.5px/1.3 Poppins,system-ui,sans-serif}
