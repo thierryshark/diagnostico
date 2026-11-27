@@ -522,6 +522,36 @@ for (const [p, cond] of ORDEM) {
 { const NT = JSON.parse(fs.readFileSync('natal-trocas.json', 'utf8')); const fora = new Set(JSON.parse(fs.readFileSync('modulos.json', 'utf8')).remover || []);
   for (const [id, a, b] of NT) { const m = mods.find((x) => x.id === id); if (!m || fora.has(id)) throw new Error('natal: modulo ' + id); if (m.code.split(a).length !== 2) throw new Error('natal: esperava 1 ocorrencia em ' + id + ': ' + a.slice(0, 60)); m.code = m.code.replace(a, () => b); }
   console.log('natal: trocas', NT.length); }
+// 27/11 (pedido do Thierry: nada de codigo parado pesando o site): o CSS fixo de cada modulo foi para o site.css e no codigo ficou so a
+// declaracao do texto (var CSS=[...].join(...), var c="..."), que ninguem mais usa (cerca de 185 KB). Aqui sai toda declaracao de texto
+// puro (texto, lista de textos, soma de textos, .join de lista) cujo nome nao e usado em nenhum outro ponto do modulo.
+{ const puro = (n) => !n ? true : n.type === 'Literal' ? true : n.type === 'Identifier' ? true
+    : n.type === 'TemplateLiteral' ? n.expressions.every(puro)
+    : n.type === 'ArrayExpression' ? n.elements.every(puro)
+    : n.type === 'BinaryExpression' && n.operator === '+' ? puro(n.left) && puro(n.right)
+    : n.type === 'CallExpression' && n.callee.type === 'MemberExpression' && !n.callee.computed && n.callee.property.name === 'join' && n.callee.object.type === 'ArrayExpression' ? puro(n.callee.object) && n.arguments.every(puro)
+    : false;
+  let tirou = 0, kb = 0;
+  const fora = new Set(cfg.remover || []);
+  const outros = (m, nome) => { const re = new RegExp('(^|[^\\w$.])' + nome.replace(/\$/g, '\\$') + '(?![\\w$])'); return mods.some((o) => o !== m && !fora.has(o.id) && re.test(o.code)); };
+  for (const m of mods) {
+    if (fora.has(m.id)) continue;
+    let ast; try { ast = acorn.parse(m.code, PARSE); } catch (e) { continue; }
+    const usos = new Map(); const decl = [];
+    walk.fullAncestor(ast, (n, st, anc) => {
+      if (n.type === 'VariableDeclaration') { const topo = !anc.some((a) => /Function/.test(a.type)); for (const d of n.declarations) if (d.id.type === 'Identifier' && d.init && d.init.end - d.init.start > 300 && puro(d.init) && !(topo && outros(m, d.id.name))) decl.push([n, d]); }
+      if (n.type !== 'Identifier') return; const p = anc[anc.length - 2];
+      if (p && p.type === 'MemberExpression' && p.property === n && !p.computed) return;
+      if (p && p.type === 'Property' && p.key === n && !p.computed && !p.shorthand) return;
+      if (p && p.type === 'VariableDeclarator' && p.id === n) return;
+      usos.set(n.name, (usos.get(n.name) || 0) + 1);
+    });
+    const cortes = [];
+    for (const [v, d] of decl) { if (usos.get(d.id.name)) continue; kb += d.init.end - d.init.start; tirou++;
+      if (v.declarations.length === 1) cortes.push([v.start, v.end, '']); else cortes.push([d.start, d.end, d.id.name]); }
+    cortes.sort((a, b) => b[0] - a[0]); for (const [a, b, t] of cortes) m.code = m.code.slice(0, a) + t + m.code.slice(b);
+  }
+  console.log('textos parados retirados:', tirou, '(' + Math.round(kb / 1024) + ' KB)'); }
 // minifica cada modulo (nomes locais curtos; nomes globais e de propriedades ficam como estao)
 for (const m of mods) {
   let r; try { r = await terser(m.code, { ecma: 2019, compress: { passes: 2 }, mangle: { toplevel: false }, format: { comments: false } }); } catch (e) { const pos = e.pos || 0; throw new Error('modulo ' + m.id + ' nao compila: ' + e.message + ' perto de: ' + m.code.slice(Math.max(0, pos - 120), pos + 60)); }
