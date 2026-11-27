@@ -232,7 +232,7 @@ html body #cml-lc .cc .t{display:flex;flex-wrap:wrap;align-items:flex-end;justif
 html body #cml-lc .cc .t>div{min-width:0}
 html body #cml-lc .cc .t .go{margin-top:0}
 html body #cml-lc li a{display:block;padding:6px 6px 10px;border-radius:12px;background:#fffaf5;text-decoration:none;color:#2b2916;box-shadow:0 12px 24px -20px rgba(43,41,22,.45)}
-html body #cml-lc li img{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;border-radius:8px;background:#f6efe9}
+html body #cml-lc li img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:8px;background:#f6efe9}
 html body #cml-lc b{display:block;margin-top:8px;text-align:center;font:600 14.5px/1.3 Poppins,system-ui,sans-serif}
 @media(max-width:1023px){html body #cml-lc .g{grid-template-columns:minmax(0,1fr)}html body #cml-lc .cv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}html body #cml-lc .cv .ph{height:100%;aspect-ratio:auto}}
 @media(max-width:767px){html body #cml-lc{margin-bottom:44px!important}
