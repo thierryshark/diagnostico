@@ -1,0 +1,52 @@
+[
+ [
+  "cml-extra#14",
+  "<a href=\"/ofertas/\">'+IC.tag+'<span>Black Friday<small>Preços de Black até 30/11</small></span></a>",
+  "<a href=\"/snacks-granolas/chocoleve/\">'+IC.tag+'<span>Linha Chocoleve<small>Fruta com chocolate 70%</small></span></a>"
+ ],
+ [
+  "cml-extra#14",
+  "<div class=\"c1-rows\"><a href=\"/ofertas/\"><span class=\"tx\"><span class=\"tt\">23 a 30/11</span><span class=\"ti\">Black Friday, <em>preços de Black</em></span></span>",
+  "<div class=\"c1-rows\"><a href=\"/snacks-granolas/chocoleve/\"><span class=\"tx\"><span class=\"tt\">Lançamento</span><span class=\"ti\">Linha <em>Chocoleve</em></span></span>"
+ ],
+ [
+  "cml-extra#15",
+  "'html body .adbar .adbar-marquee,html body .adbar .js-adbar-marquee{display:none!important}',\n'html body:not(.template-home) .adbar:after{content:\"Black Friday · só até 30/11\";display:block;padding:0;text-align:center;}',\n",
+  ""
+ ],
+ [
+  "cml-extra#16",
+  "var c=q.querySelector(\".p>.c\");if(c&&!q.querySelector(\".c3-qn\")){var n=D.createElement(\"p\");n.className=\"c3-qn\";n.textContent=\"Todos com preço de Black até 30/11.\";c.parentNode.insertBefore(n,c.nextSibling)}",
+  ""
+ ],
+ [
+  "cml-extra#17",
+  "var bk=D.getElementById(\"cml-bkh\");if(bk){var eb=bk.querySelector(\".cbkh-eb\");if(eb&&!eb.__c4){eb.__c4=1;eb.lastChild.nodeValue=\"23 a 30/11\"}var h=bk.querySelector(\".cbkh-h\");if(h&&!h.__c4s){h.__c4s=1;h.innerHTML='Preços de Black, <em>até 30/11</em>';h.classList.add(\"c4-sig\")}}else ok=false;",
+  ""
+ ],
+ [
+  "cml-extra#20",
+  "<a class=\"c7-bt\" href=\"/ofertas/\" data-c7close>Ver as ofertas</a>",
+  "<a class=\"c7-bt\" href=\"/presentes-de-natal/\" data-c7close>Ver presentes de Natal</a>"
+ ],
+ [
+  "cml-paginas#13",
+  "if(window.__cmlBF){var o=D.createElement(\"a\");o.href=\"/ofertas/\";o.innerHTML=IT+\"<span><b>Até 50% OFF</b><small>na Black Friday</small></span>\";b.insertBefore(o,b.firstChild)}",
+  ""
+ ],
+ [
+  "cml-paginas#4",
+  "'<a class=\"cml-hl-c t-blk\" href=\"/ofertas/\"><span class=\"k\">23 a 30/11</span><h3>Black Friday, <em>preços de Black</em></h3><p>Os menores preços do ano em chás, kits e snacks.</p>",
+  "'<a class=\"cml-hl-c t-blk\" href=\"/snacks-granolas/chocoleve/\"><span class=\"k\">Lançamento</span><h3>Linha Chocoleve, <em>fruta com chocolate</em></h3><p>Laranja, maçã, banana e abacaxi desidratadas devagar, com chocolate 70%.</p>"
+ ],
+ [
+  "cml-paginas#4",
+  "l: [\"Preços de Black até 30/11\", \"/ofertas/\"]",
+  "l: [\"Conheça a linha Chocoleve\", \"/snacks-granolas/chocoleve/\"]"
+ ],
+ [
+  "cml-paginas#24",
+  "function tick(){try{xbtn()}catch(e){}try{css()}catch(e){}try{bar()}catch(e){}try{page();fit()}catch(e){}}\nif(D.readyState===\"loading\")D.addEventListener(\"DOMContentLoaded\",tick);else tick();\nsetInterval(tick,1000);",
+  "function tick(){try{xbtn()}catch(e){}}\nif(D.readyState===\"loading\")D.addEventListener(\"DOMContentLoaded\",tick);else tick();\nsetTimeout(tick,1500);setTimeout(tick,4000);"
+ ]
+]

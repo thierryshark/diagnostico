@@ -23,7 +23,13 @@
   "cml-extra#22",
   "cml-extra#31",
   "cml-extra#36",
-  "cml-extra#18"
+  "cml-extra#18",
+  "cml-extra#7",
+  "cml-extra#8",
+  "cml-paginas#15",
+  "cml-paginas#16",
+  "cml-paginas#26",
+  "cml-paginas#50"
  ],
  "motivo": {
   "cml-home#1": "vitrine Os mais amados: montava a partir de vitrines nativas que a home nao tem mais (substituida pelo ranking)",
@@ -42,7 +48,9 @@
   "tokensMortos-27-11": "27/11 (v31): classes que nenhum codigo do pacote cria, que nao aparecem em nenhuma das 139 paginas do mapa do site nem nas 20 paginas abertas (celular e computador). Restos do construtor antigo de Natal (c11), Black antiga (of3-eb/sub/go/hw), kits cx4, cx2, cmle, lp, cml-b2 e similares. Icones cml-i-* ficam (usados nas descricoes). Corrigido no mesmo dia: cmle-* (embalagem, criado pelo script cml-emb do Supabase), cml-clube-home (script cml-clube), cml-b2-*, cml-pos-2, cml-cp-b e cx4-sec (script dentro do HTML de algumas paginas) continuam vivos.",
   "tokensMortos-27-11b": "27/11 (v31): classes que o codigo so procura (querySelector) mas nada cria, ausentes das 139 paginas do mapa do site e das paginas abertas: cashback antigo (cbk-*), of3-hl, cx4-sec, c5-rv, c3-rgn, cml-nv-ic, cml-b2-t, cml-clube-home, cml-mq-t.",
   "blacks-anteriores-27-11": "27/11 (v31): saem os modulos das Blacks anteriores: #22 pagina Esquenta (dependia de #cml-bk), #31 Duo Natal Feliz + Ternura (procurava por 16 s um lugar que nao existe mais em /ofertas/ e /kits-presentes/), #36 (escondia relogio do cashback antigo) e #18 (movimento da faixa #cml-bko, que nada cria; o estilo de toque dos botoes fica no site.css).",
-  "tokensMortos-27-11c": "27/11 (v31): classes que so as Blacks anteriores criavam (Duo, vitrine c9/c12, faixa da home cbkh), apagadas junto com o codigo."
+  "tokensMortos-27-11c": "27/11 (v31): classes que so as Blacks anteriores criavam (Duo, vitrine c9/c12, faixa da home cbkh), apagadas junto com o codigo.",
+  "natal-27-11": "Rascunho Natal: modulos so da Black Friday (relogio, vitrine e pagina /ofertas/ da Black, temporizador nos kits). A Black acaba em 30/11; depois disso esses modulos so pesavam.",
+  "tokensMortos-natal-27-11": "Classes da Black Friday (pagina /ofertas/ da Black, relogio, vitrine e abertura escura). Os modulos que criavam essas classes sairam no rascunho Natal; sobravam so seletores."
  },
  "grupo": {},
  "tokensMortos": [
@@ -240,6 +248,17 @@
   "c9-n",
   "c9-on",
   "cml-duo-all",
-  "cml-duo-err"
+  "cml-duo-err",
+  "of3",
+  "of3-*",
+  "cx5-*",
+  "cx7-*",
+  "cml-bk",
+  "cml-bko",
+  "cml-bkh",
+  "cbk-*",
+  "cbkh-*",
+  "c2-oh",
+  "cml-of3"
  ]
 }

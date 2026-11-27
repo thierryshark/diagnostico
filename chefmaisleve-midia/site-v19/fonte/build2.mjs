@@ -518,6 +518,10 @@ for (const [p, cond] of ORDEM) {
     [/<span class="hand">esquenta<\/span><p class="blk" role="heading" aria-level="1">Black<\/p>/g, '<span class="hand">black</span><p class="blk" role="heading" aria-level="1">Friday</p>']];
   const fora = new Set(JSON.parse(fs.readFileSync('modulos.json', 'utf8')).remover || []); let nt = 0; for (const m of mods) { if (fora.has(m.id)) continue; let c = m.code; for (const [a, b] of R) c = c.replace(a, b); if (c !== m.code) { m.code = c; nt++; } }
   console.log('textos da campanha na origem:', nt, 'modulos ajustados'); }
+// 27/11 (rascunho Natal): a Black acaba em 30/11. Os textos e links da Black que ficavam espalhados em modulos que continuam vivos viram textos do Natal e da linha Chocoleve, na origem (lista em natal-trocas.json: modulo, trecho, troca). Os modulos so de Black saem pelo modulos.json.
+{ const NT = JSON.parse(fs.readFileSync('natal-trocas.json', 'utf8')); const fora = new Set(JSON.parse(fs.readFileSync('modulos.json', 'utf8')).remover || []);
+  for (const [id, a, b] of NT) { const m = mods.find((x) => x.id === id); if (!m || fora.has(id)) throw new Error('natal: modulo ' + id); if (m.code.split(a).length !== 2) throw new Error('natal: esperava 1 ocorrencia em ' + id + ': ' + a.slice(0, 60)); m.code = m.code.replace(a, () => b); }
+  console.log('natal: trocas', NT.length); }
 // minifica cada modulo (nomes locais curtos; nomes globais e de propriedades ficam como estao)
 for (const m of mods) {
   let r; try { r = await terser(m.code, { ecma: 2019, compress: { passes: 2 }, mangle: { toplevel: false }, format: { comments: false } }); } catch (e) { const pos = e.pos || 0; throw new Error('modulo ' + m.id + ' nao compila: ' + e.message + ' perto de: ' + m.code.slice(Math.max(0, pos - 120), pos + 60)); }
@@ -575,6 +579,7 @@ function monta(lista, titulo) {
   return s;
 }
 const remover = new Set(cfg.remover || []);
+if (process.env.DUMP_MODS) { fs.mkdirSync(process.env.DUMP_MODS, { recursive: true }); for (const m of mods) fs.writeFileSync(process.env.DUMP_MODS + '/' + m.id.replace('#', '_') + '.js', '/* ' + m.nome + ' */\n' + m.code); }
 const vazio = (m) => !m.min || /^(void 0|!0|!1|0)?$/.test(m.min.trim());
 const vivos = mods.filter((m) => !remover.has(m.id) && !vazio(m));
 const ini = 'window.__cmlV2=1;window.__cmlV3=1;window.__cmlPack2=1;window.__cmlPack=1;window.__cefLoader=1;'
