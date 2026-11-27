@@ -347,3 +347,7 @@ Já feito no v26: pack.js 673 -> 613 KB (montador antigo fora).
 ## 27/11 05h (v30, pacote 190a761)
 - Altura do cabecalho (cml-paginas#16): so roda em /ofertas/ e so grava quando muda. Computador, Laranja: nosso bloqueio medio 121 ms (v29) para 58 ms (v30), 3 aberturas de cada.
 - Abertura da Black refeita no conceito minimalista pedido pelo Thierry: "BLACK Friday" numa linha (Poppins 200 + italico 300 dourado), filete dourado, "Ate X% off em chas, kits e snacks", contagem sem caixas em numero fino, botao em contorno dourado, uma foto so (maior desconto) com legenda discreta. Regras antigas .of3-lk sairam do site.css. Conferido em 360/390/430 (uma linha) e no computador.
+
+## 27/11 07h20 (v30, pacote 1914885)
+- Black abria a foto da abertura ~1 s depois da lista (conferencia de 1 em 1 s, rodando em todas as paginas para sempre). Agora a conferencia so existe em /ofertas/, reage quando a lista entra e para quando a foto entra: foto em ~1,15 s (antes ~2,1 s). Foto com srcset 480/640/1024 e prioridade alta.
+- Carrossel de combos no celular: cartao com altura propria (862 -> ~600-670 px), foto 16:10 no celular (quadrada so de 641 px para cima, CSS_TROCAS), texto em 3 linhas, opcoes em uma linha cada, botao numa linha.

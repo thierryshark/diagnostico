@@ -203,3 +203,16 @@ html body #cml-of3 .of3-st i img{display:block;width:100%;height:100%;object-fit
 html body #cml-of3 .of3-st b{margin-top:12px;font:600 15px/1.25 Poppins,sans-serif}
 html body #cml-of3 .of3-st small{margin-top:4px;font:600 14px/1.2 Poppins,sans-serif;color:#a65a14}
 @media(max-width:767px){html body #cml-of3 .of3-top{grid-template-columns:minmax(0,1fr);gap:28px;padding:34px 22px 24px}html body #cml-of3 .of3-top .k{margin-bottom:16px}html body #cml-of3 .of3-top h1{font-size:clamp(28px,8.4vw,40px)}html body #cml-of3 .of3-top .ds{margin-top:22px;padding-top:20px;font-size:15px}html body #cml-of3 .of3-top .of3-cd{margin-top:22px}html body #cml-of3 .of3-top .of3-cd .cx5-u{gap:18px}html body #cml-of3 .of3-top .of3-cd .cx5-u b{font-size:30px}html body #cml-of3 .of3-top .go{display:flex;justify-content:center;width:100%;margin-top:26px}html body #cml-of3 .of3-mz{aspect-ratio:4/3}html body #cml-of3 .of3-st{margin-top:40px}html body #cml-of3 .of3-st h2{font-size:24px;margin-bottom:18px}html body #cml-of3 .of3-st .r{justify-content:flex-start;gap:14px;margin:0 -14px;padding:0 14px;overflow-x:auto;scrollbar-width:none;min-height:150px}html body #cml-of3 .of3-st .r::-webkit-scrollbar{display:none}html body #cml-of3 .of3-st a{flex:0 0 96px;width:96px}html body #cml-of3 .of3-st i{width:92px;height:92px}html body #cml-of3 .of3-st b{font-size:14px}}
+
+/* BLACK, CARROSSEL DE COMBOS NO CELULAR (27/11, Thierry): cartao com a altura do proprio conteudo (antes todos esticavam ate o mais alto e sobrava um vazio antes do botao), foto mais baixa, texto em 3 linhas, opcoes compactas, botao numa linha so; o proximo cartao aparece na borda para indicar que desliza */
+@media(max-width:640px){html body #cml-of3 .of3-cb:not(#a1){align-items:flex-start;gap:12px;margin:0 -14px;padding:0 14px 8px;scroll-padding-left:14px}
+html body #cml-of3 .of3-cb .of3-c:not(#a1){flex:0 0 82%;scroll-snap-align:start;border-radius:14px}
+html body #cml-of3 .of3-cb .of3-ci:not(#a1){aspect-ratio:16/10}
+html body #cml-of3 .of3-cb .of3-cbd:not(#a1){gap:6px;padding:14px 14px 16px}
+html body #cml-of3 .of3-cb .of3-c h3:not(#a1){font-size:19px;line-height:1.2}
+html body #cml-of3 .of3-cb .of3-c .ds:not(#a1){font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+html body #cml-of3 .of3-cb .of3-ql:not(#a1){margin:6px 0 0;font-size:14px}
+html body #cml-of3 article.of3-c .of3-in:not(#a1):not(#a2):not(#a3){gap:6px;margin:4px 0 6px!important}
+html body #cml-of3 article.of3-c .of3-in li:not(#a1){flex:0 1 auto;min-height:36px;padding:6px 12px!important;white-space:nowrap}
+html body #cml-of3 .of3-cb .sp:not(#a1){display:none}
+html body #cml-of3 .of3-cb .of3-add:not(#a1){margin-top:12px;min-height:46px;padding:0 14px;font-size:14px;white-space:nowrap}}
