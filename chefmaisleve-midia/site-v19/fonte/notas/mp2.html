@@ -1,0 +1,57 @@
+<!-- Chef Mais Leve: Monte sua caixa, botoes de voltar e continuar, janela do Conheca e script (depois da grade). O script tambem preenche os precos dos cards de kit com o preco da grade nativa e abre o montador. -->
+<style>
+#cml-mp2{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:var(--cmlF);margin:12px auto 40px;font-family:Poppins,system-ui,sans-serif}
+#cml-mp2 *{box-sizing:border-box}
+#cml-mp2 [hidden]{display:none!important}
+#cml-mp2 .vt{border:0;background:none;padding:10px 0;color:#6f6656;font:400 15px/1 Poppins,sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+#cml-mp2 .nx{display:inline-flex;align-items:center;justify-content:center;min-height:50px;margin-left:auto;padding:0 28px;border:1px solid #a65a14;border-radius:10px;background:#a65a14;color:#fff!important;font:600 15px/1 Poppins,sans-serif;text-decoration:none!important;cursor:pointer}
+#cml-mp2 dialog{width:min(94vw,760px);max-height:90vh;padding:0;border:0;border-radius:10px;background:#fffaf5;color:#2b2916;overflow:auto}
+#cml-mp2 dialog::backdrop{background:rgba(43,41,22,.55)}
+#cml-mp2 dialog .x{position:sticky;top:8px;float:right;z-index:2;width:40px;height:40px;margin:8px 8px -48px 0;border:0;border-radius:10px;background:#fffaf5;color:#2b2916;font:400 26px/1 Poppins,sans-serif;cursor:pointer}
+#cml-mp2 .dw{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:16px}
+#cml-mp2 .gm{display:block;width:100%;height:auto;max-height:36vh;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:#ede3d8}
+#cml-mp2 .pk{margin:0 0 6px;font:500 14px/1 Poppins,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a65a14}
+#cml-mp2 dialog h3{margin:0 0 6px;font:700 22px/1.2 Poppins,sans-serif;color:#2b2916}
+#cml-mp2 dialog .pr{margin:0 0 12px;font:400 14px/1.3 Poppins,sans-serif;color:#6f6656}
+#cml-mp2 dialog .pr b{margin-right:8px;font:700 20px/1 Poppins,sans-serif;color:#a65a14}
+#cml-mp2 dialog .ds{margin:0;font:400 16px/1.5 Poppins,sans-serif;color:#2b2916}
+#cml-mp2 .bx{position:sticky;bottom:0;display:flex;gap:8px;margin-top:8px;padding:10px 0;background:#fffaf5}
+#cml-mp2 .qt{display:inline-flex;align-items:center;border:1px solid #a99886;border-radius:10px;background:#fff}
+#cml-mp2 .qt button{width:44px;height:48px;border:0;background:none;color:#2b2916;font:500 20px/1 Poppins,sans-serif;cursor:pointer}
+#cml-mp2 .qt output{min-width:28px;text-align:center;font:600 16px/1 Poppins,sans-serif;color:#2b2916}
+#cml-mp2 .ad{flex:1;min-height:48px;border:1px solid #a65a14;border-radius:10px;background:#a65a14;color:#fff;font:600 15px/1 Poppins,sans-serif;cursor:pointer}
+#cml-mp2 .vp{display:inline-block;margin-top:4px;color:#6f6656!important;font:400 15px/1.3 Poppins,sans-serif;text-decoration:underline;text-underline-offset:3px}
+@media(min-width:768px){#cml-mp2 .dw{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;padding:28px}#cml-mp2 .gm{aspect-ratio:1;max-height:none}}
+@media(max-width:640px){#cml-mp2{padding:0 10px}}
+</style>
+<div id='cml-mp2' data-cml-nat>
+<button type='button' class='vt' data-a='bk' hidden>Voltar</button>
+<button type='button' class='nx' data-a='nx'>Continuar →</button>
+<a class='nx fs' href='/comprar/' hidden>Ver a sacola →</a>
+<dialog aria-label='Detalhes do produto'><button type='button' class='x' data-a='x' aria-label='Fechar'>×</button><div class='dw'><div><img class='gm' alt='' width='480' height='480'></div><div><p class='pk'></p><h3></h3><p class='pr'></p><p class='ds'></p><div class='bx'><div class='qt'><button type='button' data-a='mn' aria-label='Diminuir quantidade'>−</button><output>1</output><button type='button' data-a='pl' aria-label='Aumentar quantidade'>+</button></div><button type='button' class='ad' data-a='buy'>Adicionar à sacola</button></div><a class='vp'>Ver página completa</a></div></div></dialog>
+</div>
+<script>
+(function(){var R=document.getElementById('cml-mp'),N=document.getElementById('cml-mp2');if(!R||!N)return;
+var S=document.getElementById('ns-section-custom_mp')||R.parentNode,O=['c','r','k','f'],L=['Caixa','Kit pronto','Cartão',''],i=0,q=1,cur=null;
+var st=R.querySelectorAll('.st'),bk=N.querySelector('[data-a=bk]'),nx=N.querySelector('[data-a=nx]'),fs=N.querySelector('.fs'),dg=N.querySelector('dialog');
+var T={'377539173':'Caixa de madeira, 20 × 25 × 9 cm. Cabem até 7 itens.','377539289':'Caixa de madeira, 20 × 20 × 9 cm. Cabem até 5 itens.','377539365':'Caixa de papel, 25 × 18 × 8 cm. Cabem até 6 itens.','313665100':'Infusão na Tangerina Rosé, Trouxinha de Maçã, Maçã Chocoleve e Laranja Chocoleve, em caixa pronta.','343280690':'4 Rosas de Maçã que abrem na xícara e Chá Misto Intenso de frutas vermelhas, em caixa pronta para entregar.','344326858':'7 itens: Chá Durex em lata, Granola Doce, frutas desidratadas, Trouxinha de Maçã, 2 Infusões na Tangerina e Laranja Chocoleve.','345619388':'Oito chás mistos de 20 g, cerca de 80 xícaras, para descobrir o favorito.','379081240':'7 itens: Laranja Chocoleve, 2 Infusões na Tangerina, Trouxinha de Maçã, Chá Misto Intenso, xícara e infusor, em caixa de madeira gravada.','311670419':'Chás Gestação e Lactação em sachês, Rosa de Maçã e Xícara de Vidro Duplo, numa caixa baú de madeira. Consulte o obstetra antes do uso.','371646209':'Cartão escrito à mão para acompanhar o presente.'};
+function go(n){i=n;S.setAttribute('data-g',O[n]);for(var k=0;k<st.length;k++)st[k].hidden=k!==n;bk.hidden=n===0;nx.hidden=n===3;fs.hidden=n!==3;R.querySelector('.qz').scrollIntoView({behavior:'smooth',block:'start'})}
+function abrir(){if(!S.hasAttribute('data-o'))S.setAttribute('data-o','');go(0)}
+function tx(c,s){var e=c.querySelector(s);return e?e.textContent.trim():''}
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;e.textContent=h;return e}
+function preco(c,box){var p=tx(c,'.js-price-display'),cp=tx(c,'.js-compare-price-display');box.textContent='';box.appendChild(el('b','',p));if(cp&&cp.replace(/[^1-9]/g,''))box.appendChild(el('s','',cp))}
+function card(id){return document.querySelector('#ns-section-product_list .js-item-product[data-product-id="'+id+'"]')}
+function precos(){[].forEach.call(document.querySelectorAll('#cml-nt [data-p]'),function(k){var c=card(k.getAttribute('data-p')),b=k.querySelector('.pr');if(c&&b&&tx(c,'.js-price-display'))preco(c,b)})}
+function prep(){[].forEach.call(document.querySelectorAll('#ns-section-product_list .js-item-product'),function(c){if(c.querySelector('.ec-cn'))return;c.appendChild(el('span','ec-e',T[c.getAttribute('data-product-id')]||''));var pr=el('span','ec-pr','');preco(c,pr);c.appendChild(pr);var b=el('button','ec-cn','Conheça');b.type='button';b.setAttribute('data-cml-nat','');c.appendChild(b)})}
+function abre(c){var im=c.querySelector('img'),a=c.querySelector('a'),gm=dg.querySelector('.gm'),n=tx(c,'.js-item-name');cur=c;q=1;dg.querySelector('output').textContent=1;gm.src=im?(im.currentSrc||im.getAttribute('data-src')||im.src):'';gm.alt=n;dg.querySelector('.pk').textContent=L[i];dg.querySelector('h3').textContent=n;preco(c,dg.querySelector('.pr'));dg.querySelector('.ds').textContent=T[c.getAttribute('data-product-id')]||'';dg.querySelector('.vp').href=a?a.getAttribute('href'):'#';dg.showModal();dg.scrollTop=0}
+prep();precos();
+document.addEventListener('click',function(e){var b=e.target.closest('.ec-cn');if(b&&b.closest('#ns-section-custom_mp~#ns-section-product_list')){e.preventDefault();abre(b.closest('.js-item-product'));return}
+var o=e.target.closest('[data-a=abrir],a[href="#cml-nt-monte"]');if(o){e.preventDefault();abrir()}});
+if(location.hash==='#cml-nt-monte')abrir();
+N.addEventListener('click',function(e){if(e.target===dg){dg.close();return}var b=e.target.closest('button');if(!b)return;var a=b.getAttribute('data-a');
+if(a==='x'){dg.close()}
+else if(a==='mn'||a==='pl'){q=Math.max(1,Math.min(20,q+(a==='pl'?1:-1)));dg.querySelector('output').textContent=q}
+else if(a==='buy'){var f=cur&&cur.querySelector('form'),bb=cur&&cur.querySelector('.js-addtocart');dg.close();if(f&&bb){var h=document.createElement('input');h.type='hidden';h.name='quantity';h.value=q;f.appendChild(h);bb.click();setTimeout(function(){h.remove()},1500)}else{var u=dg.querySelector('.vp').getAttribute('href');if(u&&u!=='#')location.href=u}}
+else if(a==='bk'||a==='nx'){go(b===bk?i-1:i+1)}});
+})();
+</script>
