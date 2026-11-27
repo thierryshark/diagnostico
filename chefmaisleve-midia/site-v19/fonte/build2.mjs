@@ -247,6 +247,8 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // 26/11: o bloco nativo 'Devolucoes gratis / Compra segura' saiu do modelo de produto (v25); a regra que o escondia sai junto
+  ['.product-purchase-info .icon-text-item{display:none!important}', ''],
   // 26/11: a pagina de ofertas tem montagem propria; o topo nativo de categoria (titulo e abas) nao aparece nela, como as demais secoes nativas
   ["html.cml-of3 #ns-section-product_list,html.cml-of3 #ns-section-divider_1789950202654,", "html.cml-of3 #ns-section-product_list,html.cml-of3 #ns-section-heading,html.cml-of3 #ns-section-custom_cat,html.cml-of3 #ns-section-divider_1789950202654,"],
   // vaos que faltavam: banner da categoria para o bloco do combo (36 -> 72) e do combo para a lista (40 -> 72); destaque do produto para o bloco seguinte (44 -> 72)

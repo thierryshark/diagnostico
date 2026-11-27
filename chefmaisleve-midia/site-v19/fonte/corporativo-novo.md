@@ -230,3 +230,23 @@ Comparativo pedido (enxuto): "Quanto custa uma xicara?" cafeteria: cafe especial
 - Referencias: Talcha Black (H1 de 2 palavras, subtitulo de 9, contador, botao "Ver ofertas", faixas por categoria "Escolha por onde comecar", clube/indique/cashback); Moncloa (banners por imagem, busca por sabor/beneficio, "Moncloa para empresas"). Anuncios ativos (Biblioteca da Meta): Talcha = lancamento, kit "presente perfeito", clube de assinatura, grupo VIP no WhatsApp, ritual por estacao, fato de material (vidro borossilicato), Black "ate 60% no site todo"; Moncloa = catalogo de produto, Black + Natal ("antecipar presentes"), lata personalizada para empresas; Flormel = atributo direto ("zero adicao de acucares e sem gluten"), recuperacao ("viu e deu vontade? clique e leve", "seu carrinho"), revenda.
 - Incoerencias achadas no cadastro (nao mexi, dado no ar): "Cha Blend" em descricoes de kits (regra e "cha misto"); Laranja ora "40 g" ora "10 fatias"; Trouxinha de Maca sem quantidade em Ternura e Desdobramento; bloco "Devolucoes gratis ate 30 dias" configurado no modelo de produto (conferir se aparece e se e verdade); /faq/ e /quem-somos/ sem h1; /ofertas/ com dois h1 (um escondido).
 - Conferido no v25: 7 paginas de destaque em celular e computador (bloco presente, CLS <= 0,026, sem vazamento, sem erro); compra na Laranja nativa (Pacote com 5, 2 unidades) ok; video so carrega ao aparecer; home, /chas/, /ofertas/, kits, encontre, Durex ok no computador.
+
+## 26/11 23h — respostas do Thierry aplicadas (v25, pacote 5397b97)
+
+Respostas: 6 trouxinhas de maçã no Ternura e no Desdobramento; 40 g de Laranja = 10 fatias; pode trocar "Chá Blend" por "Chá Misto" nas descrições dos kits; "Devoluções grátis até 30 dias" NÃO é verdade.
+
+Feito no rascunho v25 (id 14988961):
+- Bloco "Destaque da casa" (product.json, custom_dq/code_dq, tabela T): Trouxinha de Maçã "6 unidades" e Laranja Chocoleve "10 fatias" no Ternura e no Desdobramento.
+- Bloco nativo purchase_info ("Devoluções grátis · Até 30 dias" e "Compra segura") saiu do modelo de produto. Ele era renderizado e escondido por estilo; a regra `.product-purchase-info .icon-text-item{display:none}` saiu do pacote (CSS_TROCAS, primeira linha). No v24 (no ar) o bloco continua no HTML, escondido, até publicar o v25.
+- Pacote novo 5397b97 (header.json do v25). Conferido: Ternura, Desdobramento e Laranja no celular (390) e Ternura e Desdobramento no computador (1440): bloco presente, quantidades novas, sem vazamento, CLS 0,01 a 0,018, botão de compra presente.
+
+Feito no cadastro (no ar, com OK dele):
+- Flowers (343280690): 4x "Chá Blend Intenso" -> "Chá Misto Intenso" na descrição e 1x na descrição de busca (SEO).
+- Desdobramento (344326858): "Chá Misto Durex (lata 80g)", "6 Trouxinhas de Maçã", "Laranja Chocoleve 40g (10 fatias)". Conferido byte a byte: só essas 3 trocas. Cópia da descrição anterior em notas/desdobramento-descricao-antes.html.
+- Ternura (313665100): "6 Trouxinhas de Maçã", "Laranja Chocoleve 40g (10 fatias)".
+- Varredura dos 13 produtos da categoria Kits: só o Kit Natal Feliz ainda tem "Chá Blend" (6x na descrição, 1x no SEO e em textos alternativos de foto).
+
+Pendente / aprendido:
+- Kit Natal Feliz (tipo kit, /admin/kits/379081240): o conector da Nuvemshop não enxerga (nem por id nem por handle). Não mexi.
+- ATENÇÃO: o editor de descrição do painel (TinyMCE 5.10) reescreve o HTML ao salvar pela tela: troca <b> por <strong>, <i> por <em> e apaga <span> (no Flowers: 12 spans). Editar a descrição pelo painel quebra o visual dos blocos cml-*. Alterar descrição só pelo conector (update_product com o HTML inteiro). Para ler o HTML exato: painel do produto, valor do textarea `textarea[id^="tiny-react"]`, mostrado num <pre> e lido com get_page_text.
+- A descrição do Desdobramento carrega um <style> próprio com preços fixos em CSS (content:"R$219" e "R$289" nos botões de variação "Kit" e "Kit + lata refil Durex"): conferir se batem com o preço real e tirar o que não for mais usado.
