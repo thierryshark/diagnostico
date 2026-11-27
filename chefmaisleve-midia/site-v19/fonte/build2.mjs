@@ -203,7 +203,6 @@ const TROCAS = [
   // 26/11 (Thierry): perguntas frequentes acima do "Veja tambem" nas paginas de produto
   ['cml-paginas.js', "var ap=D.querySelector(\"#ns-section-alternative_products\")||sec;if(!ap)return;ap.parentNode.insertBefore(box,ap.nextSibling);", "var ap=D.querySelector(\"#ns-section-alternative_products\")||sec;if(!ap)return;ap.parentNode.insertBefore(box,ap);"],
   // 26/11 (Thierry): avaliacoes nas paginas de destaque. O quadro de avaliacoes do aplicativo ficava dentro da secao do tema que essas paginas nao mostram; passa a entrar no fim da propria pagina de destaque
-  ['cml-destaque.js', "function rvRoot() {\n    var r = null;", "function rvRoot() {\n    var r = null; var dw = D.querySelector(\"#cml-dst .dw\"); if (dw && !D.querySelector(\".cml-rev\")) { var mi = [].filter.call(D.querySelectorAll(\"#ns-section-main_product [class*='mi-@container']\"), function (e) { return e.children.length >= 2 && /Avalia/.test(e.textContent); })[0]; if (mi) { var hs = D.createElement(\"div\"); hs.className = \"blk cml-rev\"; dw.appendChild(hs); hs.appendChild(mi); } }"],
   // 26/11 (Thierry): abas da compra rapida com os nomes e a ordem certos, na origem (antes saia "Chas chas mistos" porque o nome antigo era trocado na tela)
   ['extx-01.js', "[[\"Chás blends\",\"/chas/\"],[\"Infusões naturais\",\"/chas/chas-infusoes-naturais/\"],[\"Snacks\",\"/snacks-granolas/snacks-saudaveis/\"],[\"Granolas\",\"/snacks-granolas/granolas/\"],[\"Kits\",\"/kits-presentes/\"],[\"Acessórios\",\"/acessorios/\"],[\"_of\",\"/ofertas/\"]]", "[[\"Chás mistos\",\"/chas/cha-misto/\"],[\"Chá na fruta\",\"/chas/chas-infusoes-naturais/\"],[\"Granolas\",\"/snacks-granolas/granolas/\"],[\"Frutas desidratadas\",\"/snacks-granolas/snacks-saudaveis/\"],[\"Chocoleve\",\"/snacks-granolas/chocoleve/\"],[\"Kits\",\"/kits-presentes/\"],[\"Acessórios\",\"/acessorios/\"],[\"_of\",\"/ofertas/\"]]"],
   // compra rapida: a quantidade de abas deixa de ser fixa em 6 (agora sao 7; a ultima lista e sempre a de ofertas)
@@ -234,11 +233,20 @@ const TROCAS = [
   ['cml-extra.js', "var n=0;(function loop(){all();if(++n<30)setTimeout(loop,n<10?150:500)})();", "var n=0;(function loop(){all();if(++n<12)setTimeout(loop,n<4?200:n<8?600:2000)})();"],
   ['cml-extra.js', "var n=0;(function loop(){run();if(++n<30)setTimeout(loop,n<10?150:500)})();", "var n=0;(function loop(){run();if(++n<12)setTimeout(loop,n<4?200:n<8?600:2000)})();"],
   // 26/11 (Thierry): paginas de destaque deixam de ser montadas por script. Os 7 produtos passam a usar a pagina de produto do tema (bloco de compra nativo, descricao do cadastro com 'O que vem no kit', avaliacoes, perguntas). Motivo: a pagina montada mostrava dados velhos (ex.: Kit Ternura com Mendiants; o cadastro diz Maca Chocoleve), escondia a descricao completa e pesava (PageSpeed celular da Laranja: 34, foto principal em 9,4 s, 1.710 ms de trava). Sai a tabela DATA; os modulos cx12 e cx17 saem inteiros (modulos.json).
-  ['cml-destaque.js', /var DATA = \{[\s\S]*?\n  \};\s*(?=function esc\(s\))/, 'var DATA = {}; '],
+  ['cml-destaque.js', /var DATA = \{[\s\S]*?\n  \};\s*(?=function esc\(s\))/, ''],
   // 26/11: titulo de uma palavra so nao e mais partido ao meio (ficava 'Ter' em negrito e 'nura' em italico); fica inteiro
   ['cml-extra.js', "if(w.length<2){if(t.length<6)return;var h=Math.floor(t.length/2);a=t.slice(0,h);b=t.slice(h);el.__c4s=1;el.innerHTML=esc(a)+\"<em>\"+esc(b)+\"</em>\";el.classList.add(\"c4-sig\");return}", 'if(w.length<2)return;'],
   // 26/11: nome de produto com uma palavra so nao e mais partido ao meio ('Ter' + 'nura'). Kit de nome unico vira 'Kit Ternura' (Kit em negrito, nome em italico); os demais ficam inteiros.
   ['cml-extra.js', "else if(base.length>=6){var c=Math.floor(base.length/2);html=esc(base.slice(0,c))+\"<em>\"+esc(base.slice(c))+\"</em>\"}", "else if(kit&&!/^kit\\b/i.test(base)){html=\"Kit <em>\"+esc(base)+\"</em>\"}"],
+  // 27/11 (v26): o montador antigo das paginas de destaque saiu de vez (as paginas usam a pagina de produto do tema desde o v25):
+  // funcoes images/hasPick/goToBuy/buy/buildDst/refreshPrice/barExtra/barShow, o ouvinte de rolagem delas e o bloco "early"
+  ['cml-destaque.js', /  function images\(\) \{[\s\S]*?(?=  function modalTitle\(\) \{)/, ''],
+  ['cml-destaque.js', ', buildDst, function () { barExtra(false); }];', '];'],
+  ['cml-destaque.js', /    \/\/ 22\/11\/2026: monta a apresentacao[\s\S]*?\n  \}\)\(\);\n(?=  if \(D\.readyState === "loading"\) D\.addEventListener\("DOMContentLoaded", start\))/, ''],
+  // 27/11 (v26): a lista de estilos do montador antigo e a funcao que criava a etiqueta <style id="cml-dst-css"> (ja vazia) saem do modulo
+  ['cml-destaque.js', /  var CSS = \[[\s\S]*?\n  \]\.join\("\\n"\);\n/, ''],
+  ['cml-destaque.js', /  function addCss\(\) \{[\s\S]*?\n  \}\n  addCss\(\);\n/, ''],
+  ['cml-destaque.js', 'var steps = [addCss, modalTitle,', 'var steps = [modalTitle,'],
   // 24/11 (Thierry): o WhatsApp do site e sempre o oficial, final 1974 (pagina de contato)
   ['extx-13.js', '"tel:+5547992726557","Telefone","(47) 99272-6557"', '"tel:+554791571974","Telefone","(47) 9157-1974"'],
   ['extx-13.js', '"https://wa.me/5547992726557","WhatsApp","(47) 99272-6557 · resposta mais rápida"', '"https://wa.me/554791571974","WhatsApp","(47) 9157-1974 · resposta mais rápida"'],
