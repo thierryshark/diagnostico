@@ -249,6 +249,20 @@ const TROCAS = [
   ['cml-destaque.js', 'var steps = [addCss, modalTitle,', 'var steps = [modalTitle,'],
   // 27/11 (v26): faixa de lancamento da linha Chocoleve na home, logo acima das categorias (entra junto com elas, no mesmo passo)
   ['cml-paginas.js', 'var after = D.getElementById("cml-hl"); after.parentNode.insertBefore(cs, after.nextSibling);', 'var after = D.getElementById("cml-hl"); after.parentNode.insertBefore(cs, after.nextSibling); if (!D.getElementById("cml-cl")) { var cl = D.createElement("section"); cl.id = "cml-cl"; cl.setAttribute("aria-label", "Linha Chocoleve"); var P4 = [["laranja-choco-leve", "1-011d00008ed041fbc917862325208266", "Laranja"], ["maca-chocoleve", "maca-chocoleve-2-detalhe-d29c8f8207bca94d2717953720424854", "Ma\\u00e7\\u00e3"], ["abacaxi-chocoleve", "abacaxi-chocoleve-2-detalhe-0c881938f0d7afecb417953720579781", "Abacaxi"], ["banana-chocoleve", "banana-chocoleve-2-detalhe-af759399bdfbef3fdc17953720504529", "Banana"]]; cl.innerHTML = \'<div class="w"><div class="t"><span class="k">Lan\\u00e7amento</span><h2>Linha <em>Chocoleve</em></h2><p>Fruta desidratada com chocolate 70%, em quatro sabores.</p></div><ul>\' + P4.map(function (x) { return \'<li><a href="/produtos/\' + x[0] + \'/"><img src="//acdn-us.mitiendanube.com/stores/005/060/752/products/\' + x[1] + \'-480-0.webp" alt="\' + x[2] + \' Chocoleve" width="480" height="480" loading="lazy" decoding="async"><b>\' + x[2] + \'</b></a></li>\'; }).join("") + \'</ul><a class="go" href="/chocoleve/">Conhecer a linha</a></div>\'; cs.parentNode.insertBefore(cl, cs); }'],
+  // 27/11 (v28): leituras de layout na largada (cada uma obrigava o navegador a montar a pagina inteira de novo, 60 a 75 ms cada no computador)
+  // cabecalho que some ao rolar: a posicao inicial e 0 (a pagina abre no topo); a primeira rolagem atualiza
+  ['cml-paginas.js', 'var y=window.scrollY||0,tk=false;', 'var y=0,tk=false;'],
+  // altura do cabecalho: medida pelo ResizeObserver (que entrega a medida depois que o navegador ja montou a pagina), sem leitura forcada na largada
+  ['cml-paginas.js', "var n=0;(function l(){if(u()){try{new ResizeObserver(u).observe(D.querySelector('.sticky-header-wrapper'))}catch(e){}addEventListener('resize',u)}else if(++n<60)setTimeout(l,100)})()", "var n=0;(function l(){var w=D.querySelector('.sticky-header-wrapper');if(w&&D.querySelector('.js-head-main')){try{new ResizeObserver(function(){u()}).observe(w)}catch(e){u()}addEventListener('resize',u)}else if(++n<60)setTimeout(l,100)})()"],
+  // efeito de aparecer ao rolar: desligado desde 18/11 (as secoes ja nascem visiveis), mas o codigo ainda media cada secao da pagina na largada e a cada rolagem. Sai a medicao
+  ['cml-extra.js', 'try{if(!reveal())a=false}catch(e){}', ''],
+  ['cml-extra.js', 'addEventListener("load",function(){setTimeout(reveal,600);setTimeout(safety,4000)});', ''],
+  ['cml-extra.js', 'addEventListener("scroll",function(){if(!window.__c5s){window.__c5s=1;setTimeout(function(){window.__c5s=0;safety()},700)}},{passive:true});', ''],
+  // 27/11 (v28): a revisao dos extras (cashback, video e barra de compra da pagina de produto) rodava a cada 1 segundo, para sempre, em todas as paginas, com leitura de layout.
+  // Passa a rodar logo depois da primeira pintura, mais 4 vezes espacadas (ate ~10 s) e sempre que a pessoa mexe no formulario de compra (variacao, quantidade)
+  ['extx-00.js', 'p(),setInterval(p,1e3)', 'requestAnimationFrame(function(){setTimeout(p,0)}),function(){var k=0,d=[900,1800,3000,4500];(function nx(){setTimeout(function(){p();++k<d.length&&nx()},d[k])})();var tq=0,q=function(){clearTimeout(tq);tq=setTimeout(p,120)};document.addEventListener("change",function(t){t.target&&t.target.closest&&t.target.closest("#product_form")&&q()});document.addEventListener("click",function(t){t.target&&t.target.closest&&t.target.closest("#product_form")&&q()})}()'],
+  // 27/11 (v28): a troca de "blend" por "chá misto" na tela varria o texto da pagina inteira em toda pagina (75 ms na pagina de Chas). Conferido em 16 paginas: o termo antigo so aparece nas descricoes de produto. A varredura passa a rodar so nas paginas de produto, ate as descricoes serem corrigidas no cadastro
+  ['cml-paginas.js', 'function boot(){run();try{walk(D.body)}catch(e){}}', 'var PP=location.pathname.indexOf("/produtos/")===0;function boot(){run();if(PP)try{walk(D.body)}catch(e){}}'],
   // 24/11 (Thierry): o WhatsApp do site e sempre o oficial, final 1974 (pagina de contato)
   ['extx-13.js', '"tel:+5547992726557","Telefone","(47) 99272-6557"', '"tel:+554791571974","Telefone","(47) 9157-1974"'],
   ['extx-13.js', '"https://wa.me/5547992726557","WhatsApp","(47) 99272-6557 · resposta mais rápida"', '"https://wa.me/554791571974","WhatsApp","(47) 9157-1974 · resposta mais rápida"'],
@@ -257,6 +271,8 @@ const TROCAS = [
 ];
 // trocas pontuais no visual capturado: [texto antigo, texto novo]
 const CSS_TROCAS = [
+  // 27/11 (v28): o divisor da pagina de duvidas era escondido pela classe do efeito de aparecer (que saiu); passa a ser escondido direto
+  ['html body.cml-fqp .section-divider.c5-rv{', 'html body.cml-fqp .section-divider{'],
   // 26/11: o bloco nativo 'Devolucoes gratis / Compra segura' saiu do modelo de produto (v25); a regra que o escondia sai junto
   ['.product-purchase-info .icon-text-item{display:none!important}', ''],
   // 26/11: a pagina de ofertas tem montagem propria; o topo nativo de categoria (titulo e abas) nao aparece nela, como as demais secoes nativas
