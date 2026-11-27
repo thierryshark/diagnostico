@@ -337,3 +337,9 @@ Já feito no v26: pack.js 673 -> 613 KB (montador antigo fora).
 - Estudo de anúncios por formato (Flormel 22 vídeos/5 imagens, Talchá 7/6/1, Moncloa 4/6) registrado no doc dos roteiros.
 - Botões: saiu o código que lia a cor de cada botão na carga (cml-extra#19). Agora a lista de botões dourados e contornados fica fixa no site.css, com a mesma força de regra da classe antiga. Conferido botão a botão (641 botões, 15 páginas, celular e computador) contra a versão anterior: mesmas cores; diferenças só onde a versão antiga falhava por tempo (botão de avaliação do Cashing nos kits ficava oliva, "ver mais avaliações" idem) e o texto dos botões da Black (branco para creme).
 - Backup do build antes: /tmp/build2.antes-c6.mjs
+
+## 27/11 04h30 (v30, rascunho 14990452)
+- A troca de "blend" na tela saiu (outra conversa, commit e2efde2; fontes sincronizadas aqui; sites.json refeito com `node sites.mjs`).
+- Corrigido na origem: Combos Performance, Elas e Bem-estar (descricao, conferida letra a letra); Kit Natal Feliz a venda 379081240 (descricao); texto do Google da Xicara Flowers e do Infusor Inox; pagina Clube Chef (texto e texto do Google, pelo painel).
+- Ficam com "blend" por decisao do Thierry: texto do Google do Natal Feliz, posts do blog e 2 titulos de categoria.
+- Regra: antes de montar pacote, puxar o GitHub (git pull) e copiar fonte/src para src; se mudar texto de src, rodar `node sites.mjs` antes do build.
