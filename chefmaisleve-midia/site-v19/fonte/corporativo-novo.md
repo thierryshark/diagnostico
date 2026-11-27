@@ -280,3 +280,8 @@ Ordem de ataque no v26:
 4. Cashing: ver quais widgets (avise-me, ofertas, cupom) são usados de fato em cada tipo de página e desligar os demais no painel do Cashing.
 5. Imagens (442 KiB) e cache dos arquivos próprios (270 KiB).
 Já feito no v26: pack.js 673 -> 613 KB (montador antigo fora).
+
+## 27/11 01h40 — v26 (pacote 2f66428)
+- TESTE DESFEITO: pacote em fatias (fila com pausa entre módulos, pacote 1c618f6). No teste local as tarefas longas pioraram (/chas/ bloqueio 123 -> 248 ms; home 37 -> 98 ms) e o CLS da home subiu de 0,003 para 0,046. build2.mjs voltou ao anterior (cópia do teste em /tmp/build2.antes-fatias.mjs é a versão SEM fatias). Não repetir sem um jeito de medir com Lighthouse num rascunho.
+- Bloco "Destaque da casa" (product.json do v26, code_dq): cada produto ganhou q (pergunta do problema), a (resposta) e b (3 motivos); o bloco mostra a caixa verde com pergunta e resposta depois da frase de abertura, "Por que vale" depois da lista e "Quem faz" (Cris, técnica em Nutrição e Dietética, com a família, em SC) antes dos fatos. Estilos .dq-s, .dq-b, .dq-w no ajustes.css. Conferido nas 7 páginas no celular: sem vazamento, CLS até 0,022.
+- Cobrança do Thierry (01h01): "quando digo para fazer tudo sem interrupções é TUDO". Lista do que falta: Chocoleve com mais destaque na home; revisão de tipografia e espaçamento no celular página por página; desempenho (ataques 1 a 5); estudo de anúncios mais fundo (formatos, outras marcas de alimentação saudável); Kit Natal Feliz ("Chá Blend"); vídeos (faltam gravações).

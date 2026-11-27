@@ -139,3 +139,12 @@ html body #ns-section-main_product .product-content>.dq .dq-i span{grid-column:1
 html body #ns-section-main_product .product-content>.dq .dq-a{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid #e8ddd0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 14px}
 html body #ns-section-main_product .product-content>.dq .dq-a li{margin:0;font:400 14px/1.35 Poppins,system-ui,sans-serif;color:#6f6656}
 html body #ns-section-main_product .product-content>.dq .dq-a b{display:block;font:600 15px/1.25 Poppins,system-ui,sans-serif;color:#2b2916}
+/* 27/11 (v26): destaque da casa ganha a pergunta do problema com a resposta, os motivos e quem faz */
+html body #ns-section-main_product .product-content>.dq .dq-s{margin:14px 0 0;padding:14px 16px;border-radius:12px;background:#f1f2e6}
+html body #ns-section-main_product .product-content>.dq .dq-s b{display:block;font:600 16px/1.3 Poppins,system-ui,sans-serif;color:#2b2916}
+html body #ns-section-main_product .product-content>.dq .dq-s span{display:block;margin-top:6px;font:400 15px/1.5 Poppins,system-ui,sans-serif;color:#4a4722}
+html body #ns-section-main_product .product-content>.dq .dq-b{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+html body #ns-section-main_product .product-content>.dq .dq-b li{position:relative;margin:0;padding-left:22px;font:400 15px/1.45 Poppins,system-ui,sans-serif;color:#2b2916}
+html body #ns-section-main_product .product-content>.dq .dq-b li::before{content:"";position:absolute;left:2px;top:7px;width:10px;height:6px;border-left:2px solid #a65a14;border-bottom:2px solid #a65a14;transform:rotate(-45deg)}
+html body #ns-section-main_product .product-content>.dq .dq-w{margin:18px 0 0;font:400 14px/1.5 Poppins,system-ui,sans-serif;color:#6f6656}
+html body #ns-section-main_product .product-content>.dq .dq-w b{display:block;font:600 15px/1.25 Poppins,system-ui,sans-serif;color:#2b2916}
