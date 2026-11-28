@@ -1,0 +1,18 @@
+/* Uma janela so ao comprar (28/11): a oferta "Leve junto" diz o que entrou na sacola; o aviso de baixo some enquanto ela esta aberta */
+html.cml-xs-on .js-alert-add-to-cart-private{display:none!important}
+#js-cross-selling-modal .cml-xs-ok{display:flex;align-items:center;gap:8px;margin:0;padding:12px 20px;border-bottom:1px solid #e8ddd0;background:#f1f2e6;color:#3f4a22;font:500 14px/1.35 Poppins,sans-serif;border-radius:inherit;border-bottom-left-radius:0;border-bottom-right-radius:0}
+#js-cross-selling-modal .cml-xs-ok svg{width:16px;height:16px;flex:none}
+#js-cross-selling-modal .cml-xs-ok b{font-weight:600}
+#js-cross-selling-modal .cml-xs-ac{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:center;margin:14px 0 0}
+#js-cross-selling-modal .cml-xs-ac button{min-height:44px;padding:0 16px;border-radius:10px;font:600 14px/1 Poppins,sans-serif;cursor:pointer}
+#js-cross-selling-modal .cml-xs-ac .vs{flex:1 1 auto;white-space:nowrap;border:1.5px solid #565229;background:transparent;color:#565229}
+#js-cross-selling-modal .cml-xs-ac .cc{border:0;background:none;color:#2b2916;text-decoration:underline;text-underline-offset:3px;font-weight:500}
+/* Cashback em um toque (28/11): sai a parte "Gerar cupom" da janela do app; botao do carrinho desabilitado abaixo de R$ 199 */
+[data-cml-cbg]{display:none!important}
+.cml-cbx button[disabled]{opacity:.45;cursor:not-allowed}
+.cml-cbx button[hidden]{display:none}
+
+.cml-cb1-cart{display:none!important}
+.cml-cbx{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px 14px;border:1px solid #e8ddd0;border-radius:16px;background:#fffaf5;font:400 14px/1.35 Poppins,sans-serif;color:#2b2916}
+.cml-cbx span{flex:1;min-width:0}.cml-cbx b{color:#a65a14;font-weight:600}
+.cml-cbx button{flex:none;min-height:38px;padding:0 14px;border:0;border-radius:10px;background:#a65a14;color:#f6efe9;font:600 14px/1 Poppins,sans-serif;cursor:pointer}
