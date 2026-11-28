@@ -107,7 +107,7 @@
   }
   /* Avaliações: nota com vírgula (5,0) e "Adicionar avaliação" como botão de contorno, para ficar um só botão cheio na tela */
   function notas(){
-    [].forEach.call(D.querySelectorAll('[class*="mi-"] strong, [class*="mi-"] span'), function(e){ if (e.children.length) return; var t = e.textContent; if (/^\s*\d\.\d\s*$/.test(t)) e.textContent = t.replace(".", ","); });
+    [].forEach.call(D.querySelectorAll('[class*="mi-"] strong, [class*="mi-"] span'), function(e){ var n = e.firstChild; if (e.children.length || !n || n.nodeType !== 3 || n !== e.lastChild) return; if (/^\s*\d\.\d\s*$/.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(".", ","); });
     [].forEach.call(D.querySelectorAll('[class*="mi-"] button:not(.cml-rv-add)'), function(b){ if (/Adicionar avalia/.test(b.textContent)) b.classList.add("cml-rv-add"); });
   }
   function ini(){ busca(); idle(ugc); idle(sacola); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); if (++n > 15) clearInterval(iv); }, 500); } idle(function(){ notas(); if (W.MutationObserver) { var tn = 0; new MutationObserver(function(){ if (tn) return; tn = setTimeout(function(){ tn = 0; notas(); }, 400); }).observe(D.body, { childList: true, subtree: true }); } }); }
