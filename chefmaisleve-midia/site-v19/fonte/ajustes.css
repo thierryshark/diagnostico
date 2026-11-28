@@ -55,15 +55,10 @@ html body .js-item-product .product-item-price-container{align-items:baseline!im
 
 
 /* comparativo do valor por xicara nas paginas de cha misto (bloco unico, montado pelo cx11 a partir do preco do produto) */
-html body .js-product-info .cx11-xic{margin:14px 0 6px;padding:16px;border:1px solid #e8ddd0;border-radius:12px;background:#fffaf5;font-family:Poppins,system-ui,sans-serif;color:#2b2916}
-html body .js-product-info .cx11-xic .h{margin:0 0 6px!important;font:600 16px/1.3 Poppins,system-ui,sans-serif;color:#2b2916}
-html body .js-product-info .cx11-xic ul{list-style:none!important;margin:0!important;padding:0!important}
-html body .js-product-info .cx11-xic li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0!important;padding:10px 0!important;border-bottom:1px solid #efe4d8;list-style:none!important;font:400 14px/1.3 Poppins,system-ui,sans-serif;color:#6f6656}
-html body .js-product-info .cx11-xic li::before{content:none!important}
-html body .js-product-info .cx11-xic li b{flex:0 0 auto;font-weight:600;color:#2b2916;white-space:nowrap}
-html body .js-product-info .cx11-xic li.on{border-bottom:0;color:#2b2916;font-weight:600}
-html body .js-product-info .cx11-xic li.on b{font-size:20px;font-weight:700;color:#a65a14}
-html body .js-product-info .cx11-xic .f{margin:4px 0 0!important;font:400 14px/1.4 Poppins,system-ui,sans-serif;color:#6f6656}
+html body .js-product-info .cx11-xic{margin:0 0 6px;padding:12px 14px;border:1px solid #e8ddd0;border-top:1px dashed #e0d2c1;border-radius:0 0 12px 12px;background:#fffaf5;font-family:Poppins,system-ui,sans-serif;color:#2b2916}
+html body .js-product-info .cx11-xic .x{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0!important;font:500 14px/1.35 Poppins,system-ui,sans-serif}
+html body .js-product-info .cx11-xic .x b{font-size:18px;font-weight:700;color:#a65a14;white-space:nowrap}
+html body .js-product-info .cx11-xic .f{margin:2px 0 0!important;font:400 14px/1.4 Poppins,system-ui,sans-serif;color:#6f6656}
 
 /* pagina de destaque com variacao: quantidade de embalagens (menos, numero, mais) */
 /* avaliacoes na pagina de destaque: botao "Adicionar avaliacao" no padrao (10 px), sem capsula */
@@ -321,3 +316,61 @@ html body .cml-pd .cml-f-top>span,html body .cml-pd .cml-f-top>h2{grid-column:1}
 html body .cml-pd .cml-f-top>p{grid-column:2;grid-row:1/span 2;margin:0}}
 /* Faixa de beneficios da pagina Chocoleve na mesma coluna do resto */
 html body .cml-chx.st:not(#z0){max-width:var(--cmlF)!important}
+/* Quem comprou (28/11): nota, fotos e depoimentos curtos logo abaixo do botao de compra */
+.cml-ugc{margin:14px 0 4px;padding:14px 16px;border:1px solid #e8ddd0;border-radius:12px;background:#fff;font-family:Poppins,system-ui,sans-serif;color:#2b2916}
+.cml-ugc .hd{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;color:#2b2916!important;text-decoration:none!important;font-size:14px}
+.cml-ugc .sr{color:#c9962f;letter-spacing:1px;font-size:14px}
+.cml-ugc .hd b{font-weight:700}.cml-ugc .hd span:not(.sr){color:#6f6656}
+.cml-ugc .hd i{margin-left:auto;font-style:normal;font-weight:600;color:#a65a14;text-decoration:underline;text-underline-offset:3px}
+.cml-ugc .ft{display:flex;gap:8px;margin:12px 0 0}
+.cml-ugc .ft img{width:64px;height:64px;border-radius:10px;object-fit:cover;background:#f6efe9}
+.cml-ugc .qs{margin:12px 0 0;min-height:44px}
+.cml-ugc blockquote{margin:0;padding:0 0 0 12px;border-left:2px solid #dfae58;animation:cmlugc .4s ease}
+.cml-ugc blockquote p{margin:0;font:400 14px/1.5 Poppins,system-ui,sans-serif;color:#2b2916}
+.cml-ugc cite{display:block;margin-top:4px;font:500 14px/1.3 Poppins,system-ui,sans-serif;font-style:normal;color:#6f6656}
+@keyframes cmlugc{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.cml-ugc blockquote{animation:none}}
+/* Frete na pagina do produto (28/11): botao no mesmo padrao dos cartoes da coluna de compra */
+html body .cml-shb:not(#z0){margin:12px 0 4px;border-radius:12px;border-width:1px;border-color:#e8ddd0;background:#fffaf5}
+html body .cml-shb:not(#z0)>svg{flex:0 0 36px;width:36px;height:36px;border-radius:10px;background:#f1f2e6;color:#565229}
+html body .cml-shb:not(#z0) em{font-size:14px;color:#6f6656}
+html body .cml-shw.on:not(#z0){border-radius:12px;border-color:#e8ddd0}
+/* Busca: painel de resultados e atalhos com acabamento da marca */
+html body .js-search-form-suggestions.search-suggestions:not(:empty){margin-top:8px;padding:6px;border:1px solid #e8ddd0;border-radius:12px;background:#fffaf5;box-shadow:0 24px 50px -30px rgba(43,41,22,.45)}
+html body .search-suggestions-link{display:flex;align-items:center;gap:12px;padding:8px;border-radius:10px}
+html body .search-suggestions-link:hover{background:#f6efe9}
+html body .search-suggest-image{width:52px!important;height:52px!important;border-radius:10px;object-fit:cover}
+.cml-sat{margin-top:8px;padding:14px;border:1px solid #e8ddd0;border-radius:12px;background:#fffaf5;box-shadow:0 24px 50px -30px rgba(43,41,22,.45)}
+.cml-sat[hidden]{display:none}
+.cml-sat p{margin:0 0 10px;font:600 14px/1 Poppins,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#a65a14}
+.cml-sat div{display:flex;flex-wrap:wrap;gap:8px}
+.cml-sat a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid rgba(86,82,41,.3);border-radius:10px;color:#2b2916!important;font:500 14px/1 Poppins,system-ui,sans-serif;text-decoration:none!important;background:#fff}
+.cml-sat a:hover{border-color:#565229;background:#f1f2e6}
+/* Veja tambem no celular: grade 2 x 2 em vez de carrossel cortado */
+@media(max-width:767px){html body #ns-section-alternative_products .swiper-wrapper:not(#z0){display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;transform:none!important;width:auto!important}
+html body #ns-section-alternative_products .swiper-slide:not(#z0){width:auto!important;margin:0!important}
+html body #ns-section-alternative_products .swiper-slide:nth-child(n+5){display:none!important}
+html body #ns-section-alternative_products :is(.swiper-pagination,.swiper-button-prev,.swiper-button-next){display:none!important}}
+
+/* Cartao de vantagens da pagina de produto (28/11): quatro colunas no computador, duas no celular; com a xicara, vira um cartao so */
+html body .cx11-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 12px;margin:16px 0 6px;padding:14px;border:1px solid #e8ddd0;border-radius:12px;background:#fffaf5}
+html body .cx11-strip.cx11-wx{margin-bottom:0;border-radius:12px 12px 0 0}
+html body .cx11-strip div{display:flex;flex-direction:column;align-items:flex-start;gap:6px;font:400 14px/1.3 Poppins,sans-serif;color:#2b2916}
+@media(max-width:760px){html body .cx11-strip{grid-template-columns:repeat(2,minmax(0,1fr));padding:12px}html body .cx11-strip div{flex-direction:row;align-items:center;gap:10px}}
+.cml-ugc .sr:before{content:"\2605\2605\2605\2605\2605"}
+.cml-fg{margin:12px 0 0;padding:10px 12px;border-radius:10px;background:#f1f2e6;color:#3f4a22;font:500 14px/1.4 Poppins,system-ui,sans-serif}
+
+/* Toque confortavel (28/11): links soltos com area de toque de 44 px no celular */
+html body :is(.product-payments-link,.cml-nc-l a,.cml-crt a,.cml-ugc .hd i):not(#z0){display:inline-flex;align-items:center;min-height:44px}
+/* Letra minima de 14 px nos detalhes dos cartoes */
+html body :is(.cml-avr,.cx6-ov,.js-item-product .product-item-price-compare,.cml-hl-c .k):not(#z0){font-size:14px!important}
+html body :is(.cx6-ov,.cml-hl-c .k):not(#z0){letter-spacing:.06em!important}
+/* Destaque da casa sem a repeticao dos numeros (ja aparecem na coluna de compra) */
+html body .dq .dq-a:empty{display:none!important}
+/* Quem comprou: cabecalho numa linha so */
+.cml-ugc .hd span:not(.sr){font-size:14px}
+/* Perguntas e detalhes da pagina de produto: linhas mais altas, faceis de tocar */
+html body #single-product .cml-acc>h4:not(#z0){min-height:52px;display:flex;align-items:center}
+/* Carrinho (/comprar/) no celular: titulo menor e linha do cashback empilhada */
+@media(max-width:767px){html body.template-cart .page-header h1:not(#z0),html body.template-cart h1.h1:not(#z0){font-size:30px!important;line-height:1.15!important}
+html body .cml-cb1-cart:not(#z0){flex-wrap:wrap}html body .cml-cb1-cart span{flex:1 1 100%}html body .cml-cb1-cart button{flex:1 1 100%;min-height:44px}}

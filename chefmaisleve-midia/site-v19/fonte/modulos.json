@@ -275,6 +275,9 @@
   "[data-cml-cb1=campo]",
   "button[data-cml-cb1=go]",
   "button[data-cml-cb1=go]>*",
-  "button[data-cml-cb1=go]:after"
+  "button[data-cml-cb1=go]:after",
+  "htmlbody.cml-shb:not(#a1):not(#a2)",
+  "htmlbody.cx11-strip:not(#a1):not(#a2):not(#a3)",
+  "htmlbody.cx11-stripdiv:not(#a1):not(#a2):not(#a3)"
  ]
 }
