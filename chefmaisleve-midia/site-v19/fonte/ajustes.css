@@ -384,3 +384,7 @@ html body #modal-cart .cml-fgb b{font-weight:600;color:#a65a14}
 html body #modal-cart .cml-fgb .br{display:block;height:6px;margin:10px 0 0;border-radius:6px;background:#efe6da;overflow:hidden}
 html body #modal-cart .cml-fgb .br i{display:block;height:100%;border-radius:6px;background:#565229;transition:width .4s}
 html body .cml-cb1-cart button[disabled]:not(#z0){background:#efe6da!important;border-color:#efe6da!important;color:#5c5444!important;box-shadow:none!important}
+
+/* Avaliações do produto: botão de adicionar em contorno */
+html body button.cml-rv-add:not(#z0){background:transparent!important;border:1.5px solid #565229!important;color:#565229!important;border-radius:10px!important;min-height:44px;padding:0 16px!important}
+html body button.cml-rv-add:not(#z0) *{color:inherit!important;fill:currentColor}
