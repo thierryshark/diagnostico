@@ -306,13 +306,16 @@ html.cml-xs-on .js-alert-add-to-cart-private{display:none!important}
 .cml-cb1-cart button[hidden]{display:none}
 /* Respiro e largura (28/11, Thierry): um vao so entre os blocos de qualquer pagina, maior no computador e confortavel no celular */
 :root{--cmlG:clamp(48px,5.5vw,96px)}
-html body main>:is(section,[id^=ns-section-],.cx11-faq):not([id^=ns-section-heading]):not(#z0):not(#z1):not(#z2){margin-top:0!important;margin-bottom:var(--cmlG)!important}
-html body main>#ns-section-slideshow:not(#z0):not(#z1):not(#z2):not(#z3){margin-bottom:clamp(20px,2vw,28px)!important}
+html body main>:is(#ns-section-icon_text,.c2-rk,#cml-hl,#cml-lc,#cml-cats,.cml-nc,[id^=ns-section-faq],[id^=ns-section-instagram-feed],#ns-section-main_product,#ns-section-product_description,.cx11-faq,#ns-section-alternative_products):not(#z0):not(#z1):not(#z2){margin-bottom:var(--cmlG)!important}
+html.cml-home2 body main>.cml-nc:not(#z0):not(#z1):not(#z2){margin-top:0!important}
+html body main>#ns-section-product_description:not(#z0):not(#z1){padding-top:0!important;padding-bottom:0!important}
+/* larguras antigas (1520px) passam a seguir a mesma coluna do resto do site */
+@media(min-width:1300px){:root{--cmlw:var(--cmlF)}}
 /* Perguntas frequentes da home e da pagina de duvidas: duas colunas no computador */
 @media(min-width:1024px){html body [id^=ns-section-faq] .faq-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(24px,3vw,56px);align-items:start}}
 /* Perguntas da pagina de produto: um pouco mais de ar entre as linhas */
 html body .cx11-faq .g{gap:14px 24px}
 /* Descricao do produto no computador: titulo de um lado, texto do outro (usa a largura toda) */
-@media(min-width:1024px){html body .cml-pd .cml-f-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,5vw,96px);align-items:center;max-width:none}
+@media(min-width:1024px){html body .cml-pd .cml-f-top{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,5vw,96px);align-items:center;max-width:none}
 html body .cml-pd .cml-f-top>span,html body .cml-pd .cml-f-top>h2{grid-column:1}
 html body .cml-pd .cml-f-top>p{grid-column:2;grid-row:1/span 2;margin:0}}
