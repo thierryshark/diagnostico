@@ -49,7 +49,7 @@ html body .head-main .js-nav-desktop-container{visibility:visible!important;heig
 /* CARTAO DE PRODUTO NO CELULAR (24/11, Thierry): com a letra de 14 px o sobretitulo quebrava em duas linhas e o preco antigo caia para a linha de baixo. No cartao do celular o sobretitulo e o preco antigo ficam em 12 px (excecao combinada, escrita em rem), numa linha so, e o preco antigo volta para o lado do preco */
 @media(max-width:767px){html body .js-item-product .cx6-ov{min-height:0!important;margin-bottom:4px!important;font-size:.75rem!important;line-height:1.3!important;letter-spacing:.08em!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}html body .js-item-product a.product-item-link{min-height:0!important}html body .js-item-product .product-item-price-container .js-compare-price-display{font-size:.75rem!important}}
 /* HOME NO CELULAR (24/11, Thierry): frases que quebraram com a letra de 14 px voltam a caber numa linha, em 12 px (excecao combinada, em rem): sobretitulo dos quadros de destaque e linha de avaliacao do ranking */
-@media(max-width:767px){html body .cml-hl-c .k:not(#a1):not(#a2):not(#a3),html body .cml-hl-c .nv:not(#a1):not(#a2):not(#a3){font-size:.75rem!important;letter-spacing:.1em!important}html body .c2-rk .rc .cml-avr{white-space:nowrap!important;font-size:.75rem!important}html body .c2-rk .rc .cml-avr i{font-size:inherit!important}}
+@media(max-width:767px){html body .cml-hl-c .k:not(#a1):not(#a2):not(#a3),html body .cml-hl-c .nv:not(#a1):not(#a2):not(#a3){font-size:14px!important;letter-spacing:.06em!important}html body .c2-rk .rc .cml-avr{white-space:nowrap!important;font-size:.75rem!important}html body .c2-rk .rc .cml-avr i{font-size:inherit!important}}
 /* cartao de produto, celular e computador: o preco antigo fica ao lado do preco, na mesma linha (antes caia para a linha de baixo) */
 html body .js-item-product .product-item-price-container{align-items:baseline!important;gap:2px 6px!important}html body .js-item-product .product-item-price-container .js-price-display{flex:0 0 auto!important;width:auto!important}
 
@@ -366,7 +366,7 @@ html body #ns-section-main_product .js-product-info [class*="mi-@container"]:not
 /* Toque confortavel (28/11): links soltos com area de toque de 44 px no celular */
 html body :is(.product-payments-link,.cml-nc-l a,.cml-crt a,.cml-ugc .hd i):not(#z0){display:inline-flex;align-items:center;min-height:44px}
 /* Letra minima de 14 px nos detalhes dos cartoes */
-html body :is(.cml-avr,.cx6-ov,.js-item-product .product-item-price-compare,.cml-hl-c .k):not(#z0){font-size:14px!important}
+html body :is(.cml-avr,.cx6-ov,.js-item-product .product-item-price-compare):not(#z0){font-size:14px!important}
 html body :is(.cx6-ov,.cml-hl-c .k):not(#z0){letter-spacing:.06em!important}
 /* Destaque da casa sem a repeticao dos numeros (ja aparecem na coluna de compra) */
 html body .dq .dq-a:empty{display:none!important}
@@ -393,3 +393,5 @@ html body button.cml-mi-cart:not(#z0){min-height:44px!important;font-size:14px!i
 html body.template-cart :is(.cart-item-variant,.cart-item-discount-badge,.price-compare,.accordion-item-toggle-text):not(#z0){font-size:14px!important}
 /* Carrinho (página): a barra flutuante de atalhos sai, para não cobrir o botão Continuar */
 html body.template-cart .c1-dock:not(#z0){display:none!important}
+/* Faixa de avisos do topo: letra de 14px no celular e no computador */
+html body .adbar-item:not(#z0):not(#z1):not(#z2),html body .adbar-item:not(#z0):not(#z1):not(#z2) *{font-size:14px!important;letter-spacing:.03em!important}
