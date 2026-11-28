@@ -63,14 +63,15 @@
   /* 3) Ordem da coluna de compra: Comprar, frete, prazo de Natal, quem comprou, vantagens */
   var ORDEM = [".cml-shb", ".cml-shw", ".cmlpz", ".cml-ugc", ".cx11-strip", ".cx11-xic"];
   function ordena(){
+    /* Só move quando a ordem está errada; outros blocos no meio são aceitos. Nunca mexe enquanto a pessoa digita (ex.: CEP). */
     var a = D.querySelector("#single-product .product-actions"); if (!a) return;
-    var ref = a;
-    ORDEM.forEach(function(sel){
-      var e = D.querySelector("#single-product " + sel); if (!e) return;
-      if (ref.nextElementSibling !== e) ref.parentNode.insertBefore(e, ref.nextSibling);
-      ref = e;
-    });
+    var els = []; ORDEM.forEach(function(sel){ var e = D.querySelector("#single-product " + sel); if (e) els.push(e); }); if (!els.length) return;
+    var ae = D.activeElement; if (ae && ae !== D.body) for (var k = 0; k < els.length; k++) if (els[k].contains(ae)) return;
+    var ok = els.every(function(e, i){ var prev = i ? els[i - 1] : a; return e.parentNode === a.parentNode && (prev.compareDocumentPosition(e) & 4); });
+    if (ok) return;
+    var ref = a; els.forEach(function(e){ if (ref.nextElementSibling !== e) ref.parentNode.insertBefore(e, ref.nextSibling); ref = e; });
   }
+
 
   /* 4) Frete: depois do calculo, diz a partir de quanto o frete e gratis na regiao do CEP */
   var FG = [["SP", 249, /^(0|1)/], ["Sul, Sudeste e DF", 299, /^(2|3|8|9|70|71|72[0-7]|73[0-6])/], ["Centro-Oeste", 359, /^(72[89]|73[7-9]|74|75|76[0-7]|78|79)/], ["Nordeste", 459, /^(4|5|6[0-5])/], ["Norte", 599, /^(6[6-9]|76[89]|77)/]];
