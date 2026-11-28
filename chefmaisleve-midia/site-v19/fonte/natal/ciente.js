@@ -11,11 +11,11 @@
   var dlg = null, alvo = null;
   function monta(){
     dlg = D.createElement("dialog"); dlg.className = "cmlpz-dl"; dlg.setAttribute("aria-labelledby", "cmlpz-t");
-    dlg.innerHTML = '<p class="k">Entregas de Natal</p><h2 id="cmlpz-t">Confira o prazo da sua região</h2>'
-      + '<p class="d">Para o pedido chegar antes do Natal, ele precisa ser feito até:</p><ul>'
-      + PZ.map(function(p){ var foi = hoje >= new Date(ANO, 11, p[1] + 1); return '<li' + (foi ? ' class="x"' : '') + '><span>' + p[0] + '</span><b>' + (foi ? 'prazo encerrado' : 'até ' + dd(p[1])) + '</b></li>'; }).join("")
-      + '</ul><p class="d">Pedidos feitos depois dessas datas seguem normalmente, mas podem chegar depois do Natal.</p>'
-      + '<label class="ck"><input type="checkbox"> <span>Estou ciente do prazo de entrega da minha região.</span></label>'
+    dlg.innerHTML = '<p class="k">Informação importante</p><h2 id="cmlpz-t">É um presente de Natal?</h2>'
+      + '<p class="d">Se você quer que este pedido chegue até o Natal, confira o prazo da sua região:</p><ul>'
+      + PZ.map(function(p){ var foi = hoje >= new Date(ANO, 11, p[1] + 1); return '<li' + (foi ? ' class="x"' : '') + '><span>' + p[0] + '</span><b>' + (foi ? 'chega depois do Natal' : 'pedidos até ' + dd(p[1])) + '</b></li>'; }).join("")
+      + '</ul><p class="d">Se o pedido é para você ou não precisa chegar até o Natal, é só seguir: o envio acontece normalmente.</p>'
+      + '<label class="ck"><input type="checkbox"> <span>Estou ciente dos prazos de entrega para o Natal.</span></label>'
       + '<div class="ac"><button type="button" class="vl">Voltar</button><button type="button" class="go" disabled>Seguir para o pagamento</button></div>';
     D.body.appendChild(dlg);
     var cb = dlg.querySelector("input"), go = dlg.querySelector(".go");
