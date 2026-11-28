@@ -388,3 +388,6 @@ html body .cml-cb1-cart button[disabled]:not(#z0){background:#efe6da!important;b
 /* Avaliações do produto: botão de adicionar em contorno */
 html body button.cml-rv-add:not(#z0){background:transparent!important;border:1.5px solid #565229!important;color:#565229!important;border-radius:10px!important;min-height:44px;padding:0 16px!important}
 html body button.cml-rv-add:not(#z0) *{color:inherit!important;fill:currentColor}
+html body button.cml-mi-cart:not(#z0){min-height:44px!important;font-size:14px!important;font-weight:600!important}
+/* Carrinho (página): letra mínima de 14px na variação, desconto, preço riscado e cupom */
+html body .template-cart :is(.cart-item-variant,.cart-item-discount-badge,.price-compare,.accordion-item-toggle-text):not(#z0),html body.template-cart :is(.cart-item-variant,.cart-item-discount-badge,.price-compare,.accordion-item-toggle-text):not(#z0){font-size:14px!important}
