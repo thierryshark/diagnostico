@@ -282,3 +282,7 @@ html body .cml-hl-c.t-cho{background:radial-gradient(120% 90% at 20% 0%,#8a4a1c,
 .cmlpz-dl .vl{border:1.5px solid #565229;background:transparent;color:#565229}
 .cmlpz-dl .go{flex:1;border:1.5px solid #a65a14;background:#a65a14;color:#fff}
 .cmlpz-dl .go[disabled]{opacity:.45;cursor:not-allowed}
+/* Quente ou gelado (28/11) */
+.cmlgl{display:inline-flex;align-items:center;gap:6px;margin-left:10px;padding:3px 9px 3px 7px;border:1px solid rgba(86,82,41,.35);border-radius:10px;background:#f4f5ea;color:#4a4722;font:500 14px/1.2 Poppins,sans-serif;white-space:nowrap;vertical-align:middle}
+.cmlgl svg{width:26px;height:16px;flex:none}
+.cx4-sub+.cmlgl{display:flex;width:max-content;margin:8px 0 0}
