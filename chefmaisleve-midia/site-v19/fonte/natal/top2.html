@@ -1,0 +1,124 @@
+<!-- Chef Mais Leve: Natal Mais Leve (categoria). Banner, favoritos, linhas exclusivas e informacoes. Precos lidos da grade nativa da propria pagina, que fica escondida (mudam sozinhos quando a tabela muda). O montador fica na secao seguinte. -->
+<style>
+#cml-nt{--bd:#4a141d;--bd2:#6b1e2a;--gd:#dfae58;--gl:#f3d48b;--cr:#f6efe9;--ink:#2b2916;--mu:#6f6656;--am:#a65a14;--ln:#e8ddd0;padding:8px 16px 0;font-family:Poppins,system-ui,sans-serif;color:var(--ink)}
+#cml-nt *{box-sizing:border-box}
+#cml-nt .w{max-width:var(--cmlF,1240px);margin:0 auto}
+#cml-nt .bn{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;padding:clamp(28px,4vw,44px) clamp(22px,4vw,56px);border-radius:16px;background:radial-gradient(120% 140% at 15% 0%,#6b1e2a 0%,#4a141d 55%,#2e0c12 100%);color:var(--cr)}
+#cml-nt .bn:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.1;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+#cml-nt .k{display:flex;align-items:center;gap:12px;margin:0 0 12px;font:500 14px/1 Poppins,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gl)}
+#cml-nt .k:before{content:"";width:26px;height:1px;background:var(--gd)}
+#cml-nt h1{margin:0;font:700 clamp(28px,3.4vw,42px)/1.1 Poppins,sans-serif!important;letter-spacing:-.02em;color:var(--cr)!important}
+#cml-nt h1 em{font-weight:300;font-style:italic;color:var(--gl)!important}
+#cml-nt .bn p.s{margin:12px 0 0;max-width:560px;font:400 16px/1.55 Poppins,sans-serif;color:#eadfd2}
+#cml-nt .bn .ac{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+#cml-nt .ol{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border:1.5px solid currentColor;border-radius:10px;background:transparent;color:var(--cr)!important;font:600 15px/1 Poppins,sans-serif;text-decoration:none!important;white-space:nowrap;cursor:pointer}
+#cml-nt .ol:hover{background:rgba(246,239,233,.12)}
+#cml-nt .hd{margin:clamp(44px,6vw,72px) 0 24px;text-align:center}
+#cml-nt .hd p.e{margin:0 0 10px;font:500 14px/1 Poppins,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--am)}
+#cml-nt h2{margin:0;font:700 clamp(26px,3vw,36px)/1.15 Poppins,sans-serif!important;letter-spacing:-.015em;color:#565229!important;text-transform:none!important}
+#cml-nt h2 em{font-weight:300;font-style:italic}
+#cml-nt .hd p.d{margin:10px auto 0;max-width:560px;font:400 15.5px/1.6 Poppins,sans-serif;color:var(--mu)}
+#cml-nt .kt{display:grid;gap:clamp(20px,2.6vw,32px)}
+#cml-nt .kc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:clamp(24px,4vw,56px);padding:clamp(14px,1.6vw,20px);border:1px solid var(--ln);border-radius:16px;background:#fffaf5}
+#cml-nt .kc:nth-child(even) .ph{order:2}
+#cml-nt .ph{position:relative;display:block;margin:0;border-radius:12px;overflow:hidden;background:#efe6db}
+#cml-nt .ph img{display:block;width:100%!important;height:auto!important;aspect-ratio:4/3!important;object-fit:cover!important;transition:transform .6s}
+#cml-nt .kc:hover .ph img{transform:scale(1.03)}
+#cml-nt .tg{position:absolute;left:12px;top:12px;padding:7px 11px;border-radius:10px;background:var(--bd);color:var(--gl);font:600 14px/1 Poppins,sans-serif;letter-spacing:.04em}
+#cml-nt .kb{padding:6px clamp(4px,2vw,24px) 6px 0}
+#cml-nt .kc:nth-child(even) .kb{padding:6px 0 6px clamp(4px,2vw,24px)}
+#cml-nt .kb h3{margin:0;font:700 clamp(24px,2.4vw,32px)/1.15 Poppins,sans-serif;letter-spacing:-.015em;color:var(--ink)}
+#cml-nt .kb p.l{margin:8px 0 0;font:400 16px/1.55 Poppins,sans-serif;color:var(--mu)}
+#cml-nt .kb p.v{margin:20px 0 10px;font:500 14px/1 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--am)}
+#cml-nt .kb ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;margin:0;padding:0;list-style:none}
+#cml-nt .kb li{position:relative;padding-left:16px;font:400 15px/1.4 Poppins,sans-serif;color:var(--ink)}
+#cml-nt .kb li:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--gd)}
+#cml-nt .kf{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:24px;padding-top:20px;border-top:1px solid var(--ln)}
+#cml-nt .pr{font:400 14px/1.3 Poppins,sans-serif;color:var(--mu)}
+#cml-nt .pr b{margin-right:8px;font:700 22px/1 Poppins,sans-serif;color:var(--am)}
+#cml-nt .pr s{color:var(--mu)}
+#cml-nt .pr:empty{display:none}
+#cml-nt .bt{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-left:auto;padding:0 26px;border:1.5px solid #565229;border-radius:10px;color:#565229!important;font:600 15px/1 Poppins,sans-serif;text-decoration:none!important;transition:background .2s,color .2s}
+#cml-nt .bt:hover{background:#565229;color:var(--cr)!important}
+#cml-nt .ex{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#cml-nt .xc{display:flex;flex-direction:column;padding:10px;border:1px solid var(--gd);border-radius:16px;background:#fffaf5;box-shadow:inset 0 0 0 4px #fffaf5,inset 0 0 0 5px rgba(223,174,88,.45)}
+#cml-nt .xc .ph img{aspect-ratio:16/10!important}
+#cml-nt .xc .kb{flex:1;display:flex;flex-direction:column;padding:18px 12px 8px!important}
+#cml-nt .xt{display:inline-flex;align-self:flex-start;margin:0 0 10px;padding:6px 10px;border-radius:10px;background:var(--bd);color:var(--gl);font:600 14px/1 Poppins,sans-serif;letter-spacing:.04em}
+#cml-nt .xc ul{margin-top:16px}
+#cml-nt .xc .kf{margin-top:auto;padding-top:18px}
+#cml-nt .ob{margin:12px 0 0;font:400 14px/1.4 Poppins,sans-serif;color:var(--mu)}
+#cml-nt .in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:clamp(44px,6vw,72px) 0 0;padding:0;list-style:none;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+#cml-nt .in li{display:flex;align-items:center;gap:12px;padding:20px 16px;font:500 14.5px/1.35 Poppins,sans-serif;color:var(--ink)}
+#cml-nt .in li+li{border-left:1px solid var(--ln)}
+#cml-nt .in small{display:block;margin-top:2px;font:400 14px/1.35 Poppins,sans-serif;color:var(--mu)}
+#cml-nt .in svg{flex:none;width:28px;height:28px;color:var(--bd2)}
+@media(max-width:900px){#cml-nt .kc{grid-template-columns:minmax(0,1fr);gap:16px}#cml-nt .kc:nth-child(even) .ph{order:0}#cml-nt .kb,#cml-nt .kc:nth-child(even) .kb{padding:0 6px 6px}#cml-nt .ex{grid-template-columns:minmax(0,1fr)}#cml-nt .in{grid-template-columns:repeat(2,minmax(0,1fr))}#cml-nt .in li:nth-child(3){border-left:0}#cml-nt .in li:nth-child(n+3){border-top:1px solid var(--ln)}}
+@media(max-width:640px){#cml-nt{padding:6px 10px 0}#cml-nt .bn{grid-template-columns:minmax(0,1fr);gap:18px}#cml-nt .bn p.s{font-size:15px}#cml-nt .ol{width:100%}#cml-nt .kb ul{grid-template-columns:minmax(0,1fr)}#cml-nt .bt{width:100%;margin-left:0}#cml-nt .kf{gap:12px}#cml-nt .in li{padding:14px 10px;gap:10px;font-size:14px}#cml-nt .in small{display:none}#cml-nt .in svg{width:24px;height:24px}}
+</style>
+<section id="cml-nt" data-cml-nat>
+<div class="w">
+<div class="bn">
+<div><p class="k">Natal 2026</p><h1>Presentes de Natal, <em>feitos à mão</em></h1><p class="s">Kits prontos em caixa de presente, com chás e frutas desidratadas da nossa cozinha. Ou monte a sua caixa, item por item.</p></div>
+<div class="ac"><a class="ol" href="#cml-nt-kits">Ver os kits</a><a class="ol" href="#cml-mt">Montar do meu jeito</a></div>
+</div>
+
+<div class="hd" id="cml-nt-kits"><p class="e">Os favoritos</p><h2>Já pensamos por você. <em>Escolha e presenteie.</em></h2><p class="d">Cada kit sai da nossa cozinha embalado e pronto para colocar embaixo da árvore.</p></div>
+<div class="kt">
+
+<article class="kc" data-p="379081240">
+<a class="ph" href="/produtos/kitl-natal-feliz/"><img src="https://acdn-us.mitiendanube.com/stores/005/060/752/products/kit_ambientada_fundo_desfocado_1250x1250-bd97ae38c83eef5af917939007214522-1024-1024.webp" alt="Kit Natal Feliz em caixa de madeira gravada" width="1024" height="768" loading="lazy" decoding="async"><span class="tg">O mais completo</span></a>
+<div class="kb"><h3>Natal Feliz</h3><p class="l">O ritual do chá completo, numa caixa de madeira gravada que fica depois do Natal.</p>
+<p class="v">O que vem</p><ul><li>Laranja Chocoleve, 10 fatias</li><li>Infusão na Tangerina, 2 un.</li><li>Trouxinha de Maçã, 6 un.</li><li>Chá Misto Intenso, 40 g</li><li>Xícara de vidro duplo</li><li>Infusor inox</li></ul>
+<div class="kf"><p class="pr"></p><a class="bt" href="/produtos/kitl-natal-feliz/">Ver o kit</a></div></div>
+</article>
+
+<article class="kc" data-p="313665100">
+<a class="ph" href="/produtos/kit-ternura1/"><img src="https://acdn-us.mitiendanube.com/stores/005/060/752/products/0001-3706985407520153866-e625b6d60e3946bdbd17953015988609-1024-1024.webp" alt="Kit Ternura com chá na fruta e Chocoleve" width="1024" height="768" loading="lazy" decoding="async"><span class="tg">O mais elogiado</span></a>
+<div class="kb"><h3>Ternura</h3><p class="l">Chá na fruta e Chocoleve numa caixa pronta. Para dizer que se importa sem precisar de muitas palavras.</p>
+<p class="v">O que vem</p><ul><li>Infusão na Tangerina Rosé</li><li>Trouxinha de Maçã, 6 un.</li><li>Maçã Chocoleve, 5 un.</li><li>Laranja Chocoleve, 10 fatias</li></ul>
+<div class="kf"><p class="pr"></p><a class="bt" href="/produtos/kit-ternura1/">Ver o kit</a></div></div>
+</article>
+
+<article class="kc" data-p="343280690">
+<a class="ph" href="/produtos/kit-flowers/"><img src="https://acdn-us.mitiendanube.com/stores/005/060/752/products/image-1793895636407-f543e8fe2a1586a5db17938957821993-1024-1024.webp" alt="Kit Flowers com rosas de maçã e chá misto" width="1024" height="768" loading="lazy" decoding="async"><span class="tg">Delicado</span></a>
+<div class="kb"><h3>Flowers</h3><p class="l">Rosas de maçã que abrem na xícara e um chá que pinta a água de rubi.</p>
+<p class="v">O que vem</p><ul><li>Rosa de Maçã, 4 un.</li><li>Chá Misto Intenso, 25 g</li><li>Cerca de 12 xícaras</li><li>Caixa presente</li></ul>
+<div class="kf"><p class="pr"></p><a class="bt" href="/produtos/kit-flowers/">Ver o kit</a></div></div>
+</article>
+
+<article class="kc" data-p="345619388">
+<a class="ph" href="/produtos/combo-bestsellers/"><img src="https://acdn-us.mitiendanube.com/stores/005/060/752/products/chatgpt-image-14_08_2026-10_11_08-5b8c09838f4ff414b117867130866663-1024-1024.webp" alt="Kit Best Sellers com oito chás mistos" width="1024" height="768" loading="lazy" decoding="async"><span class="tg">Para quem ama chá</span></a>
+<div class="kb"><h3>Best Sellers</h3><p class="l">Oito chás mistos, da manhã ao fim do dia, para descobrir o favorito.</p>
+<p class="v">8 chás mistos de 20 g, cerca de 80 xícaras</p><ul><li>Sereníssimo</li><li>Sport</li><li>Intenso</li><li>Imuny</li><li>Estética</li><li>Ciclo</li><li>Performance</li><li>Maturidade</li></ul>
+<div class="kf"><p class="pr"></p><a class="bt" href="/produtos/combo-bestsellers/">Ver o kit</a></div></div>
+</article>
+</div>
+
+<div class="hd"><p class="e">Linhas exclusivas</p><h2>Presentes com <em>uma história</em></h2></div>
+<div class="ex">
+<article class="xc" data-p="344326858">
+<a class="ph" href="/produtos/kit-desdobramento-l1xs1/"><img src="https://acdn-us.mitiendanube.com/stores/005/060/752/products/213-505880de9b8ba534f017926935685714-640-0.webp" alt="Kit Desdobramento" width="640" height="480" loading="lazy" decoding="async"></a>
+<div class="kb"><p class="xt">Linha Desdobramentos</p><h3>Desdobramento</h3><p class="l">Para quem acompanha as lives Desdobramentos. Uma curadoria para uma fase nova.</p>
+<ul><li>Chá Misto Durex, lata 80 g</li><li>Granola Doce, 80 g</li><li>Tangerina desidratada, 20 g</li><li>Banana com coco, 40 g</li><li>Trouxinha de Maçã, 6 un.</li><li>Infusão na Tangerina Rosé, 2 un.</li><li>Laranja Chocoleve, 10 fatias</li></ul>
+<div class="kf"><p class="pr"></p><a class="bt" href="/produtos/kit-desdobramento-l1xs1/">Ver o kit</a></div></div>
+</article>
+<article class="xc" data-p="311670419">
+<a class="ph" href="/produtos/ciclo-materna-gestacao-e-amamentacao/"><img src="https://acdn-us.mitiendanube.com/stores/005/060/752/products/chatgpt-image-10_05_2026-20_23_29-abf5f6aa71d87c7ce517784554206838-640-0.webp" alt="Kit Materna" width="640" height="480" loading="lazy" decoding="async"></a>
+<div class="kb"><p class="xt">Linha Mamãe</p><h3>Materna</h3><p class="l">Para a gestação e a amamentação, numa caixa baú de madeira.</p>
+<ul><li>Chá Gestação, em sachês</li><li>Chá Lactação, em sachês</li><li>Rosa de Maçã</li><li>Xícara de vidro duplo</li></ul>
+<p class="ob">Consulte o obstetra antes do uso.</p>
+<div class="kf"><p class="pr"></p><a class="bt" href="/produtos/ciclo-materna-gestacao-e-amamentacao/">Ver o kit</a></div></div>
+</article>
+</div>
+
+<div data-cml-pz id="prazos"></div>
+<ul class="in">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h17v4h-17zM5 12v9h14v-9M12 8v13"/><path d="M12 8C10.6 5 7.5 4.6 7.5 6.4 7.5 7.6 9 8 12 8zM12 8c1.4-3 4.5-3.4 4.5-1.6 0 1.2-1.5 1.6-4.5 1.6z"/></svg><span>Pronto para presentear<small>embalado à mão</small></span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M7 10h10M7 14h6"/></svg><span>Cartão escrito à mão<small>com a sua mensagem</small></span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3v3h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span>Entrega para todo o Brasil<small>frete grátis por região</small></span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5.8a1.5 1.5 0 0 1 3 0V11M11 10V4.6a1.5 1.5 0 0 1 3 0V11M14 10.5V6.2a1.5 1.5 0 0 1 3 0v7.3c0 4-2.6 6.9-6.3 6.9-2.4 0-4-1.1-5.3-3.2L3.6 14a1.4 1.4 0 0 1 2.3-1.6L8 15"/></svg><span>Feito à mão<small>pela nossa família</small></span></li>
+</ul>
+
+</div>
+</section>

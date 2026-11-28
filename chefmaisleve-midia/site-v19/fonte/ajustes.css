@@ -249,3 +249,19 @@ html body #cml-lc .cv .ph{height:auto;aspect-ratio:16/9}
 html body #cml-lc .cv .t{padding:18px 18px 22px}}
 /* Home (27/11): cartao Chocoleve dos destaques com tom de chocolate e brilho laranja (antes usava o fundo preto da Black, t-blk) */
 html body .cml-hl-c.t-cho{background:radial-gradient(120% 90% at 20% 0%,#8a4a1c,#4d2812 58%,#2e170a);border-color:#efb56599}
+/* Prazos do Natal (27/11): produto, carrinho e pagina de Natal */
+.cmlpz{margin:14px 0 0;border:1px solid rgba(74,20,29,.22);border-radius:10px;background:#fbf5ef;color:#2b2916;font:400 14px/1.45 Poppins,sans-serif}
+.cmlpz summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:11px 14px;min-height:44px;box-sizing:border-box}
+.cmlpz summary::-webkit-details-marker{display:none}
+.cmlpz summary b{color:#6b1e2a;font-weight:600}
+.cmlpz summary i{font-style:normal;margin-left:auto;color:#6b1e2a;font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.cmlpz[open] summary i{visibility:hidden}
+.cmlpz ul{list-style:none;margin:0;padding:0 14px 12px}
+.cmlpz li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid rgba(74,20,29,.12)}
+.cmlpz li b{color:#6b1e2a;font-weight:600;white-space:nowrap}
+.cmlpz.ab{margin:22px 0 0;padding:16px 18px}
+.cmlpz.ab .t{margin:0 0 6px;font-weight:600;color:#4a141d}
+.cmlpz.ab ul{padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cmlpz.ab li{flex-direction:column;gap:2px;border:0;padding:10px 12px;border-radius:10px;background:#fff}
+#modal-cart .cmlpz{margin:0 0 12px}
+@media(max-width:767px){.cmlpz.ab ul{grid-template-columns:1fr 1fr}}
