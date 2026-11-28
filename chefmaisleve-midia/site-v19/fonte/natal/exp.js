@@ -110,6 +110,6 @@
     [].forEach.call(D.querySelectorAll('[class*="mi-"] strong, [class*="mi-"] span'), function(e){ if (e.children.length) return; var t = e.textContent; if (/^\s*\d\.\d\s*$/.test(t)) e.textContent = t.replace(".", ","); });
     [].forEach.call(D.querySelectorAll('[class*="mi-"] button:not(.cml-rv-add)'), function(b){ if (/Adicionar avalia/.test(b.textContent)) b.classList.add("cml-rv-add"); });
   }
-  function ini(){ busca(); idle(ugc); idle(sacola); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); notas(); if (++n > 15) clearInterval(iv); }, 500); var vi = 0, iv2 = setInterval(function(){ notas(); if (++vi > 20) clearInterval(iv2); }, 1500); } }
+  function ini(){ busca(); idle(ugc); idle(sacola); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); if (++n > 15) clearInterval(iv); }, 500); } idle(function(){ notas(); if (W.MutationObserver) { var tn = 0; new MutationObserver(function(){ if (tn) return; tn = setTimeout(function(){ tn = 0; notas(); }, 400); }).observe(D.body, { childList: true, subtree: true }); } }); }
   if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", ini); else ini();
 })();
