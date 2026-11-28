@@ -400,3 +400,5 @@ html body .adbar-item:not(#z0):not(#z1):not(#z2),html body .adbar-item:not(#z0):
 html body.template-search :is(.page-header-title-row,.products-grid-header):not(#z0){padding-left:0!important;padding-right:0!important}
 /* Abas das categorias no celular: leve esmaecido na borda direita indica que dá para arrastar */
 @media(max-width:767px){html body nav.c2-chips:not(#z0){-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);padding-right:32px!important;scrollbar-width:none}html body nav.c2-chips::-webkit-scrollbar{display:none}}
+/* Celular: espaço no fim da página para a barra de atalhos não cobrir o rodapé */
+@media(max-width:767px){html body:has(.c1-dock):not(.template-cart){padding-bottom:84px!important}}

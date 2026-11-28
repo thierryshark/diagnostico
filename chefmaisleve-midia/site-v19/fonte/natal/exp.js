@@ -112,6 +112,8 @@
   }
   /* Cadastro: exemplo de nome brasileiro no campo (o tema traz "Maria Perez") */
   function cadastro(){ [].forEach.call(D.querySelectorAll('input[placeholder*="Maria Perez"]'), function(i){ i.setAttribute("placeholder", i.getAttribute("placeholder").replace("Maria Perez", "Maria Silva")); }); }
-  function ini(){ cadastro(); busca(); idle(ugc); idle(sacola); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); if (++n > 15) clearInterval(iv); }, 500); } idle(function(){ notas(); if (W.MutationObserver) { var tn = 0; new MutationObserver(function(){ if (tn) return; tn = setTimeout(function(){ tn = 0; notas(); }, 400); }).observe(D.body, { childList: true, subtree: true }); } }); }
+  /* Rodapé: CNPJ formatado na linha de direitos */
+  function rodape(){ [].forEach.call(D.querySelectorAll(".footer-copyright"), function(e){ var n = e.firstChild; if (n && n.nodeType === 3 && n.nodeValue.indexOf("61728220000120") > -1) n.nodeValue = n.nodeValue.replace(/ - 61728220000120 - /, " · CNPJ 61.728.220/0001-20 · "); }); }
+  function ini(){ cadastro(); idle(rodape); busca(); idle(ugc); idle(sacola); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); if (++n > 15) clearInterval(iv); }, 500); } idle(function(){ notas(); if (W.MutationObserver) { var tn = 0; new MutationObserver(function(){ if (tn) return; tn = setTimeout(function(){ tn = 0; notas(); }, 400); }).observe(D.body, { childList: true, subtree: true }); } }); }
   if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", ini); else ini();
 })();
