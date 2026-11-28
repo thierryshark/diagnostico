@@ -266,10 +266,15 @@
   "cml-of3",
   "cml-mm-side",
   "cml-cl",
-  "t-blk"
+  "t-blk",
+  "cml-cb1-nt"
  ],
  "seletoresMortos": [
   ".cml-pd>div:has(>video)",
-  ".cml-pd:has(>div>video)"
+  ".cml-pd:has(>div>video)",
+  "[data-cml-cb1=campo]",
+  "button[data-cml-cb1=go]",
+  "button[data-cml-cb1=go]>*",
+  "button[data-cml-cb1=go]:after"
  ]
 }

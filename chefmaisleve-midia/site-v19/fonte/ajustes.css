@@ -290,3 +290,17 @@ html body .cml-hl-c.t-cho{background:radial-gradient(120% 90% at 20% 0%,#8a4a1c,
 @media(min-width:1024px){html body .nav-desktop-list>li.nav-main-item:has(>a[href*="/linha-verao"]):not(#z0):not(#z1):not(#z2):not(#z3){display:flex!important;align-items:center}
 html body .nav-desktop-list>li.nav-main-item>a[href*="/linha-verao"]:not(#z0):not(#z1):not(#z2){padding:8px 14px!important;border-radius:10px;background:#e6ead6;color:#3f4a22!important;font-weight:600}
 html body .nav-desktop-list>li.nav-main-item>a[href*="/linha-verao"]:hover{background:#d9dfc3}}
+
+/* Uma janela so ao comprar (28/11): a oferta "Leve junto" diz o que entrou na sacola; o aviso de baixo some enquanto ela esta aberta */
+html.cml-xs-on .js-alert-add-to-cart-private{display:none!important}
+#js-cross-selling-modal .cml-xs-ok{display:flex;align-items:center;gap:8px;margin:0;padding:12px 20px;border-bottom:1px solid #e8ddd0;background:#f1f2e6;color:#3f4a22;font:500 14px/1.35 Poppins,sans-serif;border-radius:inherit;border-bottom-left-radius:0;border-bottom-right-radius:0}
+#js-cross-selling-modal .cml-xs-ok svg{width:16px;height:16px;flex:none}
+#js-cross-selling-modal .cml-xs-ok b{font-weight:600}
+#js-cross-selling-modal .cml-xs-ac{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:center;margin:14px 0 0}
+#js-cross-selling-modal .cml-xs-ac button{min-height:44px;padding:0 16px;border-radius:10px;font:600 14px/1 Poppins,sans-serif;cursor:pointer}
+#js-cross-selling-modal .cml-xs-ac .vs{flex:1;border:1.5px solid #565229;background:transparent;color:#565229}
+#js-cross-selling-modal .cml-xs-ac .cc{border:0;background:none;color:#2b2916;text-decoration:underline;text-underline-offset:3px;font-weight:500}
+/* Cashback em um toque (28/11): sai a parte "Gerar cupom" da janela do app; botao do carrinho desabilitado abaixo de R$ 199 */
+[data-cml-cbg]{display:none!important}
+.cml-cb1-cart button[disabled]{opacity:.45;cursor:not-allowed}
+.cml-cb1-cart button[hidden]{display:none}
