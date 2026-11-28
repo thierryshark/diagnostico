@@ -316,6 +316,8 @@ html body main>#ns-section-product_description:not(#z0):not(#z1){padding-top:0!i
 /* Perguntas da pagina de produto: um pouco mais de ar entre as linhas */
 html body .cx11-faq .g{gap:14px 24px}
 /* Descricao do produto no computador: titulo de um lado, texto do outro (usa a largura toda) */
-@media(min-width:1024px){html body .cml-pd .cml-f-top{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,5vw,96px);align-items:center;max-width:none}
+@media(min-width:1024px){html body #ns-section-product_description .cml-pd .cml-f-top:not(#z0){flex:1 1 100%;width:100%!important;max-width:none!important;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,5vw,96px);align-items:center}
 html body .cml-pd .cml-f-top>span,html body .cml-pd .cml-f-top>h2{grid-column:1}
 html body .cml-pd .cml-f-top>p{grid-column:2;grid-row:1/span 2;margin:0}}
+/* Faixa de beneficios da pagina Chocoleve na mesma coluna do resto */
+html body .cml-chx.st:not(#z0){max-width:var(--cmlF)!important}
