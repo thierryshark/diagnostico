@@ -398,3 +398,5 @@ html body .adbar-item:not(#z0):not(#z1):not(#z2),html body .adbar-item:not(#z0):
 /* Busca no celular: a contagem aparece uma vez só (já está ao lado do título) */
 @media(max-width:767px){html body .products-grid-search-heading:not(#z0){display:none!important}}
 html body.template-search :is(.page-header-title-row,.products-grid-header):not(#z0){padding-left:0!important;padding-right:0!important}
+/* Abas das categorias no celular: leve esmaecido na borda direita indica que dá para arrastar */
+@media(max-width:767px){html body nav.c2-chips:not(#z0){-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);padding-right:32px!important;scrollbar-width:none}html body nav.c2-chips::-webkit-scrollbar{display:none}}
