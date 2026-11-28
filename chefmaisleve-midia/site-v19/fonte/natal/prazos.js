@@ -15,16 +15,16 @@
   function caixa(aberta){
     var e;
     if (aberta) { e = D.createElement("div"); e.innerHTML = '<p class="t">Para chegar até o Natal, peça até:</p>' + lista; }
-    else { e = D.createElement("details"); e.innerHTML = '<summary>' + resumo + '<i>ver sua região</i></summary>' + lista; }
+    else { e = D.createElement("details"); e.innerHTML = '<summary><span>' + resumo + '</span><i>ver sua região</i></summary>' + lista; }
     e.className = "cmlpz" + (aberta ? " ab" : ""); return e;
   }
   function poe(){
     var ok = 0;
     var pa = D.querySelector("#single-product .product-actions");
-    if (pa && !(pa.nextElementSibling && pa.nextElementSibling.classList.contains("cmlpz"))) pa.parentNode.insertBefore(caixa(false), pa.nextSibling);
+    if (pa && !pa.parentNode.querySelector(":scope > .cmlpz")) pa.parentNode.insertBefore(caixa(false), pa.nextSibling);
     if (pa) ok++;
     var cs = D.querySelector("#modal-cart .js-ajax-cart-submit");
-    if (cs && !(cs.previousElementSibling && cs.previousElementSibling.classList.contains("cmlpz"))) cs.parentNode.insertBefore(caixa(false), cs);
+    if (cs && !cs.parentNode.querySelector(":scope > .cmlpz")) cs.parentNode.insertBefore(caixa(false), cs);
     if (cs) ok++;
     [].forEach.call(D.querySelectorAll("[data-cml-pz]:not(.cmlpz)"), function(h){ var c = caixa(true); c.id = h.id; h.replaceWith(c); ok++; });
     return ok;

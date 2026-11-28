@@ -250,7 +250,7 @@ html body #cml-lc .cv .t{padding:18px 18px 22px}}
 /* Home (27/11): cartao Chocoleve dos destaques com tom de chocolate e brilho laranja (antes usava o fundo preto da Black, t-blk) */
 html body .cml-hl-c.t-cho{background:radial-gradient(120% 90% at 20% 0%,#8a4a1c,#4d2812 58%,#2e170a);border-color:#efb56599}
 /* Prazos do Natal (27/11): produto, carrinho e pagina de Natal */
-.cmlpz{margin:14px 0 0;border:1px solid rgba(74,20,29,.22);border-radius:10px;background:#fbf5ef;color:#2b2916;font:400 14px/1.45 Poppins,sans-serif}
+.cmlpz{margin:14px 0;border:1px solid rgba(74,20,29,.22);border-radius:10px;background:#fbf5ef;color:#2b2916;font:400 14px/1.45 Poppins,sans-serif}
 .cmlpz summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:11px 14px;min-height:44px;box-sizing:border-box}
 .cmlpz summary::-webkit-details-marker{display:none}
 .cmlpz summary b{color:#6b1e2a;font-weight:600}
