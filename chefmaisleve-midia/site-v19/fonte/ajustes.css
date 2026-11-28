@@ -395,3 +395,5 @@ html body.template-cart :is(.cart-item-variant,.cart-item-discount-badge,.price-
 html body.template-cart .c1-dock:not(#z0){display:none!important}
 /* Faixa de avisos do topo: letra de 14px no celular e no computador */
 html body .adbar-item:not(#z0):not(#z1):not(#z2),html body .adbar-item:not(#z0):not(#z1):not(#z2) *{font-size:14px!important;letter-spacing:.03em!important}
+/* Busca no celular: a contagem aparece uma vez só (já está ao lado do título) */
+@media(max-width:767px){html body .products-grid-search-heading:not(#z0){display:none!important}}
