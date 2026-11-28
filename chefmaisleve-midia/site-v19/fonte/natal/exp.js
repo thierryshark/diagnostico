@@ -110,6 +110,8 @@
     [].forEach.call(D.querySelectorAll('[class*="mi-"] strong, [class*="mi-"] span'), function(e){ var n = e.firstChild; if (e.children.length || !n || n.nodeType !== 3 || n !== e.lastChild) return; if (/^\s*\d\.\d\s*$/.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(".", ","); });
     [].forEach.call(D.querySelectorAll('[class*="mi-"] button:not(.cml-rv-add)'), function(b){ if (/Adicionar avalia/.test(b.textContent)) b.classList.add("cml-rv-add"); else if (/Adicionar ao carrinho/.test(b.textContent)) b.classList.add("cml-rv-add", "cml-mi-cart"); });
   }
-  function ini(){ busca(); idle(ugc); idle(sacola); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); if (++n > 15) clearInterval(iv); }, 500); } idle(function(){ notas(); if (W.MutationObserver) { var tn = 0; new MutationObserver(function(){ if (tn) return; tn = setTimeout(function(){ tn = 0; notas(); }, 400); }).observe(D.body, { childList: true, subtree: true }); } }); }
+  /* Cadastro: exemplo de nome brasileiro no campo (o tema traz "Maria Perez") */
+  function cadastro(){ [].forEach.call(D.querySelectorAll('input[placeholder*="Maria Perez"]'), function(i){ i.setAttribute("placeholder", i.getAttribute("placeholder").replace("Maria Perez", "Maria Silva")); }); }
+  function ini(){ cadastro(); busca(); idle(ugc); idle(sacola); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); if (++n > 15) clearInterval(iv); }, 500); } idle(function(){ notas(); if (W.MutationObserver) { var tn = 0; new MutationObserver(function(){ if (tn) return; tn = setTimeout(function(){ tn = 0; notas(); }, 400); }).observe(D.body, { childList: true, subtree: true }); } }); }
   if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", ini); else ini();
 })();
