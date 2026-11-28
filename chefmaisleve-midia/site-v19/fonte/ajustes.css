@@ -397,3 +397,4 @@ html body.template-cart .c1-dock:not(#z0){display:none!important}
 html body .adbar-item:not(#z0):not(#z1):not(#z2),html body .adbar-item:not(#z0):not(#z1):not(#z2) *{font-size:14px!important;letter-spacing:.03em!important}
 /* Busca no celular: a contagem aparece uma vez só (já está ao lado do título) */
 @media(max-width:767px){html body .products-grid-search-heading:not(#z0){display:none!important}}
+html body.template-search .page-header-title-row:not(#z0){padding-left:0!important;padding-right:0!important}
