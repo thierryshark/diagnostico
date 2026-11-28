@@ -270,6 +270,7 @@
   "cml-cb1-nt"
  ],
  "seletoresMortos": [
+  "htmlbody#ns-section-main_product.product-columns>*:not(.js-product-images):not(#g1)",
   ".cml-pd>div:has(>video)",
   ".cml-pd:has(>div>video)",
   "[data-cml-cb1=campo]",
