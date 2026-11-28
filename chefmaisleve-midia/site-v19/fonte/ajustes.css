@@ -297,7 +297,7 @@ html.cml-xs-on .js-alert-add-to-cart-private{display:none!important}
 #js-cross-selling-modal .cml-xs-ac .cc{border:0;background:none;color:#2b2916;text-decoration:underline;text-underline-offset:3px;font-weight:500}
 /* Cashback em um toque (28/11): sai a parte "Gerar cupom" da janela do app; botao do carrinho desabilitado abaixo de R$ 199 */
 [data-cml-cbg]{display:none!important}
-.cml-cb1-cart button[disabled]{opacity:.45;cursor:not-allowed}
+.cml-cb1-cart button[disabled]{cursor:not-allowed}
 .cml-cb1-cart button[hidden]{display:none}
 /* Respiro e largura (28/11, Thierry): um vao so entre os blocos de qualquer pagina, maior no computador e confortavel no celular */
 :root{--cmlG:clamp(48px,5.5vw,96px)}
@@ -377,3 +377,10 @@ html body #single-product .cml-acc>h4:not(#z0){min-height:52px;display:flex;alig
 /* Carrinho (/comprar/) no celular: titulo menor e linha do cashback empilhada */
 @media(max-width:767px){html body.template-cart .page-header h1:not(#z0),html body.template-cart h1.h1:not(#z0){font-size:30px!important;line-height:1.15!important}
 html body .cml-cb1-cart:not(#z0){flex-wrap:wrap}html body .cml-cb1-cart span{flex:1 1 100%}html body .cml-cb1-cart button{flex:1 1 100%;min-height:44px}}
+
+/* Sacola: linha do frete grátis e botão de cashback desligado legível */
+html body #modal-cart .cml-fgb{margin:12px 0 0;padding:12px 14px;border:1px solid #e8ddd0;border-radius:10px;background:#fffaf5;font:400 14px/1.45 Poppins,sans-serif;color:#2b2916}
+html body #modal-cart .cml-fgb b{font-weight:600;color:#a65a14}
+html body #modal-cart .cml-fgb .br{display:block;height:6px;margin:10px 0 0;border-radius:6px;background:#efe6da;overflow:hidden}
+html body #modal-cart .cml-fgb .br i{display:block;height:100%;border-radius:6px;background:#565229;transition:width .4s}
+html body .cml-cb1-cart button[disabled]:not(#z0){background:#efe6da!important;border-color:#efe6da!important;color:#5c5444!important;box-shadow:none!important}

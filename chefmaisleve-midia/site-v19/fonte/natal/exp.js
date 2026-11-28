@@ -81,10 +81,30 @@
       if (!m) { if (old) old.remove(); return; }
       var cep = m[1] + m[2], r = null; for (var i = 0; i < FG.length; i++) if (FG[i][2].test(cep)) { r = FG[i]; break; }
       if (!r) return; var tx = "Frete grátis para " + (r[0] === "SP" ? "o estado de SP" : "a sua região") + " em compras a partir de R$ " + r[1] + ",00.";
+      try { localStorage.setItem("cmlReg", r[0] + "|" + r[1]); } catch (e) {} sacolaFg();
       if (old && old.textContent === tx) return; if (!old) { old = D.createElement("p"); old.className = "cml-fg"; w.appendChild(old); } old.textContent = tx;
     }
     new MutationObserver(function(){ clearTimeout(w.__t); w.__t = setTimeout(poe, 150); }).observe(w, { childList: true, subtree: true });
   }
-  function ini(){ busca(); idle(ugc); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); if (++n > 15) clearInterval(iv); }, 500); } }
+  /* Sacola: quanto falta para o frete grátis. Usa a região do último CEP calculado; sem CEP, mostra a regra de SP e do Sul/Sudeste. */
+  function brl(v){ return "R$ " + v.toFixed(2).replace(".", ","); }
+  function sacolaFg(){
+    var mc = D.getElementById("modal-cart"); if (!mc) return; var bd = mc.querySelector(".modal-body"), st = mc.querySelector(".js-cart-subtotal"); if (!bd || !st) return;
+    var it = mc.querySelector(".js-cart-item"), el = bd.querySelector(".cml-fgb");
+    if (!it) { if (el) el.remove(); return; }
+    var sub = parseFloat((st.textContent || "").replace(/[^\d,]/g, "").replace(",", ".")) || 0, reg = null;
+    try { var g = (localStorage.getItem("cmlReg") || "").split("|"); if (g[1]) reg = [g[0], +g[1]]; } catch (e) {}
+    var h;
+    if (reg) { var falta = reg[1] - sub, nome = reg[0] === "SP" ? "SP" : reg[0] === "Sul, Sudeste e DF" ? "o Sul, Sudeste e DF" : "o " + reg[0];
+      h = (falta > 0 ? "Faltam <b>" + brl(falta) + "</b> para o frete grátis para " + nome + "." : "Seu frete para " + nome + " é <b>grátis</b>.") + '<span class="br"><i style="width:' + Math.min(100, Math.round(sub / reg[1] * 100)) + '%"></i></span>';
+    } else h = "Frete grátis a partir de <b>R$ 249</b> em SP e <b>R$ 299</b> no Sul, Sudeste e DF.";
+    if (!el) { el = D.createElement("p"); el.className = "cml-fgb"; var cb = bd.querySelector(".cml-cb1-cart"); cb ? bd.insertBefore(el, cb) : bd.appendChild(el); }
+    if (el.__h !== h) { el.innerHTML = h; el.__h = h; }
+  }
+  function sacola(){
+    var mc = D.getElementById("modal-cart"); if (!mc || mc.__cmlFgb) return; mc.__cmlFgb = 1; sacolaFg();
+    new MutationObserver(function(){ clearTimeout(mc.__t); mc.__t = setTimeout(sacolaFg, 200); }).observe(mc, { childList: true, subtree: true, characterData: true });
+  }
+  function ini(){ busca(); idle(ugc); idle(sacola); if (D.getElementById("single-product")) { ordena(); var n = 0, iv = setInterval(function(){ ordena(); freteGratis(); if (++n > 15) clearInterval(iv); }, 500); } }
   if (D.readyState === "loading") D.addEventListener("DOMContentLoaded", ini); else ini();
 })();
